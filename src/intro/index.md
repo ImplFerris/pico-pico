@@ -5,7 +5,7 @@ This book is an informal collection of what I explore, tinker with, and learn al
 ## Meet the hardware  - Pico 2
 We will be using the Raspberry Pi Pico 2.  It features the new RP2350 chip with dual-core flexibility—offering Arm Cortex-M33 cores and optional RISC-V Hazard3 cores. You can operate it as the standard ARM core or switch to the RISC-V architecture.  You find more details from the [official website](https://www.raspberrypi.com/products/raspberry-pi-pico-2/).
 
-<img style="display: block; margin: auto;" alt="pico2" src="images/pico2.png"/>
+<img style="display: block; margin: auto;" alt="pico2" src="/images/pico2.png"/>
 
 
 ## Datasheets
