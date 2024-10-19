@@ -1,0 +1,6 @@
+[book]
+title = "Pico Pico - Embedded Programming with Rust"
+authors = []
+language = "en"
+multilingual = false
+src = "src"
