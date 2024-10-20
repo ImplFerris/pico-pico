@@ -4,6 +4,7 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
+It adjusts the LED's brightness by changing the duty cycle at regular intervals, creating a blinking effect.
 
 ## The main code
 ```rust
@@ -145,9 +146,4 @@ cd pico2-blinky/rprs-blinky
 ## How to Run?
 
 You refer the ["Running The Program"](../running.md) section
-
-
-## Explanation
-Let's break it down and explain any parts that need clarification.
-
-//TODO
+ 

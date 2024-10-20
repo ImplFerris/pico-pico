@@ -4,6 +4,8 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
+It creates a blinking effect by toggling the pin's output state between high and low.
+
 ## The main code
 ```rust
 #![no_std]
