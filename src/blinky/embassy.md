@@ -4,12 +4,6 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
-You can clone the blinky project I created and navigate to the `embassy-blinky` folder to run this version of the blink program:
-
-```sh
-git clone https://github.com/ImplFerris/pico2-blinky
-```
-
 ## The main code
 ```rust
 #![no_std]
@@ -53,3 +47,16 @@ async fn main(_spawner: Spawner) {
     }
 }
 ```
+
+
+## Clone the existing project
+You can clone the blinky project I created and navigate to the `embassy-blinky` folder to run this version of the blink program:
+
+```sh
+git clone https://github.com/ImplFerris/pico2-blinky
+cd pico2-blinky/embassy-blinky
+```
+
+## How to Run?
+
+You refer the ["Running The Program"](../running.md) section

@@ -7,3 +7,4 @@ This section will include a list of resources I find helpful along the way.
 
 ## Other resources
 - [Curated list of resources for Embedded Rust](https://github.com/rust-embedded/awesome-embedded-rust)
+- [Writing an OS in Rust ](https://os.phil-opp.com/): many useful concepts explained here

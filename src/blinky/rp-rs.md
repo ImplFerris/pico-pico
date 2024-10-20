@@ -4,12 +4,6 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
-You can clone the blinky project I created and navigate to the `rprs-blinky` folder to run this version of the blink program:
-
-```sh
-git clone https://github.com/ImplFerris/pico2-blinky
-```
-
 
 ## The main code
 ```rust
@@ -138,3 +132,22 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 
 // End of file
 ```
+
+## Clone the existing project
+
+You can clone the blinky project I created and navigate to the `rprs-blinky` folder to run this version of the blink program:
+
+```sh
+git clone https://github.com/ImplFerris/pico2-blinky
+cd pico2-blinky/rprs-blinky
+```
+
+## How to Run?
+
+You refer the ["Running The Program"](../running.md) section
+
+
+## Explanation
+Let's break it down and explain any parts that need clarification.
+
+//TODO
