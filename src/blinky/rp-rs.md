@@ -147,26 +147,3 @@ cd pico2-blinky/rprs-blinky
 
 You refer the ["Running The Program"](../running.md) section
  
-## What is PWM?
-PWM stands for **Pulse Width Modulation**. It is a technique used to control the amount of power delivered to a device by adjusting the width of the pulses in a signal.
-
-In PWM, a digital signal switches between **on** and **off** states at a high frequency. The **duty cycle** of the signal determines how long it stays on compared to how long it stays off. 
-
-- **Duty Cycle**: The percentage of time the signal is on during one cycle. 
-  - For example:
-    - 100% duty cycle means the signal is always on.
-    - 50% duty cycle means the signal is on half the time and off half the time.
-    - 0% duty cycle means the signal is always off.
-
-In the above example code, we use PWM to fade an LED.
-
-### Fading Up
-The first loop gradually increases the LED brightness from `LOW` (0) to `HIGH` (25,000). The `delay.delay_us(8)` creates a short pause between each increase, allowing the LED to visibly brighten.
-
-### Fading Down
-The second loop decreases the LED brightness back down to `LOW` (0), again using the same delay to make the transition smooth.
-
-### Pause
-After fading up and down, the program pauses for 500 milliseconds before repeating the cycle, allowing the LED to rest briefly.
-
-Play around by adjusting the `delay` and observe. You can even comment out one of the for loop and observe the effect. 

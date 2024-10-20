@@ -9,5 +9,6 @@
 
 - [Blink LED](./blinky/index.md)
     - [With rp-rs](./blinky/rp-rs.md)
+        - [PWM](./blinky/pwm.md)
     - [With embassy](./blinky/embassy.md)
 - [Resources](./resources.md)
