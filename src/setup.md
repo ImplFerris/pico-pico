@@ -7,10 +7,17 @@ picotool is a tool for working with RP2040/RP2350 binaries, and interacting with
 
 Here’s a quick summary of the steps I followed:
 ```sh
+# Install dependencies
+sudo apt install build-essential pkg-config libusb-1.0-0-dev cmake
+
 mkdir embedded && cd embedded
 
 # Clone the Pico SDK
 git clone https://github.com/raspberrypi/pico-sdk
+cd pico-sdk
+git submodule update --init lib/mbedtls
+cd ../
+
 # Set the environment variable for the Pico SDK
 PICO_SDK_PATH=/MY_PATH/embedded/pico-sdk
 
@@ -21,13 +28,17 @@ git clone https://github.com/raspberrypi/picotool
 Build and install Picotool
 ```sh
 cd picotool
-cmake ../
+mkdir build && cd build
+# cmake ../
+cmake -DPICO_SDK_PATH=/var/ws/embedded/pico-sdk/ ../
 make -j8
 sudo make install
 ```
 
 On Linux you can add udev rules in order to run picotool without sudo:
 ```sh
+cd ../
+# In picotool cloned directory
 sudo cp udev/99-picotool.rules /etc/udev/rules.d/
 ```
 
