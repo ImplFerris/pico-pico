@@ -1,4 +1,4 @@
-# Blink LED Program with rp-rs HAL
+# Blink LED Program with RP HAL
 
 This example code is taken from rp235x-hal repo (It also includes additional examples beyond just the blink examples):
 
