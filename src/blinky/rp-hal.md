@@ -1,5 +1,7 @@
 # Blink (Dimming) LED Program with RP HAL
 
+rp-hal is an Embedded-HAL for RP series microcontrollers, and can be used as an alternative to the Embassy framework for pico.
+
 This example code is taken from rp235x-hal repo (It also includes additional examples beyond just the blink examples):
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)

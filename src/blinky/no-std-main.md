@@ -1,4 +1,4 @@
-# Introduction
+# Basic Concepts
 
 If you haven't read "The Embedded Rust Book" yet, I highly recommend you to check it out.
 [https://docs.rust-embedded.org/book/intro/index.html](https://docs.rust-embedded.org/book/intro/index.html)

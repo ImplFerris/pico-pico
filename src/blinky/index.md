@@ -7,9 +7,3 @@ In this section, we'll learn how to blink an LED using the Raspberry Pi Pico 2. 
 The onboard LED of the Pico is connected to GPIO pin 25 (based on the datasheet). To make it blink, we toggle the pin between high and low states at regular intervals. This turns the LED on and off, producing a blinking effect.
 
 <img style="display: block; margin: auto;" alt="pico2" src="../images/pico2-board.png"/>
-
-## Choosing the crate
-You can develop using two main approaches: the RP HAL or the Embassy framework.
-
-- [With RP HAL](./rp-hal.md)
-- [With embassy](./embassy.md)
