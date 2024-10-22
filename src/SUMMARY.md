@@ -1,9 +1,8 @@
 # Summary
 
 - [Introduction](./index.md)
-    - [Dev Environment](./index.md)
-        - [Setup](./setup.md)
-        - [Running the Program](./running.md)
+    - [Dev Environment](./setup.md)
+    - [Running the Program](./running.md)
     - [Concepts](./concepts/index.md)
         - [Approaches](./concepts/approaches.md)
 
