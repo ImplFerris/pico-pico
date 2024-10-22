@@ -1,10 +1,10 @@
-# Blink LED Program with RP HAL
+# Blink (Dimming) LED Program with RP HAL
 
 This example code is taken from rp235x-hal repo (It also includes additional examples beyond just the blink examples):
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
-It adjusts the LED's brightness by changing the duty cycle at regular intervals, creating a blinking effect.
+It adjusts the LED's brightness by changing the duty cycle at regular intervals, creating a dimming effect.
 
 ## The main code
 ```rust

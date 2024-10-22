@@ -10,7 +10,7 @@ In PWM, a digital signal switches between **on** and **off** states at a high fr
     - 50% duty cycle means the signal is on half the time and off half the time.
     - 0% duty cycle means the signal is always off.
 
-In the above example code, we use PWM to fade an LED.
+In the previous example code, we use PWM to fade an LED.
 
 ### Fading Up
 The first loop gradually increases the LED brightness from `LOW` (0) to `HIGH` (25,000). The `delay.delay_us(8)` creates a short pause between each increase, allowing the LED to visibly brighten.
@@ -38,17 +38,17 @@ Initialize the PWM slices by creating an instance using the PAC's PWM peripheral
 let mut pwm_slices = hal::pwm::Slices::new(pac.PWM, &mut pac.RESETS);
 ```
 
-// Retrieve a mutable reference to PWM4 from the initialized PWM slices for further configuration.
+Retrieve a mutable reference to PWM4 from the initialized PWM slices for further configuration.
 ```rust
 let pwm = &mut pwm_slices.pwm4;
 ```
 
-// Configure PWM4 to operate in phase-correct mode for smoother output transitions.  (You can refer the [secrets arudion PWM](https://docs.arduino.cc/tutorials/generic/secrets-of-arduino-pwm/) if you want to know what is phase-correct)
+Configure PWM4 to operate in phase-correct mode for smoother output transitions.  (You can refer the [secrets arudion PWM](https://docs.arduino.cc/tutorials/generic/secrets-of-arduino-pwm/) if you want to know what is phase-correct)
 ```rust
 pwm.set_ph_correct();
 ```
 
-// Get a mutable reference to channel B of PWM4 and direct its output to GPIO pin 25.
+Get a mutable reference to channel B of PWM4 and direct its output to GPIO pin 25.
 ```rust
 let channel = &mut pwm.channel_b;
 channel.output_to(pins.gpio25);
