@@ -1,6 +1,7 @@
 # Running the program
 Before we explore further examples, let’s cover the general steps to build and run any program on the Raspberry Pi Pico 2.
 
+Note: These commands should be run from your project folder. This is included here as a general step to avoid repetition. If you haven't created a project yet, begin with the Blinking LED section.
 
 ## Build and Run for ARM
 ```sh
