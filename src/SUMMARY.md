@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](./intro/intro.md)
+- [Introduction](./index.md)
     - [Dev Environment](./index.md)
         - [Setup](./setup.md)
         - [Running the Program](./running.md)
