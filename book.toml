@@ -4,3 +4,7 @@ authors = []
 language = "en"
 multilingual = false
 src = "src"
+
+[output.html]
+git-repository-url = "https://github.com/ImplFerris/pico-pico"
+cname = "pico.implrust.com"
