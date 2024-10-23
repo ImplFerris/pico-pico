@@ -2,7 +2,7 @@
 ## What is PWM?
 PWM stands for **Pulse Width Modulation**. It is a technique used to control the amount of power delivered to a device by adjusting the width of the pulses in a signal.
 
-In PWM, a digital signal switches between **on** and **off** states at a high frequency. The **duty cycle** of the signal determines how long it stays on compared to how long it stays off. 
+In PWM, a digital signal switches between **on** and **off** states. The **duty cycle** of the signal determines how long it stays on compared to how long it stays off. 
 
 - **Duty Cycle**: The percentage of time the signal is on during one cycle. 
   - For example:
@@ -10,13 +10,33 @@ In PWM, a digital signal switches between **on** and **off** states at a high fr
     - 50% duty cycle means the signal is on half the time and off half the time.
     - 0% duty cycle means the signal is always off.
 
+For LED brightness, PWM works by rapidly turning the LED on and off. If this happens fast enough, our eyes perceive a steady light, and the brightness increases with a higher duty cycle.
+
+Refer the 1073th page of the [RP2350](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf) Datasheet for more information.
+
 In the previous example code, we use PWM to fade an LED.
 
 ### Fading Up
-The first loop gradually increases the LED brightness from `LOW` (0) to `HIGH` (25,000). The `delay.delay_us(8)` creates a short pause between each increase, allowing the LED to visibly brighten.
+The code below gradually increases the LED brightness by adjusting the duty cycle from 0 to 25,000, with a small delay between each step:
+```rust
+for i in LOW..=HIGH {
+  delay.delay_us(8);
+  let _ = channel.set_duty_cycle(i);
+}
+```
+The delay ensures the LED brightens gradually. Without it, the brightness would change too quickly for the eye to notice, making the LED appear to jump from dim to bright. The delay allows for a smooth, noticeable "fading up" effect.  Dont' believe me! Adjust the delay to 0 and observe. You can increase the delay (eg: 25) and observe the fading effect.
+
+Note: `set_duty_cycle` function under the hood writes the given value into CC register(Count compare value). 
 
 ### Fading Down
-The second loop decreases the LED brightness back down to `LOW` (0), again using the same delay to make the transition smooth.
+The following code decreases the LED brightness by reducing the duty cycle from 25,000 to 0.
+```rust
+// Here rev is to reverse the iteration. so it goes from 25_000 to 0
+for i in (LOW..=HIGH).rev() {  
+    delay.delay_us(8);
+    let _ = channel.set_duty_cycle(i);
+}
+```
 
 ### Pause
 After fading up and down, the program pauses for 500 milliseconds before repeating the cycle, allowing the LED to rest briefly.
