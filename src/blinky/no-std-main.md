@@ -24,6 +24,26 @@ A panic handler is a function in Rust that defines what happens when your progra
 
 You don't have to define your own panic handler function; you can use existing crates such as panic_halt or panic_probe instead.
 
+For example, we used the panic_halt crate to halt execution when a panic occurs. 
+```rust
+use panic_halt as _;
+```
+The program will stop and remain in this infinite loop whenever a panic occurs.
+
+In fact, the [panic_halt crate's code](https://github.com/korken89/panic-halt/blob/master/src/lib.rs) implements a simple panic handler, which looks like this:
+```rust
+use core::panic::PanicInfo;
+use core::sync::atomic::{self, Ordering};
+
+#[inline(never)]
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {
+        atomic::compiler_fence(Ordering::SeqCst);
+    }
+}
+```
+
 **Related Resources:**
 - [Rust official doc](https://doc.rust-lang.org/nomicon/panic-handler.html)
 - [The Embedded Rust Book](https://docs.rust-embedded.org/book/start/panicking.html)

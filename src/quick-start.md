@@ -10,7 +10,7 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 It creates a blinking effect by toggling the pin's output state between high and low.
 
 ## The code snippet
-This is not the entire code. There are things you have to initialize and import crates.
+This is only part of the code. You'll need to set up some initial configurations and import the necessary crates.
 ```rust
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
@@ -30,7 +30,7 @@ async fn main(_spawner: Spawner) {
 ```
 
 ## Clone the Quick start project
-You can clone the blinky project I created and navigate to the project folder and run it.
+You can clone the quick start project I created and navigate to the project folder and run it.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-quick
