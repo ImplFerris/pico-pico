@@ -3,6 +3,7 @@
 - [Introduction](./index.md)
     - [Dev Environment](./setup.md)
     - [Quick Start](./quick-start.md)
+    - [Project Template](./cargo-generate.md)
     - [Running the Program](./running.md)
 
 - [Blink LED](./blinky/index.md)
