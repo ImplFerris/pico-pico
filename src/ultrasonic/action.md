@@ -12,11 +12,13 @@ To generate the project, run:
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git
 ```
-Provide a project name and select `rp-hal` as the HAL.
+When prompted, choose a name for your project-let's go with "bat-beacon". Don't forget to select `rp-hal` as the HAL.
 
 Then, navigate into the project folder:
 ```sh
 cd PROJECT_NAME
+# For example, if you named your project "bat-beacon":
+# cd bat-beacon
 ```
 
 ## Setup the LED Pin
