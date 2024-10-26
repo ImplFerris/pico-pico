@@ -145,6 +145,14 @@ loop {
 ```
 
 
+## Clone the existing project
+You can clone (or refer) project I created and navigate to the `ultrasonic` folder.
+
+```sh
+git clone https://github.com/ImplFerris/pico2-projects
+cd pico2-projects/ultrasonic
+```
+
 ## Your Challenge
 1. Use Embassy framework instead of rp-hal
 2. Use the onboard LED instead
