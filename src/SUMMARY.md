@@ -15,5 +15,9 @@
 - [Ultrasonic](./ultrasonic/index.md)
     - [How it works?](./ultrasonic/concepts.md)
     - [Light it Up](./ultrasonic/action.md)
+- [OLED Display](./oled/index.md)
+    - [I2C](./oled/i2c.md)
+    - [Hello World](./oled/hello-world.md)
+    - [Ferris](./oled/ferris.md)
 
 - [Resources](./resources.md)
