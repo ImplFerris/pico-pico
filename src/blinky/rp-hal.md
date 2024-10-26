@@ -141,8 +141,8 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 You can clone the blinky project I created and navigate to the `rprs-blinky` folder to run this version of the blink program:
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-blinky
-cd pico2-blinky/rprs-blinky
+git clone https://github.com/ImplFerris/pico2-projects
+cd pico2-projects/rprs-blinky
 ```
 
 ## How to Run?
