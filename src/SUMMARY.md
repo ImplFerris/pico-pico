@@ -17,7 +17,7 @@
     - [Light it Up](./ultrasonic/action.md)
 - [OLED Display](./oled/index.md)
     - [I2C](./oled/i2c.md)
-    - [Hello World](./oled/hello-world.md)
+    - [Hello World](./oled/hello-oled.md)
     - [Ferris](./oled/ferris.md)
 
 - [Resources](./resources.md)
