@@ -4,6 +4,8 @@ In this section, we'll learn how to connect an OLED display module to the Raspbe
 
 We'll create simple projects like displaying text and an image (display Ferris 🦀 image) on the OLED. We'll use the I2C protocol to connect the OLED display to the Pico.
 
+<img style="display: block; margin: auto;width:500px" alt="pico2" src="../images/oled-ssd1306.jpg"/>
+
 ### Hardware Requirements
 
 For this project, you'll need:
@@ -11,7 +13,11 @@ For this project, you'll need:
 - A breadboard
 - Jumper wires
 
-<img style="display: block; margin: auto;width:500px" alt="pico2" src="../images/oled-ssd1306.jpg"/>
+## Setup
+We will connect the SDA to GPIO 18 and the SCL to GPIO 19. Attach VCC to 3.3V for power, and GND to GND. This setup allows the OLED display to communicate with the microcontroller using I2C.
+
+<a href="./assets/pico-oled-circuit.jpg"><img style="display: block;  margin: auto;" alt="pico2" src="./assets/pico-oled-circuit.jpg"/></a>
+
 
 ## New crates
 In addition to the usual crate like `rp-hal`, we will be using these new crates necessary for the project.
