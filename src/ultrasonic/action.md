@@ -31,7 +31,7 @@ let pwm = &mut pwm_slices.pwm6;  // Access PWM slice 6
 pwm.set_ph_correct();            // Set phase-correct mode for smoother transitions
 pwm.enable();                    // Enable the PWM slice
 let led = &mut pwm.channel_b; // Select PWM channel B
-led.output_to(pins.gpio13);   // Set GPIO 13 as the PWM output pin
+led.output_to(pins.gpio3);   // Set GPIO 3 as the PWM output pin
 ```
 
 ## Setup the Trigger Pin

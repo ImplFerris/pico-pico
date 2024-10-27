@@ -24,4 +24,6 @@ The HC-SR04 Sensor module has a transmitter and receiver. The module has Trigger
 - **Trig**: Connect to GPIO 17 on the Pico to start the ultrasonic sound pulses.
 - **Echo**: Connect to GPIO 16 on the Pico; this pin sends a pulse when it detects the reflected signal, and the pulse length shows how long the signal took to return.
 - **GND**: Connect to the ground pin on the Pico.
-- **LED**: Connect the anode (long leg) of the LED to GPIO 13, as in the [External LED setup](../blinky/external-led.md).
+- **LED**: Connect the anode (long leg) of the LED to GPIO 3, as in the [External LED setup](../blinky/external-led.md).
+
+<a href="./assets/pico-ultrasonic-led.jpg"><img style="display: block; margin: auto;" alt="pico2" src="./assets/pico-ultrasonic-led.jpg"/></a>
