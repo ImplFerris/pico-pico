@@ -17,7 +17,9 @@ To complete this project, you will need:
 The HC-SR04 Sensor module has a transmitter and receiver. The module has Trigger and Echo pins which can be connected to the GPIO pins of a pico and other microcontrollers. When the receiver detects the returning sound wave, the Echo pin goes high for a duration equal to the time it takes for the wave to return to the sensor.
 
 ## Setup
-- **VCC**: Connect the VCC pin on the HC-SR04 to the 3.3V pin on the Pico to safely power the sensor. Although the HC-SR04 generally operates at 5V, using 3.3V helps protect the Pico, as its GPIO pins are rated for 3.3V. There is some unconfirmed information that the Pico 2 GPIO might tolerate 5V, but for now, this is uncertain. I’ve tested both 3.3V and 5V connections without issues so far 🤞. (If anyone has confirmed details on this, please raise an issue so we can keep this guide accurate.)
+- **VCC**: Connect the VCC pin on the HC-SR04 to the 3.3V pin on the Pico to safely power the sensor. 
+    - Although the HC-SR04 generally operates at 5V, using 3.3V helps protect the Pico, as its GPIO pins are rated for 3.3V. There is some unconfirmed information that the Pico 2 GPIO might tolerate 5V, but for now, this is uncertain. 
+    - I’ve tested both 3.3V and 5V connections without issues so far 🤞. (If anyone has confirmed details on this, please raise an issue so we can keep this guide accurate.)
     - Other considerations: Alternatively, you can use HCSR04+ (which can operate at both 3.3v and 5V) or use logic level shifter.
 - **Trig**: Connect to GPIO 17 on the Pico to start the ultrasonic sound pulses.
 - **Echo**: Connect to GPIO 16 on the Pico; this pin sends a pulse when it detects the reflected signal, and the pulse length shows how long the signal took to return.
