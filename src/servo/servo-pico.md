@@ -24,3 +24,20 @@ After performing the calculation, we find that the top value is `46,874`.
 You can experiment with different div_int and corresponding top values. Just ensure that div_int stays within the u8 range, top fits within the u16 range, and the formula yields a 50Hz frequency.
 
 (In case you are wondering, we are not setting the `div_frac` which is 0 by default. That's why it is not included in the calculation.)
+
+
+### Position calculation based on top
+To calculate the duty cycle that corresponds to specific positions (0, 90, and 180 degrees), we use the following formula based on the top value:
+
+```rust
+const PWM_DIV_INT: u8 = 64;
+const PWM_TOP: u16 = 46_874;
+
+const TOP: u16 = PWM_TOP + 1;
+const MIN_DUTY: u16 = (TOP as f64 * (2.5 / 100.)) as u16;
+const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16;
+const MAX_DUTY: u16 = (TOP as f64 * (12. / 100.)) as u16;
+```
+
+We multiply the TOP value by a duty cycle percentage to determine the appropriate pulse width for each position of the servo.
+

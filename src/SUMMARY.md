@@ -24,5 +24,6 @@
     - [Intro](./servo/servo.md)
     - [More on PWM](./servo/pwm.md)
     - [Servo and Pico](./servo/servo-pico.md)
+    - [Action](./servo/action.md)
 
 - [Resources](./resources.md)
