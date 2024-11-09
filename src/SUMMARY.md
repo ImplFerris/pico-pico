@@ -20,5 +20,9 @@
     - [I2C](./oled/i2c.md)
     - [Hello World](./oled/hello-oled.md)
     - [Ferris](./oled/ferris.md)
+- [Servo Motor](./servo/index.md)
+    - [Intro](./servo/servo.md)
+    - [More on PWM](./servo/pwm.md)
+    - [Servo and Pico](./servo/servo-pico.md)
 
 - [Resources](./resources.md)
