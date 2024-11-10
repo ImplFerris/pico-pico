@@ -24,8 +24,8 @@ After performing the calculation, we find that the top value is `46,874`.
 You can experiment with different div_int and corresponding top values. Just ensure that div_int stays within the u8 range, top fits within the u16 range, and the formula yields a 50Hz frequency.
 
 Note:
-In case you are wondering, we are not setting the `div_frac` which is 0 by default. That's why it is not included in the calculation.
-We are not going to enable the phase correct for this exercise, so it also can be excluded from the calculation (since it is just multiplying by 1); if you enable phase correct, then the calculation will differ since you have to multiply by 2 (1+1)
+- In case you are wondering, we are not setting the `div_frac` which is 0 by default. That's why it is not included in the calculation.
+- We are not going to enable the phase correct for this exercise, so it also can be excluded from the calculation (since it is just multiplying by 1); if you enable phase correct, then the calculation will differ since you have to multiply by 2 (1+1)
 
 
 ### Position calculation based on top
