@@ -3,8 +3,8 @@
 The servo motor we're using operates at a 50Hz frequency, which means that a pulse is sent every 20 milliseconds (ms). 
 
 Let's break this down further:
-    - **50Hz Frequency:** Frequency refers to how many times an event happens in a given time period. A 50Hz frequency means that the servo expects a pulse to occur 50 times per second. In other words, the servo receives a pulse every 1/50th of a second, which is 20 milliseconds.
-    - **20ms Time Interval:** This 20ms is the time between each pulse. It means that every 20 milliseconds, the servo expects a new pulse to adjust its position. Within this 20ms period, the width of the pulse (how long it stays "high") determines the angle at which the servo will move.
+  - **50Hz Frequency:** Frequency refers to how many times an event happens in a given time period. A 50Hz frequency means that the servo expects a pulse to occur 50 times per second. In other words, the servo receives a pulse every 1/50th of a second, which is 20 milliseconds.
+  - **20ms Time Interval:** This 20ms is the time between each pulse. It means that every 20 milliseconds, the servo expects a new pulse to adjust its position. Within this 20ms period, the width of the pulse (how long it stays "high") determines the angle at which the servo will move.
 
 So, when we say the servo operates at 50Hz, it means that the motor is constantly receiving pulses every 20ms to keep it in motion or adjust its position based on the width of each pulse.
 
