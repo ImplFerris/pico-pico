@@ -34,10 +34,13 @@ const PWM_DIV_INT: u8 = 64;
 const PWM_TOP: u16 = 46_874;
 
 const TOP: u16 = PWM_TOP + 1;
-const MIN_DUTY: u16 = (TOP as f64 * (2.5 / 100.)) as u16;
-const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16;
+// 0.5ms is 2.5% of 20ms; 0 degrees in servo
+const MIN_DUTY: u16 = (TOP as f64 * (2.5 / 100.)) as u16; 
+// 1.5ms is 7.5% of 20ms; 90 degrees in servo
+const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16; 
+// 2.4ms is 12% of 20ms; 180 degree in servo
 const MAX_DUTY: u16 = (TOP as f64 * (12. / 100.)) as u16;
 ```
 
-We multiply the TOP value by a duty cycle percentage to determine the appropriate pulse width for each position of the servo.
+We multiply the TOP value by a duty cycle percentage to determine the appropriate pulse width for each position of the servo. You might need to adjust the percentage based on your servo.
 
