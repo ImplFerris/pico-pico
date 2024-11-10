@@ -9,7 +9,13 @@ Before moving forward, make sure you've read the [PWM introduction](../blinky/pw
 - **Jumper Wires**:
   - **Female-to-Male** jumper wires for connecting the Pico 2 to the servo motor pins (Ground, Power, and Signal).
 
-The SG90 servo has three wires: the **red wire** supplies 5V power, the **brown wire** connects to ground (GND), and the **orange wire** receives a PWM signal to control the servo's position.
+The SG90 servo has three wires: 
+| Wire Color | Function       | Description                                   |
+|------------|----------------|-----------------------------------------------|
+| Red        | Power (5V)     | Supplies 5V power to the servo.               |
+| Brown      | Ground (GND)   | Connects to ground.                           |
+| Orange     | Signal (PWM)   | Receives PWM signal to control the servo's position. |
+
 
 ## Connection Overview
 1. **Ground (GND)**: Connect the servo's GND pin (typically the **brown** wire, though it may vary) to any ground pin on the Pico 2.
