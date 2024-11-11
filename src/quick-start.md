@@ -5,7 +5,7 @@ Before diving into the theory and concepts of how everything works, let's jump s
 ### Blink LED with Embassy Framework
 [Embassy framework](https://github.com/embassy-rs/embassy) is a robust framework for developing asynchronous embedded applications in Rust.
 
-This example code is taken from rp235x-hal repo (It also includes additional examples beyond just the blink examples): ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
+This example code is taken from embassy repo (It also has additional examples): ["https://github.com/embassy-rs/embassy/tree/main/examples/rp/src/bin"](https://github.com/embassy-rs/embassy/tree/main/examples/rp/src/bin)
 
 It creates a blinking effect by toggling the pin's output state between high and low.
 
