@@ -25,5 +25,13 @@
     - [More on PWM](./servo/pwm.md)
     - [Servo and Pico](./servo/servo-pico.md)
     - [Action](./servo/action.md)
+- [Buzzinga](./buzzer/intro.md)
+    - [Intro to Buzzer](./buzzer/buzzer.md)
+    - [Beep](./buzzer/beep.md)
+    - [GOT Buzzer?](./buzzer/got-buzzer.md)
+        - [Musical notes](./buzzer/music-theory.md)
+        - [Music module](./buzzer/music-module.md)
+        - [got module](./buzzer/got-module.md)
+        - [Play](./buzzer/play.md)
 
 - [Resources](./resources.md)
