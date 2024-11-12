@@ -32,13 +32,13 @@ All you need to do is change the output pin from 25 to 15 in the template code.
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
-    let mut led = Output::new(p.PIN_15, Level::Low); // Changed line
+    let mut buzzer = Output::new(p.PIN_15, Level::Low); // Changed PIN number to 15
 
     loop {
-        led.set_high();
+        buzzer.set_high();
         Timer::after_millis(500).await;
 
-        led.set_low();
+        buzzer.set_low();
         Timer::after_millis(500).await;
     }
 }
