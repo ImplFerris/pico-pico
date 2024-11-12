@@ -12,3 +12,8 @@ We will be using the Raspberry Pi Pico 2 (RP2350 chip).  It features the new RP2
 For detailed technical information, specifications, and guidelines, refer to the official datasheets:
 * [Pico 2 Datasheet](https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf)
 * [RP2350 chip Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf)
+
+
+## Support me
+
+You can support me by starring this project on [GitHub](https://github.com/ImplFerris/pico-pico) or sharing this book with others 😊

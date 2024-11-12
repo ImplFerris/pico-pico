@@ -33,5 +33,6 @@
         - [Music module](./buzzer/music-module.md)
         - [got module](./buzzer/got-module.md)
         - [Play](./buzzer/play.md)
+    - [Active Beep](./buzzer/active-beep.md)
 
 - [Resources](./resources.md)
