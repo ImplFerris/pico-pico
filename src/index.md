@@ -14,6 +14,6 @@ For detailed technical information, specifications, and guidelines, refer to the
 * [RP2350 chip Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf)
 
 
-## Support me
+## Support this project
 
-You can support me by starring this project on [GitHub](https://github.com/ImplFerris/pico-pico) or sharing this book with others 😊
+You can support this book by starring this project on [GitHub](https://github.com/ImplFerris/pico-pico) or sharing this book with others 😊
