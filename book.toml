@@ -1,6 +1,6 @@
 [book]
 title = "Pico Pico - Embedded Programming with Rust"
-authors = []
+authors = ["ImplFerris"]
 language = "en"
 multilingual = false
 src = "src"
@@ -8,4 +8,5 @@ src = "src"
 [output.html]
 git-repository-url = "https://github.com/ImplFerris/pico-pico"
 cname = "pico.implrust.com"
-default-theme = "ayu"
+preferred-dark-theme = "ayu"
+default-theme = "light"
