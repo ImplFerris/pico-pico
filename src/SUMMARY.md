@@ -34,5 +34,9 @@
         - [got module](./buzzer/got-module.md)
         - [Play](./buzzer/play.md)
     - [Active Beep](./buzzer/active-beep.md)
+- [LDR](./ldr/index.md)
+    - [ADC](./ldr/adc.md)
+    - [LDR and LED](./ldr/ldr-led.md)
+
 
 - [Resources](./resources.md)
