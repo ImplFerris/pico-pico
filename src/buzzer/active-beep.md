@@ -16,7 +16,7 @@ To set up the project, run:
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git
 ```
-When prompted, give your project a name, like "active-beep," and select `embassy` as the HAL.
+When prompted, give your project a name, like "active-beep" and select `embassy` as the HAL.
 
 Then, navigate into the project folder:
 ```sh

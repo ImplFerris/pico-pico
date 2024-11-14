@@ -35,8 +35,12 @@
         - [Play](./buzzer/play.md)
     - [Active Beep](./buzzer/active-beep.md)
 - [LDR](./ldr/index.md)
+    - [Voltage Divider](./ldr/voltage-divider.md)
+    - [What is LDR](./ldr/ldr.md)
     - [ADC](./ldr/adc.md)
-    - [LDR and LED](./ldr/ldr-led.md)
+    - [LDR and LED](./ldr/ldr-led/index.md)
+        - [Setup](./ldr/ldr-led/setup.md)
+        - [Action](./ldr/ldr-led/action.md)
 
 
 - [Resources](./resources.md)

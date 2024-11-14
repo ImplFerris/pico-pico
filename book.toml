@@ -10,3 +10,7 @@ git-repository-url = "https://github.com/ImplFerris/pico-pico"
 cname = "pico.implrust.com"
 preferred-dark-theme = "ayu"
 default-theme = "light"
+mathjax-support = true
+
+[output.html.playground]
+editable = true
