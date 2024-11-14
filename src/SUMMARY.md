@@ -39,7 +39,6 @@
     - [What is LDR](./ldr/ldr.md)
     - [ADC](./ldr/adc.md)
     - [LDR and LED](./ldr/ldr-led/index.md)
-        - [Setup](./ldr/ldr-led/setup.md)
         - [Action](./ldr/ldr-led/action.md)
 
 
