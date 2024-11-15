@@ -19,12 +19,6 @@ Given:
 - \\( R_1 = 10 k\Omega \\)
 - \\( R_2 = 10 k\Omega \\)
 
-Using the voltage divider formula:
-
-\\[
-V_{out} = V_{in} \times \frac{R_2}{R_1 + R_2}
-\\]
-
 Substitute the values:
 
 \\[

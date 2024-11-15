@@ -7,9 +7,20 @@ Refer the 1073th page of the [RP2350](https://datasheets.raspberrypi.com/rp2350/
 ### Formula from datasheet
 The following formula from the datasheet is used to calculate the period and determine the output frequency based on the system clock frequency.
 
-  <img style="display: block; margin: auto;" alt="pico2" src="./images/period-formula-datasheet.png"/>
+1. **Period calculation:**
+\\[
+\text{period} = (\text{TOP} + 1) \times (\text{CSR\_PH\_CORRECT} + 1) \times \left( \text{DIV\_INT} + \frac{\text{DIV\_FRAC}}{16} \right)
+\\]
 
-For the pico2, the system clock frequency (f_sys) is 150MHZ.
+2. **PWM output frequency calculation:**
+
+\\[
+f_{PWM} = \frac{f_{sys}}{\text{period}} = \frac{f_{sys}}{(\text{TOP} + 1) \times (\text{CSR\_PH\_CORRECT} + 1) \times \left( \text{DIV\_INT} + \frac{\text{DIV\_FRAC}}{16} \right)}
+\\]
+
+Where:
+- \\( f_{PWM} \\) is the PWM output frequency.
+- \\( f_{sys} \\) is the system clock frequency. For the pico2, it is is 150MHZ.
 
 ### Let's calculate `top`
 We want the PWM frequency (f_pwm) to be 50 Hz. In order to achieve that, we are going to adjust the `top` and `div_int` values.
@@ -17,7 +28,21 @@ We want the PWM frequency (f_pwm) to be 50 Hz. In order to achieve that, we are 
 The top value must be within the range of 0 to 65535 (since it's a 16-bit unsigned integer). To make sure the top value fits within this range, I chose values for the divisor (div_int) in powers of 2 (such as 8, 16, 32, 64), though this isn't strictly necessary (it's just a preference). In this case, we chose `div_int = 64` to calculate a top value that fits within the u16 range.
 
 With the chosen div_int and system parameters, we can calculate the top using the following formula:
- <img style="display: block; margin: auto;" alt="pico2" src="./images/top-calculation.png"/>
+\\[
+\text{top} = \frac{150,000,000}{50 \times 64} - 1
+\\]
+
+\\[
+\text{top} = \frac{150,000,000}{3,200} - 1
+\\]
+
+\\[
+\text{top} = 46,875 - 1
+\\]
+
+\\[
+\text{top} = 46,874
+\\]
 
 After performing the calculation, we find that the top value is `46,874`.
 

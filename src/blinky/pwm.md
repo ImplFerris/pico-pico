@@ -34,19 +34,29 @@ Period is the total time for one on-off cycle to complete.
 
 The frequency of a PWM signal is the number of cycles it completes in one second, measured in Hertz (Hz).  Frequency is the inverse of the period:
 
-<img  alt="pico2" src="./assets/frequency-period.png"/>
-<br/>
+\\[
+\text{Frequency (Hz)} = \\frac{1}{\text{Period (s)}}
+\\]
+
 So if the period is 1 second, then the frequency will be 1HZ.
-<br/>
-<img alt="pico2" src="./assets/frequency-1hz.png"/>
-<br/>
+
+\\[
+1 \text{Hz} = \\frac{1 \text{ cycle}}{1 \text{ second}} = \\frac{1}{1 \text{ s}}
+\\]
+
 For example, if the period is 20ms(0.02s), the frequency will be 50Hz.
-<img alt="pico2" src="./assets/frequency-50hz.png"/>
-<br/>
+
+\\[
+\text{Frequency} = \\frac{1}{20 \text{ ms}} = \\frac{1}{0.02 \text{ s}} = 50 \text{ Hz}
+\\]
+
+
 
 **Calculating Cycle count from Frequency per second**
 
 The Formula to calculate cycle count:  
-`Cycle Count=Frequency (Hz)×Total Time (seconds)`
+\\[
+\text{Cycle Count} = \text{Frequency (Hz)} \\times \text{Total Time (seconds)}
+\\]
 
 If a PWM signal has a frequency of 50Hz, it means it completes 50 cycles in one second.

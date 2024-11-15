@@ -16,23 +16,28 @@ Let's dive deeper into how different pulse widths like 0.5ms, 1.5ms, and 2.4ms a
 #### 1. **0.5ms Pulse (Position: 0 degrees)**
 - **What Happens**: A 0.5ms pulse means the signal is "high" for 0.5 milliseconds within each 20ms cycle. The servo interprets this as a command to move to the 0-degree position.
 - **Duty Cycle**: The duty cycle refers to the percentage of time the signal is "high" in one complete cycle. For a 0.5ms pulse:
-<img style="display: block; margin: auto;" alt="pico2" src="./images/servo-pwm-05ms.png"/>
+\\[
+\text{Duty Cycle (\%)} = \\frac{0.5 \text{ms}}{20 \text{ms}} \\times 100 = 2.5\\%
+\\]
+
   This means that for just 2.5% of each 20ms cycle, the signal stays "high" causing the servo to rotate to the 0-degree position.
 
 #### 2. **1.5ms Pulse (Position: 90 degrees)**
 
 - **What Happens**: A 1.5ms pulse means the signal is "high" for 1.5 milliseconds in the 20ms cycle. The servo moves to its neutral position, around 90 degrees (middle position).
 - **Duty Cycle**: For a 1.5ms pulse:
-<img style="display: block; margin: auto;" alt="pico2" src="./images/servo-pwm-15ms.png"/>
-
+\\[
+\text{Duty Cycle (\%)} = \\frac{1.5 \text{ms}}{20 \text{ms}} \\times 100 = 7.5\\%
+\\]
   Here, the signal stays "high" for 7.5% of the cycle, which positions the servo at 90 degrees (neutral).
 
 #### 3. **2.4ms Pulse (Position: 180 degrees)**
 
 - **What Happens**: A 2.4ms pulse means the signal is "high" for 2.4 milliseconds in the 20ms cycle. The servo will move to its maximum position, typically 180 degrees (full rotation to one side).
 - **Duty Cycle**: For a 2.4ms pulse:
-  <img style="display: block; margin: auto;" alt="pico2" src="./images/servo-pwm-24ms.png"/>
-
+\\[
+\text{Duty Cycle (\%)} = \\frac{2.4 \text{ms}}{20 \text{ms}} \\times 100 = 12\\%
+\\]
   In this case, the signal is "high" for 12% of the cycle, which causes the servo to rotate to 180 degrees.
 
 

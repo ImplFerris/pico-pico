@@ -2,6 +2,8 @@
 
 An Analog-to-Digital Converter (ADC) is a device used to convert analog signals (continuous signals like sound, light, or temperature) into digital signals (discrete values, typically represented as 1s and 0s). This conversion is necessary for digital systems like microcontrollers (e.g., Raspberry Pi, Arduino) to interact with the real world. For example, sensors that measure temperature or sound produce analog signals, which need to be converted into digital format for processing by digital devices.
 
+<img style="display: block; margin: auto;" alt="pico2" src="./images/adc.jpg"/>
+
 ## ADC Resolution
 The resolution of an ADC refers to how precisely the ADC can measure an analog signal. It is expressed in bits, and the higher the resolution, the more precise the measurements.
 
@@ -49,7 +51,7 @@ It is same formula as explained in the previous chapter, just replaced the \\({R
 
 **Bright light**:
 
- Let's say the Resistence value of LDR is \\(1k\Omega\\) in the bright light.
+ Let's say the Resistence value of LDR is \\(1k\Omega\\) in the bright light (and we have \\(10k\Omega\\) fixed resistor).
   
 \\[
 V_{\text{out}} = 3.3V \times \frac{1k\Omega}{1k\Omega + 10k\Omega} \approx 0.3V

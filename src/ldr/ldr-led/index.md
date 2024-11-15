@@ -22,8 +22,7 @@ Note: You may need to adjust the ADC threshold based on your room's lighting con
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/ldr-pico-led-circuit.jpg"/>
 
-### LDR (Light Dependent Resistor) Setup:
 1. **One side of the LDR** is connected to **AGND** (Analog Ground).
 2. The **other side of the LDR** is connected to **GPIO26 (ADC0)**, which is the analog input pin of the pico2
-3. A **resistor** is placed between the LDR and **ADC_VREF** (the reference voltage for the analog-to-digital converter).
+3. A **resistor** is connected in series with the LDR to create a voltage divider between the LDR and **ADC_VREF** (the reference voltage for the ADC).
     - From the datasheet: "ADC_VREF is the ADC power supply (and reference) voltage, and is generated on Pico 2 by filtering the 3.3V supply. This pin can be used with an external reference if better ADC performance is required"
