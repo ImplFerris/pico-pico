@@ -82,7 +82,7 @@ Now, if we want to convert the ADC value back to the input voltage, we can multi
 For example, let's take an ADC value of 3822:
 
 \\[
-\text{Input Voltage} = 3822 \times 0.8mV = 3057.6mV \approx 3.06V
+\text{Voltage} = 3822 \times 0.8mV = 3057.6mV \approx 3.06V
 \\]
 
 

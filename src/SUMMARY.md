@@ -40,6 +40,11 @@
     - [ADC](./ldr/adc.md)
     - [LDR and LED](./ldr/ldr-led/index.md)
         - [Action](./ldr/ldr-led/action.md)
-
+- [Thermistor](./thermistor/index.md)
+    - [NTC and Voltage Divider](./thermistor/voltage-divider.md)
+    - [Non-Linear](./thermistor/non-linear.md)
+        - [B Equation](./thermistor/b-equation.md)
+        - [Steinhart Equation](./thermistor/steinhart.md)
+    - [ADC](./thermistor/adc.md)
 
 - [Resources](./resources.md)
