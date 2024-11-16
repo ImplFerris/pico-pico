@@ -364,8 +364,6 @@ function calculateTemperatureFromResistance() {
 
 ### Rust function
 ```rust
-use std::f64;
-
 fn steinhart_temp_calc(
     resistance: f64, // Resistance in Ohms
     a: f64,          // Coefficient A
@@ -414,3 +412,5 @@ fn main() {
 ### Referemce
 - [Thermistor Calculator](https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalculator.html) 
 - [Thermistor Steinhart-Hart Coefficients for Calculating Motor Temperature](https://www.servo.jp/member/admin/document_upload/AN144-Thermistor-Steinhart-Hart-Coefficients.pdf) 
+- [Calibrate Steinhart-Hart Coefficients for Thermistors](https://www.thinksrs.com/downloads/PDFs/ApplicationNotes/LDC%20Note%204%20NTC%20Calculatorold.pdf) 
+- [Cooking Thermometer With Steinhart-Hart Correction](https://www.instructables.com/ESP32-NTP-Temperature-Probe-Cooking-Thermometer-Wi/)

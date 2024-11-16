@@ -9,7 +9,5 @@ In the next chapters, we will see in detail how to use B equation and Steinhart-
 
 
 ### Referemce
-- [Calibrate Steinhart-Hart Coefficients for Thermistors](https://www.thinksrs.com/downloads/PDFs/ApplicationNotes/LDC%20Note%204%20NTC%20Calculatorold.pdf) 
 - [The B parameter vs. Steinhart-Hart equation](https://blog.meteodrenthe.nl/2022/09/07/the-b-parameter-vs-steinhart-hart-equation/)
 - [Characterising Thermistors – A Quick Primer, Beta Value & Steinhart-Hart Coefficients](https://community.element14.com/challenges-projects/design-challenges/experimenting-with-thermistors/b/challenge-blog/posts/blog-3-characterising-thermistors-a-quick-primer-beta-value-steinhart-hart-coefficients)
-- [Cooking Thermometer With Steinhart-Hart Correction](https://www.instructables.com/ESP32-NTP-Temperature-Probe-Cooking-Thermometer-Wi/)
