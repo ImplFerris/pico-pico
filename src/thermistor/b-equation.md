@@ -81,7 +81,7 @@ const REF_TEMP: f64 = 25.0;  // Reference temperature 25°C
 
 fn main() {
     let t0 = celsius_to_kelvin(REF_TEMP);
-    let r = 10_475.0; // Measured resistance in ohms
+    let r = 9546.0; // Measured resistance in ohms
     
     let temperature_kelvin = calculate_temperature(r, REF_RES, t0, B_VALUE);
     let temperature_celsius = kelvin_to_celsius(temperature_kelvin);
