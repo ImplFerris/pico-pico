@@ -1,6 +1,7 @@
 # Temperature on OLED
 
-In this section, we'll calculate the temperature using the B equation and display it on an OLED screen.
+In this section, we will measure the temperature in your room and display it on the OLED screen.
+
 
 ## Hardware Requirments
 
