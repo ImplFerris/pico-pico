@@ -47,5 +47,5 @@
     - [Non-Linear](./thermistor/non-linear.md)
         - [B Equation](./thermistor/b-equation.md)
         - [Steinhart Equation](./thermistor/steinhart.md)
-    - [Temperature on OLED](./thermistor/oled.md)
+    - [Temperature on OLED](./thermistor/temperature/index.md)
 - [Resources](./resources.md)

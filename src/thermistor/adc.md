@@ -22,7 +22,7 @@ Where:
 - R2: The resistance based on the ADC value.  
 - R1: Reference resistor value (typically 10kΩ)
 - ADC_MAX: The maximum ADC value is 4095 (\\( 2^{12}\\) -1 ) for a 12-bit ADC
-- adc_count: ADC reading (a value between 0 and ADC_MAX).
+- adc_value: ADC reading (a value between 0 and ADC_MAX).
 
 
 ### Rust Function
@@ -32,16 +32,16 @@ Where:
 const ADC_MAX: u16 = 4095;
 const REF_RES: f64 = 10_000.0; 
 
-fn adc_to_resistance(adc_count: u16, ref_res:f64) -> f64 {
-    let x: f64 = (ADC_MAX as f64/adc_count as f64)  - 1.0;
+fn adc_to_resistance(adc_value: u16, ref_res:f64) -> f64 {
+    let x: f64 = (ADC_MAX as f64/adc_value as f64)  - 1.0;
     // ref_res * x // If you connected thermistor to power supply
     ref_res / x
 }
 
 fn main() {
-    let adc_count = 2000; // Our example ADC value;
+    let adc_value = 2000; // Our example ADC value;
 
-    let r2 = adc_to_resistance(adc_count, REF_RES);
+    let r2 = adc_to_resistance(adc_value, REF_RES);
     println!("Calculated Resistance (R2): {} Ω", r2);
 }
 ```

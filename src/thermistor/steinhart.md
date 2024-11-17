@@ -12,7 +12,7 @@ Where:
 
 
 ### Calibration
-To determine the accurate values for A, B, and C, place the thermistor in three temperature conditions: room temperature, ice water, and boiling water. For each condition, measure the thermistor's resistance using the ADC count and use a reliable thermometer to record the actual temperature. Using the resistance values and corresponding temperatures, calculate the coefficients:
+To determine the accurate values for A, B, and C, place the thermistor in three temperature conditions: room temperature, ice water, and boiling water. For each condition, measure the thermistor's resistance using the ADC value and use a reliable thermometer to record the actual temperature. Using the resistance values and corresponding temperatures, calculate the coefficients:
 - Assign A to the ice water temperature,
 - B to the room temperature, and
 - C to the boiling water temperature.
@@ -70,12 +70,12 @@ $$
 
 <span style="color: green;">Good news, Everyone!</span> You don't need to calculate the coefficients manually. Simply provide the resistance and temperature values for cold, room, and hot environments, and use the form below to determine A, B and C
 
-### ADC Count and Resistance Calculation
+### ADC value and Resistance Calculation
 <span style="color: orange;">Note:</span> if you already have the temperature and corresponding resistance, you can directly use the second table to input those values.
 
-If you have the ADC count and want to calculate the resistance, use this table to find the corresponding resistance at different temperatures. As you enter the ADC count for each temperature, the calculated resistance will be automatically updated in the second table.
+If you have the ADC value and want to calculate the resistance, use this table to find the corresponding resistance at different temperatures. As you enter the ADC value for each temperature, the calculated resistance will be automatically updated in the second table.
 
-To perform this calculation, you'll need the base resistance of the thermistor, which is essential for determining the resistance at a given temperature based on the ADC count.
+To perform this calculation, you'll need the base resistance of the thermistor, which is essential for determining the resistance at a given temperature based on the ADC value.
 
 Please note that the ADC bits may need to be adjusted if you're using a different microcontroller. In our case, for the the Raspberry Pi Pico, the ADC resolution is 12 bits.
 
@@ -92,7 +92,7 @@ Please note that the ADC bits may need to be adjusted if you're using a differen
     <thead>
       <tr>
          <th>Environment</th>
-        <th>ADC Count</th>
+        <th>ADC value</th>
       </tr>
     </thead>
     <tbody>
@@ -212,7 +212,7 @@ window.onload = function() {
   calculateCoefficients();
 };
 
-// Function to calculate resistance based on base resistance and ADC count
+// Function to calculate resistance based on base resistance and ADC value
 function calculateResistance(baseResistance, adcCount, adcBits) {
   const maxADCValue = Math.pow(2, adcBits) - 1;  // Max ADC value for the given bits (e.g., 12 bits = 4095)
   
