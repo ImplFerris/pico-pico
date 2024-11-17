@@ -48,4 +48,6 @@
         - [B Equation](./thermistor/b-equation.md)
         - [Steinhart Equation](./thermistor/steinhart.md)
     - [Temperature on OLED](./thermistor/temperature/index.md)
+        - [Action](./thermistor/temperature/action.md)
+
 - [Resources](./resources.md)
