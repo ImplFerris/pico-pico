@@ -166,6 +166,12 @@ display.write_str(&buff).unwrap();
 Timer::after_secs(1).await;
 ```
 
+### Clear the Buffer and Screen
+```rust
+buff.clear();
+display.clear().unwrap();
+```
+
 ### Final code
 ```rust
 #![no_std]
@@ -248,6 +254,9 @@ async fn main(_spawner: Spawner) {
     let mut buff: String<64> = String::new();
     let ref_temp = celsius_to_kelvin(REF_TEMP);
     loop {
+        buff.clear();
+        display.clear().unwrap();
+
         let adc_value = adc.read(&mut p26).await.unwrap();
         writeln!(buff, "ADC: {}", adc_value).unwrap();
 
