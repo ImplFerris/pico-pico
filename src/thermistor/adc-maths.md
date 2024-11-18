@@ -1,4 +1,4 @@
-## ADC Maths
+## Derivations
 
 You can skip this section if you'd like. It simply explains the math behind deriving the resistance from the ADC value.
 

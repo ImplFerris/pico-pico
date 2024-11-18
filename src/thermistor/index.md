@@ -16,3 +16,4 @@ Thermistors are categorized into two types:
 
 ## Reference
 - [Thermistor Basics](https://www.teamwavelength.com/thermistor-basics/)
+- [Thermistors](https://www.electronics-tutorials.ws/io/thermistors.html)

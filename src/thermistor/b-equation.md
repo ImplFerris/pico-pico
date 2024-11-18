@@ -1,6 +1,6 @@
 
 ## B Equation
-The B equation is simpler but less precise.
+The B equation is simpler but less precise. 
 \\[
 \frac{1}{T} = \frac{1}{T_0} + \frac{1}{B} \ln \left( \frac{R}{R_0} \right)
 \\]
@@ -12,6 +12,8 @@ Where:
 - R is the **resistance** at temperature T.
 - \\( R_0 \\) is the **resistance** at the reference temperature \\( T_0 \\) (often 10kΩ).
 - B is the **B-value** of the thermistor.
+
+The B value is a constant usually provided by the manufacturers, changes based on the material of a thermistor. It describes the gradient of the resistive curve over a specific temperature range between two points(i.e \\( T_0 \\) vs \\( R_0 \\) and T vs R). You can even rewrite the above formula to get B value yourself by calibrating the resistance at two temperatures.
 
 **Example Calculation:**
 

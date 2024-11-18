@@ -20,12 +20,14 @@ cd PROJECT_NAME
 ### Additional Crates required
 Update your Cargo.toml to add these additional crate along with the existing dependencies.
 ```rust
-embedded-graphics = "0.8.1"
 ssd1306 = "0.9.0"
-embedded-hal-async = "1.0.0"
 heapless = "0.8.0"
 libm = "0.2.11"
 ```
+
+- **[`ssd1306`](https://docs.rs/ssd1306/latest/ssd1306/)**: Driver for controlling SSD1306 OLED display.
+- **[`heapless`](https://docs.rs/heapless/latest/heapless/)**: In a `no_std` environment, Rust's standard `String` type (which requires heap allocation) is unavailable. This provides stack-allocated, fixed-size data structures. We will be using to store dynamic text, such as ADC, resistance, and temperature values, for display on the OLED screen
+- **[`libm`](https://crates.io/crates/libm)**: Provides essential mathematical functions for embedded environments. We need this to calculate natural logarithm. 
 
 ### Additional imports
 
