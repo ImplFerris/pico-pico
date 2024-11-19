@@ -17,3 +17,7 @@ For detailed technical information, specifications, and guidelines, refer to the
 ## Support this project
 
 You can support this book by starring this project on [GitHub](https://github.com/ImplFerris/pico-pico) or sharing this book with others 😊
+
+### Disclaimer: 
+The experiments and projects shared in this book have worked for me, but results may vary. I'm not responsible for any issues or damage that may occur while you're experimenting. Please proceed with caution and take necessary safety precautions.
+
