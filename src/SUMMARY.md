@@ -49,5 +49,6 @@
         - [Steinhart Equation](./thermistor/steinhart.md)
     - [Temperature on OLED](./thermistor/temperature/index.md)
         - [Action](./thermistor/temperature/action.md)
-
+- [USB Serial](./usb-serial/index.md)
+    - [Action](./usb-serial/action.md)
 - [Resources](./resources.md)
