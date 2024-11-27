@@ -17,6 +17,8 @@ To complete this project, you will need:
 The HC-SR04 Sensor module has a transmitter and receiver. The module has Trigger and Echo pins which can be connected to the GPIO pins of a pico and other microcontrollers. When the receiver detects the returning sound wave, the Echo pin goes high for a duration equal to the time it takes for the wave to return to the sensor.
 
 ## Setup
+
+Connection for the Pico and Ultrasonic:
 <table>
   <thead>
     <tr>
@@ -69,7 +71,6 @@ The HC-SR04 Sensor module has a transmitter and receiver. The module has Trigger
   </tbody>
 </table>
 
-
 - **VCC**: Connect the VCC pin on the HC-SR04 to the 3.3V pin on the Pico. 
     - Although the HC-SR04 generally operates at 5V, using 3.3V helps protect the Pico, as its GPIO pins are rated for 3.3V. There is some unconfirmed information that the Pico 2 GPIO might tolerate 5V, but for now, this is uncertain. 
     - I’ve tested both 3.3V and 5V connections without issues so far 🤞. (If anyone has confirmed details on this, please raise an issue so we can keep this guide accurate.)
@@ -79,6 +80,51 @@ The HC-SR04 Sensor module has a transmitter and receiver. The module has Trigger
 - **GND**: Connect to the ground pin on the Pico.
 - **LED**: Connect the anode (long leg) of the LED to GPIO 3, as in the [External LED setup](../blinky/external-led.md).
 
+
+
+Connection for the Pico and LED:
+
+<table>
+  <thead>
+    <tr>
+      <th>Pico Pin</th>
+      <th style="width: 250px; margin: 0 auto;">Wire</th>
+      <th>Component</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPIO 3</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire orange" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Resistor</td>
+    </tr>
+    <tr>
+      <td>Resistor</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire orange" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Anode (long leg) of LED</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire black" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Cathode (short leg) of LED</td>
+    </tr>
+  </tbody>
+</table>
 
 
 <a href="./assets/pico-ultrasonic-led.jpg"><img style="display: block; margin: auto;" alt="pico2" src="./assets/pico-ultrasonic-led.jpg"/></a>
