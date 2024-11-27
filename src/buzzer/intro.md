@@ -6,13 +6,7 @@ In this section, we'll explore some fun activities using the `buzzer`. I chose t
 - **Jumper Wires**:
   - **Female-to-Male** jumper wires for connecting the Pico 2 to the buzzer pins (Positive and Ground).
 
-The buzzer has two pins:  
-| Pin       | Function   | Description                                |
-|-----------|------------|--------------------------------------------|
-| Positive  | Signal     | Connects to GPIO15 on the Pico 2 to control the buzzer. |
-| Ground    | Ground (GND) | Connects to any ground pin on the Pico 2.         |
-
-The positive side of the buzzer is typically marked with a **+** symbol and is the longer pin, while the negative side (ground) is the shorter pin, similar to an LED. However, some passive buzzers may allow for either pin to be connected to ground or signal, depending on the specific model. 
+The buzzer has two pins:  Positive(Signal), Ground; The positive side of the buzzer is typically marked with a **+** symbol and is the longer pin, while the negative side (ground) is the shorter pin, similar to an LED. However, some passive buzzers may allow for either pin to be connected to ground or signal, depending on the specific model. 
 
 By the way, I used an active buzzer in my experiment. A passive buzzer is recommended if you plan to play different sounds, as it provides a better tone.
 
