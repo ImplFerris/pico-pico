@@ -13,13 +13,53 @@ Refer the [Raspberry pi guide](https://projects.raspberrypi.org/en/projects/intr
 
 ## Components Overview
 
-1. LED
-An LED (Light Emitting Diode) emits light when an electric current flows through it. It only lights up if connected correctly. Anode (long leg) of the LED should be connected to positive; We will connect it to the GP13.  This Cathode (short leg) should be connected to to ground(GND).
 
-Note: Always use a resistor with LEDs. Without it, excessive current could damage the LED or even cause it to explode.
+1. LED: An LED (Light Emitting Diode) lights up when current flows through it. The longer leg (anode) connects to positive, and the shorter leg (cathode) connects to ground. We'll connect the anode to GP13 (with a resistor) and the cathode to GND.
 
-2. Resistors
-A resistor regulates the flow of current in a circuit. Its value is measured in Ohms (Ω). We use resistors to limit current and protect components, such as LEDs. Resistors are labeled with color bands that represent their resistance value.
+2. Resistors: A resistor limits the current in a circuit to protect components like LEDs. Its value is measured in Ohms (Ω). We'll use a 330 ohm resistor to safely power the LED.
+
+<table>
+  <thead>
+    <tr>
+      <th>Pico Pin</th>
+      <th style="width: 250px; margin: 0 auto;">Wire</th>
+      <th>Component</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPIO 13</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire yellow" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Resistor</td>
+    </tr>
+    <tr>
+      <td>Resistor</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire orange" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Anode (long leg) of LED</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire black" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Cathode (short leg) of LED</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <img style="display: block; margin: auto;" alt="pico2" src="../images/pico-external-led.png"/>
 

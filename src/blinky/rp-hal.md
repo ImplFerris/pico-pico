@@ -10,7 +10,7 @@ It adjusts the LED's brightness by changing the duty cycle(will be explained in 
 
 ## The main code
 
-Here is the complete code. Don’t worry if you don’t fully understand it yet. On the following pages, we'll dive into each concept in detail. We'll start by taking action, then explore how it works and the ideas behind it.
+Here is the complete code. Don't worry if you don't fully understand it yet. On the following pages, we'll dive into each concept in detail. We'll start by taking action, then explore how it works and the ideas behind it.
 
 ```rust
 //! # PWM Blink Example

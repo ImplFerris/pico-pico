@@ -58,7 +58,7 @@ bind_interrupts!(struct Irqs {
 ```
 
 ### ADC related functions
-We can hardcode 4095 for the Pico, but here’s a simple function to calculate ADC_MAX based on ADC bits:
+We can hardcode 4095 for the Pico, but here's a simple function to calculate ADC_MAX based on ADC bits:
 ```rust
 const fn calculate_adc_max(adc_bits: u8) -> u16 {
     (1 << adc_bits) - 1
@@ -68,7 +68,7 @@ const ADC_MAX: u16 = calculate_adc_max(ADC_BITS); // 4095 for 12-bit ADC
 ```
 
 ### Thermistor specific values
-The thermistor I’m using has a 10kΩ resistance at 25°C and a B value of 3950.
+The thermistor I'm using has a 10kΩ resistance at 25°C and a B value of 3950.
 
 ```rust
 const B_VALUE: f64 = 3950.0;

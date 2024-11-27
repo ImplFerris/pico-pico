@@ -14,7 +14,61 @@ For this project, you'll need:
 - Jumper wires
 
 ## Setup
+
+<table>
+  <thead>
+    <tr>
+      <th>Pico Pin</th>
+      <th style="width: 250px; margin: 0 auto;">Wire</th>
+      <th>OLED Pin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPIO 18</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire green" style="width: 200px; margin: 0 auto;">
+          <div class="male-left"></div>
+          <div class="male-right"></div>
+        </div>
+      </td>
+      <td>SDA</td>
+    </tr>
+    <tr>
+      <td>GPIO 19</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire yellow" style="width: 200px; margin: 0 auto;">
+          <div class="male-left"></div>
+          <div class="male-right"></div>
+        </div>
+      </td>
+      <td>SCL</td>
+    </tr>
+    <tr>
+      <td>3.3V</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire red" style="width: 200px; margin: 0 auto;">
+          <div class="male-left"></div>
+          <div class="male-right"></div>
+        </div>
+      </td>
+      <td>VCC</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire black" style="width: 200px; margin: 0 auto;">
+          <div class="male-left"></div>
+          <div class="male-right"></div>
+        </div>
+      </td>
+      <td>GND</td>
+    </tr>
+  </tbody>
+</table>
+
 We will connect the SDA to GPIO 18 and the SCL to GPIO 19. Attach VCC to 3.3V for power, and GND to GND. This setup allows the OLED display to communicate with the microcontroller using I2C.
+
 
 <a href="./assets/pico-oled-circuit.jpg"><img style="display: block;  margin: auto;" alt="pico2" src="./assets/pico-oled-circuit.jpg"/></a>
 

@@ -4,7 +4,7 @@
 In this section, what is PWM and why we need it.
 
 ## Digital vs Analog
-In a digital circuit, signals are either high (such as 5V or 3.3V) or low (0V), with no in-between values. These two distinct states make digital signals ideal for computers and digital devices, as they’re easy to store, read, and transmit without losing accuracy.   
+In a digital circuit, signals are either high (such as 5V or 3.3V) or low (0V), with no in-between values. These two distinct states make digital signals ideal for computers and digital devices, as they're easy to store, read, and transmit without losing accuracy.   
 
 Analog signals, however, can vary continuously within a range, allowing for any value between a High and Low voltage.  This smooth variation is valuable for applications requiring fine control, such as adjusting audio volume or light brightness.
 

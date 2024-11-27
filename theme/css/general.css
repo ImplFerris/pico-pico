@@ -240,3 +240,129 @@ sup {
 .result-no-output {
     font-style: italic;
 }
+
+/* Wire body */
+.wire {
+position: relative;
+width: 200px;
+height: 4px;
+border-radius: 3px;
+margin-bottom: 20px; /* Space between wires */
+
+}
+
+/* Wire colors */
+.red { background: #ff0000; }   /* Red wire */
+.black { 
+    background: #000000; 
+    border: 2px solid #FFFFFF;
+} /* Black wire */
+.green { background: #13d613; } /* Green wire */
+.yellow { background: #e6e61c; } /* Yellow wire */
+.blue { background: #057af7; } /* Default blue wire */
+.orange { background: #FFA500; } /* Orange wire */
+.brown { background: #964b00; } /* Orange wire */
+
+/* White wire with border to make it visible */
+.white {
+background: #ffffff; /* White color */
+/* border: 1px dotted #AAAAAA; */
+box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); 
+}
+
+/* Male connector (left) */
+.male-left {
+position: absolute;
+left: -19px;
+top: 50%;
+transform: translateY(-50%);
+width: 24px;
+height: 8px;
+background: #000;
+border: 2px solid #CCC;
+}
+
+/* Pin extending from left connector */
+.male-left::after {
+content: '';
+position: absolute;
+left: -12px; /* Reduced gap between connector and pin */
+top: 50%;
+transform: translateY(-50%);
+width: 12px;
+height: 2px;
+background: #555; /* Pin color */
+}
+
+/* Male connector (right) */
+.male-right {
+position: absolute;
+right: -8px;
+top: 50%;
+transform: translateY(-50%);
+width: 24px;
+height: 8px;
+background: #000;
+border: 2px solid #CCC;
+
+}
+
+/* Pin extending from right connector */
+.male-right::after {
+content: '';
+position: absolute;
+right: -12px; /* Reduced gap between connector and pin */
+top: 50%;
+transform: translateY(-50%);
+width: 12px;
+height: 2px;
+background: #555; /* Pin color */
+}
+
+/* Female connector (left) */
+.female-left {
+position: absolute;
+left: -19px;
+top: 50%;
+transform: translateY(-50%);
+width: 24px; 
+height: 8px;
+background: #000;
+border: 2px solid #CCC;
+} 
+
+.female-left::after {
+    content: '';
+    position: absolute;
+    left: 1px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #999;
+    border-radius: 50%; 
+  }
+  
+/* Female connector (right) */
+.female-right {
+position: absolute;
+right: -19px;
+top: 50%;
+transform: translateY(-50%);
+width: 24px; 
+height: 8px;
+background: #000;
+border: 2px solid #CCC;
+}
+
+.female-right::after {
+    content: '';
+    position: absolute;
+    right: 1px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #999;
+    border-radius: 50%; 
+  }

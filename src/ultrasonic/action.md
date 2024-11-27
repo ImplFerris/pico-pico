@@ -1,6 +1,6 @@
 ## Action
 
-We'll start by generating the project using the template, then modify the code to fit the current project’s requirements.
+We'll start by generating the project using the template, then modify the code to fit the current project's requirements.
 
 
 ## Generating From template
@@ -42,7 +42,7 @@ let mut trigger = pins.gpio17.into_push_pull_output();
 ```
 
 ## Setup the Echo Pin
-The Echo pin on the ultrasonic sensor receives the returning signal, which allows us to measure the time it took for the pulse to travel to an object and back. It’s set as an input to detect the returning pulse.
+The Echo pin on the ultrasonic sensor receives the returning signal, which allows us to measure the time it took for the pulse to travel to an object and back. It's set as an input to detect the returning pulse.
 
 ```rust
 let mut echo = pins.gpio16.into_pull_down_input();

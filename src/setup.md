@@ -5,7 +5,7 @@ picotool is a tool for working with RP2040/RP2350 binaries, and interacting with
 
 [Picotool Repo](https://github.com/raspberrypi/picotool)
 
-Here’s a quick summary of the steps I followed:
+Here's a quick summary of the steps I followed:
 ```sh
 # Install dependencies
 sudo apt install build-essential pkg-config libusb-1.0-0-dev cmake

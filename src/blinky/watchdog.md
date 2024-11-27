@@ -16,7 +16,7 @@ A watchdog timer (WDT) is a hardware component used in embedded systems, its pri
 
 ## How It Works?
 
-The watchdog timer functions like a counter that counts down from a preset value to zero. The embedded software is responsible for periodically "feeding the dog" (also known as "kicking the dog," a term I don't like) by resetting the counter before it reaches zero. If the software fails to reset the counter—perhaps due to an infinite loop or a system hang—the watchdog timer assumes there’s a problem and triggers a reset of the processor. This allows the system to restart and return to normal operation.
+The watchdog timer functions like a counter that counts down from a preset value to zero. The embedded software is responsible for periodically "feeding the dog" (also known as "kicking the dog," a term I don't like) by resetting the counter before it reaches zero. If the software fails to reset the counter (perhaps due to an infinite loop or a system hang), the watchdog timer assumes there's a problem and triggers a reset of the processor. This allows the system to restart and return to normal operation.
 
 **Feeding the dog:** 
 
