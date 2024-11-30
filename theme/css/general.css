@@ -260,8 +260,8 @@ margin-bottom: 20px; /* Space between wires */
 .green { background: #13d613; } /* Green wire */
 .yellow { background: #e6e61c; } /* Yellow wire */
 .blue { background: #057af7; } /* Default blue wire */
-.orange { background: #FFA500; } /* Orange wire */
-.brown { background: #964b00; } /* Orange wire */
+.orange { background: #fc5310; } /* Orange wire */
+.brown { background: #824101; } /* Orange wire */
 
 /* White wire with border to make it visible */
 .white {
@@ -365,4 +365,63 @@ border: 2px solid #CCC;
     height: 6px;
     background: #999;
     border-radius: 50%; 
+  }
+
+  .boxed-text {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-clip: padding-box;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .boxed-text.red {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+  }
+
+  .boxed-text.yellow {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+  }
+
+  .boxed-text.teal {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    color: white;
+  }
+
+  .boxed-text.cyan {
+    background: linear-gradient(135deg, #00bcd4, #008c8c);
+    color: white;
+  }
+
+  .boxed-text.pink {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    color: white;
+  }
+
+  .boxed-text.brown {
+    background: linear-gradient(135deg, #8e44ad, #6f4f37);
+    color: white;
+  }
+
+  .boxed-text.gray {
+    background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+    color: black;
+  }
+
+  .boxed-text.indigo {
+    background: linear-gradient(135deg, #3f51b5, #303f9f);
+    color: white;
+  }
+
+  .boxed-text.lime {
+    background: linear-gradient(135deg, #cddc39, #afb42b);
+    color: black;
+  }
+
+  .boxed-text.rose {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    color: white;
   }
