@@ -1,6 +1,6 @@
 # Pico Pico - Intro
 
-In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with a sonic sensor, displaying the Ferris (🦀) image on an OLED display, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.
+In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with a sonic sensor, displaying the Ferris (🦀) image on an OLED display, using RFID Reader, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.
 
 ## Meet the hardware - Pico 2
 
