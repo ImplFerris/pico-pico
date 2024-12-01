@@ -61,4 +61,5 @@
     - [Read Data](./rfid/read-data.md)
         - [Dump Memory](./rfid/dump-memory.md)
     - [Write Data](./rfid/write-data.md)
+        - [Change Auth Key](./rfid/change-auth-key.md)
 - [Resources](./resources.md)

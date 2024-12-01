@@ -8,15 +8,21 @@ The MIFARE Classic 1K card is divided into 16 sectors, with each sector containi
 
 <a href="./images/mifare-memory-layout.jpg"><img style="display: block; margin: auto;" alt="MIFARE Memory layout" src="./images/mifare-memory-layout.jpg"/></a>
 
-<span class="boxed-text red">Sector Trailer </span> 
+**Sector Trailer:**
 
-The last block of each sector, known as the "trailer" holds two secret keys and programmable access conditions for the blocks within that sector. Each sector has its own pair of keys (Key A and Key B), enabling support for multiple applications with a key hierarchy.
+The last block of each sector, known as the "trailer" holds two secret keys and programmable access conditions for the blocks within that sector. Each sector has its own pair of keys (KeyA and KeyB), enabling support for multiple applications with a key hierarchy.
 
-<span class="boxed-text blue">Manufacturer Block </span> 
+<span class="info-box">
+  ℹ️ The MIFARE Classic 1K card is pre-configured with the default key FF FF FF FF FF FF for both KeyA and KeyB.  When reading the trailer block, KeyA values are returned as all zeros (00 00 00 00 00 00), while KeyB returned as it is.
+</span>
 
-The first block (block 0) of the first sector(sector 0 ) contains IC manufacturer's data including the UID. This block is write-protected.  
+ By default, the access bytes (6, 7, and 8 of the trailer) are set to FF 07 80h. You can refer the 10th page for the [datasheet](https://www.nxp.com/docs/en/data-sheet/MF1S50YYX_V1.pdf) for more information.
 
-<span class="boxed-text teal">Data Block </span> 
+**Manufacturer Block:** 
+
+The first block (block 0) of the first sector(sector 0) contains IC manufacturer's data including the UID. This block is write-protected.  
+
+**Data Block:**
 
 Each sector has a trailer block, so only 3 blocks can be used for data storage in each sector. However, the first sector only has 2 usable blocks because the first block stores manufacturer data.
 

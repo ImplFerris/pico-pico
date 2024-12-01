@@ -65,7 +65,6 @@ The main loop begins by reading and printing the current content of a specified 
             }
         }
     }
-
 ```
 
 ## Clone the existing project
