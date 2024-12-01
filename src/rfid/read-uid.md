@@ -94,6 +94,12 @@ To work with the `mfrc522` crate, we need an `SpiDevice`. Since we only have the
 let spi = ExclusiveDevice::new(spi, spi_cs, timer).unwrap();
 ```
 
+### Initialize the mfrc522
+```rust
+let itf = SpiInterface::new(spi);
+let mut rfid = Mfrc522::new(itf).init().unwrap();
+```
+
 ### Read the UID and Print
 The main logic for reading the UID is simple. We continuously send the REQA command. If a tag is present, it send us the ATQA response. We then use this response to select the tag and retrieve the UID.
  
@@ -104,8 +110,8 @@ loop {
     // to estabilish USB serial
     let _ = usb_dev.poll(&mut [&mut serial]);
 
-    if let Ok(atqa) = mfrc522.reqa() {
-        if let Ok(uid) = mfrc522.select(&atqa) {
+    if let Ok(atqa) = rfid.reqa() {
+        if let Ok(uid) = rfid.select(&atqa) {
             serial.write("\r\nUID: \r\n".as_bytes()).unwrap();
             print_hex_to_serial(uid.as_bytes(), &mut serial);
             timer.delay_ms(500);

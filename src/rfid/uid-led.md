@@ -13,8 +13,8 @@ const TAG_UID: [u8; 4] = [0x13, 0x37, 0x73, 0x31];
 loop {
     led.set_low().unwrap();
 
-    if let Ok(atqa) = mfrc522.reqa() {
-        if let Ok(uid) = mfrc522.select(&atqa) {
+    if let Ok(atqa) = rfid.reqa() {
+        if let Ok(uid) = rfid.select(&atqa) {
             if *uid.as_bytes() == TAG_UID {
                 led.set_high().unwrap();
                 timer.delay_ms(500);

@@ -58,6 +58,7 @@
     - [Circuit](./rfid/circuit.md)
     - [Read UID](./rfid/read-uid.md)
         - [LED on UID Match](./rfid/uid-led.md)
-    - [Dump Memory](./rfid/dump-memory.md)
+    - [Read Data](./rfid/read-data.md)
+        - [Dump Memory](./rfid/dump-memory.md)
     - [Write Data](./rfid/write-data.md)
 - [Resources](./resources.md)
