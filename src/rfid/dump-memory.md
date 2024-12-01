@@ -111,6 +111,6 @@ cd pico2-projects/rfid-dump/
 ```
 
 ## Dump
-When you run the program and bring your tag or key fob close, you should see output like this. If you notice the 0x40..0x43 bytes in the block 18 (the 3rd block of the 4th sector) and wonder why it's there; good catch! That's the custom data I wrote to the tag.
+When you run the program and bring your tag or key fob close, you should see output like this. If you notice the 0x40..0x43 bytes in the block 18 (the block 2 of the sector 4) and wonder why it's there; good catch! That's the custom data I wrote to the tag.
 
 <img style="display: block; margin: auto;" src="./images/rfid-dump.png"/>
