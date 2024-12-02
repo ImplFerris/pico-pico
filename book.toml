@@ -12,5 +12,9 @@ preferred-dark-theme = "ayu"
 default-theme = "light"
 mathjax-support = true
 
+[output.html.fold]
+enable = true
+level = 1     # the depth to start folding
+
 [output.html.playground]
 editable = true
