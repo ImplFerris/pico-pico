@@ -62,4 +62,7 @@
         - [Dump Memory](./rfid/dump-memory.md)
     - [Write Data](./rfid/write-data.md)
         - [Change Auth Key](./rfid/change-auth-key.md)
+    - [Access control](./rfid/access-bits.md)
+        - [AccessBits Calc](./rfid/access-bits-calculator.md)
+
 - [Resources](./resources.md)

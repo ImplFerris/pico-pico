@@ -477,3 +477,15 @@ display: flex;
 align-items: center;
 gap: 0.5rem;
 }
+
+.table-bordered {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table-bordered th, .table-bordered td {
+    border: 2px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  

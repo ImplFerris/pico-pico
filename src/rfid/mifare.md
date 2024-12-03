@@ -21,19 +21,19 @@ The last block of each sector, known as the "trailer" holds two secret keys and 
 <table border="1" cellspacing="0" cellpadding="5" style="border-collapse: collapse; width: 100%; text-align: center;">
   <thead>
     <tr>
-      <th rowspan="2" style="background-color: #455A64; color: #000;">Byte Number</th>
+      <th rowspan="2" style="background-color: #607D8B; color: #000;">Byte Number</th>
     </tr>
     <tr>
-      <th style="background-color: #4527A0;">0</th>
-      <th style="background-color: #4527A0;">1</th>
-      <th style="background-color: #4527A0;">2</th>
-      <th style="background-color: #4527A0;">3</th>
-      <th style="background-color: #4527A0;">4</th>
-      <th style="background-color: #4527A0;">5</th>
-      <th style="background-color: #FFE0B2;">6</th>
-      <th style="background-color: #FFE0B2;">7</th>
-      <th style="background-color: #FFE0B2;">8</th>
-      <th style="background-color: #FFE0B2;">9</th>
+      <th style="background-color: #1B5E20;">0</th>
+      <th style="background-color: #1B5E20;">1</th>
+      <th style="background-color: #1B5E20;">2</th>
+      <th style="background-color: #1B5E20;">3</th>
+      <th style="background-color: #1B5E20;">4</th>
+      <th style="background-color: #1B5E20;">5</th>
+      <th style="background-color: #FF6F00;">6</th>
+      <th style="background-color: #FF6F00;">7</th>
+      <th style="background-color: #FF6F00;">8</th>
+      <th style="background-color: #FF6F00;">9</th>
       <th style="background-color: #2962FF;">10</th>
       <th style="background-color: #2962FF;">11</th>
       <th style="background-color: #2962FF;">12</th>
@@ -44,24 +44,24 @@ The last block of each sector, known as the "trailer" holds two secret keys and 
   </thead>
   <tbody>
     <tr>
-      <td style="background-color: #455A64; color: #000;">Description</td>
-      <td colspan="6" style="background-color: #4527A0; color: #000;">KEY A</td>
-      <td colspan="3" style="background-color: #FFE0B2; color: #000;">Access Bits</td>
-      <td style="background-color: #FFE0B2; color: #000;">USER Data</td>
+      <td style="background-color: #607D8B; color: #000;">Description</td>
+      <td colspan="6" style="background-color: #1B5E20; color: #000;">KEY A</td>
+      <td colspan="3" style="background-color: #FF6F00; color: #000;">Access Bits</td>
+      <td style="background-color: #FF6F00; color: #000;">USER Data</td>
       <td colspan="6" style="background-color: #2962FF; color: #000;">KEY B</td>
     </tr>
     <tr>
-      <td style="background-color: #455A64; color: #000;">Default Data</td>
-      <td style="background-color: #4527A0;">FF</td>
-      <td style="background-color: #4527A0;">FF</td>
-      <td style="background-color: #4527A0;">FF</td>
-      <td style="background-color: #4527A0;">FF</td>
-      <td style="background-color: #4527A0;">FF</td>
-      <td style="background-color: #4527A0;">FF</td>
-      <td style="background-color: #FFE0B2;">FF</td>
-      <td style="background-color: #FFE0B2;">07</td>
-      <td style="background-color: #FFE0B2;">80</td>
-      <td style="background-color: #FFE0B2;">69</td>
+      <td style="background-color: #607D8B; color: #000;">Default Data</td>
+      <td style="background-color: #1B5E20;">FF</td>
+      <td style="background-color: #1B5E20;">FF</td>
+      <td style="background-color: #1B5E20;">FF</td>
+      <td style="background-color: #1B5E20;">FF</td>
+      <td style="background-color: #1B5E20;">FF</td>
+      <td style="background-color: #1B5E20;">FF</td>
+      <td style="background-color: #FF6F00;">FF</td>
+      <td style="background-color: #FF6F00;">07</td>
+      <td style="background-color: #FF6F00;">80</td>
+      <td style="background-color: #FF6F00;">69</td>
       <td style="background-color: #2962FF;">FF</td>
       <td style="background-color: #2962FF;">FF</td>
       <td style="background-color: #2962FF;">FF</td>
