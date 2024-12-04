@@ -307,36 +307,36 @@ The overline on the notation indicates inverted values. This means that if the C
   <tbody>
     <tr>
       <td>Byte 6</td>
-      <td style="background-color:#8B0000"><span style="text-decoration: overline;">C2</span><sub>3</sub></td>
-      <td style="background-color:#002D62"><span style="text-decoration: overline;">C2</span><sub>2</sub></td>
-      <td style="background-color:#78184A" ><span style="text-decoration: overline;">C2</span><sub>1</sub></td>
-      <td style="background-color:#234F1E"><span style="text-decoration: overline;">C2</span><sub>0</sub></td>
-      <td style="background-color:#8B0000"><span style="text-decoration: overline;">C1</span><sub>3</sub></td>
-      <td style="background-color:#002D62"><span style="text-decoration: overline;">C1</span><sub>2</sub></td>
-      <td style="background-color:#78184A"><span style="text-decoration: overline;">C1</span><sub>1</sub></td>
-      <td style="background-color:#234F1E"><span style="text-decoration: overline;">C1</span><sub>0</sub></td>
+      <td style="color:white;background-color:#8B0000"><span style="text-decoration: overline;">C2</span><sub>3</sub></td>
+      <td style="color:white;background-color:#002D62"><span style="text-decoration: overline;">C2</span><sub>2</sub></td>
+      <td style="color:white;background-color:#78184A" ><span style="text-decoration: overline;">C2</span><sub>1</sub></td>
+      <td style="color:white;background-color:#234F1E"><span style="text-decoration: overline;">C2</span><sub>0</sub></td>
+      <td style="color:white;background-color:#8B0000"><span style="text-decoration: overline;">C1</span><sub>3</sub></td>
+      <td style="color:white;background-color:#002D62"><span style="text-decoration: overline;">C1</span><sub>2</sub></td>
+      <td style="color:white;background-color:#78184A"><span style="text-decoration: overline;">C1</span><sub>1</sub></td>
+      <td style="color:white;background-color:#234F1E"><span style="text-decoration: overline;">C1</span><sub>0</sub></td>
     </tr>
     <tr>
       <td>Byte 7</td>
-      <td style="background-color:#8B0000">C1<sub>3</sub></td>
-      <td style="background-color:#002D62">C1<sub>2</sub></td>
-      <td style="background-color:#78184A">C1<sub>1</sub></td>
-      <td style="background-color:#234F1E">C1<sub>0</sub></td>
-      <td style="background-color:#8B0000"><span style="text-decoration: overline;">C3</span><sub>3</sub></td>
-      <td style="background-color:#002D62"><span style="text-decoration: overline;">C3</span><sub>2</sub></td>
-      <td style="background-color:#78184A"><span style="text-decoration: overline;">C3</span><sub>1</sub></td>
-      <td style="background-color:#234F1E"><span style="text-decoration: overline;">C3</span><sub>0</sub></td>
+      <td style="color:white;background-color:#8B0000">C1<sub>3</sub></td>
+      <td style="color:white;background-color:#002D62">C1<sub>2</sub></td>
+      <td style="color:white;background-color:#78184A">C1<sub>1</sub></td>
+      <td style="color:white;background-color:#234F1E">C1<sub>0</sub></td>
+      <td style="color:white;background-color:#8B0000"><span style="text-decoration: overline;">C3</span><sub>3</sub></td>
+      <td style="color:white;background-color:#002D62"><span style="text-decoration: overline;">C3</span><sub>2</sub></td>
+      <td style="color:white;background-color:#78184A"><span style="text-decoration: overline;">C3</span><sub>1</sub></td>
+      <td style="color:white;background-color:#234F1E"><span style="text-decoration: overline;">C3</span><sub>0</sub></td>
     </tr>
     <tr>
       <td>Byte 8</td>
-      <td style="background-color:#8B0000">C3<sub>3</sub></td>
-      <td style="background-color:#002D62">C3<sub>2</sub></td>
-      <td style="background-color:#78184A">C3<sub>1</sub></td>
-      <td style="background-color:#234F1E">C3<sub>0</sub></td>
-      <td style="background-color:#8B0000">C2<sub>3</sub></td>
-      <td style="background-color:#002D62">C2<sub>2</sub></td>
-      <td style="background-color:#78184A">C2<sub>1</sub></td>
-      <td style="background-color:#234F1E">C2<sub>0</sub></td>
+      <td style="color:white;background-color:#8B0000">C3<sub>3</sub></td>
+      <td style="color:white;background-color:#002D62">C3<sub>2</sub></td>
+      <td style="color:white;background-color:#78184A">C3<sub>1</sub></td>
+      <td style="color:white;background-color:#234F1E">C3<sub>0</sub></td>
+      <td style="color:white;background-color:#8B0000">C2<sub>3</sub></td>
+      <td style="color:white;background-color:#002D62">C2<sub>2</sub></td>
+      <td style="color:white;background-color:#78184A">C2<sub>1</sub></td>
+      <td style="color:white;background-color:#234F1E">C2<sub>0</sub></td>
     </tr>
   </tbody>
 </table>
@@ -359,36 +359,36 @@ The default access bit "FF 07 80". Let's try to understand what it means.
   <tbody>
     <tr>
       <td>Byte 6</td>
-      <td style="background-color:#8B0000">1</td>
-      <td style="background-color:#002D62">1</td>
-      <td style="background-color:#78184A" >1</td>
-      <td style="background-color:#234F1E">1</td>
-      <td style="background-color:#8B0000">1</td>
-      <td style="background-color:#002D62">1</td>
-      <td style="background-color:#78184A">1</td>
-      <td style="background-color:#234F1E">1</td>
+      <td style="color:white;background-color:#8B0000">1</td>
+      <td style="color:white;background-color:#002D62">1</td>
+      <td style="color:white;background-color:#78184A" >1</td>
+      <td style="color:white;background-color:#234F1E">1</td>
+      <td style="color:white;background-color:#8B0000">1</td>
+      <td style="color:white;background-color:#002D62">1</td>
+      <td style="color:white;background-color:#78184A">1</td>
+      <td style="color:white;background-color:#234F1E">1</td>
     </tr>
     <tr>
       <td>Byte 7</td>
-      <td style="background-color:#8B0000">0</td>
-      <td style="background-color:#002D62">0</td>
-      <td style="background-color:#78184A">0</td>
-      <td style="background-color:#234F1E">0</td>
-      <td style="background-color:#8B0000">0</td>
-      <td style="background-color:#002D62">1</td>
-      <td style="background-color:#78184A">1</td>
-      <td style="background-color:#234F1E">1</td>
+      <td style="color:white;background-color:#8B0000">0</td>
+      <td style="color:white;background-color:#002D62">0</td>
+      <td style="color:white;background-color:#78184A">0</td>
+      <td style="color:white;background-color:#234F1E">0</td>
+      <td style="color:white;background-color:#8B0000">0</td>
+      <td style="color:white;background-color:#002D62">1</td>
+      <td style="color:white;background-color:#78184A">1</td>
+      <td style="color:white;background-color:#234F1E">1</td>
     </tr>
     <tr>
       <td>Byte 8</td>
-      <td style="background-color:#8B0000">1</td>
-      <td style="background-color:#002D62">0</td>
-      <td style="background-color:#78184A">0</td>
-      <td style="background-color:#234F1E">0</td>
-      <td style="background-color:#8B0000">0</td>
-      <td style="background-color:#002D62">0</td>
-      <td style="background-color:#78184A">0</td>
-      <td style="background-color:#234F1E">0</td>
+      <td style="color:white;background-color:#8B0000">1</td>
+      <td style="color:white;background-color:#002D62">0</td>
+      <td style="color:white;background-color:#78184A">0</td>
+      <td style="color:white;background-color:#234F1E">0</td>
+      <td style="color:white;background-color:#8B0000">0</td>
+      <td style="color:white;background-color:#002D62">0</td>
+      <td style="color:white;background-color:#78184A">0</td>
+      <td style="color:white;background-color:#234F1E">0</td>
     </tr>
   </tbody>
 </table>
