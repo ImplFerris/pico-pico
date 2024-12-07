@@ -64,5 +64,5 @@
         - [Change Auth Key](./rfid/change-auth-key.md)
     - [Access control](./rfid/access-bits.md)
         - [AccessBits Calc](./rfid/access-bits-calculator.md)
-- [Projects](./projects.md
+- [Projects](./projects.md)
 - [Resources](./resources.md)
