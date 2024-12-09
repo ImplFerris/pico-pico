@@ -1,6 +1,6 @@
 # Read SD Card with Raspberry Pi Pico
 
-Let's create a simple program that reads a file from the SD card and outputs its content over USB serial.
+Let's create a simple program that reads a file from the SD card and outputs its content over USB serial. Make sure the SD card is formatted with FAT32 and contains a file to read (for example, "RUST.TXT" with the content "Ferris"). 
  
 ### Project from template
 
