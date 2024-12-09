@@ -5,6 +5,10 @@ picotool is a tool for working with RP2040/RP2350 binaries, and interacting with
 
 [Picotool Repo](https://github.com/raspberrypi/picotool)
 
+<span class="info-box">
+Alternatively, you can download the pre-built binaries of the SDK tools from <a href="https://github.com/raspberrypi/pico-sdk-tools">here</a>, which is a simpler option than following these steps. 
+</span>
+
 Here's a quick summary of the steps I followed:
 ```sh
 # Install dependencies
