@@ -64,5 +64,8 @@
         - [Change Auth Key](./rfid/change-auth-key.md)
     - [Access control](./rfid/access-bits.md)
         - [AccessBits Calc](./rfid/access-bits-calculator.md)
+- [SD Card (MMC/SDC)](./sdcard/index.md)
+    - [Circuit](./sdcard/circuit.md)
+    - [Read SD Card](./sdcard/read-sdcard.md)
 - [Projects](./projects.md)
 - [Resources](./resources.md)
