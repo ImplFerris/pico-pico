@@ -4,9 +4,13 @@ Let's change the authentication key (KeyA) for sector 1. By default, it is set t
 
 Before proceeding, it is a good idea to verify the current contents of this block. Run the [Dump Memory](./dump-memory.md) or [Read Data](./read-data.md) program to check.
 
-<span class="info-box">
-  ℹ️ The MIFARE Classic 1K card is pre-configured with the default key FF FF FF FF FF FF for both KeyA and KeyB.  When reading the trailer block, KeyA values are returned as all zeros (00 00 00 00 00 00), while KeyB returned as it is.
-</span>
+<div class="alert-box alert-box-info">
+    <span class="icon"><i class="fa fa-info"></i></span>
+    <div class="alert-content">
+        <b class="alert-title">Default Keys</b>
+        <p>The MIFARE Classic 1K card is pre-configured with the default key FF FF FF FF FF FF for both KeyA and KeyB.  When reading the trailer block, KeyA values are returned as all zeros (00 00 00 00 00 00), while KeyB returned as it is.</p>
+    </div>
+</div>
 
 We’ll also modify the KeyB contents to verify that the write was successful. We'll set KeyB to the hex bytes of "Ferris" (46 65 72 72 69 73).
 
