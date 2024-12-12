@@ -87,7 +87,7 @@ The LCD has a total of 16 pins for the parallel interface.
 ### Contrast Adjustment
 The V<sub>o</sub> pin  controls the contrast of the LCD. 
 
-According to the datasheet of the [LCD1602A](https://www.openhacks.com/uploadsproductos/eone-1602a1.pdf), the **Vo** pin controls the contrast of the LCD by adjusting the operating voltage for the LCD, which is the difference between the power supply for the logic (**VDD**) and the contrast control pin (**Vo**). When **Vo** is closer to ground, the voltage difference (**VDD - Vo**) is larger, resulting in a darker display (higher contrast), making the text on the screen more distinct and readable. When **Vo** is closer to **VDD**, the voltage difference decreases, making the display lighter (lower contrast), causing the text to appear faded or less visible.
+According to the datasheet of the [LCD1602A](https://www.openhacks.com/uploadsproductos/eone-1602a1.pdf), the **Vo** pin controls the contrast of the LCD by adjusting the operating voltage for the LCD, which is the difference between the power supply for the logic (**VDD**) and the contrast control pin (**Vo**). When **Vo** is closer to ground, the voltage difference (**VDD - Vo**) is larger, resulting in a higher contrast, making the text on the screen more distinct and readable. When **Vo** is closer to **VDD**, the voltage difference decreases, resulting in a lower contrast, causing the text to appear faded or less visible.
 
 <img style="display: block; margin: auto;width:500px;" alt="lcd1602" src="./images/power-supply.png"/>
 
