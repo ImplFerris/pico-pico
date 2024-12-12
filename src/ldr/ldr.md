@@ -14,18 +14,18 @@ You can adjust the brightness value and observe how the resistance of R2 (which 
 ### Example output for full brightness
 The resistance of the LDR is low when exposed to full brightness, causing the output voltage(\\( V_{out} \\)) to be significantly lower.
 
-<img style="display: block; margin: auto;" alt="pico2" src="./images/voltage-divider-ldr1.png"/>
+<img style="display: block; margin: auto;" alt="voltage-divider-ldr1" src="./images/voltage-divider-ldr1.png"/>
 
 
 ### Example output for low light
 With less light, the resistance of the LDR increases and the output voltage increase.
 
-<img style="display: block; margin: auto;" alt="pico2" src="./images/voltage-divider-ldr2.png"/>
+<img style="display: block; margin: auto;" alt="voltage-divider-ldr2" src="./images/voltage-divider-ldr2.png"/>
 
 ### Example output for full darkness
 In darkness, the LDR's resistance is high, resulting in a higher output voltage (\\( V_{out} \\)).
 
-<img style="display: block; margin: auto;" alt="pico2" src="./images/voltage-divider-ldr3.png"/>
+<img style="display: block; margin: auto;" alt="voltage-divider-ldr3" src="./images/voltage-divider-ldr3.png"/>
 
 
 ## Reference:
