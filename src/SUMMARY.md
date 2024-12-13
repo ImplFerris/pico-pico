@@ -71,6 +71,7 @@
     - [How it works?](./lcd-display/how-it-works.md)
     - [Pin Layout](./lcd-display/pin-layout.md)
     - [Circuit](./lcd-display/circuit.md)
-    - [Hello, Rust!](./lcd-display/hello-world.md)
+    - [Hello, Rust!](./lcd-display/hello-rust.md)
+    - [Supported Characters](./lcd-display/supported-characters.md)
 - [Projects](./projects.md)
 - [Resources](./resources.md)
