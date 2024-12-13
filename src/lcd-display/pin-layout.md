@@ -106,3 +106,4 @@ When it is in High(RS = 1), the LCD is in data mode, where the input is interpre
 
 ### Enable Pin (E)
 It is used to control when data is transferred to the LCD display. The enable pin is typically kept low (E=0) but is set high (E=1) for a specific period of time to initiate a data transfer, and then returned to low.. The data is latched into the LCD on the transition from high to low.
+

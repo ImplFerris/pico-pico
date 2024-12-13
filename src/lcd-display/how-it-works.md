@@ -16,3 +16,6 @@ However, if you'd like to create custom characters or symbols, you will need to 
 The LCM (Liquid Crystal Module) supports two types of data transfer modes: 8-bit and 4-bit. In 8-bit mode, data is sent as a full byte using all the data pins. In 4-bit mode, only the higher-order data bits are used, sending data in nibbles. While 8-bit mode is faster, it comes with a trade-off;using too many wires, which can quickly exhaust the GPIO pins on a microcontroller. To minimize wiring, we'll use 4-bit mode.
  
 
+### Reference:
+- [16x2 character LCD dot matrix module](http://www.efton.sk/curious/lcd1602.htm)
+
