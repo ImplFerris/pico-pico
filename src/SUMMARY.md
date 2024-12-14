@@ -78,6 +78,6 @@
         - [Display on LCD](./lcd-display/display-custom-chars.md)
         - [Multi Generator](./lcd-display/multi-custom-gen.md)
         - [Multi Custom](./lcd-display/multi-custom-character.md)
-
+        - [Symbols Index](./lcd-display/custom-symbols-index.md)
 - [Projects](./projects.md)
 - [Resources](./resources.md)

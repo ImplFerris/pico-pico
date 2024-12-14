@@ -12,10 +12,10 @@ Select the grids to create a symbol or character. As you select the grid, the co
     .grid-wrapper {
         background-color: #0076CE;
         padding: 10px;
-        width: 260px;
+        width: 250px;
         height: auto;
         box-sizing: border-box;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
         align-items: center;
         margin-bottom: 10px;
@@ -26,6 +26,7 @@ Select the grids to create a symbol or character. As you select the grid, the co
         grid-template-columns: repeat(5, 40px);
         grid-template-rows: repeat(8, 40px);
         gap: 5px;
+        margin-bottom: 10px;
     }
 
     .cell {
