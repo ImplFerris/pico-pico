@@ -73,5 +73,8 @@
     - [Circuit](./lcd-display/circuit.md)
     - [Hello, Rust!](./lcd-display/hello-rust.md)
     - [Supported Characters](./lcd-display/supported-characters.md)
+    - [Custom Characters](./lcd-display/custom-chars.md)
+        - [Generator](./lcd-display/lcd-custom-char-generator.md)
+        - [Display on LCD](./lcd-display/display-custom-chars.md)
 - [Projects](./projects.md)
 - [Resources](./resources.md)
