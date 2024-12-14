@@ -76,5 +76,8 @@
     - [Custom Characters](./lcd-display/custom-chars.md)
         - [Generator](./lcd-display/lcd-custom-char-generator.md)
         - [Display on LCD](./lcd-display/display-custom-chars.md)
+        - [Multi Generator](./lcd-display/multi-custom-gen.md)
+        - [Multi Custom](./lcd-display/multi-custom-character.md)
+
 - [Projects](./projects.md)
 - [Resources](./resources.md)
