@@ -79,6 +79,7 @@ display.init().unwrap();
 
 ### Set Text Style and Draw
 Next, we define the text style and use it to display "Hello Rust" on the screen:
+
 ```rust
 // Embedded graphics 
 let text_style = MonoTextStyleBuilder::new()
@@ -90,7 +91,9 @@ Text::with_baseline("Hello, Rust!", Point::new(0, 16), text_style, Baseline::Top
     .draw(&mut display)
     .unwrap();
 ```
+Here, we are writing the message at coordinates (x=0, y=16).
 
+ 
 ### Write out data to a display
 ```rust
 display.flush().unwrap();

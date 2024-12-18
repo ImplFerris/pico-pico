@@ -6,12 +6,15 @@ We'll create simple projects like displaying text and an image (display Ferris ð
 
 <img style="display: block; margin: auto;width:500px" alt="pico2" src="../images/oled-ssd1306.jpg"/>
 
+<!-- TODO: more info on the intro and in-depth technical info for the OLED -->
+
 ### Hardware Requirements
 
 For this project, you'll need:
 - An OLED display (0.96 Inch I2C/IIC 4-Pin, 128x64 resolution, SSD1306 chip)
 - A breadboard
 - Jumper wires
+
 
 ## Setup
 
@@ -80,3 +83,6 @@ In addition to the usual crate like `rp-hal`, we will be using these new crates 
 - [`embedded-graphics`](https://github.com/embedded-graphics/embedded-graphics): a 2D graphics library tailored for memory-constrained embedded devices, enabling text and graphic rendering.
 - [`tinybmp`](https://github.com/embedded-graphics/tinybmp): a lightweight BMP parser for embedded, no-std environments. We'll use this to directly load `.bmp` images with the `embedded-graphics` crate, avoiding the need for raw image data.
 
+## Resources
+
+- [SSD1306 Datasheet](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf)
