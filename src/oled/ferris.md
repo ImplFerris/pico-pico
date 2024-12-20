@@ -33,3 +33,6 @@ You can clone (or refer) project I created and navigate to the `ferris-oled` fol
 git clone https://github.com/ImplFerris/pico2-projects
 cd pico2-projects/ferris-oled
 ```
+
+## Useful tools
+- Bitmap to Rust array Converter: [Image2Bytes Generator](https://implferris.github.io/image2bytes/)
