@@ -20,6 +20,7 @@
     - [I2C](./oled/i2c.md)
     - [Hello World](./oled/hello-oled.md)
     - [Ferris](./oled/ferris.md)
+    - [Image2Bytes Generator](https://implferris.github.io/image2bytes/)
 - [Servo Motor](./servo/index.md)
     - [Intro](./servo/servo.md)
     - [More on PWM](./servo/pwm.md)
