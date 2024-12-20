@@ -15,6 +15,22 @@ For detailed technical information, specifications, and guidelines, refer to the
 - [Pico 2 Datasheet](https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf)
 - [RP2350 chip Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf)
 
+
+## License
+
+The Pico Pico book(this project) is distributed under the following licenses:
+
+* The code samples and free-standing Cargo projects contained within this book are licensed under the terms of both the [MIT License] and the [Apache License v2.0].
+* The written prose contained within this book is licensed under the terms of the Creative Commons [CC-BY-SA v4.0] license.
+
+[MIT License]: ./LICENSE-MIT
+[Apache License v2.0]: ./LICENSE-APACHE
+[CC-BY-SA v4.0]: ./LICENSE-CC-BY-SA
+[MIT License Hosted]: https://opensource.org/licenses/MIT
+[Apache License v2.0 Hosted]: http://www.apache.org/licenses/LICENSE-2.0
+[CC-BY-SA v4.0 Hosted]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+
 ## Support this project
 
 You can support this book by starring this project on [GitHub](https://github.com/ImplFerris/pico-pico) or sharing this book with others 😊
