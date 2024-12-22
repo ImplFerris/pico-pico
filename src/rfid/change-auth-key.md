@@ -129,7 +129,7 @@ There's nothing new in the main loop. All the read and write functions are ones 
 You can clone (or refer) project I created and navigate to the `rfid-change-key` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/rfid-change-key/
 ```
 

@@ -80,7 +80,7 @@ The main loop begins by reading and printing the current content of a specified 
 You can clone (or refer) project I created and navigate to the `rfid-write` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/rfid-write/
 ```
 

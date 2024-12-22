@@ -138,6 +138,6 @@ loop {
 You can clone (or refer) project I created and navigate to the `hello-oled` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/hello-oled
 ```

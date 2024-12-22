@@ -81,7 +81,7 @@ loop {
 You can clone the blinky project I created and navigate to the `external-led` folder to run this version of the blink program:
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/external-led
 ```
 

@@ -37,6 +37,6 @@ Displaying the character is straightforward. You just need to use the CustomChar
 You can clone (or refer) project I created and navigate to the `lcd-custom` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/lcd-custom/
 ```

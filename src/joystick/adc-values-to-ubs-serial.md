@@ -301,7 +301,7 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 You can clone (or refer) project I created and navigate to the `joystick-usb` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/joystick-usb/
 ```
 

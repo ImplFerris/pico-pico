@@ -63,7 +63,7 @@ The main loop operates similarly to what we covered in the previous chapter. Aft
 You can clone (or refer) project I created and navigate to the `rfid-read` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
+git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/rfid-read/
 ```
 
