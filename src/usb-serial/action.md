@@ -237,3 +237,12 @@ If everything is set up correctly, you should see a "Connected" message in the t
 In the terminal where tio is running, you type that will be sent to the Pico. You won't see what you type (since we're not echoing back the input). 
 
 If you press the letter 'r', the onboard LED will be turned on. If you press any other character, the LED will be turned off. 
+
+
+## Embassy version
+You can also refer to this project, which demonstrates using USB Serial with the Embassy framework.
+
+```sh
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/usb-serial/
+```
