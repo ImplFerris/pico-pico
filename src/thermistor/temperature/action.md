@@ -295,6 +295,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 You can clone (or refer) project I created and navigate to the `thermistor` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
-cd pico2-projects/thermistor/
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/thermistor/
 ```

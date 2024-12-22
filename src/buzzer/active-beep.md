@@ -49,7 +49,7 @@ async fn main(_spawner: Spawner) {
 You can clone (or refer) project I created and navigate to the `active-beep` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-projects
-cd pico2-projects/active-beep
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/active-beep
 ```
 
