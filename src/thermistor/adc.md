@@ -1,6 +1,6 @@
 
 ## ADC
-When setting up the thermistor with the Pico, we don't get the voltage directly. Instead, we receive an ADC value (refer to the [ADC](../ldr/adc.md) explanation in the LDR section). In the LDR exercise, we didn't calculate the resistance corresponding to the ADC value since we only needed to check whether the ADC value increased. However, in this exercise, to determine the temperature, we must convert the ADC value into resistence.
+When setting up the thermistor with the Pico, we don't get the voltage directly. Instead, we receive an ADC value (refer to the [ADC](../core-concepts/adc.md) explanation in the LDR section). In the LDR exercise, we didn't calculate the resistance corresponding to the ADC value since we only needed to check whether the ADC value increased. However, in this exercise, to determine the temperature, we must convert the ADC value into resistence.
 
 ### ADC to Resistance
 We need resistance value from the adc value for the thermistor temperature calculation(that will be discussed in the next chapters).

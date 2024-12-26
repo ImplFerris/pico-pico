@@ -83,6 +83,11 @@ In addition to the usual crate like `rp-hal`, we will be using these new crates 
 - [`embedded-graphics`](https://github.com/embedded-graphics/embedded-graphics): a 2D graphics library tailored for memory-constrained embedded devices, enabling text and graphic rendering.
 - [`tinybmp`](https://github.com/embedded-graphics/tinybmp): a lightweight BMP parser for embedded, no-std environments. We'll use this to directly load `.bmp` images with the `embedded-graphics` crate, avoiding the need for raw image data.
 
+## Prerequisite
+
+- [I2C protocol](../core-concepts/i2c.md)
+
+
 ## Resources
 
 - [SSD1306 Datasheet](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf)

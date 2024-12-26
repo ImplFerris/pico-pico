@@ -10,3 +10,8 @@ In this section, we will use an LDR (Light Dependent Resistor) with the Raspberr
 - Resistor (typically 10kΩ); needed to create voltage divider
 - Jumper wires (as usual)
 
+## Prerequisite
+
+To work with this, you should get familiar with what a voltage divider is and how it works. You also need to understand what ADC is and how it functions.
+- [Voltage divider section](../core-concepts/voltage-divider.md).
+- [ADC](../core-concepts/adc.md)

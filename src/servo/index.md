@@ -2,7 +2,7 @@
 
 In this section, we'll connect an SG90 Micro Servo Motor to the Pico 2 and control its rotation using PWM. The servo will move in a loop, rotating from 0 degrees to 90 degrees, and then to 180 degrees.
 
-Before moving forward, make sure you've read the [PWM introduction](../blinky/pwm.md) in the Blink LED section.
+Before moving forward, make sure you've read the [PWM introduction](../core-concepts/pwm/index.md) in the Blink LED section.
 
 ## Hardware Requirements
 - **SG90 Micro Servo Motor**

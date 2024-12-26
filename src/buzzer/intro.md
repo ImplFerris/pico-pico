@@ -50,7 +50,7 @@ By the way, I used an active buzzer in my experiment. A passive buzzer is recomm
 <img style="display: block; margin: auto;" alt="pico2" src="./images/pico-buzzer-circuit.png"/>
 
 Before moving forward, make sure you've read the following sections and understood the concepts.
-- [PWM introduction](../blinky/pwm.md) in the Blink LED section
+- [PWM introduction](../core-concepts/pwm/index.md) in the Blink LED section
 - [More on PWM](../servo/pwm.md) in the servo section
 - [Calculating top](../servo/servo-pico.md) in the servo section
 

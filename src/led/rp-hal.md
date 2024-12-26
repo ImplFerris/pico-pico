@@ -6,11 +6,9 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
-It adjusts the LED's brightness by changing the duty cycle(will be explained in [pwm page](pwm.md)) at regular intervals, creating a dimming effect.
 
 ## The main code
 
-Here is the complete code. Don't worry if you don't fully understand it yet. On the following pages, we'll dive into each concept in detail. We'll start by taking action, then explore how it works and the ideas behind it.
 
 ```rust
 //! # PWM Blink Example

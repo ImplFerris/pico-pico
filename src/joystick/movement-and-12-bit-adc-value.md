@@ -5,13 +5,13 @@ When you move the joystick along the X or Y axis, it produces an analog signal w
     <span class="icon"><i class="fa fa-info"></i></span>
     <div class="alert-content">
         <b class="alert-title">Voltage Divider</b>
-        <p>The reason it is 1.65V in the center position is that the potentiometer acts as a voltage divider. When the potentiometer is moved, its resistance changes, causing the voltage divider to output a different voltage accordingly. Refer the <a href="/ldr/voltage-divider.html">voltate divider section</a>.</p>
+        <p>The reason it is 1.65V in the center position is that the potentiometer acts as a voltage divider. When the potentiometer is moved, its resistance changes, causing the voltage divider to output a different voltage accordingly. Refer the <a href="/core-concepts/voltage-divider.html">voltate divider section</a>.</p>
     </div>
 </div>
 
 The joystick has a total of 5 pins, and we will shortly discuss what each of them represents. Out of these, two pins are dedicated to sending the X and Y axis positions, which should be connected to the ADC pins of the microcontroller.
 
-As you may already know, the Raspberry Pi Pico has a 12-bit SAR-type ADC, which converts analog signals (voltage differences) into digital values. Since it is a 12-bit ADC, the analog values will be represented as digital values ranging from 0 to 4095. If you're not familiar with ADC, refer to the [ADC section](../ldr/adc.md) that we covered earlier.
+As you may already know, the Raspberry Pi Pico has a 12-bit SAR-type ADC, which converts analog signals (voltage differences) into digital values. Since it is a 12-bit ADC, the analog values will be represented as digital values ranging from 0 to 4095. If you're not familiar with ADC, refer to the [ADC section](../core-concepts/adc.md) that we covered earlier.
 
 <img style="display: block; margin: auto;width:580px;" alt="joystick-movement" src="./images/joystick-movement-and-corresponding-pico-adc-values.jpg"/>
 
