@@ -1,4 +1,4 @@
-## Action
+## Writing Rust Code Use HC-SR04 Ultrasonic Sensor with Pico 2
 
 We'll start by generating the project using the template, then modify the code to fit the current project's requirements.
 
@@ -65,7 +65,7 @@ trigger.set_low().ok().unwrap();
 ```
 
 ### Step 2: Measure the Echo Time
-Now, measure the time the Echo pin remains high, which represents the round-trip time of the sound wave.
+Next, we will use two loops. The first loop will run as long as the echo pin state is LOW. Once it goes HIGH, we will record the current time in a variable. Then, we start the second loop, which will continue as long as the echo pin remains HIGH. When it returns to LOW, we will record the current time in another variable. The difference between these two times gives us the pulse width. 
 
 ```rust
 let mut time_low = 0;
@@ -87,14 +87,18 @@ let time_passed = time_high - time_low;
 ```
 
 ### Step 3: Calculate Distance
-Using the measured time, calculate the distance to the object. The speed of sound in air is approximately 0.0343 cm/µs.
+To calculate the distance, we need to use the pulse width. The pulse width tells us how long it took for the ultrasonic waves to travel to an obstacle and return. Since the pulse represents the round-trip time, we divide it by 2 to account for the journey to the obstacle and back.
+
+The speed of sound in air is approximately 0.0343 cm per microsecond. By multiplying the time (in microseconds) by this value and dividing by 2, we obtain the distance to the obstacle in centimeters. 
 
 ```rust
 let distance = time_passed as f64 * 0.0343 / 2.0;
 ```
 
-### Step 3: Calculate Distance
-Finally, adjust the LED brightness based on the distance. If the distance is below a certain threshold (e.g., 30 cm), increase the brightness proportionally; otherwise, turn off the LED.
+### Step 4: PWM Duty cycle for LED
+Finally, we adjust the LED brightness based on the measured distance.
+
+The duty cycle percentage is calculated using our own logic, you can modify it to suit your needs. When the object is closer than 30 cm, the LED brightness will increase. The closer the object is to the ultrasonic module, the higher the calculated ratio will be, which in turn adjusts the duty cycle. This results in the LED brightness gradually increasing as the object approaches the sensor.
 
 ```rust
 let duty_cycle = if distance < 30.0 {
@@ -104,9 +108,8 @@ let duty_cycle = if distance < 30.0 {
     0
 };
 
-// Set the LED brightness
+// Change the LED brightness
 led.set_duty_cycle(duty_cycle).unwrap();
-
 ```
 
 ### Complete Logic of the loop
