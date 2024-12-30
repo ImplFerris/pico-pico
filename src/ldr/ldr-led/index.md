@@ -13,7 +13,7 @@ Note: You may need to adjust the ADC threshold based on your room's lighting con
 - **LED** – Any standard LED (choose your preferred color).
 - **LDR (Light Dependent Resistor)** – Used to detect light intensity.
 - **Resistors**
-  - **300Ω** – For the LED to limit current and prevent damage. (You might have to choose based on your LED)
+  - **330Ω** – For the LED to limit current and prevent damage. (You might have to choose based on your LED)
   - **10kΩ** – For the LDR, forming a voltage divider in the circuit. (You might have to choose based on your LDR)
 - **Jumper Wires** – For connecting components on a breadboard or microcontroller.
 
