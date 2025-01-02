@@ -47,7 +47,7 @@ Before moving forward, make sure you've read the [PWM introduction](../core-conc
       <td>Connects to ground.</td>
     </tr>
     <tr>
-      <td>GPIO 16</td>
+      <td>GPIO 9</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire orange" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
