@@ -30,8 +30,9 @@ HAL choice: You can choose between embassy or rp-hal.
 ## Step 2: Default LED Blink Example
 By default, the project will be generated with a simple LED blink example. The code structure may look like this:
 
-src/main.rs: Contains the default blink logic.
-Cargo.toml: Includes dependencies for the selected HAL.
+`src/main.rs`: Contains the default blink logic.
+
+`Cargo.toml`: Includes dependencies for the selected HAL.
 
 ## Step 3: Choose Your HAL and Modify Code
 Once the project is generated, you can decide to keep the default LED blink code or remove it and replace it with your own code based on the HAL you selected.
