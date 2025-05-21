@@ -27,7 +27,7 @@ You should understand this code by now. If not, please complete the Blink LED se
 Quick recap: Here, we're configuring the PWM for the LED, which allows us to control the brightness by adjusting the duty cycle.
 
 ```rust
-let pwm = &mut pwm_slices.pwm6;  // Access PWM slice 6
+let pwm = &mut pwm_slices.pwm1;  // Access PWM slice 1
 pwm.set_ph_correct();            // Set phase-correct mode for smoother transitions
 pwm.enable();                    // Enable the PWM slice
 let led = &mut pwm.channel_b; // Select PWM channel B
