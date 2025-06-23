@@ -11,7 +11,7 @@ If you find a version mismatch, either adjust your code(research and find a solu
 ## 2. Search or Report GitHub Issues
 
 Visit the GitHub issues page to see if someone else has encountered the same problem:
-[https://github.com/ImplFerris/esp32-book/issues?q=is%3Aissue](https://github.com/ImplFerris/esp32-book/issues?q=is%3Aissue)
+[https://github.com/ImplFerris/pico-pico/issues?q=is%3Aissue](https://github.com/ImplFerris/pico-pico/issues?q=is%3Aissue)
 
 If not, you can raise a new issue and describe your problem clearly.
 
