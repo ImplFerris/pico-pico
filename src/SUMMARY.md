@@ -5,6 +5,7 @@
     - [Quick Start](./quick-start.md)
     - [Project Template](./cargo-generate.md)
     - [Running the Program](./running.md)
+    - [Help & Troubleshooting](./help.md)
 - [Core Concepts](./core-concepts/index.md)
     - [Voltage Divider](./core-concepts/voltage-divider.md)
     - [ADC](./core-concepts/adc.md)
