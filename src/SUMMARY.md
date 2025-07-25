@@ -1,6 +1,7 @@
 # Summary
 
 - [Introduction](./index.md)
+    - [Pinout](./pico2-pinout.md)
     - [Dev Environment](./setup.md)
     - [Quick Start](./quick-start.md)
     - [Project Template](./cargo-generate.md)

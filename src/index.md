@@ -4,9 +4,15 @@ In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore v
 
 ## Meet the hardware - Pico 2
 
-We will be using the Raspberry Pi Pico 2 (RP2350 chip). It features the new RP2350 chip with dual-core flexibility;offering Arm Cortex-M33 cores and optional RISC-V Hazard3 cores. You can operate it as the standard ARM core or switch to the RISC-V architecture. You find more details from the [official website](https://www.raspberrypi.com/products/raspberry-pi-pico-2/).
+We will be using the Raspberry Pi Pico 2, which is based on the new RP2350 chip. It offers dual-core flexibility with support for Arm Cortex-M33 cores and optional RISC-V Hazard3 cores. By default, it operates using the standard ARM cores, but developers can choose to experiment with the RISC-V architecture if needed.
+
+You find more details from the [official website](https://www.raspberrypi.com/products/raspberry-pi-pico-2/).
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/pico2.png"/>
+
+There is also a variant called the Pico 2 W, which includes Wi-Fi and Bluetooth connectivity.
+
+> **NOTE**: There is an older Raspberry Pi Pico that uses the RP2040 chip. In this book, we will be using the newer **Pico 2** with the **RP2350** chip. When buying hardware, make sure to get the correct one!
 
 ## Datasheets
 
