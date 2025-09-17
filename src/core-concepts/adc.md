@@ -36,7 +36,7 @@ The Raspberry Pi Pico has **four accessible ADC channels** on the following GPIO
 In pico, ADC operates with a reference voltage set by the supply voltage, which can be measured on pin 35 (ADC_VREF). 
 
 ## ADC Value and LDR Resistance in a Voltage Divider
-In a voltage divider with an LDR and a fixed resistor, the output voltage \\( V_{\text{out}} \\) is given by:
+In a voltage divider with an LDR (Light-Dependent Resistor, core component of a light/brightness sensor) and a fixed resistor, the output voltage \\( V_{\text{out}} \\) is given by:
 
 \\[
 V_{\text{out}} = V_{\text{in}} \times \frac{R_{\text{LDR}}}{R_{\text{LDR}} + R_{\text{fixed}}}
