@@ -1,10 +1,10 @@
 # Pico Pico - Intro
 
-In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with a sonic sensor, displaying the Ferris (🦀) image on an OLED display, using RFID Reader, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.
+In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with an ultrasonic sensor, displaying the Ferris (🦀) image on an OLED display, using an RFID reader, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.
 
 ## Meet the hardware - Pico 2
 
-We will be using the Raspberry Pi Pico 2, which is based on the new RP2350 chip. It offers dual-core flexibility with support for Arm Cortex-M33 cores and optional RISC-V Hazard3 cores. By default, it operates using the standard ARM cores, but developers can choose to experiment with the RISC-V architecture if needed.
+We will be using the Raspberry Pi Pico 2, which is based on the new RP2350 chip. It offers dual-core flexibility with support for ARM Cortex-M33 cores and optional Hazard3 RISC-V cores. By default, it operates using the standard ARM cores, but developers can choose to experiment with the RISC-V architecture if needed.
 
 You find more details from the [official website](https://www.raspberrypi.com/products/raspberry-pi-pico-2/).
 
