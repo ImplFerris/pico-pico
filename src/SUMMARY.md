@@ -4,6 +4,7 @@
     - [Pinout](./pico2-pinout.md)
     - [Dev Environment](./setup.md)
     - [Quick Start](./quick-start.md)
+    - [Abstraction Layers](./abstraction-layers.md)
     - [Project Template](./cargo-generate.md)
     - [Running the Program](./running.md)
     - [Help & Troubleshooting](./help.md)

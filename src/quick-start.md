@@ -2,15 +2,14 @@
 
 Before diving into the theory and concepts of how everything works, let's jump straight into action. Use this simple code to turn on the onboard LED of the Pico2.
 
-### Blink LED with Embassy Framework
-[Embassy framework](https://github.com/embassy-rs/embassy) is a robust framework for developing asynchronous embedded applications in Rust.
+We'll use Embassy, a Rust framework built for microcontrollers like the Raspberry Pi Pico 2. Embassy lets you write async code that can handle multiple tasks at the same time; like blinking an LED while reading a button press, without getting stuck waiting for one task to finish before starting another.
 
-This example code is taken from embassy repo (It also has additional examples): ["https://github.com/embassy-rs/embassy/tree/main/examples/rp/src/bin"](https://github.com/embassy-rs/embassy/tree/main/examples/rp/src/bin)
-
-It creates a blinking effect by toggling the pin's output state between high and low.
+The following code creates a blinking effect by switching the pin's output between high (on) and low (off) states. As we mentioned in the pinout section, the Pico 2 has its onboard LED connected to GPIO pin 25. In this program, we configure that pin as an Output pin (we configure a pin as Output whenever we want to control something like turning LEDs on/off, driving motors, or sending signals to other devices) with a low (off) initial state.
 
 ## The code snippet
-This is only part of the code. You'll need to set up some initial configurations and import the necessary crates.
+
+I'm only showing you the main function code here. There are other initialization steps and imports required to make this work. We'll explore these in depth in the next chapter to understand what they do and why they're needed. For now, our focus is just to see something working in action. You can clone the quick start project I created and run it to get started immediately.
+
 ```rust
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
@@ -30,7 +29,6 @@ async fn main(_spawner: Spawner) {
 ```
 
 ## Clone the Quick start project
-You can clone the quick start project I created and navigate to the project folder and run it.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-quick
@@ -39,4 +37,13 @@ cd pico2-quick
 
 ## How to Run?
 
-You refer the ["Running The Program"](../running.md) section
+To Flash your application onto the Pico 2, press and hold the BOOTSEL button. While holding it, connect the Pico 2 to your computer using a micro USB cable. You can release the button once the USB is plugged in.
+
+<img style="display: block; margin: auto;" alt="bootsel" src="./images/bootsel.png"/>
+
+```sh
+# Run the program
+cargo run
+```
+
+This will flash (write) our program into the Pico 2's memory and run it automatically. If successful, you should see the onboard LED blinking at regular intervals. If you encounter any errors, verify that you have set up your development environment correctly and connected the Pico properly. If you're still unable to resolve the issue, please raise a GitHub issue with details so i can update and improve this guide
