@@ -8,7 +8,9 @@ The following code creates a blinking effect by switching the pin's output betwe
 
 ## The code snippet
 
-I'm only showing you the main function code here. There are other initialization steps and imports required to make this work. We'll explore these in depth in the next chapter to understand what they do and why they're needed. For now, our focus is just to see something working in action. You can clone the quick start project I created and run it to get started immediately.
+We're looking at just the main function code here.  There are other initialization steps and imports required to make this work. We'll explore these in depth in the next chapter to understand what they do and why they're needed. For now, our focus is just to see something working in action. You can clone the quick start project I created and run it to get started immediately.
+
+> NOTE: This code is incompatible with the Pico 2 W variant. On the Pico 2 W, GPIO25 is dedicated to controlling the wireless interface, we will need to follow a different procedure to control the onboard LED.
 
 ```rust
 #[embassy_executor::main]

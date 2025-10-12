@@ -10,9 +10,9 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/pico2.png"/>
 
-There is also a variant called the Pico 2 W, which includes Wi-Fi and Bluetooth connectivity.
-
 > **NOTE**: There is an older Raspberry Pi Pico that uses the RP2040 chip. In this book, we will be using the newer **Pico 2** with the **RP2350** chip. When buying hardware, make sure to get the correct one!
+
+There is also a variant called the Pico 2 W that includes Wi-Fi and Bluetooth capabilities and is powered by the RP2350 chip.
 
 ## Datasheets
 
