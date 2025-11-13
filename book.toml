@@ -2,7 +2,6 @@
 title = "Pico Pico - Embedded Programming with Rust"
 authors = ["ImplFerris"]
 language = "en"
-multilingual = false
 src = "src"
 
 [output.html]
