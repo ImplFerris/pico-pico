@@ -39,7 +39,7 @@ Build and install Picotool
 cd picotool
 mkdir build && cd build
 # cmake ../
-cmake -DPICO_SDK_PATH=/var/ws/embedded/pico-sdk/ ../
+cmake -DPICO_SDK_PATH=/MY_PATH/embedded/pico-sdk/ ../
 make -j8
 sudo make install
 ```
@@ -48,7 +48,7 @@ On Linux you can add udev rules in order to run picotool without sudo:
 ```sh
 cd ../
 # In picotool cloned directory
-sudo cp udev/99-picotool.rules /etc/udev/rules.d/
+sudo cp udev/60-picotool.rules /etc/udev/rules.d/
 ```
 
 
