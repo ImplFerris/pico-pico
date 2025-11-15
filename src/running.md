@@ -19,12 +19,16 @@ To Flash your application onto the Pico 2, press and hold the BOOTSEL button. Wh
 # Run the program
 cargo run --target=thumbv8m.main-none-eabihf
 ```
+
 **Note:** The example codes include a runner configuration in the `.cargo/config.toml` file, defined as:  
 `runner = "picotool load -u -v -x -t elf"`.  This means that when you execute `cargo run`, it actually invokes the `picotool` with the `load` subcommand to flash the program.
 
 
 ## Build and Run for RISC-V
+
 Use this command to build and run programs on the Raspberry Pi Pico 2 n RISC-V mode, utilizing the Hazard3 processors.
+
+> Note: This book focuses on ARM examples. Some examples may need changes before they work on RISC V mode. For simplicity, it is recommended to follow the ARM workflow while reading this book.
 
 ```sh
 # build the program
@@ -36,3 +40,23 @@ Follow the same BOOTSEL steps as described above.
 # Run the program
 cargo run --target=riscv32imac-unknown-none-elf
 ```
+
+## With Debug Probe
+
+When using a Debug Probe, you can flash your program directly onto the Pico 2 with:
+
+```sh
+# cargo flash --chip RP2350
+# cargo flash --chip RP2350 --release
+cargo flash --release
+```
+
+If you want to flash your program and also view its output in real time, use:
+
+```sh
+# cargo embed --chip RP2350
+# cargo embed --chip RP2350 --release
+cargo embed --release
+```
+
+[cargo-embed](https://probe.rs/docs/tools/cargo-embed/) is a more advanced version of cargo-flash. It can flash your program, and it can also open an RTT terminal and a GDB server.

@@ -26,6 +26,8 @@
     - [Dim LED with RP HAL](./led/rp-hal.md)
     - [Using External LED](./led/external-led.md)
 - [Pico in VS Code](./pico-in-vscode/create-rust-project.md)
+- [Debug Probe](./debugging/pico-debug-probe.md)
+    - [RTT](./debugging/rtt.md)
 - [Ultrasonic](./ultrasonic/index.md)
     - [How it works?](./ultrasonic/how-it-works.md)
     - [Circuit](./ultrasonic/circuit.md)

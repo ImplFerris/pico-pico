@@ -14,7 +14,7 @@ I took the binary from the quick-start project and compared it with the binary o
 
 <div class="image-with-caption" style="text-align:center; display:inline-block;">
     <img src="./images/elf-section-headers.png" alt="Quick Start vs our Project" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
-    <div class="caption" style="font-size:0. nineem; color:#555; margin-top:6px;">Quick Start vs our Project</div>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Quick Start vs our Project</div>
 </div>
 
 You don't need to understand every detail in this output. The important part is simply noticing that the two binaries look very different, even though our Rust code is almost the same.
@@ -31,7 +31,7 @@ You can also use `cargo size` command provided by the [cargo-binutils](https://g
 
 <div class="image-with-caption" style="text-align:center; display:inline-block;">
     <img src="./images/cargo-size.png" alt="Cargo size on Quick Start vs our Project" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
-    <div class="caption" style="font-size:0. nineem; color:#555; margin-top:6px;">cargo size: Quick Start vs our Project</div>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">cargo size: Quick Start vs our Project</div>
 </div>
 
 **Linker:**
