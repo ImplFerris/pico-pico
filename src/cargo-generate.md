@@ -11,7 +11,14 @@ Before starting, ensure you have the following tools installed:
 - [Rust](https://www.rust-lang.org/tools/install)
 - [cargo-generate](https://github.com/cargo-generate/cargo-generate) for generating the project template.
 
+
+Install the OpenSSL development package first because it is required by cargo-generate:
+```sh
+sudo apt install  libssl-dev
+```
+
 You can install `cargo-generate` using the following command:
+
 ```sh
 cargo install cargo-generate
 ```
