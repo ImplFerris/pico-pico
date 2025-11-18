@@ -101,5 +101,8 @@
     - [Pin layout](./joystick/pin-layout.md)
     - [Circuit](./joystick/circuit.md)
     - [Print ADC Values](./joystick/adc-values-to-ubs-serial.md)
+- [Debugging](./debugging/index.md)
+    - [GDB](./debugging/gdb/probe-rs-debug-probe.md)
+    - [Finding main](./debugging/gdb/finding-main.md)
 - [Projects](./projects.md)
 - [Resources](./resources.md)
