@@ -40,8 +40,8 @@ Example output:
 0x10000004 <__RESET_VECTOR>:    0x1000010d
 ```
 
-This value is the address the CPU jumps to after reset. The last bit (the "Thumb bit") is always 1, so the actual address is either 0x1000010d or 0x1000010c.
-GDB can handle both.
+This value is the address the CPU jumps to after reset. The last bit (the "Thumb bit") is always 1, so the actual address is 0x1000010c.
+But you can use either one of them (0x1000010d or 0x1000010c), GDB can handle it.
 
 Alternatively, you can also use the readelf program to find the entrypoint address:
 
