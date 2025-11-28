@@ -1,0 +1,58 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="300" fill="#f8f9fa"/>
+  
+  <!-- Grid lines -->
+  <line x1="50" y1="50" x2="750" y2="50" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="50" y1="150" x2="750" y2="150" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="50" y1="250" x2="750" y2="250" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Axes -->
+  <line x1="50" y1="50" x2="50" y2="250" stroke="#333" stroke-width="2"/>
+  <line x1="50" y1="250" x2="750" y2="250" stroke="#333" stroke-width="2"/>
+  
+  <!-- Y-axis labels -->
+  <text x="20" y="55" font-family="Arial, sans-serif" font-size="14" fill="#333">HIGH</text>
+  <text x="25" y="255" font-family="Arial, sans-serif" font-size="14" fill="#333">LOW</text>
+  <text x="15" y="155" font-family="Arial, sans-serif" font-size="12" fill="#999"></text>
+  
+  <!-- X-axis label -->
+  <text x="380" y="285" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">Time</text>
+  <text x="50" y="20" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Voltage</text>
+  
+  <!-- Digital signal waveform -->
+  <polyline points="
+    50,250
+    100,250
+    100,50
+    200,50
+    200,250
+    300,250
+    300,50
+    400,50
+    400,250
+    500,250
+    500,50
+    600,50
+    600,250
+    700,250
+    700,50
+    750,50
+  " fill="none" stroke="#2563eb" stroke-width="3"/>
+  
+  <!-- Voltage level indicators -->
+  <text x="760" y="55" font-family="Arial, sans-serif" font-size="12" fill="#2563eb">3.3V</text>
+  <text x="760" y="255" font-family="Arial, sans-serif" font-size="12" fill="#2563eb">0V</text>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">Digital Signal (Square Wave)</text>
+  
+  <!-- State labels on the waveform -->
+  <text x="150" y="80" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">1</text>
+  <text x="250" y="235" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">0</text>
+  <text x="350" y="80" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">1</text>
+  <text x="450" y="235" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">0</text>
+  <text x="550" y="80" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">1</text>
+  <text x="650" y="235" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">0</text>
+  <text x="725" y="80" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" font-weight="bold">1</text>
+</svg>

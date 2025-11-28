@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="300" fill="#f8f9fa"/>
+  
+  <!-- Grid lines -->
+  <line x1="50" y1="50" x2="750" y2="50" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="50" y1="100" x2="750" y2="100" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="50" y1="150" x2="750" y2="150" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="50" y1="200" x2="750" y2="200" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="50" y1="250" x2="750" y2="250" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Axes -->
+  <line x1="50" y1="50" x2="50" y2="250" stroke="#333" stroke-width="2"/>
+  <line x1="50" y1="250" x2="750" y2="250" stroke="#333" stroke-width="2"/>
+  
+  <!-- Y-axis labels -->
+  <text x="15" y="55" font-family="Arial, sans-serif" font-size="12" fill="#333">3.3V</text>
+  <text x="15" y="105" font-family="Arial, sans-serif" font-size="12" fill="#999">2.5V</text>
+  <text x="15" y="155" font-family="Arial, sans-serif" font-size="12" fill="#999">1.65V</text>
+  <text x="15" y="205" font-family="Arial, sans-serif" font-size="12" fill="#999">0.8V</text>
+  <text x="25" y="255" font-family="Arial, sans-serif" font-size="12" fill="#333">0V</text>
+  
+  <!-- X-axis label -->
+  <text x="380" y="285" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">Time</text>
+  <text x="50" y="20" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Voltage</text>
+  
+  <!-- Analog signal waveform (smooth sine wave) -->
+  <path d="
+    M 50,150
+    Q 100,80 150,100
+    T 250,150
+    Q 300,200 350,180
+    T 450,130
+    Q 500,70 550,90
+    T 650,160
+    Q 700,210 750,190
+  " fill="none" stroke="#16a34a" stroke-width="3"/>
+  
+  <!-- Sample voltage points with dots -->
+  <circle cx="150" cy="100" r="4" fill="#16a34a"/>
+  <circle cx="250" cy="150" r="4" fill="#16a34a"/>
+  <circle cx="350" cy="180" r="4" fill="#16a34a"/>
+  <circle cx="450" cy="130" r="4" fill="#16a34a"/>
+  <circle cx="550" cy="90" r="4" fill="#16a34a"/>
+  <circle cx="650" cy="160" r="4" fill="#16a34a"/>
+  
+  <!-- Voltage annotations -->
+  <text x="155" y="95" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">2.3V</text>
+  <text x="255" y="145" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">1.65V</text>
+  <text x="355" y="175" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">1.1V</text>
+  <text x="455" y="125" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">2.0V</text>
+  <text x="555" y="85" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">2.6V</text>
+  <text x="655" y="155" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">1.5V</text>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#15803d" text-anchor="middle">Analog Signal (Continuous Wave)</text>
+  
+  <!-- Arrow indicating continuous variation -->
+  <path d="M 720,120 L 730,110 M 730,110 L 740,120 M 730,110 L 730,180 M 730,180 L 720,170 M 730,180 L 740,170" 
+        stroke="#15803d" stroke-width="2" fill="none"/>
+  <text x="745" y="150" font-family="Arial, sans-serif" font-size="11" fill="#15803d">Continuous</text>
+  <text x="745" y="163" font-family="Arial, sans-serif" font-size="11" fill="#15803d">variation</text>
+</svg>

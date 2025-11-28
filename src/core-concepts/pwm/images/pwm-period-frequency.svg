@@ -1,0 +1,73 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="800" height="500" fill="#1e293b"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#f1f5f9">Period and Frequency in PWM</text>
+  
+  <!-- Low Frequency Example (Top) -->
+  <text x="50" y="70" font-size="16" font-weight="bold" fill="#60a5fa">Low Frequency (1 Hz)</text>
+  <text x="50" y="90" font-size="14" fill="#cbd5e1">Period = 1 second</text>
+  
+  <!-- Low frequency waveform -->
+  <line x1="50" y1="150" x2="750" y2="150" stroke="#475569" stroke-width="1"/>
+  
+  <!-- One complete cycle -->
+  <rect x="50" y="110" width="350" height="40" fill="#60a5fa" opacity="0.7"/>
+  <rect x="400" y="110" width="350" height="40" fill="none"/>
+  
+  <!-- Waveform outline -->
+  <polyline points="50,150 50,110 400,110 400,150 750,150" fill="none" stroke="#60a5fa" stroke-width="2"/>
+  
+  <!-- Period bracket -->
+  <line x1="50" y1="170" x2="750" y2="170" stroke="#f87171" stroke-width="2"/>
+  <line x1="50" y1="165" x2="50" y2="175" stroke="#f87171" stroke-width="2"/>
+  <line x1="750" y1="165" x2="750" y2="175" stroke="#f87171" stroke-width="2"/>
+  <text x="400" y="195" font-size="14" text-anchor="middle" fill="#f87171" font-weight="bold">Period = 1 second</text>
+  
+  <!-- Time markers -->
+  <text x="50" y="210" font-size="12" text-anchor="middle" fill="#94a3b8">0s</text>
+  <text x="400" y="210" font-size="12" text-anchor="middle" fill="#94a3b8">0.5s</text>
+  <text x="750" y="210" font-size="12" text-anchor="middle" fill="#94a3b8">1s</text>
+  
+  
+  <!-- High Frequency Example (Bottom) -->
+  <text x="50" y="270" font-size="16" font-weight="bold" fill="#4ade80">High Frequency (5 Hz)</text>
+  <text x="50" y="290" font-size="14" fill="#cbd5e1">Period = 0.2 seconds</text>
+  
+  <!-- High frequency waveform -->
+  <line x1="50" y1="350" x2="750" y2="350" stroke="#475569" stroke-width="1"/>
+  
+  <!-- Five complete cycles -->
+  <rect x="50" y="310" width="70" height="40" fill="#4ade80" opacity="0.7"/>
+  <rect x="120" y="310" width="70" height="40" fill="none"/>
+  <rect x="190" y="310" width="70" height="40" fill="#4ade80" opacity="0.7"/>
+  <rect x="260" y="310" width="70" height="40" fill="none"/>
+  <rect x="330" y="310" width="70" height="40" fill="#4ade80" opacity="0.7"/>
+  <rect x="400" y="310" width="70" height="40" fill="none"/>
+  <rect x="470" y="310" width="70" height="40" fill="#4ade80" opacity="0.7"/>
+  <rect x="540" y="310" width="70" height="40" fill="none"/>
+  <rect x="610" y="310" width="70" height="40" fill="#4ade80" opacity="0.7"/>
+  <rect x="680" y="310" width="70" height="40" fill="none"/>
+  
+  <!-- Waveform outline -->
+  <polyline points="50,350 50,310 120,310 120,350 190,350 190,310 260,310 260,350 330,350 330,310 400,310 400,350 470,350 470,310 540,310 540,350 610,350 610,310 680,310 680,350 750,350" fill="none" stroke="#4ade80" stroke-width="2"/>
+  
+  <!-- Period bracket for one cycle -->
+  <line x1="50" y1="370" x2="190" y2="370" stroke="#f87171" stroke-width="2"/>
+  <line x1="50" y1="365" x2="50" y2="375" stroke="#f87171" stroke-width="2"/>
+  <line x1="190" y1="365" x2="190" y2="375" stroke="#f87171" stroke-width="2"/>
+  <text x="120" y="395" font-size="14" text-anchor="middle" fill="#f87171" font-weight="bold">Period = 0.2s</text>
+  
+  <!-- Time markers -->
+  <text x="50" y="410" font-size="12" text-anchor="middle" fill="#94a3b8">0s</text>
+  <text x="190" y="410" font-size="12" text-anchor="middle" fill="#94a3b8">0.2s</text>
+  <text x="330" y="410" font-size="12" text-anchor="middle" fill="#94a3b8">0.4s</text>
+  <text x="470" y="410" font-size="12" text-anchor="middle" fill="#94a3b8">0.6s</text>
+  <text x="610" y="410" font-size="12" text-anchor="middle" fill="#94a3b8">0.8s</text>
+  <text x="750" y="410" font-size="12" text-anchor="middle" fill="#94a3b8">1s</text>
+  
+  <!-- Summary box -->
+  <rect x="50" y="440" width="700" height="40" fill="#334155" stroke="#475569" stroke-width="1" rx="5"/>
+  <text x="400" y="463" font-size="14" text-anchor="middle" fill="#f1f5f9">Higher frequency = Shorter period = More cycles per second</text>
+</svg>
