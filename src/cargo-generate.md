@@ -27,7 +27,7 @@ cargo install cargo-generate
 Run the following command to generate the project from the template:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
 ```
 
 This will prompt you to answer a few questions:

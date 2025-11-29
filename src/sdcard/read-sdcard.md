@@ -6,7 +6,7 @@ Let's create a simple program that reads a file from the SD card and outputs its
 
 To set up the project, run:
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
 ```
 When prompted, give your project a name, like "read-sdcard" and select `RP-HAL` as the HAL.
 

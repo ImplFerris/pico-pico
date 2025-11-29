@@ -9,7 +9,7 @@ We'll slightly modify the code to make it more fun. Instead of sending "Hello, W
 
 To set up the project, run:
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
 ```
 When prompted, give your project a name, like "usb-fun" and select `RP-HAL` as the HAL.
 
