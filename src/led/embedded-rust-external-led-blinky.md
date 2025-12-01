@@ -95,7 +95,7 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 You can clone the project I created and navigate to the `external-led` folder:
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-rp-projects
+git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/external-led
 ```
 
