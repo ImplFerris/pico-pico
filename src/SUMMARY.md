@@ -8,6 +8,8 @@
     - [Project Template](./cargo-generate.md)
     - [Running the Program](./running.md)
     - [Help & Troubleshooting](./help.md)
+- [Debug Probe](./debugging/pico-debug-probe.md)
+    - [RTT](./debugging/rtt.md)
 - [From std to no_std](./std-to-no-std/index.md)
     - [Cross Compilation](./std-to-no-std/cross-compilation/index.md)
         - [For Microcontroller](./std-to-no-std/cross-compilation/embedded.md)
@@ -27,8 +29,7 @@
 - [Dimming LED](./led/index.md)
     - [Dim LED with RP HAL](./led/rp-hal.md)
 - [Pico in VS Code](./pico-in-vscode/create-rust-project.md)
-- [Debug Probe](./debugging/pico-debug-probe.md)
-    - [RTT](./debugging/rtt.md)
+
 - [Ultrasonic](./ultrasonic/index.md)
     - [How it works?](./ultrasonic/how-it-works.md)
     - [Circuit](./ultrasonic/circuit.md)

@@ -49,3 +49,7 @@ cargo run
 ```
 
 This will flash (write) our program into the Pico 2's memory and run it automatically. If successful, you should see the onboard LED blinking at regular intervals. If you encounter any errors, verify that you have set up your development environment correctly and connected the Pico properly. If you're still unable to resolve the issue, please raise a GitHub issue with details so i can update and improve this guide
+
+### With Debug Probe
+
+If you're using a debug probe, you don't need to press the BOOTSEL button. You can just run `cargo flash` or `cargo embed` instead. These commands are covered in detail later in the book, though you can jump ahead to the [Debug Probe](./debugging/pico-debug-probe.md) chapter if you'd like to explore them now.
