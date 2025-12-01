@@ -1,18 +1,15 @@
 # Blinking an External LED
 
-In this section, we’ll use an external LED to blink.
+From now on, we'll use more external parts with the Pico. Before we get there, it helps to get comfortable with simple circuits and how to connect components to the Pico's pins. In this chapter, we'll start with something basic: blinking an LED that's connected outside the board.
 
-You'll need some basic electronic components
+## Hardware Requirements
 
-**Hardware Requirements**
 - LED
 - Resistor
 - Jumper wires
 
-Refer the [Raspberry pi guide](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/7) for the hardware setup. I actually used it with breadboard instead.
 
 ## Components Overview
-
 
 1. LED: An LED (Light Emitting Diode) lights up when current flows through it. The longer leg (anode) connects to positive, and the shorter leg (cathode) connects to ground. We'll connect the anode to GP13 (with a resistor) and the cathode to GND.
 
@@ -63,28 +60,10 @@ Refer the [Raspberry pi guide](https://projects.raspberrypi.org/en/projects/intr
 
 <img style="display: block; margin: auto;" alt="pico2" src="../images/pico-external-led.png"/>
 
-## Code
-There isn't much change in the code. We showcase how to blink an external LED connected to GPIO 13.  The code uses a push-pull output configuration to control the LED state. By setting the pin high, the LED is turned on, and by setting it low, the LED is turned off. This process is repeated in an infinite loop with a delay of 200 milliseconds between each state change, allowing the LED to blink at a consistent rate. 
+You can connect the Pico to the LED using jumper wires directly, or you can place everything on a breadboard. If you're unsure about the hardware setup, you can also refer the [Raspberry pi guide](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/7).
 
-```rust
-let mut led_pin = pins.gpio13.into_push_pull_output();
+<div class="image-with-caption" style="text-align:center; ">
+    <img src="./images/pico-2-rp2350-with-external-led.png" alt="Connecting External LED with Pico 2 (RP2350)" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Circuit with Breadboard</div>
+</div>
 
-loop {
-    led_pin.set_high().unwrap();
-    delay.delay_ms(200);
-    led_pin.set_low().unwrap();
-    delay.delay_ms(200);
-}
-```
-
-## Clone the existing project
-You can clone the blinky project I created and navigate to the `external-led` folder to run this version of the blink program:
-
-```sh
-git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/external-led
-```
-
-## How to Run?
-
-You refer the ["Running The Program"](../running.md) section

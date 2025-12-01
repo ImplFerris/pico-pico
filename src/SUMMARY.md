@@ -22,6 +22,7 @@
     - [Flashing](./std-to-no-std/flashing-rust-into-pico.md)
     - [Linker Script](./std-to-no-std/rust-linker-script.md)
 - [Using External LED](./led/external-led.md)
+    - [Code](./led/embedded-rust-external-led-blinky.md)
 - [PWM](./core-concepts/pwm/index.md)
     - [PWM Concepts](./core-concepts/pwm/basic-concepts.md)
     - [PWM in Depth](./core-concepts/pwm/pwm-in-depth.md)
