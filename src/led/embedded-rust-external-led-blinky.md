@@ -17,6 +17,16 @@ You will be asked a few questions:
 
 3. Then, it will ask whether we want to enable defmt logging. This works only if we use a debug probe, so you can choose based on your setup.  Anyway we are not going to write any log in this exercise.
 
+## Imports
+
+Most of the required imports are already in the project template. For this exercise, we only need to add the `Output` struct and the `Level` enum from gpio:
+
+```rust
+use embassy_rp::gpio::{Level, Output};
+```
+
+While writing the main code, your editor will normally suggest missing imports. If something is not suggested or you see an error, check the full code section and add the missing imports from there.
+
 ## Main Logic
 
 The code is almost the same as the quick start example. The only change is that we now use GPIO 13 instead of GPIO 25. GPIO 13 is where we connected the LED (through a resistor).
@@ -34,6 +44,10 @@ loop {
     Timer::after_millis(500).await;
 }
 ```
+
+We are using the Output struct here because we want to send signals from the Pico to the LED. We set up GPIO 13 as an output pin and start it in the low (off) state.
+
+> Note: If you want to read signals from a component (like a button or sensor), you'll need to configure the GPIO pin as Input instead.
 
 This toggles the pin between high and low, which turns the LED on and off.
 
