@@ -13,7 +13,7 @@ The MIFARE Classic 1K card is divided into 16 sectors, with each sector containi
 The last block of each sector, known as the "trailer" holds two secret keys and programmable access conditions for the blocks within that sector. Each sector has its own pair of keys (KeyA and KeyB), enabling support for multiple applications with a key hierarchy.
 
 <div class="alert-box alert-box-info">
-    <span class="icon"><i class="fa fa-info"></i></span>
+    <span class="icon"><i class="fa-solid fa-info"></i></span>
     <div class="alert-content">
         <b class="alert-title">Default Keys</b>
         <p>The MIFARE Classic 1K card is pre-configured with the default key FF FF FF FF FF FF for both KeyA and KeyB.  When reading the trailer block, KeyA values are returned as all zeros (00 00 00 00 00 00), while KeyB returned as it is.</p>

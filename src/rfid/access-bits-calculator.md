@@ -49,7 +49,7 @@ Encode:
 Click the "Edit" button in each row of the table to select your preferred access conditions. This will update the Access Bits.
 
 <div class="alert-box alert-box-warning">
-    <span class="icon"><i class="fa fa-flash"></i></span>
+    <span class="icon"><i class="fa-solid fa-bolt"></i></span>
     <div class="alert-content">
         <b class="alert-title">Warning</b>
         <p>Writing an incorrect value to the access condition bits can make the sector inaccessible.</p>
