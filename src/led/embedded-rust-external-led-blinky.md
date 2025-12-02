@@ -49,7 +49,7 @@ We are using the Output struct here because we want to send signals from the Pic
 
 > Note: If you want to read signals from a component (like a button or sensor), you'll need to configure the GPIO pin as Input instead.
 
-This toggles the pin between high and low, which turns the LED on and off.
+Then we call set_high and set_low on the pin with a delay between them. This switches the pin between high and low, which turns the LED on and off.
 
 ## The Full code
 
