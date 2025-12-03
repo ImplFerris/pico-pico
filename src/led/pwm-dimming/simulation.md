@@ -1,5 +1,7 @@
 # Simulation - LED Dimming with PWM
 
+Here is a simulation to show the dimming effect on an LED based on the duty cycle and the High and Low parts of the square wave. I set the default speed very slow so it is clear and not annoying to watch. To start it, click the “Start animation” button. You can increase the speed by reducing the delay time and watching the changes.
+
 <style>
 .pwm-container {
     text-align: center;
@@ -218,7 +220,7 @@
         <div class="pwm-speed-control">
             <div class="pwm-speed-label">Animation Speed</div>
             <div class="pwm-speed-value" id="pwm-speedValue">Medium (50ms)</div>
-            <input type="range" id="pwm-speedSlider" min="20" max="200" value="160" step="10">
+            <input type="range" id="pwm-speedSlider" min="20" max="200" value="200" step="10">
         </div>
         <div class="pwm-buttons">
             <button id="pwm-startBtn">Start Animation</button>
@@ -270,7 +272,7 @@
     function drawWaveform() {
         const width = canvas.width;
         const height = canvas.height;
-        const period = 60;
+        const period = 160;
         const highVoltage = 30;
         const lowVoltage = height - 30;
         
