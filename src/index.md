@@ -19,22 +19,6 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
 There is also a variant called the Pico 2 W, which includes Wi‑Fi and Bluetooth capabilities and is powered by the RP2350 chip. However, it is not fully compatible with the examples we've provided. If you want to follow along without adjustments, we recommend using the standard Pico 2 (non‑wireless) version.
 
 
-## Optional Hardware: Debug Probe
-
-The Raspberry Pi Debug Probe makes flashing the Pico 2 much easier. Without it you must press the BOOTSEL button each time you want to upload new firmware. The probe also gives you proper debugging support, which is very helpful.
-
-This tool is optional. You can follow the entire book without owning one(except the one specific to debug probe). When I first started with the Pico, I worked without a probe and only bought it later.
-
-<div class="image-with-caption" style="text-align:center;">
-    <img src="./images/Raspberry Pi Pico Debug Probe Hardware.jpg" alt="Raspberry Pi Debug Probe connected with Pico" style="width:400px; height:auto; display:block; margin:auto;"/>
-    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Raspberry Pi Pico Debug Probe</div>
-</div>
-
-**How to decide?**
-
-If you are on a tight budget, you can skip it for now because its price is roughly twice the cost of a Pico 2. If the cost is not an issue, it is a good purchase and becomes very handy. You can also use another Pico as a low cost debug probe if you have a second board available.
-
-
 ## Datasheets
 
 For detailed technical information, specifications, and guidelines, refer to the official datasheets:

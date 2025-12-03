@@ -2,6 +2,7 @@
 
 - [Introduction](./index.md)
     - [Pinout](./pico2-pinout.md)
+    - [Additional Hardware](./additional-hardware.md)
     - [Dev Environment](./setup.md)
     - [Quick Start](./quick-start.md)
     - [Abstraction Layers](./abstraction-layers.md)
