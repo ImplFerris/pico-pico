@@ -1,4 +1,4 @@
-# Blink (Dimming) LED Program with RP HAL
+# Dimming LED Program with RP HAL
 
 rp-hal is an Embedded-HAL for RP series microcontrollers, and can be used as an alternative to the Embassy framework for pico.
 
@@ -11,50 +11,35 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 
 ```rust
-//! # PWM Blink Example
-//!
-//! If you have an LED connected to pin 25, it will fade the LED using the PWM
-//! peripheral.
-//!
-//! It may need to be adapted to your particular board layout and/or pin assignment.
-//!
-//! See the `Cargo.toml` file for Copyright and license details.
-
 #![no_std]
 #![no_main]
 
-// Ensure we halt the program on panic (if we don't mention this crate it won't
-// be linked)
-use panic_halt as _;
-
-// Alias for our HAL crate
+use embedded_hal::delay::DelayNs;
+use hal::block::ImageDef;
 use rp235x_hal as hal;
 
-// Some things we need
-use embedded_hal::delay::DelayNs;
+// Traig for PWM
 use embedded_hal::pwm::SetDutyCycle;
 
+//Panic Handler
+use panic_probe as _;
+// Defmt Logging
+use defmt_rtt as _;
+
 /// Tell the Boot ROM about our application
-#[link_section = ".start_block"]
+#[unsafe(link_section = ".start_block")]
 #[used]
-pub static IMAGE_DEF: hal::block::ImageDef = hal::block::ImageDef::secure_exe();
+pub static IMAGE_DEF: ImageDef = hal::block::ImageDef::secure_exe();
+/// External high-speed crystal on the Raspberry Pi Pico 2 board is 12 MHz.
+/// Adjust if your board has a different frequency
+const XTAL_FREQ_HZ: u32 = 12_000_000u32;
+
 /// The minimum PWM value (i.e. LED brightness) we want
 const LOW: u16 = 0;
 
 /// The maximum PWM value (i.e. LED brightness) we want
 const HIGH: u16 = 25000;
 
-/// External high-speed crystal on the Raspberry Pi Pico 2 board is 12 MHz.
-/// Adjust if your board has a different frequency
-const XTAL_FREQ_HZ: u32 = 12_000_000u32;
-
-/// Entry point to our bare-metal application.
-///
-/// The `#[hal::entry]` macro ensures the Cortex-M start-up code calls this function
-/// as soon as all global variables and the spinlock are initialised.
-///
-/// The function configures the rp235x peripherals, then fades the LED in an
-/// infinite loop.
 #[hal::entry]
 fn main() -> ! {
     // Grab our singleton objects
@@ -89,10 +74,6 @@ fn main() -> ! {
         &mut pac.RESETS,
     );
 
-    // The delay object lets us wait for specified amounts of time (in
-    // milliseconds)
-    let mut delay = hal::Timer::new_timer0(pac.TIMER0, &mut pac.RESETS, &clocks);
-
     // Init PWMs
     let mut pwm_slices = hal::pwm::Slices::new(pac.PWM, &mut pac.RESETS);
 
@@ -105,31 +86,30 @@ fn main() -> ! {
     let channel = &mut pwm.channel_b;
     channel.output_to(pins.gpio25);
 
-    // Infinite loop, fading LED up and down
+    let mut timer = hal::Timer::new_timer0(pac.TIMER0, &mut pac.RESETS, &clocks);
+
     loop {
-        // Ramp brightness up
         for i in LOW..=HIGH {
-            delay.delay_us(8);
+            timer.delay_us(8);
             let _ = channel.set_duty_cycle(i);
         }
 
-        // Ramp brightness down
         for i in (LOW..=HIGH).rev() {
-            delay.delay_us(8);
+            timer.delay_us(8);
             let _ = channel.set_duty_cycle(i);
         }
 
-        delay.delay_ms(500);
+        timer.delay_ms(500);
     }
 }
-
-/// Program metadata for `picotool info`
-#[link_section = ".bi_entries"]
+// Program metadata for `picotool info`.
+// This isn't needed, but it's recomended to have these minimal entries.
+#[unsafe(link_section = ".bi_entries")]
 #[used]
 pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
     hal::binary_info::rp_cargo_bin_name!(),
     hal::binary_info::rp_cargo_version!(),
-    hal::binary_info::rp_program_description!(c"PWM Blinky Example"),
+    hal::binary_info::rp_program_description!(c"your program description"),
     hal::binary_info::rp_cargo_homepage_url!(),
     hal::binary_info::rp_program_build_attribute!(),
 ];
@@ -139,14 +119,9 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 
 ## Clone the existing project
 
-You can clone the blinky project I created and navigate to the `blinky` folder to run this version of the blink program:
+You can clone the blinky project I created and navigate to the `led-dimming` folder to run this version of the blink program:
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/blinky
+cd pico2-projects/led-dimming
 ```
-
-## How to Run?
-
-You refer the ["Running The Program"](../running.md) section
- 

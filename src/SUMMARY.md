@@ -32,7 +32,8 @@
     - [PWM in RP2350](./core-concepts/pwm/pwm-in-rp2350.md)
 - [Dimming LED](./led/pwm-dimming/index.md)
     - [Simulation](./led/pwm-dimming/simulation.md)
-    - [Dim LED with RP HAL](./led/rp-hal.md)
+    - [With Embassy](./led/pwm-dimming/embassy.md)
+    - [With RP HAL](./led/pwm-dimming/rp-hal.md)
 - [Pico in VS Code](./pico-in-vscode/create-rust-project.md)
 
 - [Ultrasonic](./ultrasonic/index.md)
