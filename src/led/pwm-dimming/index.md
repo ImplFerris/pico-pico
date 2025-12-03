@@ -19,6 +19,8 @@ Because, what is seeing?.... You're looking but what you're really doing is filt
 
 Here's the magic: when this switching happens super quickly, our eyes can't keep up. Instead of seeing the blinking, it just looks like the brightness changes! The longer the LED stays ON, the brighter it seems, and the shorter it's ON, the dimmer it looks. It's like tricking your brain into thinking the LED is smoothly dimming or brightening.
 
+// TODO: Revise the chapter, add embassy version then rp-hal version
+
 ## Fading Up
 
 The code below gradually increases the LED brightness by changing the duty cycle from 0 to 25,000, with a small delay between each step:

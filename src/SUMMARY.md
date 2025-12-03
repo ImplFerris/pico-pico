@@ -30,7 +30,8 @@
     - [PWM Concepts](./core-concepts/pwm/basic-concepts.md)
     - [PWM in Depth](./core-concepts/pwm/pwm-in-depth.md)
     - [PWM in RP2350](./core-concepts/pwm/pwm-in-rp2350.md)
-- [Dimming LED](./led/index.md)
+- [Dimming LED](./led/pwm-dimming/index.md)
+    - [Simulation](./led/pwm-dimming/simulation.md)
     - [Dim LED with RP HAL](./led/rp-hal.md)
 - [Pico in VS Code](./pico-in-vscode/create-rust-project.md)
 
