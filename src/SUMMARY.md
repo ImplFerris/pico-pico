@@ -11,6 +11,7 @@
 - [Debug Probe](./debugging/pico-debug-probe.md)
     - [RTT](./debugging/rtt.md)
 - [Using External LED](./led/external-led.md)
+    - [Breadboard](./core-concepts/basics/breadboard.md)
     - [Code](./led/embedded-rust-external-led-blinky.md)
     - [Using rp-hal](./led/external-led-with-rp-hal.md)
 - [From std to no_std](./std-to-no-std/index.md)

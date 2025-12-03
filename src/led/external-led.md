@@ -67,6 +67,9 @@ You can connect the Pico to the LED using jumper wires directly, or you can plac
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Circuit with Breadboard</div>
 </div>
 
+Note: On the Pico, the pin labels are on the back of the board, which can feel inconvenient when plugging in wires. I often had to check the pinout diagram whenever I wanted to use a GPIO pin. Use the Raspberry Pi logo on the front as a reference point and match it with the [pinout diagram](../pico2-pinout.md) to find the correct pins. Pin positions 2 and 39 are also printed on the front and can serve as additional guides.
+
+
 ## LED Blink - Simulation
 
 
