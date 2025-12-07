@@ -197,7 +197,7 @@ async fn main(_spawner: Spawner) {
     let mut led = Pwm::new_output_b(p.PWM_SLICE1, p.PIN_3, Default::default());
 
     let mut trigger = Output::new(p.PIN_17, Level::Low);
-    let echo = Input::new(p.PIN_16, Pull::Down);
+    let echo = Input::new(p.PIN_16, Pull::None);
 
     led.set_duty_cycle(0)
         .expect("duty cycle is within valid range");
