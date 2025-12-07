@@ -44,7 +44,7 @@
     - [HC-SR04 Circuit](./ultrasonic/hc-sr04-circuit.md)
     - [HC-SR04+ Circuit](./ultrasonic/circuit.md)
     - [With Embasssy](./ultrasonic/code.md)
-    - [With RP HAL](./ultrasonic/using-rp-hall.md)
+    - [With RP HAL](./ultrasonic/using-rp-hal.md)
 - [I2C](./core-concepts/i2c.md)
 - [OLED Display](./oled/index.md)
     - [Hello World](./oled/hello-oled.md)
