@@ -6,7 +6,7 @@ Let's start by creating our project. We'll use cargo-generate and use the templa
 In your terminal, type:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.2.0
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
 
 You will be asked a few questions:

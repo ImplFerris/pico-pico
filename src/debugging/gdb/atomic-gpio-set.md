@@ -78,7 +78,7 @@ You should see output similar to this:
 ```sh
 Thread 1 received signal SIGINT, Interrupt.
 rp235x_hal::gpio::eh1::{impl#1}::set_high<rp235x_hal::gpio::pin::bank0::Gpio25, rp235x_hal::gpio::pull::PullDown> (self=0x2007ffbd)
-    at /home/implrust/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rp235x-hal-0.3.0/src/gpio/mod.rs:1549
+    at /home/implrust/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rp235x-hal-0.3.1/src/gpio/mod.rs:1549
 1549            fn set_high(&mut self) -> Result<(), Self::Error> {
 ```
 

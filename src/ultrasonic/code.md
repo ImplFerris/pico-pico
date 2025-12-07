@@ -1,161 +1,298 @@
-## Writing Rust Code Use HC-SR04 Ultrasonic Sensor with Pico 2
+# Rust Tutorial: Using the HC-SR04 Sensor with the Pico 2
 
-We'll start by generating the project using the template, then modify the code to fit the current project's requirements.
-
-
-## Generating From template
-
-Refer to the [Template section](../cargo-generate.md) for details and instructions.
-
-To generate the project, run:
+We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using rp-hal. As usual, generate the project from the template with cargo-generate:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
-```
-When prompted, choose a name for your project-let's go with "bat-beacon". Don't forget to select `rp-hal` as the HAL.
-
-Then, navigate into the project folder:
-```sh
-cd PROJECT_NAME
-# For example, if you named your project "bat-beacon":
-# cd bat-beacon
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
 
-## Setup the LED Pin
-You should understand this code by now. If not, please complete the Blink LED section first.
+When prompted, give your project a name like "bat-beacon" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
 
-Quick recap: Here, we're configuring the PWM for the LED, which allows us to control the brightness by adjusting the duty cycle.
+## Additional Imports
+
+In addition to the usual boilerplate imports, you'll need to add these specific imports to your project.  Your code editor should provide auto-import suggestions for most of these, with the exception of the SetDutyCycle trait which you'll need to add manually.
 
 ```rust
-let pwm = &mut pwm_slices.pwm1;  // Access PWM slice 1
-pwm.set_ph_correct();            // Set phase-correct mode for smoother transitions
-pwm.enable();                    // Enable the PWM slice
-let led = &mut pwm.channel_b; // Select PWM channel B
-led.output_to(pins.gpio3);   // Set GPIO 3 as the PWM output pin
+// For GPIO
+use embassy_rp::gpio::{Input, Level, Output, Pull};
+
+// For PWM
+use embassy_rp::pwm::{Pwm, SetDutyCycle};
+
+// For time calculation
+use embassy_time::Instant;
 ```
 
-## Setup the Trigger Pin
-The Trigger pin on the ultrasonic sensor is used to start the ultrasonic pulse. It needs to be set as an output so we can control it to send the pulse.
+We need GPIO types to control our trigger and echo pins, PWM to control the LED brightness, and timing utilities to measure the ultrasonic pulse duration.
+
+
+## Mapping GPIO Pins
+
+By now, you should be familiar with PWM from the Dimming LED section. We will create a similar dimming effect here. But there's a key difference.  In the Dimming LED chapter, we made the LED fade in and out repeatedly using conditions. Here, we will increase the LED brightness only when an object gets closer to the sensor.
 
 ```rust
-let mut trigger = pins.gpio17.into_push_pull_output();
+// For Onboard LED
+// let mut led = Pwm::new_output_b(p.PWM_SLICE4, p.PIN_25, Default::default());
+
+// For external LED connected on GPIO 3
+let mut led = Pwm::new_output_b(p.PWM_SLICE1, p.PIN_3, Default::default());
+```
+You can use either the onboard LED or an external LED. I prefer using the external LED. You can see the gradual brightness changes much better.
+
+Next, let's initialize the LED to be off and get its maximum duty cycle value:
+
+```rust
+led.set_duty_cycle(0)
+    .expect("duty cycle is within valid range");
+
+let max_duty = led.max_duty_cycle();
+// defmt::info!("Max duty cycle {}", max_duty);
 ```
 
-## Setup the Echo Pin
-The Echo pin on the ultrasonic sensor receives the returning signal, which allows us to measure the time it took for the pulse to travel to an object and back. It's set as an input to detect the returning pulse.
+The duty cycle determines LED brightness; 0 is completely off, and max_duty is fully on.
+
+
+## Configuring Trigger and Echo Pins
+ 
+As you know, we have to send a signal to the trigger pin from the Pico, so we'll configure GPIO pin 17 (connected to the trigger pin) as an Output with an initial Low state. The sensor indicates distance through pulses on the echo pin, meaning it sends signals to the Pico (input to the Pico). So we'll configure GPIO pin 16 (connected to the echo pin) as an Input.
 
 ```rust
-let mut echo = pins.gpio16.into_pull_down_input();
+let mut trigger = Output::new(p.PIN_17, Level::Low);
+let echo = Input::new(p.PIN_16, Pull::Down);
 ```
 
-## 🦇 Light it Up 
+## Converting Distance to LED Brightness
 
-### Step 1: Send the Trigger Pulse
-First, we need to send a short pulse to the trigger pin to start the ultrasonic measurement.
-
-```rust
-// Ensure the Trigger pin is low before starting
-trigger.set_low().ok().unwrap();
-timer.delay_us(2);
-
-// Send a 10-microsecond high pulse
-trigger.set_high().ok().unwrap();
-timer.delay_us(10);
-trigger.set_low().ok().unwrap();
-```
-
-### Step 2: Measure the Echo Time
-Next, we will use two loops. The first loop will run as long as the echo pin state is LOW. Once it goes HIGH, we will record the current time in a variable. Then, we start the second loop, which will continue as long as the echo pin remains HIGH. When it returns to LOW, we will record the current time in another variable. The difference between these two times gives us the pulse width. 
+We need a function that converts distance measurements into appropriate duty cycle values. The closer an object is, the higher the duty cycle (brighter the LED):
 
 ```rust
-let mut time_low = 0;
-let mut time_high = 0;
+const MAX_DISTANCE_CM: f64 = 30.0;
 
-// Wait for the Echo pin to go high and note down the time
-while echo.is_low().ok().unwrap() {
-    time_low = timer.get_counter().ticks();
+fn calculate_duty_cycle(distance: f64, max_duty: u16) -> u16 {
+    if distance < MAX_DISTANCE_CM && distance >= 2.0 {
+        let normalized = (MAX_DISTANCE_CM - distance) / MAX_DISTANCE_CM;
+        // defmt::info!("duty cycle :{}", (normalized * max_duty as f64) as u16);
+        (normalized * max_duty as f64) as u16
+    } else {
+        0
+    }
 }
+```
 
-// Wait for the Echo pin to go low and note down the time
-while echo.is_high().ok().unwrap() {
-    time_high = timer.get_counter().ticks();
+This function takes the measured distance and the maximum duty cycle value. If the distance is between 2cm (the sensor's minimum range) and 30cm, we normalize it to a 0-1 range and multiply by the maximum duty cycle. Objects closer than 2cm or farther than 30cm result in the LED turning off (duty cycle of 0).
+
+## Measuring Distance with the Sensor
+
+We'll measure distance by sending an ultrasonic pulse and timing how long it takes to return:
+
+```rust
+const ECHO_TIMEOUT: Duration = Duration::from_millis(100);
+
+async fn measure_distance(trigger: &mut Output<'_>, echo: &Input<'_>) -> Option<f64> {
+    // Send trigger pulse
+    trigger.set_low();
+    Timer::after_micros(2).await;
+    trigger.set_high();
+    Timer::after_micros(10).await;
+    trigger.set_low();
+
+    // Wait for echo HIGH (sensor responding)
+    let timeout = Instant::now();
+    while echo.is_low() {
+        if timeout.elapsed() > ECHO_TIMEOUT {
+            defmt::warn!("Timeout waiting for HIGH");
+            return None; // Return early on timeout
+        }
+    }
+
+    let start = Instant::now();
+
+    // Wait for echo LOW (pulse complete)
+    let timeout = Instant::now();
+    while echo.is_high() {
+        if timeout.elapsed() > ECHO_TIMEOUT {
+            defmt::warn!("Timeout waiting for LOW");
+            return None; // Return early on timeout
+        }
+    }
+
+    let end = Instant::now();
+
+    // Calculate distance
+    let time_elapsed = end.checked_duration_since(start)?.as_micros();
+    let distance = time_elapsed as f64 * 0.0343 / 2.0;
+
+    Some(distance)
 }
-
-// Calculate the time taken for the signal to return
-let time_passed = time_high - time_low;
-
 ```
 
-### Step 3: Calculate Distance
-To calculate the distance, we need to use the pulse width. The pulse width tells us how long it took for the ultrasonic waves to travel to an obstacle and return. Since the pulse represents the round-trip time, we divide it by 2 to account for the journey to the obstacle and back.
+We begin by setting the trigger pin low for a brief moment, then raising it high for 10 microseconds. This creates the trigger pulse that instructs the sensor to emit an ultrasonic burst. After that, we wait for the Echo pin to rise. The time the Echo pin stays high represents the round-trip travel time of the sound wave. Using this duration, we compute the final distance value and return it.
 
-The speed of sound in air is approximately 0.0343 cm per microsecond. By multiplying the time (in microseconds) by this value and dividing by 2, we obtain the distance to the obstacle in centimeters. 
+We have also added a timeout while waiting for the echo pin to change state so the code does not get stuck indefinitely. When the pin fails to respond within the allowed time, we treat the attempt as a failed reading and return None, which lets the rest of the program continue running normally.
 
-```rust
-let distance = time_passed as f64 * 0.0343 / 2.0;
-```
+## The main loop
 
-### Step 4: PWM Duty cycle for LED
-Finally, we adjust the LED brightness based on the measured distance.
-
-The duty cycle percentage is calculated using our own logic, you can modify it to suit your needs. When the object is closer than 30 cm, the LED brightness will increase. The closer the object is to the ultrasonic module, the higher the calculated ratio will be, which in turn adjusts the duty cycle. This results in the LED brightness gradually increasing as the object approaches the sensor.
-
-```rust
-let duty_cycle = if distance < 30.0 {
-    let step = 30.0 - distance;
-    (step * 1500.) as u16 + 1000
-} else {
-    0
-};
-
-// Change the LED brightness
-led.set_duty_cycle(duty_cycle).unwrap();
-```
-
-### Complete Logic of the loop
-Note: This code snippet highlights the loop section and does not include the entire code.
+Finally, let's create our main loop that continuously reads the sensor and updates the LED:
 
 ```rust
 loop {
-    timer.delay_ms(5);
+    Timer::after_millis(10).await;
 
-    trigger.set_low().ok().unwrap();
-    timer.delay_us(2);
-    trigger.set_high().ok().unwrap();
-    timer.delay_us(10);
-    trigger.set_low().ok().unwrap();
-
-    let mut time_low = 0;
-    let mut time_high = 0;
-    while echo.is_low().ok().unwrap() {
-        time_low = timer.get_counter().ticks();
-    }
-    while echo.is_high().ok().unwrap() {
-        time_high = timer.get_counter().ticks();
-    }
-    let time_passed = time_high - time_low;
-
-    let distance = time_passed as f64 * 0.0343 / 2.0;
-
-    let duty_cycle = if distance < 30.0 {
-        let step = 30.0 - distance;
-        (step * 1500.) as u16 + 1000
-    } else {
-        0
+    let distance = match measure_distance(&mut trigger, &echo).await {
+        Some(d) => d,
+        None => {
+            Timer::after_secs(5).await;
+            continue; // Skip to next iteration
+        }
     };
-    led.set_duty_cycle(duty_cycle).unwrap();
+
+    let duty_cycle = calculate_duty_cycle(distance, max_duty);
+    led.set_duty_cycle(duty_cycle)
+        .expect("duty cycle is within valid range");
 }
 ```
 
+Every 10 milliseconds, we measure the distance. If the measurement succeeds, we calculate the appropriate LED brightness and apply it. If it fails (due to timeout or sensor issues), we wait 5 seconds before trying again.
+
+## The Full code
+
+Here's everything put together:
+
+```rust
+#![no_std]
+#![no_main]
+
+use embassy_executor::Spawner;
+use embassy_rp as hal;
+use embassy_rp::block::ImageDef;
+use embassy_time::{Duration, Timer};
+
+//Panic Handler
+use panic_probe as _;
+// Defmt Logging
+use defmt_rtt as _;
+
+// For GPIO
+use embassy_rp::gpio::{Input, Level, Output, Pull};
+
+// For PWM
+use embassy_rp::pwm::{Pwm, SetDutyCycle};
+
+// For time calculation
+use embassy_time::Instant;
+
+/// Tell the Boot ROM about our application
+#[unsafe(link_section = ".start_block")]
+#[used]
+pub static IMAGE_DEF: ImageDef = hal::block::ImageDef::secure_exe();
+
+#[embassy_executor::main]
+async fn main(_spawner: Spawner) {
+    let p = embassy_rp::init(Default::default());
+
+    // For Onboard LED
+    // let mut led = Pwm::new_output_b(p.PWM_SLICE4, p.PIN_25, Default::default());
+
+    // For external LED connected on GPIO 3
+    let mut led = Pwm::new_output_b(p.PWM_SLICE1, p.PIN_3, Default::default());
+
+    let mut trigger = Output::new(p.PIN_17, Level::Low);
+    let echo = Input::new(p.PIN_16, Pull::Down);
+
+    led.set_duty_cycle(0)
+        .expect("duty cycle is within valid range");
+
+    let max_duty = led.max_duty_cycle();
+    // defmt::info!("Max duty cycle {}", max_duty);
+
+    loop {
+        Timer::after_millis(10).await;
+
+        let distance = match measure_distance(&mut trigger, &echo).await {
+            Some(d) => d,
+            None => {
+                Timer::after_secs(5).await;
+                continue; // Skip to next iteration
+            }
+        };
+
+        let duty_cycle = calculate_duty_cycle(distance, max_duty);
+        led.set_duty_cycle(duty_cycle)
+            .expect("duty cycle is within valid range");
+    }
+}
+
+const ECHO_TIMEOUT: Duration = Duration::from_millis(100);
+
+async fn measure_distance(trigger: &mut Output<'_>, echo: &Input<'_>) -> Option<f64> {
+    // Send trigger pulse
+    trigger.set_low();
+    Timer::after_micros(2).await;
+    trigger.set_high();
+    Timer::after_micros(10).await;
+    trigger.set_low();
+
+    // Wait for echo HIGH (sensor responding)
+    let timeout = Instant::now();
+    while echo.is_low() {
+        if timeout.elapsed() > ECHO_TIMEOUT {
+            defmt::warn!("Timeout waiting for HIGH");
+            return None; // Return early on timeout
+        }
+    }
+
+    let start = Instant::now();
+
+    // Wait for echo LOW (pulse complete)
+    let timeout = Instant::now();
+    while echo.is_high() {
+        if timeout.elapsed() > ECHO_TIMEOUT {
+            defmt::warn!("Timeout waiting for LOW");
+            return None; // Return early on timeout
+        }
+    }
+
+    let end = Instant::now();
+
+    // Calculate distance
+    let time_elapsed = end.checked_duration_since(start)?.as_micros();
+    let distance = time_elapsed as f64 * 0.0343 / 2.0;
+
+    Some(distance)
+}
+
+const MAX_DISTANCE_CM: f64 = 30.0;
+
+fn calculate_duty_cycle(distance: f64, max_duty: u16) -> u16 {
+    if distance < MAX_DISTANCE_CM && distance >= 2.0 {
+        let normalized = (MAX_DISTANCE_CM - distance) / MAX_DISTANCE_CM;
+        // defmt::info!("duty cycle :{}", (normalized * max_duty as f64) as u16);
+        (normalized * max_duty as f64) as u16
+    } else {
+        0
+    }
+}
+
+// Program metadata for `picotool info`.
+// This isn't needed, but it's recomended to have these minimal entries.
+#[unsafe(link_section = ".bi_entries")]
+#[used]
+pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
+    embassy_rp::binary_info::rp_program_name!(c"ultrasonic"),
+    embassy_rp::binary_info::rp_program_description!(c"your program description"),
+    embassy_rp::binary_info::rp_cargo_version!(),
+    embassy_rp::binary_info::rp_program_build_attribute!(),
+];
+
+// End of file
+```
 
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `ultrasonic` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/ultrasonic
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/ultrasonic
 ```
 
-## Your Challenge
-1. Use Embassy framework instead of rp-hal
-2. Use the onboard LED instead

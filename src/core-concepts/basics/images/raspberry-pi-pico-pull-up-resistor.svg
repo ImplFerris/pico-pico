@@ -1,0 +1,69 @@
+<svg width="450" height="300" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="450" height="300" fill="#1e293b"/>
+  
+  <!-- Border for visibility -->
+  <rect width="450" height="300" fill="none" stroke="#475569" stroke-width="2"/>
+  
+  <!-- Pico Box -->
+  <rect x="15" y="30" width="200" height="240" fill="none" stroke="#00AA00" stroke-width="3"/>
+  
+  <!-- Pico Label -->
+  <text x="70" y="190" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#00AA00">Pico</text>
+  
+  <!-- pull-up resistor label -->
+  <text x="55" y="100" font-family="Arial, sans-serif" font-size="26" fill="#e2e8f0">pull-up</text>
+  <text x="55" y="120" font-family="Arial, sans-serif" font-size="26" fill="#e2e8f0">resistor</text>
+  
+  <!-- 3.3V connection point -->
+  <circle cx="215" cy="60" r="4" fill="#e2e8f0"/>
+  
+  <!-- GP10 connection point -->
+  <circle cx="215" cy="150" r="4" fill="#e2e8f0"/>
+  
+  <!-- GND connection point -->
+  <circle cx="215" cy="240" r="4" fill="#e2e8f0"/>
+  
+  <!-- 3.3V label -->
+  <text x="225" y="65" font-family="Arial, sans-serif" font-size="20" fill="#e2e8f0">3.3V</text>
+  
+  <!-- GP10 label -->
+  <text x="225" y="135" font-family="Arial, sans-serif" font-size="20" fill="#e2e8f0">GPIO</text>
+  
+  <!-- GND label -->
+  <text x="225" y="260" font-family="Arial, sans-serif" font-size="20" fill="#e2e8f0">GND</text>
+  
+  <!-- Wire from GP10 to connection point -->
+  <line x1="160" y1="150" x2="215" y2="150" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Small straight line before resistor -->
+  <line x1="160" y1="150" x2="160" y2="130" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Resistor symbol (vertical zigzag going up) -->
+  <path d="M 160 130 L 150 120 L 170 110 L 150 100 L 170 90 L 150 80 L 160 70" 
+        fill="none" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Wire from resistor to 3.3V -->
+  <line x1="160" y1="70" x2="160" y2="60" stroke="#e2e8f0" stroke-width="2.5"/>
+  <line x1="160" y1="60" x2="215" y2="60" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Wire from GND to switch -->
+  <line x1="215" y1="240" x2="340" y2="240" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Wire from switch to GP10 -->
+  <line x1="340" y1="150" x2="215" y2="150" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Switch symbol (vertical line with gap) -->
+  <line x1="340" y1="240" x2="340" y2="195" stroke="#e2e8f0" stroke-width="2.5"/>
+  <line x1="340" y1="165" x2="340" y2="150" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Switch movable part (angled line) -->
+  <line x1="340" y1="195" x2="355" y2="175" stroke="#e2e8f0" stroke-width="2.5"/>
+  
+  <!-- Connection points on switch -->
+  <circle cx="340" cy="240" r="4" fill="#e2e8f0"/>
+  <circle cx="340" cy="150" r="4" fill="#e2e8f0"/>
+  
+  <!-- Switch label -->
+  <text x="365" y="170" font-family="Arial, sans-serif" font-size="18" fill="#e2e8f0">Button</text>
+</svg>
