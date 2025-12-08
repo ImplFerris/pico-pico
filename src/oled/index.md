@@ -85,7 +85,7 @@ In addition to the usual crate like `rp-hal`, we will be using these new crates 
 
 ## Prerequisite
 
-- [I2C protocol](../core-concepts/i2c.md)
+- [I2C protocol](../i2c/index.md)
 
 
 ## Resources
