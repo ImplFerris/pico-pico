@@ -19,3 +19,7 @@ level = 1     # the depth to start folding
 
 [output.html.playground]
 editable = true
+
+[output.html.redirect]
+# some backlinks points to old url
+"/led/pwm-rp2350.html" = "/core-concepts/pwm/pwm-in-rp2350.html"

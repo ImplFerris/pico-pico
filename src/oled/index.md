@@ -1,93 +1,30 @@
 ## OLED Display
 
-In this section, we'll learn how to connect an OLED display module to the Raspberry Pi Pico 2.
+In this section, we'll learn how to connect an OLED display module to the Raspberry Pi Pico 2. OLED displays are one of the most fun components to work with because they open up so many creative possibilities. You can build games, create dashboards, or display sensor readings in a visual way.
 
-We'll create simple projects like displaying text and an image (display Ferris 🦀 image) on the OLED. We'll use the I2C protocol to connect the OLED display to the Pico.
-
-<img style="display: block; margin: auto;width:500px" alt="pico2" src="../images/oled-ssd1306.jpg"/>
-
-<!-- TODO: more info on the intro and in-depth technical info for the OLED -->
-
-### Hardware Requirements
-
-For this project, you'll need:
-- An OLED display (0.96 Inch I2C/IIC 4-Pin, 128x64 resolution, SSD1306 chip)
-- A breadboard
-- Jumper wires
+<img style="display: block; margin: auto;" title="oled display" src="./images/oled.jpg"/>
 
 
-## Setup
+To give you an idea of what is possible, I have built a few games using an OLED display. One of them is Pico Rex, a tiny dinosaur jumping game inspired by Chrome's offline dino. You can check it out [here](https://github.com/ImplFerris/pico-rex).
 
-<table>
-  <thead>
-    <tr>
-      <th>Pico Pin</th>
-      <th style="width: 250px; margin: 0 auto;">Wire</th>
-      <th>OLED Pin</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>GPIO 18</td>
-      <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire green" style="width: 200px; margin: 0 auto;">
-          <div class="male-left"></div>
-          <div class="male-right"></div>
-        </div>
-      </td>
-      <td>SDA</td>
-    </tr>
-    <tr>
-      <td>GPIO 19</td>
-      <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire yellow" style="width: 200px; margin: 0 auto;">
-          <div class="male-left"></div>
-          <div class="male-right"></div>
-        </div>
-      </td>
-      <td>SCL</td>
-    </tr>
-    <tr>
-      <td>3.3V</td>
-      <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire red" style="width: 200px; margin: 0 auto;">
-          <div class="male-left"></div>
-          <div class="male-right"></div>
-        </div>
-      </td>
-      <td>VCC</td>
-    </tr>
-    <tr>
-      <td>GND</td>
-      <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire black" style="width: 200px; margin: 0 auto;">
-          <div class="male-left"></div>
-          <div class="male-right"></div>
-        </div>
-      </td>
-      <td>GND</td>
-    </tr>
-  </tbody>
-</table>
+I have also made a small flappy-style game and a shooter game, which you can find along with other examples [here](https://github.com/implferris#embedded-rust-games).
 
-We will connect the SDA to GPIO 18 and the SCL to GPIO 19. Attach VCC to 3.3V for power, and GND to GND. This setup allows the OLED display to communicate with the microcontroller using I2C.
+As you learn how to use the display, feel free to experiment and build your own ideas. Even simple animations or text updates can be surprisingly fun to create.
 
+In next few chapters, we'll create simple projects like displaying text and an image (display Ferris 🦀 image) on the OLED. We'll use the I2C protocol to connect the OLED display to the Pico.
 
-<a href="./assets/pico-oled-circuit.jpg"><img style="display: block;  margin: auto;" alt="pico2" src="./assets/pico-oled-circuit.jpg"/></a>
+## Meet the Hardware
 
+OLED, short for Organic Light-Emitting Diode, is a popular display module. These displays come in various sizes and can support different colors. They communicate using either the I²C or SPI protocol.
 
-## New crates
-In addition to the usual crate like `rp-hal`, we will be using these new crates necessary for the project.
+For this exercise, we'll use a 0.96-inch OLED monochrome module with a resolution of 128 x 64. It operates at 3.3V. We can communicate using I2C communication protocol.
 
-- [`ssd1306`](https://github.com/rust-embedded-community/ssd1306): a driver for the SSD1306 OLED display, supporting both I2C and 4-wire SPI.
-- [`embedded-graphics`](https://github.com/embedded-graphics/embedded-graphics): a 2D graphics library tailored for memory-constrained embedded devices, enabling text and graphic rendering.
-- [`tinybmp`](https://github.com/embedded-graphics/tinybmp): a lightweight BMP parser for embedded, no-std environments. We'll use this to directly load `.bmp` images with the `embedded-graphics` crate, avoiding the need for raw image data.
+<img style="display: block; margin: auto;width:500px" alt="pico2" src="./images/oled-ssd1306.jpg"/>
 
-## Prerequisite
+Note: Most of the time, OLED displays come with pin headers included but not soldered. Soldering is a valuable skill to learn, but it requires care and preparation. Before attempting it, watch plenty of tutorials and do your research. It may feel challenging at first, but with practice, it gets easier. If you're not comfortable soldering yet, consider looking for a pre-soldered version of the display, though it may cost slightly more.
 
-- [I2C protocol](../i2c/index.md)
+### SSD1306
 
+The SSD1306 is the integrated controller chip that powers many small OLED displays including the module we are going to use(0.96-inch 128x64 module).  This controller handles the communication between the Pico and the OLED panel, enabling the display to show text, graphics, and more.
 
-## Resources
-
-- [SSD1306 Datasheet](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf)
+**DataSheet:**  You can find the datasheet for SSD1306 [here](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf).

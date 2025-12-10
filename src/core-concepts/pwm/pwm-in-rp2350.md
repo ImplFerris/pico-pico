@@ -79,7 +79,7 @@ channel.output_to(pins.gpio25);
 <style>
 .pwm-mapper {
     margin: 20px 0;
-    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    background: linear-gradient(135deg, #ad6f5315 0%, #5c3b2e15 100%);
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 20px;
@@ -107,8 +107,8 @@ channel.output_to(pins.gpio25);
 }
 
 .pwm-info {
-    background: linear-gradient(to right, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(135deg, #8a3a1015 0%, #30120715 100%);
+    /* color: white; */
     padding: 14px 16px;
     border-radius: 6px;
     margin-bottom: 20px;
@@ -117,7 +117,7 @@ channel.output_to(pins.gpio25);
 }
 
 .pwm-info strong {
-    color: white;
+    /* color: white; */
     font-weight: 600;
 }
 

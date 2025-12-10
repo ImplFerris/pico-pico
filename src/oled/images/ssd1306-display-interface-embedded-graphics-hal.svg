@@ -1,0 +1,80 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#1e1e1e"/>
+  
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .box { fill: #2d2d2d; stroke: #4a9eff; stroke-width: 2; }
+      .app-box { fill: #1e3a5f; stroke: #4a9eff; }
+      .api-box { fill: #3d2817; stroke: #ff9800; }
+      .driver-box { fill: #2d1b3d; stroke: #ce93d8; }
+      .hal-box { fill: #1b3d2d; stroke: #66bb6a; }
+      .hw-box { fill: #3d1b2d; stroke: #f48fb1; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #e0e0e0; }
+      .title { font-weight: bold; font-size: 16px; }
+      .small { font-size: 12px; fill: #b0b0b0; }
+      .arrow { stroke: #4a9eff; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .trait-arrow { stroke: #ff5252; stroke-width: 2; stroke-dasharray: 5,5; fill: none; marker-end: url(#arrowhead-red); }
+      .interface-box { fill: #1b3d3d; stroke: #4db6ac; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#4a9eff" />
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff5252" />
+    </marker>
+  </defs>
+  
+  <!-- Your App -->
+  <rect x="250" y="30" width="300" height="60" class="box app-box" rx="5"/>
+  <text x="400" y="55" class="text title" text-anchor="middle">Your App</text>
+  <text x="400" y="75" class="text small" text-anchor="middle">Draw shapes on the display</text>
+  
+  <!-- Arrows down - split to both boxes -->
+  <path d="M 400 90 L 400 120" class="arrow"/>
+  <path d="M 400 120 L 220 170" class="arrow"/>
+  <path d="M 400 120 L 580 170" class="arrow"/>
+  <text x="280" y="135" class="text small">uses</text>
+  <text x="500" y="135" class="text small">uses</text>
+  
+  <!-- Embedded Graphics -->
+  <rect x="50" y="170" width="280" height="100" class="box api-box" rx="5"/>
+  <text x="190" y="195" class="text title" text-anchor="middle">embedded-graphics</text>
+  <text x="190" y="220" class="text small" text-anchor="middle">Provides drawing primitives</text>
+  <text x="190" y="240" class="text small" text-anchor="middle">Circle, Rectangle, Text, etc.</text>
+  
+  <!-- SSD1306 Crate -->
+  <rect x="470" y="170" width="280" height="100" class="box driver-box" rx="5"/>
+  <text x="610" y="195" class="text title" text-anchor="middle">ssd1306 crate</text>
+  <text x="610" y="220" class="text small" text-anchor="middle">Display driver</text>
+  <text x="610" y="240" class="text small" text-anchor="middle">Implements DrawTarget</text>
+
+  <!-- Trait relationship arrow -->
+  <path d="M 470 220 L 330 220" class="trait-arrow"/>
+  <text x="400" y="210" class="text small" text-anchor="middle" fill="#ff5252">implements DrawTarget</text>
+
+  <!-- Arrow down from SSD1306 -->
+  <path d="M 610 270 L 610 310" class="arrow"/>
+  
+  <!-- Display Interface -->
+  <rect x="470" y="310" width="280" height="60" class="box interface-box" rx="5"/>
+  <text x="610" y="340" class="text title" text-anchor="middle">display-interface</text>
+  <text x="610" y="360" class="text small" text-anchor="middle">Connects driver to HAL</text>
+  
+  <!-- Arrow down -->
+  <path d="M 610 370 L 610 410" class="arrow"/>
+  
+  <!-- HAL Layer -->
+  <rect x="470" y="410" width="280" height="60" class="box hal-box" rx="5"/>
+  <text x="610" y="435" class="text title" text-anchor="middle">HAL (I2C or SPI)</text>
+  <text x="610" y="455" class="text small" text-anchor="middle">embassy-rp, rp-hal, etc.</text>
+  
+  <!-- Arrow down -->
+  <path d="M 610 470 L 610 510" class="arrow"/>
+  
+  <!-- Hardware -->
+  <rect x="470" y="510" width="280" height="60" class="box hw-box" rx="5"/>
+  <text x="610" y="540" class="text title" text-anchor="middle">Display Hardware</text>
+  <text x="610" y="560" class="text small" text-anchor="middle">SSD1306 chip</text>
+</svg>
