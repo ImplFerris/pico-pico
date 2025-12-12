@@ -1,6 +1,7 @@
 # Raspberry Pi Pico 2 Pinout Diagram
 
-> **Note:** You don't need to memorize or understand every pin right now. We will refer back to this section as needed while working through the exercises in this book.
+> [!TIP]
+> You don't need to memorize or understand every pin right now. We will refer back to this section as needed while working through the exercises in this book.
 
 ![Raspberry Pi Pico 2 Pinout Diagram](./images/raspberry-pi-pico2-rp2350-pinout-diagram.png)
 

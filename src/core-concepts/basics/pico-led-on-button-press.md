@@ -55,7 +55,8 @@ loop {
 }
 ```
 
-> <i class="fa-solid fa-bolt"></i> **Debounce:** If you reduce the delay, you might notice that sometimes a single button press triggers multiple detections. This is called "button bounce". When you press a physical button, the metal contacts inside briefly bounce against each other, creating multiple electrical signals in just a few milliseconds. In this example, the 3-second LED delay effectively masks any bounce issues, but in applications where you need to count individual button presses accurately, you'll need debouncing logic.
+> [!NOTE]
+> **Debounce:** If you reduce the delay, you might notice that sometimes a single button press triggers multiple detections. This is called "button bounce". When you press a physical button, the metal contacts inside briefly bounce against each other, creating multiple electrical signals in just a few milliseconds. In this example, the 3-second LED delay effectively masks any bounce issues, but in applications where you need to count individual button presses accurately, you'll need debouncing logic.
 
 We also log "Button pressed" using defmt. If you're using a debug probe, use the `cargo embed --release` command to see these logs in your terminal.
 

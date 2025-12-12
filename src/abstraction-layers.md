@@ -30,8 +30,8 @@ Embassy provides a separate crate called `embassy-rp` specifically for Raspber
 Throughout this book, we will use both rp-hal and embassy-rp for different exercises.
  
 ---
-> NOTE:
-> 
+
+> [!NOTE] 
 > The layers below the HAL are rarely used directly. In most cases, the PAC is accessed through the HAL, not on its own. Unless you are working with a chip that does not have a HAL available, there is usually no need to interact with the lower layers directly. In this book, we will focus on the HAL layer.
 
 

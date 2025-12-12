@@ -59,7 +59,8 @@ Thread 1 hit Breakpoint 1, 0x100002f8 in pico_debug::__cortex_m_rt_main () at sr
 63              led_pin.set_high().unwrap();
 ```
 
-> Note: You can check your breakpoints with `info break`. You can delete the breakpoint with `delete <number>`.
+> [!TIP]
+> You can check your breakpoints with `info break`. You can delete the breakpoint with `delete <number>`.
 
 Now that we're past the startup code, let's set our breakpoint on write_volatile:
 

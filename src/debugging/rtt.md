@@ -50,7 +50,8 @@ You can add the defmt-rtt crate in your project:
 defmt-rtt = "1.0"
 ```
 
-> Note: To see RTT and defmt logs, you need to run your program using probe-rs tools like the `cargo embed` command. These tools automatically open an RTT session and show the logs in your terminal
+> [!TIP]
+> To see RTT and defmt logs, you need to run your program using probe-rs tools like the `cargo embed` command. These tools automatically open an RTT session and show the logs in your terminal
 
 Then include it in your code:
 

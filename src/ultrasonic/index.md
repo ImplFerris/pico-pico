@@ -21,8 +21,7 @@ Today, you'll build your own distance sensor using an ultrasonic module; sending
 
 The HC-SR04+ is a simple and low cost ultrasonic distance sensor. It can measure distances from about 2 cm up to 400 cm. It works by sending out a short burst of ultrasonic sound and then listening for the echo. By measuring how long the echo takes to return, the sensor can calculate how far the object is.
 
-> <i class="fa-solid fa-bolt"></i> **Important Note about Variants:**
-> 
+> [!TIP]
 > The HC-SR04 normally operates at 5V, which can be problematic for the Raspberry Pi Pico. If possible, purchase the **HC-SR04+** version, which works with both 3.3V and 5V, making it more suitable for the Pico.
 > 
 > **Why This Matters:**

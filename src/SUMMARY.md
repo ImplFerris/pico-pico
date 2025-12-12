@@ -38,6 +38,8 @@
 - [Button](./core-concepts/basics/button.md)
     - [Pull Up and Down](./core-concepts/basics/pull-up-pull-down-resistors.md)
     - [LED on Button Press](./core-concepts/basics/pico-led-on-button-press.md)
+<!-- - [Async Tasks with Embassy](./async-tasks/index.md)
+    - [impl Async](./async-tasks/async-in-embedded-rust.md) -->
 - [Voltage Divider](./core-concepts/voltage-divider.md)
 - [Ultrasonic](./ultrasonic/index.md)
     - [How it works?](./ultrasonic/how-it-works.md)

@@ -113,6 +113,7 @@ led.set_duty_cycle(duty_cycle).unwrap();
 ```
 
 ### Complete Logic of the loop
+
 Note: This code snippet highlights the loop section and does not include the entire code.
 
 ```rust

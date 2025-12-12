@@ -2,13 +2,8 @@
 
 We will write data into block 2 of sector 4. First, we will print the data in the block before writing to it, and then again after writing. To perform the write operation, we will use the `mf_write` function from the mfrc522 crate.
 
-<div class="alert-box alert-box-danger">
-    <span class="icon"><i class="fa-solid fa-bolt"></i></span>
-    <div class="alert-content">
-        <b class="alert-title">Writing trailer block</b>
-        <p>Accidentally writing to the wrong block and overwriting the trailer block may alter the authentication key or access bits, which could make the sector unusable.</p>
-    </div>
-</div>
+> [!CAUTION]
+> Accidentally writing to the wrong block and overwriting the trailer block may alter the authentication key or access bits, which could make the sector unusable.
 
 
 ## Write function

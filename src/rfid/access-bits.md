@@ -2,13 +2,8 @@
 
 The tag includes access bits that enable access control for the data stored in the tag. This chapter will explore how these access bits function. This section might feel a bit overwhelming, so I'll try to make it as simple and easy to understand as possible.
 
-<div class="alert-box alert-box-danger">
-    <span class="icon"><i class="fa-solid fa-bolt"></i></span>
-    <div class="alert-content">
-        <b class="alert-title">Modifying Access Bits</b>
-        <p>Be careful when writing the access bits, as incorrect values can make the sector unusable. </p>
-    </div>
-</div>
+> [!CAUTION]
+> **Modifying Access Bits:** Be careful when writing the access bits, as incorrect values can make the sector unusable.
 
 
 ## Permissions
@@ -31,13 +26,9 @@ You can use just 3 bit-combinations per block to control its permissions. In the
 ### Table 1: Access conditions for the sector trailer
 In the original datasheet, the subscript number is not specified in the table. I have added the subscript "3", as the sector trailer is located at Block 3.
 
-<div class="alert-box alert-box-info">
-    <span class="icon"><i class="fa-solid fa-info"></i></span>
-    <div class="alert-content">
-        <b class="alert-title">Readable Key</b>
-        <p>If you can read the key, it cannot be used as an authentication key. Therefore, in this table, whenever Key B is readable, it cannot serve as the authentication key. If you've noticed, yes, the Key A can never be read.</p>
-    </div>
-</div>
+> [!IMPORTANT]
+> **Readable Key:** If you can read the key, it cannot be used as an authentication key. Therefore, in this table, whenever Key B is readable, it cannot serve as the authentication key. If you've noticed, yes, the Key A can never be read.
+
 
 <table class="table-bordered">
   <thead>

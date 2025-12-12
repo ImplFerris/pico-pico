@@ -94,7 +94,8 @@ if button.is_high() {
 }
 ```
 
-> <i class="fa-solid fa-bolt"></i> **Note:** There's a hardware bug (E9) in the initial RP2350 chip released in 2024 that affects internal pull-down resistors.
+> [!IMPORTANT]
+> There's a hardware bug (E9) in the initial RP2350 chip released in 2024 that affects internal pull-down resistors.
 >
 > The bug causes the GPIO pin to read HIGH even when the button isn't pressed, which is the opposite of what should happen. You can read more about this issue in [this blog post](https://www.doctormonk.com/2024/09/are-pico-2-rp2350-gpio-pins-broken.html).
 >

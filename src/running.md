@@ -1,4 +1,5 @@
 # Running the program
+
 Before we explore further examples, let's cover the general steps to build and run any program on the Raspberry Pi Pico 2. The Pico 2 contains both ARM Cortex-M33 and Hazard3 RISC-V processors, and we'll provide instructions for both architectures.
 
 Note: These commands should be run from your project folder. This is included here as a general step to avoid repetition. If you haven't created a project yet, begin with the Quick Start or Blink LED section.
@@ -20,7 +21,8 @@ To Flash your application onto the Pico 2, press and hold the BOOTSEL button. Wh
 cargo run --target=thumbv8m.main-none-eabihf
 ```
 
-**Note:** The example codes include a runner configuration in the `.cargo/config.toml` file, defined as:  
+> [!NOTE]
+> The example codes include a runner configuration in the `.cargo/config.toml` file, defined as:  
 `runner = "picotool load -u -v -x -t elf"`.  This means that when you execute `cargo run`, it actually invokes the `picotool` with the `load` subcommand to flash the program.
 
 
@@ -28,7 +30,8 @@ cargo run --target=thumbv8m.main-none-eabihf
 
 Use this command to build and run programs on the Raspberry Pi Pico 2 n RISC-V mode, utilizing the Hazard3 processors.
 
-> Note: This book focuses on ARM examples. Some examples may need changes before they work on RISC V mode. For simplicity, it is recommended to follow the ARM workflow while reading this book.
+> [!IMPORTANT]
+> This book focuses on ARM. Some examples may need changes before they work on RISC V mode. For simplicity, it is recommended to follow the ARM workflow while reading this book.
 
 ```sh
 # build the program

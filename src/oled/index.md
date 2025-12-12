@@ -21,7 +21,8 @@ For this exercise, we'll use a 0.96-inch OLED monochrome module with a resolutio
 
 <img style="display: block; margin: auto;width:500px" alt="pico2" src="./images/oled-ssd1306.jpg"/>
 
-Note: Most of the time, OLED displays come with pin headers included but not soldered. Soldering is a valuable skill to learn, but it requires care and preparation. Before attempting it, watch plenty of tutorials and do your research. It may feel challenging at first, but with practice, it gets easier. If you're not comfortable soldering yet, consider looking for a pre-soldered version of the display, though it may cost slightly more.
+> [!TIP]
+> Most of the time, OLED displays come with pin headers included but not soldered. Soldering is a valuable skill to learn, but it requires care and preparation. Before attempting it, watch plenty of tutorials and do your research. It may feel challenging at first, but with practice, it gets easier. If you're not comfortable soldering yet, consider looking for a pre-soldered version of the display, though it may cost slightly more.
 
 ### SSD1306
 

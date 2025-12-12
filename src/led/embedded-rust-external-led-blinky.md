@@ -47,7 +47,8 @@ loop {
 
 We are using the Output struct here because we want to send signals from the Pico to the LED. We set up GPIO 13 as an output pin and start it in the low (off) state.
 
-> Note: If you want to read signals from a component (like a button or sensor), you'll need to configure the GPIO pin as Input instead.
+> [!NOTE]
+> If you want to read signals from a component (like a button or sensor), you'll need to configure the GPIO pin as Input instead.
 
 Then we call set_high and set_low on the pin with a delay between them. This switches the pin between high and low, which turns the LED on and off.
 
