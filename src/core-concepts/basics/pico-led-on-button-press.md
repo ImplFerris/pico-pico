@@ -2,7 +2,6 @@
 
 Let's build a simple project that turns on an LED whenever the button is pressed. You can use an external LED or the built in LED. Just change the LED pin number in the code to match the one you are using.
 
-
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/button-with-raspberry-pi-pico.png" alt="Button with Raspberry Pi Pico 2" style="height:auto; display:block; margin:0 auto;"/>
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Button with Raspberry Pi Pico 2</div>
