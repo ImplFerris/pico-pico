@@ -4,7 +4,7 @@ The required power supply and pulse width can vary depending on the servo motor 
 
 1. Ground (GND): Connect the servo's GND pin (typically the brown wire, though it may vary) to any ground pin on the Pico 2.
 2. Power (VCC): Connect the servo's VCC pin (usually the red wire) to the Pico 2's 5V power pin(VBUS).
-3. Signal (PWM): Connect the servo's control (signal) pin to GPIO9 on the Pico 2, configured for PWM. This is commonly the orange wire (may vary).
+3. Signal (PWM): Connect the servo's control (signal) pin to GPIO15 on the Pico 2, configured for PWM. This is commonly the orange wire (may vary).
 
 <table style="margin-bottom:20px">
   <thead>
@@ -39,7 +39,7 @@ The required power supply and pulse width can vary depending on the servo motor 
       <td>Connects to ground.</td>
     </tr>
     <tr>
-      <td>GPIO 9</td>
+      <td>GPIO 15</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire yellow" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
