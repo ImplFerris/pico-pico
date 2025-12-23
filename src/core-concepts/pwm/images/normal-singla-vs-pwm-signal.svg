@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2025 implrust.com
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+-->
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+
+  <rect width="900" height="420" fill="#282828"/>
+
+  <!-- ===================== -->
+  <!-- Chart A -->
+  <!-- ===================== -->
+
+  <g stroke="#ebdbb2" stroke-width="2" fill="none">
+    <line x1="80" y1="40" x2="80" y2="170"/>
+    <line x1="80" y1="170" x2="820" y2="170"/>
+  </g>
+
+  <g font-size="14" fill="#ebdbb2" font-family="sans-serif">
+    <text x="30" y="70">3.3V</text>
+    <text x="30" y="170">0V</text>
+  </g>
+
+  <g stroke="#fe8019" stroke-width="4" fill="none">
+    <line x1="100" y1="70" x2="800" y2="70"/>
+  </g>
+
+  <g font-size="16" font-family="sans-serif" fill="#fabd2f">
+    <text x="100" y="30">Simple 3.3V Signal</text>
+  </g>
+
+  <!-- ===================== -->
+  <!-- Chart B -->
+  <!-- ===================== -->
+
+  <g stroke="#ebdbb2" stroke-width="2" fill="none">
+    <line x1="80" y1="230" x2="80" y2="360"/>
+    <line x1="80" y1="360" x2="820" y2="360"/>
+  </g>
+
+  <g font-size="14" fill="#ebdbb2" font-family="sans-serif">
+    <text x="30" y="260">3.3V</text>
+    <text x="30" y="360">0V</text>
+  </g>
+
+  <!-- Average voltage line (1.65V at 50% duty) -->
+  <g stroke="#83a598" stroke-width="2" stroke-dasharray="6 4">
+    <line x1="100" y1="310" x2="800" y2="310"/>
+  </g>
+
+  <g font-size="13" font-family="sans-serif" fill="#83a598">
+    <text x="805" y="314">Avg ≈ 1.65V</text>
+  </g>
+
+  <!-- PWM Signal -->
+  <g stroke="#fe8019" stroke-width="4" fill="none">
+    <polyline points="
+      100,360 100,260
+      160,260 160,360
+      220,360 220,260
+      280,260 280,360
+      340,360 340,260
+      400,260 400,360
+      460,360 460,260
+      520,260 520,360
+      580,360 580,260
+      640,260 640,360
+      700,360 700,260
+      760,260 760,360
+    "/>
+  </g>
+
+  <g font-size="16" font-family="sans-serif" fill="#fabd2f">
+    <text x="100" y="210">Signal Switching (50% Duty)</text>
+  </g>
+
+  <g font-size="14" font-family="sans-serif" fill="#ebdbb2" stroke="#ebdbb2" stroke-width="1">
+    <text x="115" y="240">50%</text>
+    <line x1="100" y1="250" x2="160" y2="250"/>
+    <line x1="100" y1="245" x2="100" y2="255"/>
+    <line x1="160" y1="245" x2="160" y2="255"/>
+  </g>
+
+  <!-- Footer credit -->
+  <g font-size="11" font-family="sans-serif" fill="#a89984">
+    <text x="890" y="405" text-anchor="end">implrust.com</text>
+  </g>
+</svg>
+

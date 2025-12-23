@@ -125,9 +125,9 @@ The Raspberry Pi Pico 2 provides a dedicated 3-pin debug header for SWD (Serial 
 ![Raspberry Pi Pico 2 SWD Pins](./images/raspberry-pi-pico2-rp2350-swd-pins.png)
 
 This interface consists of the following signals:
-- **SWDIO** – Serial data line
-- **SWCLK** – Serial clock line
-- **GND** – Ground reference
+- **SWDIO** - Serial data line
+- **SWCLK** - Serial clock line
+- **GND** - Ground reference
 
 These pins are not shared with general-purpose GPIO and are located on a separate debug header at the bottom edge of the board. You will typically use an external debug probe like the Raspberry Pi Debug Probe, CMSIS-DAP adapter, or other compatible tools (e.g., OpenOCD, probe-rs) to connect to these pins.
 

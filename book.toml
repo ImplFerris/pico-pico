@@ -11,6 +11,10 @@ preferred-dark-theme = "ayu"
 default-theme = "light"
 mathjax-support = true
 
+# Don't show table of contents for entire page in the navigation bar
+# Pretty confusing to look at the chapter 
+sidebar-header-nav = false
+
 additional-css = ["theme/css/custom.css"]
 
 [output.html.fold]
@@ -23,3 +27,5 @@ editable = true
 [output.html.redirect]
 # some backlinks points to old url
 "/led/pwm-rp2350.html" = "/core-concepts/pwm/pwm-in-rp2350.html"
+"/servo/pwm.html" = "/servo/how-servo-works.html"
+"/servo/servo.html" = "/servo/index.html"

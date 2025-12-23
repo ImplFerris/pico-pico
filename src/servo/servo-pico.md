@@ -1,60 +1,39 @@
-## Servo and Pico
+## Position and Duty Cycle
 
-To control a servo with the Raspberry Pi Pico, we need to set a 50Hz PWM frequency. Currently, RP-HAL doesn't allow directly setting the frequency, so we achieve this by adjusting the `top` and `div_int` values.
+To control a servo with the Raspberry Pi Pico, we need to set a 50 Hz PWM frequency. There is no straightforward way to set the frequency directly in embassy or rp-hal, at least to my knowledge.
 
-Refer the 1073th page of the [RP2350](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf) Datasheet to understand how `top` and `div_int` works.
+In embassy-rp, PWM is configured using a `Config` struct with multiple fields. For our use case, we mainly care about the top and divider values. The same applies to rp-hal, where we can set top, div_int, and div_frac separately.
 
-### Formula from datasheet
-The following formula from the datasheet is used to calculate the period and determine the output frequency based on the system clock frequency.
+You can either use the [manual method](/core-concepts/pwm/manual-calculate-top-divider.md) to find a suitable TOP value, or [use the form](/core-concepts/pwm/frequency-to-pwm-top-divider.md) to automatically calculate both TOP and the divider for the target frequency of 50 Hz.
 
-1. **Period calculation:**
-\\[
-\text{period} = (\text{TOP} + 1) \times (\text{CSR\_PH\_CORRECT} + 1) \times \left( \text{DIV\_INT} + \frac{\text{DIV\_FRAC}}{16} \right)
-\\]
+Using the manual method, I calculated a TOP value of 46,874 with a divider of 64. Using the form, I got a divider of 45.8125 with a TOP value of 65,483. We can use either of these configurations.
 
-2. **PWM output frequency calculation:**
+> [!NOTE]
+> In rp-hal, you have to set the divider integer and fraction separately. So a divider of 64 becomes div_int = 64 and div_frac = 0. A divider of 45.8125 becomes div_int = 45 and div_frac = 13.  
 
-\\[
-f_{PWM} = \frac{f_{sys}}{\text{period}} = \frac{f_{sys}}{(\text{TOP} + 1) \times (\text{CSR\_PH\_CORRECT} + 1) \times \left( \text{DIV\_INT} + \frac{\text{DIV\_FRAC}}{16} \right)}
-\\]
+## Position calculation based on top
 
-Where:
-- \\( f_{PWM} \\) is the PWM output frequency.
-- \\( f_{sys} \\) is the system clock frequency. For the pico2, it is is 150MHZ.
+Once the TOP value for a 50 Hz PWM signal is known, we can calculate the duty cycle values required to position the servo.
 
-### Let's calculate `top`
-We want the PWM frequency (f_pwm) to be 50 Hz. In order to achieve that, we are going to adjust the `top` and `div_int` values.
+The servo determines its position by measuring the pulse width, which is the amount of time the signal stays high during each 20 ms PWM cycle. The exact pulse widths are not identical for all servos and can vary slightly depending on the specific servo model. 
 
-The top value must be within the range of 0 to 65535 (since it's a 16-bit unsigned integer). To make sure the top value fits within this range, I chose values for the divisor (div_int) in powers of 2 (such as 8, 16, 32, 64), though this isn't strictly necessary (it's just a preference). In this case, we chose `div_int = 64` to calculate a top value that fits within the u16 range.
+In my case, the values were:
 
-With the chosen div_int and system parameters, we can calculate the top using the following formula:
-\\[
-\text{top} = \frac{150,000,000}{50 \times 64} - 1
-\\]
+- 0° at about 0.5 ms, which corresponds to a 2.5% duty cycle since 0.5 ms is 2.5% of a 20 ms period.
 
-\\[
-\text{top} = \frac{150,000,000}{3,200} - 1
-\\]
+- 90° at about 1.5 ms, which corresponds to a 7.5% duty cycle since 1.5 ms is 7.5% of a 20 ms period.
 
-\\[
-\text{top} = 46,875 - 1
-\\]
+- 180° at about 2.4 ms, which corresponds to a 12% duty cycle since 2.4 ms is 12% of a 20 ms period.
 
-\\[
-\text{top} = 46,874
-\\]
+In the LED dimming chapter, changing the duty cycle was straightforward. We only cared about brightness, not frequency, so using `set_duty_cycle_percent` was sufficient. That function accepts a u8 value from 0 to 100, which works well for whole-number percentages.
 
-After performing the calculation, we find that the top value is `46,874`.
+For servo control, this approach is not suitable because the required duty cycles include fractional values such as 2.5%, 7.5%, and 12%.
 
-You can experiment with different div_int and corresponding top values. Just ensure that div_int stays within the u8 range, top fits within the u16 range, and the formula yields a 50Hz frequency.
+We therefore have two alternatives. One option is to calculate the duty value directly from TOP and use `set_duty_cycle`, which accepts a u16. The other option is to use `set_duty_cycle_fraction`, which lets you specify the duty cycle as a numerator and denominator.
 
-Note:
-- In case you are wondering, we are not setting the `div_frac` which is 0 by default. That's why it is not included in the calculation.
-- We are not going to enable the phase correct for this exercise, so it also can be excluded from the calculation (since it is just multiplying by 1); if you enable phase correct, then the calculation will differ since you have to multiply by 2 (1+1)
+### Option 1: Manual calculation with set_duty_cycle
 
-
-### Position calculation based on top
-To calculate the duty cycle that corresponds to specific positions (0, 90, and 180 degrees), we use the following formula based on the top value:
+We first convert the pulse width into a percentage of the period. That percentage is then multiplied by TOP + 1 to obtain the duty value that configures the PWM output.
 
 ```rust
 const PWM_DIV_INT: u8 = 64;
@@ -68,6 +47,74 @@ const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16;
 // 2.4ms is 12% of 20ms; 180 degree in servo
 const MAX_DUTY: u16 = (TOP as f64 * (12. / 100.)) as u16;
 ```
+Once the duty value is calculated, it can be applied like this:
 
-We multiply the TOP value by a duty cycle percentage to determine the appropriate pulse width for each position of the servo. You might need to adjust the percentage based on your servo.
+```rust
+servo.set_duty_cycle(MIN_DUTY)
+            .expect("invalid min duty cycle");
+```
 
+### Option 2: Using set_duty_cycle_fraction
+
+Another option is to use `set_duty_cycle_fraction`. This will help us to set percentage with fraction. 
+
+In fact, set_duty_cycle_percent is a convenience method provided by embedded-hal that internally calls set_duty_cycle_fraction. It simply divides the input percentage by 100 and forwards the result as a fraction.
+
+From embedded-hal:
+  
+```rust
+ /// Set the duty cycle to `percent / 100`
+///
+/// The caller is responsible for ensuring that `percent` is less than or equal to 100.
+#[inline]
+fn set_duty_cycle_percent(&mut self, percent: u8) -> Result<(), Self::Error> {
+    self.set_duty_cycle_fraction(u16::from(percent), 100)
+}
+
+/// Set the duty cycle to `num / denom`.
+///
+/// The caller is responsible for ensuring that `num` is less than or equal to `denom`,
+/// and that `denom` is not zero.
+fn set_duty_cycle_fraction(&mut self, num: u16, denom: u16) -> Result<(), Self::Error> {
+    debug_assert!(denom != 0);
+    debug_assert!(num <= denom);
+    let duty = u32::from(num) * u32::from(self.max_duty_cycle()) / u32::from(denom);
+
+    // This is safe because we know that `num <= denom`, so `duty <= self.max_duty_cycle()` (u16)
+    #[allow(clippy::cast_possible_truncation)]
+    {
+        self.set_duty_cycle(duty as u16)
+    }
+}
+```
+
+This function does not accept floating-point values. Instead, it takes a numerator and a denominator, both as u16. To represent fractional percentages, we simply scale them into integers.
+
+Remember that 2.5% can be written as the fraction 2.5/100. Since we can't use decimals in the numerator, we multiply both the numerator and denominator by 10 to get equivalent integer fractions:
+
+```rust
+2.5/100 = (2.5 × 10)/(100 × 10) = 25/1000
+```
+
+Now we have an equivalent fraction using only integers. We can apply the same conversion to our other percentages:
+
+For example:
+- 2.5% can be written as 25 / 1000  (in other words, 25 is 2.5% of 1000)
+- 7.5% can be written as 75 / 1000  (in other words, 75 is 7.5% of 1000)
+- 12% can be written as 120 / 1000  (in other words, 120 is 12% of 1000)
+ 
+So in our code, we can apply it like this:
+
+```rust
+// Move servo to 0° position (2.5% duty cycle = 25/1000)
+servo.set_duty_cycle_fraction(25, 1000)
+    .expect("invalid duty cycle");
+
+// 90° position (7.5% duty cycle)
+servo.set_duty_cycle_fraction(75, 1000)
+    .expect("invalid duty cycle");
+
+// 180° position (12% duty cycle)
+servo.set_duty_cycle_fraction(120, 1000)
+    .expect("invalid duty cycle");
+```

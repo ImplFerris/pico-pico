@@ -1,13 +1,13 @@
 # PWM Peripheral in RP2350
 
-The RP2350 has a PWM peripheral with 12 PWM generators called slices. Each slice contains two output channels (A and B), giving you a total of 24 PWM output channels. For detailed specifications, see page 1076 of the [RP2350 Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf).
+The RP2350 has a PWM peripheral with 12 PWM generators called slices. Each slice contains two output channels (A and B), giving you a total of 24 PWM output channels. For detailed specifications, see page 1077 of the [RP2350 Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf#page=1078).
 
 
 Let's have a quick look at some of the key concepts.
 
 ## PWM Generator (Slice)
 
-A slice is the hardware block that generates PWM signals. Each of the 12 slices (PWM0–PWM11) is an independent timing unit with its own 16-bit counter, compare registers, control settings, and clock divider. This independence means you can configure each slice with different frequencies and resolutions.
+A slice is the hardware block that generates PWM signals. Each of the 12 slices (PWM0-PWM11) is an independent timing unit with its own 16-bit counter, compare registers, control settings, and clock divider. This independence means you can configure each slice with different frequencies and resolutions.
 
 
 ## Channel
@@ -17,7 +17,7 @@ Each slice contains two output channels: **Channel A** and **Channel B**. Both c
 
 ## Mapping of PWM channels to GPIO Pins
 
-Each GPIO pin connects to a specific slice and channel. You'll find the complete mapping table on page 1078 of the [RP2350 Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf). For example, GP25 (the onboard LED pin) maps to PWM slice 4, channel B, labeled as **4B**.
+Each GPIO pin connects to a specific slice and channel. You'll find the complete mapping table on page 1078 of the [RP2350 Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf#page=1079). For example, GP25 (the onboard LED pin) maps to PWM slice 4, channel B, labeled as **4B**.
 
 <img style="display: block; margin: auto;" alt="pico2" src="../images/gpio-map-pwm-channels.png"/>
 
