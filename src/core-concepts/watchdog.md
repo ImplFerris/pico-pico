@@ -1,34 +1,42 @@
 # Watchdog
 
-In January 1994, the Clementine spacecraft successfully mapped the moon. While traveling toward the asteroid Geographos, a floating point exception occurred on May 7, 1994, in the Honeywell 1750 processor, which was responsible for telemetry and various spacecraft functions.
+This book was originally written using rp-hal. Later, I revised it to primarily use Embassy. When working with rp-hal, there is a step where we explicitly configure the watchdog. To explain why that line exists and what it actually does, this chapter introduces the concept of a watchdog.
 
+In January 1994, the Clementine spacecraft successfully mapped the Moon. While it was traveling toward the asteroid Geographos, a floating point exception occurred on May 7, 1994, in the Honeywell 1750 processor. This processor handled telemetry and several other critical spacecraft functions.
 
 <img style="display: block; margin: auto;" width="400" alt="pico2" src="../images/homer-panic.jpg"/>
 
-The 1750 had a built-in watchdog timer but it was not utilized. The software team later regretted this decision and noted that a standard watchdog might not have been robust enough to detect the failure mode.
+The Honeywell 1750 included a built-in watchdog timer, but it was not used. After the failure, the software team publicly regretted this decision. They also noted that even a standard watchdog might not have been robust enough to detect that specific failure mode.
 
-So, What exactly is a watchdog? 
+So what exactly is a watchdog, and why do we use it?
 
-You might have already figured out its purpose.
+You may already have a rough idea.
 
 ## What is watchdog?
-A watchdog timer (WDT) is a hardware component used in embedded systems, its primary purpose is to detect software anomalies and automatically reset the processor if a malfunction occurs, ensuring that the system can recover without human intervention.
+
+A watchdog timer (WDT) is a hardware component commonly found in embedded systems. Its primary job is to detect software failures and automatically reset the processor when something goes wrong. This allows the system to recover without human intervention.
+
+Watchdogs are especially important in systems that must run unattended for long periods of time.
 
 ## How It Works?
 
-The watchdog timer functions like a counter that counts down from a preset value to zero. The embedded software is responsible for periodically "feeding the dog" (also known as "kicking the dog," a term I don't like) by resetting the counter before it reaches zero. If the software fails to reset the counter (perhaps due to an infinite loop or a system hang), the watchdog timer assumes there's a problem and triggers a reset of the processor. This allows the system to restart and return to normal operation.
+A watchdog timer behaves like a countdown timer. It starts counting down from a configured value toward zero. The software must periodically reset this timer before it reaches zero.
+
+This action is commonly called "feeding the watchdog". You may also see it referred to as "kicking the dog", although that term is widely used and I personally avoid it.
+
+If the software fails to reset the timer in time, for example due to an infinite loop, a deadlock, or a system hang, the watchdog assumes the system is no longer healthy and triggers a processor reset. After the reset, the system can start again in a known good state.
 
 **Feeding the dog:** 
 
-Think of a watchdog timer like a dog that needs regular feeding to stay healthy and active. Just as you must feed your dog at scheduled intervals, the watchdog timer requires periodic resets to ensure that the embedded system is operating correctly. Imagine the dog's energy levels decreasing over time. If it runs out of energy, it will bark to alert you (just like the watchdog timer triggers an alert if it reaches zero). To keep the dog happy and active, you need to feed it regularly (or reset the timer) before it runs out of energy!
+You can think of the watchdog timer like a dog that needs to be fed at regular intervals. As time passes, the dog gets hungrier. If it is not fed in time, it reacts. In embedded systems, that reaction is a hardware reset.
+
+To keep the system running normally, the software must regularly feed the watchdog by resetting its counter.
 
 <img style="display: block; margin: auto;" width="400" alt="pico2" src="../images/watchdog.jpg"/>
 
-By implementing a watchdog timer, embedded systems can be made self-reliant, essential for devices that may be unreachable by human operators, such as space probes or other remote applications.
-
 ## Code
 
-In this code snippet, we were setting up the watchdog driver, which is essential for the clock setup process.
+In the following snippet, we set up the watchdog driver. This is required because the clock initialization code depends on the watchdog being available.
 
 ```rust
 // Set up the watchdog driver - needed by the clock setup code
@@ -40,9 +48,3 @@ let mut watchdog = hal::Watchdog::new(pac.WATCHDOG);
 - [Born to fail](https://www.embedded.com/born-to-fail/)
 - [A Guide to Watchdog Timers for Embedded Systems](https://interrupt.memfault.com/blog/firmware-watchdog-best-practices)
 - [Proper Watchdog Timer Use](https://betterembsw.blogspot.com/2014/05/proper-watchdog-timer-use.html)
-
-
-
-
-
-
