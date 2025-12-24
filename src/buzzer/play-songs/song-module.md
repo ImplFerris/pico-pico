@@ -1,16 +1,30 @@
 # Melody Example: Game of Thrones Theme
 
-These section contains code snippets for the rust module `got`.
+This section contains code snippets for the Rust module got.
 
-### Tempo
-we declare the tempo for the song(you can also change and observe the result).
+## Importing music definitions
+
+The got module uses note constants and helper types defined in the music module. We bring them into scope using the following import:
+
+```rust
+use crate::music::*;
+```
+
+This allows the melody to use note constants like NOTE_E4 and NOTE_A4 directly, without writing the module name each time.
+
+## Tempo
+
+We declare the tempo for the song. You can change this value and observe how it affects playback speed.
 
 ```rust
 pub const TEMPO: u16 = 85;
 ```
 
 ## Melody Array
-We define the melody of the Game of Thrones theme using the notes and durations in an array. The melody consists of tuple of note frequencies and their corresponding durations. The duration of each note is represented by an integer, where positive values represent normal notes and negative values represent dotted notes.
+
+We define the melody of the Game of Thrones theme as an array of notes and durations. Each entry is a tuple containing a note frequency and its duration.
+
+The duration is represented by an integer. Positive values represent normal notes. Negative values represent dotted notes.
 
 ```rust
 pub const MELODY: [(f64, i16); 92] = [

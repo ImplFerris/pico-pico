@@ -6,7 +6,7 @@ This is a brief guide to music notes and sheet music. While it may not cover eve
 ### Music Sheet
 The notes for the music are based on the following sheet. You can refer to this [Musescore](https://musescore.com/user/8407786/scores/2156716) link for more details.
 
-<img style="display: block; margin: auto;" alt="pico2" src="./images/got-sheet.png"/>
+<img style="display: block; margin: auto;" alt="pico2" src="../images/got-sheet.png"/>
 
 In music, note durations are represented by the following types, which define how long each note is played:
 

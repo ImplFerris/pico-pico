@@ -1,5 +1,8 @@
-# Music module
-In the music module, we define constants for common notes and their corresponding frequency values.
+# Music module(music.rs)
+
+In the music module, we define constants for musical notes and their frequency values.
+
+Each note is stored as an f64 value so it can be used directly when configuring PWM frequency. A special REST value is also defined to represent silence between notes.
 
 ```rust
 // Note frequencies in Hertz as f64
@@ -95,52 +98,51 @@ pub const NOTE_DS8: f64 = 4978.0;
 pub const REST: f64 = 0.0; // No sound, for pauses
 ```
 
-Next, we create small helper `struct` to to represent a musical Song and provide some functions to calculate note durations based on tempo.
+## Song structure
 
-This struct has a single field whole_note, which will store the duration of a whole note in milliseconds. The reason we store the duration in milliseconds is that musical timing is often based on tempo (beats per minute, BPM), and we need to calculate how long each note lasts in terms of time.
-
+We define a small helper struct to represent a song and handle note timing.
 ```rust
-
 pub struct Song {
-    whole_note: u32,
+    whole_note: u64,
 }
 ```
 
-The formula (60_000 * 4) / tempo as u32 calculates the duration of a whole note in milliseconds. We use 60_000 because there are 60,000 milliseconds in a minute, and we multiply by 4 because a whole note is typically equivalent to four beats.
+The whole_note field stores how long a whole note lasts, measured in milliseconds. All other note lengths are calculated from this value. Using milliseconds makes it easy to apply delays when playing notes on a buzzer.
+
+## Creating a song
+
+When creating a Song, we calculate the duration of a whole note from the tempo.
 
 ```rust
 impl Song {
     pub fn new(tempo: u16) -> Self {
-        let whole_note = (60_000 * 4) / tempo as u32;
+        let whole_note = (60_000 * 4) / tempo as u64;
         Self { whole_note }
-    }
-```
-
-### `calc_note_duration`
-The `calc_note_duration` function calculates the duration of a musical note based on its division relative to a whole note. It takes in a `divider` parameter, which can be positive or negative, and returns the duration of the note in milliseconds.
-
-
-```rust
-    pub fn calc_note_duration(&self, divider: i16) -> u32 {
-        if divider > 0 {
-            self.whole_note / divider as u32
-        } else {
-            let duration = self.whole_note / divider.unsigned_abs() as u32;
-            (duration as f64 * 1.5) as u32
-        }
     }
 }
 ```
 
-#### Logic:
+Tempo is given in beats per minute. One minute has 60,000 milliseconds, and a whole note is equal to four beats. Dividing by the tempo gives the time, in milliseconds, that one whole note should last. 
 
-1. **When `divider > 0`:**
-   - If the `divider` is positive, the function calculates the note's duration by dividing the duration of a whole note by the `divider`.
-   - For example, if `divider = 4`, the function calculates the duration of a quarter note, which is 1/4 of a whole note.
+For example, at 120 BPM, one beat lasts 500 ms, so a whole note lasts 2000 ms.
 
-2. **When `divider <= 0`:**
-   - If the `divider` is negative, the function first converts the `divider` to a positive value using `unsigned_abs()`.
-   - It divides the whole note's duration by this absolute value, then multiplies the result by **1.5** to account for **dotted notes** (e.g., dotted quarter note, dotted eighth note), which last 1.5 times the duration of a regular note.
+## Calculating note duration
 
-This positive and negative logic is a custom approach (based on an Arduino example I referred to) to differentiate dotted notes. It is not related to standard musical logic.
+This method converts a note value into a time duration.
 
+```rust
+pub fn calc_note_duration(&self, divider: i16) -> u64 {
+    if divider > 0 {
+        self.whole_note / divider as u64
+    } else {
+        let duration = self.whole_note / divider.unsigned_abs() as u64;
+        (duration as f64 * 1.5) as u64
+    }
+}
+```
+
+The divider tells the code how the note relates to a whole note. A value of 1 means a whole note. A value of 2 means a half note. A value of 4 means a quarter note. The duration is calculated by dividing the whole note duration by this value.
+
+Negative values are used to represent dotted notes. A dotted note lasts one and a half times longer than the normal version of the same note. When the divider is negative, the code first calculates the normal duration using the absolute value, then multiplies it by 1.5.
+
+This positive and negative logic is a custom approach (based on an Arduino example I referred to) to differentiate dotted notes. It is not part of standard musical notation.

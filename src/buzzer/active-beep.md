@@ -1,46 +1,37 @@
 ## Beeping with an Active Buzzer
 
-Since you already know that an active buzzer is simple to use, you can make it beep just by powering it. In this exercise, we'll make it beep with just a little code.
+Since you already know how an active buzzer works, we can make it beep by simply turning a GPIO pin on and off.  In this exercise, we use a GPIO pin to power the buzzer, wait for a short time, turn it off, and repeat. This creates a clear beeping sound. 
 
+> [!Note]
+> This example is meant for an active buzzer. If you use a passive buzzer instead, the sound may be strange or inconsistent. Try this exercise only with an active buzzer.
 
 ### Hardware Requirements
-- **Active Buzzer**
-- **Female-to-Male** or **Male-to-Male** (depending on your setup)
-
-We'll use the Embassy HAL for this project.
-
+- Active buzzer
+- Jumper wires (female-to-male or male-to-male, depending on your setup)
 
 ## Project from template
 
+Create a new project:
+
 To set up the project, run:
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
 When prompted, give your project a name, like "active-beep" and select `embassy` as the HAL.
 
-Then, navigate into the project folder:
-```sh
-cd PROJECT_NAME
-# For example, if you named your project "active-beep":
-# cd active-beep
-```
+## Main logic
 
-All you need to do is change the output pin from 25 to 15 in the template code.
+Ensure the buzzer is connected to GPIO 15. The pin is toggled every 500 milliseconds to turn the buzzer on and off.
 
 ```rust
-// Active Buzzer
-#[embassy_executor::main]
-async fn main(_spawner: Spawner) {
-    let p = embassy_rp::init(Default::default());
-    let mut buzzer = Output::new(p.PIN_15, Level::Low); // Changed PIN number to 15
+let mut buzzer = Output::new(p.PIN_15, Level::Low);
 
-    loop {
-        buzzer.set_high();
-        Timer::after_millis(500).await;
+loop {
+    buzzer.set_high();
+    Timer::after_millis(500).await;
 
-        buzzer.set_low();
-        Timer::after_millis(500).await;
-    }
+    buzzer.set_low();
+    Timer::after_millis(500).await;
 }
 ```
 
