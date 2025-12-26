@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2025 implrust.com
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+-->
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="900" height="500" fill="#1e1e1e"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#83a598" text-anchor="middle">How Interrupts Work</text>
+  
+  <!-- Main execution timeline -->
+  <line x1="80" y1="150" x2="820" y2="150" stroke="#ebdbb2" stroke-width="3" stroke-dasharray="8,5"/>
+  <text x="450" y="100" font-family="Arial, sans-serif" font-size="16" fill="#ebdbb2" text-anchor="middle">Main Program Execution Timeline</text>
+  
+  <!-- Arrow at end of timeline -->
+  <polygon points="820,150 810,145 810,155" fill="#ebdbb2"/>
+  
+  <!-- Program blocks -->
+  <rect x="80" y="115" width="140" height="70" fill="#458588" stroke="#83a598" stroke-width="2" rx="5"/>
+  <text x="150" y="155" font-family="Arial, sans-serif" font-size="14" fill="#ebdbb2" text-anchor="middle" font-weight="bold">Instruction 1</text>
+  
+  <rect x="250" y="115" width="140" height="70" fill="#458588" stroke="#83a598" stroke-width="2" rx="5"/>
+  <text x="320" y="155" font-family="Arial, sans-serif" font-size="14" fill="#ebdbb2" text-anchor="middle" font-weight="bold">Instruction 2</text>
+  
+  <rect x="680" y="115" width="140" height="70" fill="#458588" stroke="#83a598" stroke-width="2" rx="5"/>
+  <text x="750" y="155" font-family="Arial, sans-serif" font-size="14" fill="#ebdbb2" text-anchor="middle" font-weight="bold">Instruction 3</text>
+  
+  <!-- Interrupt 1 -->
+  <g id="interrupt1">
+    <!-- Arrow down -->
+    <line x1="420" y1="150" x2="420" y2="240" stroke="#fabd2f" stroke-width="4"/>
+    <polygon points="420,240 415,230 425,230" fill="#fabd2f"/>
+    <text x="440" y="200" font-family="Arial, sans-serif" font-size="15" fill="#fabd2f" font-weight="bold">INTERRUPT!</text>
+    
+    <!-- ISR box -->
+    <rect x="340" y="240" width="160" height="90" fill="#d79921" stroke="#fabd2f" stroke-width="2" rx="5"/>
+    <text x="420" y="270" font-family="Arial, sans-serif" font-size="15" fill="#1e1e1e" text-anchor="middle" font-weight="bold">Interrupt Handler</text>
+    <text x="420" y="295" font-family="Arial, sans-serif" font-size="13" fill="#1e1e1e" text-anchor="middle">(ISR)</text>
+    <text x="420" y="315" font-family="Arial, sans-serif" font-size="11" fill="#1e1e1e" text-anchor="middle">Handle the event</text>
+    
+    <!-- Arrow back to timeline -->
+    <path d="M 500 295 L 620 295 L 620 150" stroke="#b8bb26" stroke-width="4" fill="none"/>
+    <polygon points="620,150 615,160 625,160" fill="#b8bb26"/>
+    <text x="550" y="275" font-family="Arial, sans-serif" font-size="14" fill="#b8bb26" font-weight="bold">RESUME</text>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="200" y="370" width="520" height="120" fill="#282828" stroke="#3c3836" stroke-width="2" rx="8"/>
+    <text x="450" y="400" font-family="Arial, sans-serif" font-size="16" fill="#83a598" text-anchor="middle" font-weight="bold">Key Concept</text>
+    
+    <circle cx="230" cy="430" r="6" fill="#fabd2f"/>
+    <text x="250" y="435" font-family="Arial, sans-serif" font-size="13" fill="#ebdbb2">Interrupt pauses execution</text>
+    
+    <circle cx="230" cy="465" r="6" fill="#d79921"/>
+    <text x="250" y="470" font-family="Arial, sans-serif" font-size="13" fill="#ebdbb2">Handler processes event quickly</text>
+    
+    <circle cx="480" cy="430" r="6" fill="#b8bb26"/>
+    <text x="500" y="435" font-family="Arial, sans-serif" font-size="13" fill="#ebdbb2">Resume from exact same point</text>
+    
+    <circle cx="480" cy="465" r="6" fill="#b8bb26"/>
+    <text x="500" y="470" font-family="Arial, sans-serif" font-size="13" fill="#ebdbb2">No CPU cycles wasted on polling !</text>
+    
+  </g>
+</svg>
