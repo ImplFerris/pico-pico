@@ -66,6 +66,8 @@
     - [With Embasssy](./ultrasonic/code.md)
     - [With RP HAL](./ultrasonic/using-rp-hal.md)
 - [Interrupts](./interrupts/index.md)
+    - [In RP2350](./interrupts/interrupts-in-rp2350.md)
+    - [In Embassy](./interrupts/using-interrupts-with-embassy.md)
 - [I2C](./i2c/index.md)
     - [I2C in RP2350](./i2c/rp2350-pico-i2c.md)
     - [I2C in Embedded Rust](./i2c/i2c-and-rust.md)
