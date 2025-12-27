@@ -122,6 +122,11 @@ On ARM Cortex-M processors such as the RP2350, the vector table is typically loc
 
 In embedded Rust and Embassy, the vector table is generated and configured automatically by the runtime and HAL. You rarely need to interact with it directly, but knowing that it exists helps clarify how interrupts are dispatched and how execution reaches the correct handler.
 
+<div class="image-with-caption" style="text-align:center; ">
+    <img src="./images/cortex-m-vector-table.png" alt="Vector table" style="height:auto; display:block; margin:0 auto;"/>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Vector table for Cortex-M0 - source: <a href="https://developer.arm.com/documentation/dui0497/a/BABIFJFG">Arm</a></div>
+</div>
+
 ## Interrupt priority levels
 
 Microcontrollers allow interrupts to have priority levels. A higher-priority interrupt can preempt a lower-priority one. This ensures that time-critical events are handled first.
