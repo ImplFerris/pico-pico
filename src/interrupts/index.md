@@ -120,8 +120,6 @@ The vector table is not limited to peripheral interrupts. It also contains entri
 
 On ARM Cortex-M processors such as the RP2350, the vector table is typically located at the start of flash memory at boot. The first entry contains the initial stack pointer, and the second entry contains the reset handler, which is the first code executed when the processor starts.
 
-In embedded Rust and Embassy, the vector table is generated and configured automatically by the runtime and HAL. You rarely need to interact with it directly, but knowing that it exists helps clarify how interrupts are dispatched and how execution reaches the correct handler.
-
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/cortex-m-vector-table.png" alt="Vector table" style="height:auto; display:block; margin:0 auto;"/>
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Vector table for Cortex-M0 - source: <a href="https://developer.arm.com/documentation/dui0497/a/BABIFJFG">Arm</a></div>
@@ -130,6 +128,19 @@ In embedded Rust and Embassy, the vector table is generated and configured autom
 ## Interrupt priority levels
 
 Microcontrollers allow interrupts to have priority levels. A higher-priority interrupt can preempt a lower-priority one. This ensures that time-critical events are handled first.
+
+## The NVIC: Interrupt Controller
+
+The Nested Vectored Interrupt Controller (NVIC) is the hardware component in ARM Cortex-M processors that manages interrupts.
+
+The NVIC is responsible for enabling and disabling individual interrupts, enforcing priority levels, and handling situations where multiple interrupts occur at once. When a higher-priority interrupt arrives, the NVIC can pause a lower-priority handler to deal with the more urgent event first.
+
+<div class="image-with-caption" style="text-align:center; ">
+    <img src="./images/interrupts-nvic.svg" alt="Nested Vectored Interrupt Controller" style="height:auto; display:block; margin:0 auto;"/>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">NVIC</div>
+</div>
+
+Priority numbers in ARM Cortex-M work in reverse order: lower numbers mean higher priority. Among configurable interrupts, Priority 0 is the most urgent, while higher numbers like Priority 15 are less urgent. This means a Priority 0 interrupt can preempt a Priority 2 handler, but not the other way around.
 
 ## Critical Sections
 
