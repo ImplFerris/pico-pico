@@ -1,9 +1,6 @@
 # Hello OLED
 
-We are going to keep things simple. We are just going to display "Hello, Rust!" on the OLED display. We will use Embassy but with I2C in blocking mode. Wait, you might wonder why blocking mode, especially with Embassy?
-
-There are situations where you will need blocking mode even in async projects. But the main reason we are choosing it here is because we have not introduced the interrupts concept yet in this book. So, we will start without it. 
-
+We are going to keep things simple. We will just display "Hello, Rust!" on the OLED display. We will first use Embassy, then we will do the same using rp-hal.
 
 ## Create Project
 
@@ -21,19 +18,26 @@ Add the following lines to your Cargo.toml under dependencies:
 
 ```toml
 embedded-graphics = "0.8.1"
-ssd1306 = "0.10.0"
+ssd1306 = { version = "0.10.0", features = ["async"] }
 ```
+
+We will enable the `async` feature so the ssd1306 driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
+
 
 ## Additional imports
 
 Add these imports at the top of your main.rs:
 
 ```rust
+// Interrupt Binding
+use embassy_rp::peripherals::I2C0;
+use embassy_rp::{bind_interrupts, i2c};
+
 // I2C
-use embassy_rp::i2c::{self, Config};
+use embassy_rp::i2c::{Config as I2cConfig, I2c};
 
 // OLED
-use ssd1306::{I2CDisplayInterface, Ssd1306, prelude::*};
+use ssd1306::{I2CDisplayInterface, Ssd1306Async, prelude::*};
 
 // Embedded Graphics
 use embedded_graphics::{
@@ -45,47 +49,55 @@ use embedded_graphics::{
 };
 ```
 
-The embassy_rp::i2c import provides I2C functionality for the RP2350. The ssd1306 import gives us the display driver we discussed earlier. Finally, embedded_graphics provides text rendering capabilities.
+## Bind I2C Interrupt
+
+We discussed this in detail in the interrupts section, so you should already be familiar with what it does.  This binds the `I2C0_IRQ` interrupt to the Embassy I2C interrupt handler for `I2C0`.
+
+```rust
+bind_interrupts!(struct Irqs {
+    I2C0_IRQ => i2c::InterruptHandler<I2C0>;
+});
+```
 
 ## Initialize I2C
 
 First, we need to set up the I2C bus to communicate with the display.
 
 ```rust
-let sda = p.PIN_18;
-let scl = p.PIN_19;
+let sda = p.PIN_16;
+let scl = p.PIN_17;
 
-let mut i2c_config = Config::default();
+let mut i2c_config = I2cConfig::default();
 i2c_config.frequency = 400_000; //400kHz
 
-let i2c = i2c::I2c::new_blocking(p.I2C1, scl, sda, i2c_config);
+let i2c_bus = I2c::new_async(p.I2C0, scl, sda, Irqs, i2c_config);
 ```
 
-We have connected the OLED's SDA line to Pin 18 and the SCL line to Pin 19. Throughout this chapter we will keep using these same pins. If you have connected your display to a different valid I2C pair, then adjust the code to match your wiring.
+We have connected the OLED's SDA line to Pin 16 and the SCL line to Pin 17. Throughout this chapter we will keep using these same pins. If you have connected your display to a different valid I2C pair, adjust the code to match your wiring.
 
-We are using the "new_blocking" method to create an I2C instance in blocking mode. You can use the default I2C configuration which runs at 100 kHz, or change it to 400 kHz which is the maximum frequency the OLED safely supports.
+We are using the new_async method to create an I2C instance in async mode. This allows I2C transfers to await instead of blocking the CPU. We use a 400 kHz bus speed, which is commonly supported by SSD1306 displays.
 
 ## Initialize Display
 
 Now we create the display interface and initialize it:
 
 ```rust
-let interface = I2CDisplayInterface::new(i2c);
+let i2c_interface = I2CDisplayInterface::new(i2c_bus);
 
-let mut display = Ssd1306::new(interface, DisplaySize128x64, DisplayRotation::Rotate0)
+let mut display = Ssd1306Async::new(i2c_interface, DisplaySize128x64, DisplayRotation::Rotate0)
     .into_buffered_graphics_mode();
 ```
 
+I2CDisplayInterface::new(i2c_bus) wraps the async I2C bus so it can be used by the SSD1306 driver. It uses the default I2C address 0x3C, which is standard for most SSD1306 modules.
+
+We create the display instance by specifying a 128x64 display and the default orientation. We also enable buffered graphics mode so we can draw into a RAM buffer using embedded-graphics.
+
 ```rust
-display.init().expect("failed to initialize the display");
+display
+    .init()
+    .await
+    .expect("failed to initialize the display");
 ```
-
-The I2CDisplayInterface::new(i2c) is a helper struct that wraps our I2C bus and prepares it for the SSD1306. It automatically uses the default I2C address 0x3C, which is standard for most SSD1306 displays.
-
-When we call Ssd1306::new(...), we create a new display instance. We pass it the interface we just created, specify that our display is 128 pixels wide by 64 pixels tall with DisplaySize128x64, and set DisplayRotation::Rotate0 for normal orientation (no rotation).
-
-The .into_buffered_graphics_mode() method converts the display into buffered graphics mode. This gives us the DrawTarget trait so we can use embedded-graphics for drawing.
-
 Finally, display.init() sends initialization commands to the display hardware. This wakes up the display and configures it properly.
 
 
@@ -122,6 +134,7 @@ Finally, we send the buffer contents to the actual OLED hardware:
 ```rust
 display
     .flush()
+    .await
     .expect("failed to flush data to display");
 ```
 
@@ -145,11 +158,15 @@ use panic_probe as _;
 // Defmt Logging
 use defmt_rtt as _;
 
+// Interrupt Binding
+use embassy_rp::peripherals::I2C0;
+use embassy_rp::{bind_interrupts, i2c};
+
 // I2C
-use embassy_rp::i2c::{self, Config};
+use embassy_rp::i2c::{Config as I2cConfig, I2c};
 
 // OLED
-use ssd1306::{I2CDisplayInterface, Ssd1306, prelude::*};
+use ssd1306::{I2CDisplayInterface, Ssd1306Async, prelude::*};
 
 // Embedded Graphics
 use embedded_graphics::{
@@ -165,24 +182,32 @@ use embedded_graphics::{
 #[used]
 pub static IMAGE_DEF: ImageDef = hal::block::ImageDef::secure_exe();
 
+bind_interrupts!(struct Irqs {
+    I2C0_IRQ => i2c::InterruptHandler<I2C0>;
+});
+
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
 
-    let sda = p.PIN_18;
-    let scl = p.PIN_19;
+    let sda = p.PIN_16;
+    let scl = p.PIN_17;
 
-    let mut i2c_config = Config::default();
+    let mut i2c_config = I2cConfig::default();
     i2c_config.frequency = 400_000; //400kHz
 
-    let i2c = i2c::I2c::new_blocking(p.I2C1, scl, sda, i2c_config);
+    let i2c_bus = I2c::new_async(p.I2C0, scl, sda, Irqs, i2c_config);
 
-    let interface = I2CDisplayInterface::new(i2c);
+    let i2c_interface = I2CDisplayInterface::new(i2c_bus);
 
-    let mut display = Ssd1306::new(interface, DisplaySize128x64, DisplayRotation::Rotate0)
+    let mut display = Ssd1306Async::new(i2c_interface, DisplaySize128x64, DisplayRotation::Rotate0)
         .into_buffered_graphics_mode();
 
-    display.init().expect("failed to initialize the display");
+    display
+        .init()
+        .await
+        .expect("failed to initialize the display");
+
     let text_style = MonoTextStyleBuilder::new()
         .font(&FONT_6X10)
         .text_color(BinaryColor::On)
@@ -195,6 +220,7 @@ async fn main(_spawner: Spawner) {
 
     display
         .flush()
+        .await
         .expect("failed to flush data to display");
 
     loop {
@@ -218,10 +244,10 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 ## Clone the existing project
 
-You can clone (or refer) project I created and navigate to the `blocking/hello-oled` folder.
+You can clone (or refer) project I created and navigate to the `hello-oled` folder.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects
-cd pico2-embassy-projects/blocking/hello-oled
+cd pico2-embassy-projects/oled/hello-oled
 ```
 

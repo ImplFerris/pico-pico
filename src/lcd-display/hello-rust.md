@@ -1,79 +1,123 @@
 # "Hello, Rust!" in LCD Display
 
-In this program, we will just print "Hello, Rust!" text in the LCD display. 
+We will create a simple program that prints "Hello, Rust!" on the LCD screen. This helps us quickly check that the wiring, I2C setup, and LCD configuration are correct before moving on to the next exercise.
+
 
 ## HD44780 Drivers
-During my research, I came across many Rust crates for controll the LCD Display, but these two stood out as working well. In this program, we will start by using the `hd44780-driver` crate.
-- [hd44780-driver](https://crates.io/crates/hd44780-driver) 
-- [liquid_crystal](https://crates.io/crates/liquid_crystal) 
+
+You can find driver crates by searching for the hardware controller name HD44780. Sometimes searching by the display module name, such as lcd1602, also works.
+
+While looking around, I came across several Rust crates that can control this LCD. Some of them even support async. You could also write your own driver by referring to the datasheet, but that is beyond the scope of this chapter.
+
+> [!TIP]
+> If you want to learn how to write your own embedded Rust drivers, you can refer to the Rust Embedded Drivers (RED) book here: [https://red.implrust.com/]
+
+For now, we will use one of the existing crates. You are free to try other crates later. Just read the crate documentation and adapt the code if needed.
+
+In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver) 
+(https://red.implrust.com/)
 
 
 ### Project from template
 
-To set up the project, run:
-```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
-```
-When prompted, give your project a name, like "lcd-hello" and select `RP-HAL` as the HAL.
+We will start by creating a new project using the template. 
 
-Then, navigate into the project folder:
 ```sh
-cd PROJECT_NAME
-# For example, if you named your project "lcd-hello":
-# cd lcd-hello
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
+When prompted, give your project a name, like "hello-lcd" and select `embassy` as the HAL.
 
 ### Additional Crates required
-Update your Cargo.toml to add these additional crate along with the existing dependencies.
+
+Add the following dependency to Cargo.toml along with the existing ones:
 
 ```rust
 hd44780-driver = "0.4.0"
 ```
 
- ### Additional imports
+## Additional imports
+
+Add the imports required for I2C and the LCD driver.
 
 ```rust
+// I2C
+use embassy_rp::i2c::Config as I2cConfig;
+use embassy_rp::i2c::{self}; // for convenience, importing as alias
+
+// LCD Driver
 use hd44780_driver::HD44780;
+
+use embassy_time::Delay;
 ```
 
+## I2C Address
 
-### Mapping Pico and LCD Pins
-
-We connect GPIO16 to the RS pin, GPIO17 to the Enable (E) pin, and GPIO18-21 to the D4-D7 data pins of the LCD. We're using only 4 data pins since we will be working on 4-bit mode.
+LCD1602 I2C adapters typically use address `0x27`, though some modules use `0x3F` instead depending on the adapter. Check your module's datasheet or try both addresses if you're unsure.
 
 ```rust
-// Read Select Pin
-let rs = pins.gpio16.into_push_pull_output();
-
-// Enable Pin
-let en = pins.gpio17.into_push_pull_output();
-
-// Data Pins
-let d4 = pins.gpio18.into_push_pull_output();
-let d5 = pins.gpio19.into_push_pull_output();
-let d6 = pins.gpio20.into_push_pull_output();
-let d7 = pins.gpio21.into_push_pull_output();
-
+const LCD_I2C_ADDRESS: u8 = 0x27;
 ```
 
-### Write Text to the LCD
-Here, we initialize the LCD module, clear the screen, and then write the text "Hello, Rust!".
+## I2C Setup
+
+We'll configure the I2C interface using GPIO 16 for SDA and GPIO 17 for SCL, with a frequency of 100 kHz.
+
+```rust
+let sda = p.PIN_16;
+let scl = p.PIN_17;
+
+let mut i2c_config = I2cConfig::default();
+i2c_config.frequency = 100_000; //100kHz
+
+let i2c = i2c::I2c::new_blocking(p.I2C0, scl, sda, i2c_config);
+```
+
+## LCD Initialization
+
+Now let's create the LCD driver instance with our I2C interface:
+
 ```rust
 // LCD Init
-let mut lcd = HD44780::new_4bit(rs, en, d4, d5, d6, d7, &mut timer).unwrap();
+let mut lcd =
+    HD44780::new_i2c(i2c, LCD_I2C_ADDRESS, &mut Delay).expect("failed to initialize lcd");
 
-// Clear the screen
-lcd.reset(&mut timer).unwrap();
-lcd.clear(&mut timer).unwrap();
-
-// Write to the top line
-lcd.write_str("Hello, Rust!", &mut timer).unwrap();
 ```
 
+## Clear the Display
+
+Before we write anything, we'll reset and clear the screen:
+
+```rust
+// Clear the screen
+lcd.reset(&mut Delay).expect("failed to reset lcd screen");
+lcd.clear(&mut Delay).expect("failed to clear the screen");
+```
+
+## Write Text to the LCD
+
+Finally, let's write our message to the LCD:
+
+```rust
+// Write to the top line
+lcd.write_str("Hello, Rust!", &mut Delay)
+    .expect("failed to write text to LCD");
+```
+
+
 ## Clone the existing project
-You can clone (or refer) project I created and navigate to the `lcd-hello` folder.
+
+You can clone (or refer) project I created and navigate to the `hello-lcd` folder.
+
+```sh
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/lcd/hello-lcd/
+```
+
+## rp-hal version
+
+You can clone (or refer) project I created and navigate to the `hello-lcd` folder.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/lcd-hello/
+cd pico2-rp-projects/lcd/hello-lcd/
 ```

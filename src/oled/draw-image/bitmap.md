@@ -20,7 +20,7 @@ We will copy the oled-rawimg project and work on top of that.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects
-cp -r pico2-embassy-projects/blocking/oled-rawimg ~/YOUR_PROJECT_FOLDER/oled-bmp
+cp -r pico2-embassy-projects/oled/oled-rawimg ~/YOUR_PROJECT_FOLDER/oled-bmp
 ```
 
 or you can simply create a fresh project from the template and follow the same steps we used earlier.
@@ -31,7 +31,6 @@ We need one more crate called "tinybmp" to load the bmp image.
 
 ```toml
 tinybmp = "0.6.0"
-
 ```
 
 ## Using the BMP File
@@ -55,7 +54,7 @@ image
     .expect("failed to draw text to display");
 
 defmt::info!("Displaying image");
-display.flush().expect("failed to flush data to display");
+display.flush().await.expect("failed to flush data to display");
 ```
 
 ## Clone the existing project
@@ -64,7 +63,7 @@ You can also clone (or refer) project I created and navigate to the `oled-bmp` f
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects
-cd pico2-embassy-projects/blocking/oled-bmp
+cd pico2-embassy-projects/oled/oled-bmp
 ```
 
 ## Full code
@@ -83,11 +82,15 @@ use panic_probe as _;
 // Defmt Logging
 use defmt_rtt as _;
 
+// Interrupt Binding
+use embassy_rp::peripherals::I2C0;
+use embassy_rp::{bind_interrupts, i2c};
+
 // I2C
-use embassy_rp::i2c::{self, Config};
+use embassy_rp::i2c::{Config as I2cConfig, I2c};
 
 // OLED
-use ssd1306::{I2CDisplayInterface, Ssd1306, prelude::*};
+use ssd1306::{I2CDisplayInterface, Ssd1306Async, prelude::*};
 
 // Embedded Graphics
 use embedded_graphics::{image::Image, prelude::Point, prelude::*};
@@ -98,24 +101,31 @@ use tinybmp::Bmp;
 #[used]
 pub static IMAGE_DEF: ImageDef = hal::block::ImageDef::secure_exe();
 
+bind_interrupts!(struct Irqs {
+    I2C0_IRQ => i2c::InterruptHandler<I2C0>;
+});
+
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
 
-    let sda = p.PIN_18;
-    let scl = p.PIN_19;
+    let sda = p.PIN_16;
+    let scl = p.PIN_17;
 
-    let mut i2c_config = Config::default();
-    i2c_config.frequency = 400_000; //400kHz
+    let mut i2c_config = I2cConfig::default();
+    i2c_config.frequency = 400_000; // 400kHz
 
-    let i2c = i2c::I2c::new_blocking(p.I2C1, scl, sda, i2c_config);
+    let i2c_bus = I2c::new_async(p.I2C0, scl, sda, Irqs, i2c_config);
 
-    let interface = I2CDisplayInterface::new(i2c);
+    let i2c_interface = I2CDisplayInterface::new(i2c_bus);
 
-    let mut display = Ssd1306::new(interface, DisplaySize128x64, DisplayRotation::Rotate0)
+    let mut display = Ssd1306Async::new(i2c_interface, DisplaySize128x64, DisplayRotation::Rotate0)
         .into_buffered_graphics_mode();
 
-    display.init().expect("failed to initialize the display");
+    display
+        .init()
+        .await
+        .expect("failed to initialize the display");
 
     // Include the BMP file data.
     let bmp_data = include_bytes!("../ferris.bmp");
@@ -131,7 +141,10 @@ async fn main(_spawner: Spawner) {
         .expect("failed to draw text to display");
 
     defmt::info!("Displaying image");
-    display.flush().expect("failed to flush data to display");
+    display
+        .flush()
+        .await
+        .expect("failed to flush data to display");
 
     loop {
         Timer::after_millis(100).await;

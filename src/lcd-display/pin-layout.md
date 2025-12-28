@@ -1,12 +1,57 @@
 ## Pin Layout
 
-The LCD has a total of 16 pins for the parallel interface.
+When using the parallel interface, the LCD exposes a total of 16 pins. These pins provide power, contrast control, control signals, data lines, and backlight connections.
+
+In the I2C interface, these signals are simplified and exposed through fewer pins. We will first look at the I2C variant, followed by the parallel interface.
+
+## I2C Pin Layout
+
+The I2C adapter simplifies the connection by converting I2C commands into parallel signals internally. From the microcontroller side, we only need power and the two I2C lines.
+
+<img style="display: block; margin: auto;" alt="lcd1602" src="./images/lcd-i2c-pins.jpg"/>
+<br/>
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>Label</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><span class="slanted-text red">VCC</span></td>
+      <td>Power supply (typically 5V)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><span class="slanted-text black">GND</span></td>
+      <td>Ground</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><span class="slanted-text green">SDA</span></td>
+      <td>Serial Data Line for I2C communication</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><span class="slanted-text blue">SCL</span></td>
+      <td>Serial Clock Line for I2C communication</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## Parallel Interface Pin Layout
+
+In the parallel interface, the microcontroller talks directly to the HD44780 controller. This gives more control but requires more wiring and careful timing.
 
 <img style="display: block; margin: auto;" alt="lcd1602" src="./images/lcd1602-pin-layout.jpg"/>
 
 <br/>
 
- <table border="1" style="border-collapse: collapse; width: 100%;">
+<table border="1" style="border-collapse: collapse; width: 100%;">
   <thead>
     <tr>
       <th>Pin Position</th>
@@ -18,92 +63,115 @@ The LCD has a total of 16 pins for the parallel interface.
     <tr>
       <td>1</td>
       <td><span class="slanted-text black">VSS</span></td>
-      <td>Should be connected to the Ground.</td>
+      <td>
+        Ground (GND).
+      </td>
     </tr>
     <tr>
       <td>2</td>
-      <td><span class="slanted-text red">VSS</span></td>
-      <td>Power supply (5V) for the logic</td>
+      <td><span class="slanted-text red">VDD</span></td>
+      <td>
+        Power supply for the LCD logic, typically 5V.
+      </td>
     </tr>
     <tr>
       <td>3</td>
-      <td><span class="slanted-text purple">V<sub>O</sub></span></td>
+      <td><span class="slanted-text purple">V<sub>o</sub></span></td>
       <td>
-        Contrast adjustment:<br>
-        - If you use a potentiometer (10k), connect the middle pin to adjust the contrast. Other pins of the potentiometer should be connected to 5V (or 3.3V) and GND.<br>
-        - I used two 1k resistors instead, which was sufficient for this exercise.
+        Contrast control pin.<br>
+        - This pin expects an analog voltage between GND and VDD.<br>
+        - Recommended: Use a 10k potentiometer as a voltage divider, with the wiper connected to V<sub>o</sub> and the other two pins to VDD and GND.<br>
+        - Alternative: Use fixed resistors as a voltage divider between VDD and GND, with the midpoint connected to V<sub>o</sub>.
       </td>
     </tr>
     <tr>
       <td>4</td>
       <td><span class="slanted-text indigo">RS</span></td>
       <td>
-        Register select pin:<br>
-        - Set LOW (RS = 0) to send commands to the LCD.<br>
-        - Set HIGH (RS = 1) to send data to the LCD.
+        Register Select:<br>
+        - LOW (RS = 0): Instruction or command register.<br>
+        - HIGH (RS = 1): Data register.
       </td>
     </tr>
     <tr>
       <td>5</td>
       <td><span class="slanted-text brown">RW</span></td>
       <td>
-        Read/Write pin:<br>
-        - Set LOW (RW = 0) to write to the LCD, which is what we will mostly do.<br>
-        - Set HIGH (RW = 1) to read from the LCD (rarely used).<br>
-        - We will connect this to Ground since we’re only writing.
+        Read or Write control:<br>
+        - LOW (RW = 0): Write to LCD.<br>
+        - HIGH (RW = 1): Read from LCD.<br>
+        - Commonly tied to GND for write-only operation.
       </td>
     </tr>
     <tr>
       <td>6</td>
       <td><span class="slanted-text green">E</span></td>
       <td>
-        The Enable pin is pulsed high and then brought back to low (ground) to trigger the LCD to accept and process data.
+        Enable pin. Data or commands are latched on the HIGH to LOW transition of this pin.
       </td>
     </tr>
     <tr>
-      <td>7-10</td>
-      <td><span class="slanted-text black">D0 - D3</span></td>
-      <td>These are the 4 lower-order data bits, used only in 8-bit mode. If you are using 4-bit mode, leave these pins unconnected.</td>
+      <td>7–10</td>
+      <td><span class="slanted-text black">D0–D3</span></td>
+      <td>
+        Lower data bits. Used only in 8-bit mode.
+        Leave unconnected when using 4-bit mode.
+      </td>
     </tr>
     <tr>
-      <td>11-14</td>
-      <td><span class="slanted-text blue">D4 - D7</span></td>
-      <td>These are the 4 higher-order data bits, used to represent the data in 4-bit mode.</td>
+      <td>11–14</td>
+      <td><span class="slanted-text blue">D4–D7</span></td>
+      <td>
+        Higher data bits. Used for data transfer in both 4-bit and 8-bit modes.
+        In 4-bit mode, all data is sent using only these pins.
+      </td>
     </tr>
     <tr>
       <td>15</td>
       <td><span class="slanted-text red">A</span></td>
-      <td>Anode of the backlight. Should be connected to 5V.</td>
+      <td>
+        Backlight anode.
+        Often connected to 5V.
+        Some modules include an onboard current-limiting resistor.
+      </td>
     </tr>
     <tr>
       <td>16</td>
       <td><span class="slanted-text black">K</span></td>
-      <td>Cathode of the backlight. Should be connected to Ground.</td>
+      <td>
+        Backlight cathode. Connect to GND.
+      </td>
     </tr>
   </tbody>
 </table>
- 
-
-### Contrast Adjustment
-The V<sub>o</sub> pin  controls the contrast of the LCD. 
-
-According to the datasheet of the [LCD1602A](https://www.openhacks.com/uploadsproductos/eone-1602a1.pdf), the **Vo** pin controls the contrast of the LCD by adjusting the operating voltage for the LCD, which is the difference between the power supply for the logic (**VDD**) and the contrast control pin (**Vo**). When **Vo** is closer to ground, the voltage difference (**VDD - Vo**) is larger, resulting in a higher contrast, making the text on the screen more distinct and readable. When **Vo** is closer to **VDD**, the voltage difference decreases, resulting in a lower contrast, causing the text to appear faded or less visible.
-
-<img style="display: block; margin: auto;width:500px;" alt="lcd1602" src="./images/power-supply.png"/>
-
-You can use the potentiometer to adjust the contrast on the fly. You have to connect the middle pin of the potentiometer to Vo, and the other two pins to VCC and Ground.
-
-You can also use resistors to adjust the contrast, which is what I did. You need to adjust the contrast one way or another. The first time I ran the program, I couldn't see the text clearly. I placed two 1k resistors(when I added only one 1k resistor, it didn't look that great) between Ground and the Vo, and then the text became visible.
-
- 
-### Register Select Pin (RS)
-The Register Select (RS) pin determines whether the LCD is in command mode or data mode. 
-
-When it is in Low(RS = 0), the LCD is in command mode, where the input is interpreted as a command, such as clearing the display or setting the cursor position (e.g., sending a command to clear the display). 
-
-When it is in High(RS = 1), the LCD is in data mode, where the input is interpreted as data to be displayed on the screen (e.g., sending text to display).
 
 
-### Enable Pin (E)
-It is used to control when data is transferred to the LCD display. The enable pin is typically kept low (E=0) but is set high (E=1) for a specific period of time to initiate a data transfer, and then returned to low.. The data is latched into the LCD on the transition from high to low.
+
+## Contrast Adjustment
+
+The Vo pin controls the contrast of the LCD by setting the voltage difference between VDD and Vo.  
+Lower Vo values increase contrast, while higher values reduce it.
+
+The recommended approach is to use a potentiometer connected between VDD and GND, with the wiper connected to Vo. This allows easy adjustment while the LCD is powered.
+
+If a potentiometer is not available, fixed resistors can be used as a voltage divider between VDD and GND, with the midpoint connected to Vo.
+
+
+## Register Select Pin (RS)
+
+The RS pin selects whether the LCD interprets incoming values as commands or as character data.
+
+- RS = LOW: command mode  
+- RS = HIGH: data mode  
+
+
+## Enable Pin (E)
+
+The Enable pin controls when data is latched into the LCD.
+
+To send data or a command, place the value on the data pins, set RS appropriately, then pulse E HIGH and bring it back LOW. The LCD reads the data on the HIGH to LOW transition.
+
+
+
+
 

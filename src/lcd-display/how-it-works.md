@@ -1,21 +1,39 @@
 # How it works?
 
-A Liquid Crystal Display (LCD) uses liquid crystals to control light. When electricity is applied, the crystals change orientation, either allowing light to pass through or blocking it, creating images or text. A backlight illuminates the screen, and colored sub-pixels (red, green, and blue) combine to form various colors. The crystals can also turn opaque in specific areas, blocking the backlight and creating dark regions to display characters.
+A Liquid Crystal Display (LCD) works by using liquid crystals to control how light passes through the screen. When we apply electricity, the liquid crystals change their orientation. This change either allows light to pass through or blocks it. By controlling which areas allow light and which block it, the LCD can display characters and symbols.
+
+The screen itself does not emit light. Instead, a backlight behind the display provides illumination. The liquid crystals selectively block this backlight to create dark areas, which form the visible characters on the screen.
 
 ### 16x2 LCD Display and 5x8 Pixel Matrix
-A 16x2 LCD has 2 rows and 16 columns, allowing it to display 32 characters in total. Each character is made up of a 5x8 pixel grid, where 5 columns and 8 rows of pixels form the shape of the character. This grid is used to display text and simple symbols on the screen.
+
+A 16x2 LCD has 2 rows and 16 columns, so it can display a total of 32 characters at once. Each character on the screen is built from a 5x8 pixel matrix. That means every character is formed using 5 vertical columns and 8 horizontal rows of tiny dots.
 
 <img style="display: block; margin: auto;" alt="lcd1602" src="./images/lcd1602-pixel-layout.png"/>
 
+These dots turn on and off to form letters, numbers, and symbols. 
+
 ### Displaying Text and Custom Characters on 16x2 LCD
-We don't have to manually draw the pixels; This is taken care of by the HD44780 IC, which automatically maps ASCII characters to the 5x8 pixel grid.
 
-However, if you'd like to create custom characters or symbols, you will need to define the 5x8 pixel pattern yourself. This pattern is saved in the LCD's memory, and once it's defined, you can use the custom character. Keep in mind, only up to 8 custom characters can be stored at a time.
+We do not need to draw individual pixels when displaying normal text. This is handled automatically by the HD44780 controller. When we send an ASCII character, the controller looks up the corresponding 5x8 pattern and displays it on the screen.
 
-### Data transfer mode
-The LCM (Liquid Crystal Module) supports two types of data transfer modes: 8-bit and 4-bit. In 8-bit mode, data is sent as a full byte using all the data pins. In 4-bit mode, only the higher-order data bits are used, sending data in nibbles. While 8-bit mode is faster, it comes with a trade-off;using too many wires, which can quickly exhaust the GPIO pins on a microcontroller. To minimize wiring, we'll use 4-bit mode.
+If we want to display custom symbols, such as icons or special characters, we can define our own 5x8 pixel patterns. These patterns are stored in the LCD memory, and once defined, we can display them like regular characters. One important limitation is that the LCD can store only 8 custom characters at a time.
+
+### Data Transfer Mode
+
+The HD44780 controller supports two data transfer modes: 8-bit mode and 4-bit mode.
+
+When using the parallel interface, 8-bit mode sends a full byte at once using all data pins. This is faster, but it requires many GPIO pins. In 4-bit mode, the same data is sent in two steps using only four data pins. This reduces wiring at the cost of a small performance penalty.
+
+When using an I2C adapter, the adapter board drives the LCD using the 4-bit parallel interface internally. We do not need to configure this ourselves, because the adapter handles it automatically.
+
+To keep wiring simple and practical, we will use 4-bit mode.
  
+## Adjust the contrast
 
-### Reference:
-- [16x2 character LCD dot matrix module](http://www.efton.sk/curious/lcd1602.htm)
+When we power on the LCD, we should see the dot matrix on the screen. If the text is not clearly visible after running the program, the contrast needs adjustment.
 
+When using an I2C LCD module, we can adjust the small potentiometer on the I2C adapter board to set the contrast.
+
+<img style="display: block; margin: auto;" alt="lcd1602" src="./images/lcd-i2c-pot.png"/>
+
+Turning this potentiometer slowly will make the characters clearer or darker until they are easy to read.

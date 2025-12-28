@@ -56,4 +56,4 @@ When you later call an async operation like:
 i2c.write(0x3C, &[0x00]).await;
 ```
 
-the task goes to sleep, hardware interrupts fire as the transfer progresses, and Embassy wakes the task when the operation finishes. You never see the interrupt directly, but it is doing the work in the background.
+your task pauses and lets other code run. Meanwhile, the I2C hardware does its work. When the hardware finishes, an interrupt fires and Embassy wakes your task back up. The interrupt happens behind the scenes, you just see your code continue after the `.await`.

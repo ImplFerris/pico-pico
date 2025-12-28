@@ -7,11 +7,11 @@ Let's see how to initialize and use I2C with Embassy on the Raspberry Pi Pico 2.
 Embassy provides a simple way to set up I2C in blocking mode:
 
 ```rust
-let sda = p.PIN_14;
-let scl = p.PIN_15;
+let sda = p.PIN_16;
+let scl = p.PIN_17;
 
 info!("set up i2c ");
-let mut i2c = i2c::I2c::new_blocking(p.I2C1, scl, sda, Config::default());
+let mut i2c = i2c::I2c::new_blocking(p.I2C0, scl, sda, Config::default());
 ```
 
 We use the new_blocking method to create an I2C instance that waits for each operation to finish before continuing. First we choose which I2C peripheral we want to work with, either I2C0 or I2C1. Once we select the peripheral, we must pair it with the correct GPIO pins for SCL and SDA.
@@ -79,10 +79,18 @@ If we're building a more complex application that needs to handle multiple thing
 
 ```rust
 bind_interrupts!(struct Irqs {
-    I2C1_IRQ => InterruptHandler<I2C1>;
+    I2C0_IRQ => i2c::InterruptHandler<I2C0>;
 });
 
-let mut i2c = i2c::I2c::new_async(p.I2C1, scl, sda, Irqs, Config::default());
+
+let mut i2c = I2c::new_async(
+    p.I2C0,
+    scl,
+    sda,
+    Irqs,
+    I2cConfig::default(),
+);
+
 let mut buffer = [0u8; 2];
 
 i2c.write_read(SENSOR_ADDR, &[TEMP_REGISTER], &mut buffer).await?;
