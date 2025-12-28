@@ -25,6 +25,52 @@ Where:
 - adc_value: ADC reading (a value between 0 and ADC_MAX).
 
 
+
+## From ADC Reading to Sensor Resistance
+
+For simple sensors like an LDR, you can just use the ADC value itself and take action based on it. But when you are working with sensors like thermistors, you will need to calculate the sensor resistance first, then use that to derive the corresponding temperature value.
+
+There are two common ways to wire a sensor in a voltage divider:
+
+<div class="image-with-caption" style="text-align:center; ">
+    <img src="./images/adc-voltage-divider-resistor-sensor.svg" alt="ADC Voltage Divider Resistor Sensor" style="height:auto; display:block; margin:0 auto;"/>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">ADC Voltage Divider Resistor Sensor</div>
+</div>
+
+In both cases, the other resistor is a fixed resistor, typically something like 10 kΩ.
+
+### Calculating Sensor Resistance
+
+First, convert your ADC reading back to voltage:
+
+\\[
+V_{out} = \frac{ADC_{reading}}{4096} \times V_{ref}
+\\]
+
+Then, depending on your configuration:
+
+**If sensor is R2 (bottom position):**
+
+\\[
+R_{sensor} = R_1 \times \frac{V_{out}}{V_{in} - V_{out}}
+\\]
+
+**If sensor is R1 (top position):**
+
+\\[
+R_{sensor} = R_2 \times \frac{V_{in} - V_{out}}{V_{out}}
+\\]
+
+Where:
+- `R_sensor` is the resistance you want to find
+- `R_1` or `R_2` is your known fixed resistor value
+- `V_in` is your supply voltage (usually 3.3V)
+- `V_out` is the voltage you calculated from the ADC reading
+
+Once you have the sensor resistance, you can use the sensor's datasheet or calibration data to convert resistance to the measured value (like temperature for a thermistor or light level for an LDR).
+
+
+
 ### Rust Function
 
 ```rust

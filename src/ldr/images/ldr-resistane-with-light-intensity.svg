@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2025 implrust.com
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+-->
+<svg width="960" height="360" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="960" height="360" rx="14" fill="#1d2021"/>
+
+  <!-- Shift entire diagram left -->
+  <g transform="translate(-40,0)">
+
+    <!-- Center divider -->
+    <line x1="520" y1="60" x2="520" y2="300"
+          stroke="#504945" stroke-width="1" stroke-dasharray="4 6" opacity="0.6"/>
+
+    <!-- ================= LEFT COLUMN : OFF ================= -->
+
+    <text x="280" y="32" text-anchor="middle"
+          fill="#928374" font-size="16" font-family="monospace">
+      Lamp OFF (Dark)
+    </text>
+
+    <!-- Lamp base -->
+    <rect x="80" y="230" width="70" height="20" rx="4" fill="#504945"/>
+    <rect x="105" y="185" width="20" height="45" fill="#665c54"/>
+
+    <!-- Lamp bulb OFF -->
+    <circle cx="115" cy="155" r="24" fill="#3c3836"/>
+    <circle cx="115" cy="155" r="32" fill="#3c3836" opacity="0.2"/>
+
+    <!-- LDR body -->
+    <rect x="200" y="115" width="220" height="150" rx="12"
+          fill="#282828" stroke="#7c6f64" stroke-width="2"/>
+
+    <!-- LDR label -->
+    <text x="310" y="135" text-anchor="middle"
+          fill="#928374" font-size="13" font-family="monospace">
+      LDR
+    </text>
+
+    <!-- LDR CdS track (reduced height, HIGH resistance) -->
+    <path
+      d="
+        M245 160
+        V215
+        C245 232 270 232 270 215
+        V160
+        C270 143 295 143 295 160
+        V215
+        C295 232 320 232 320 215
+        V160
+        C320 143 345 143 345 160
+        V215
+        C345 232 370 232 370 215
+        V160
+      "
+      fill="none"
+      stroke="#fb4934"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+
+    <!-- Resistance bar HIGH -->
+    <rect x="440" y="135" width="32" height="110" rx="6"
+          fill="#3c3836" stroke="#fb4934" stroke-width="2"/>
+
+    <text x="456" y="270" text-anchor="middle"
+          fill="#fb4934" font-size="14" font-family="monospace">
+      HIGH Ω
+    </text>
+
+    <!-- ================= RIGHT COLUMN : ON ================= -->
+
+    <text x="760" y="32" text-anchor="middle"
+          fill="#b8bb26" font-size="16" font-family="monospace">
+      Lamp ON (Bright)
+    </text>
+
+    <!-- Lamp base -->
+    <rect x="560" y="230" width="70" height="20" rx="4" fill="#504945"/>
+    <rect x="585" y="185" width="20" height="45" fill="#665c54"/>
+
+    <!-- Lamp bulb ON -->
+    <circle cx="595" cy="155" r="24" fill="#fabd2f"/>
+    <circle cx="595" cy="155" r="36" fill="#fabd2f" opacity="0.25"/>
+
+    <!-- Light rays -->
+    <line x1="635" y1="140" x2="690" y2="160" stroke="#fabd2f" stroke-width="2"/>
+    <line x1="635" y1="160" x2="690" y2="170" stroke="#fabd2f" stroke-width="2"/>
+    <line x1="635" y1="180" x2="690" y2="180" stroke="#fabd2f" stroke-width="2"/>
+    <line x1="635" y1="200" x2="690" y2="190" stroke="#fabd2f" stroke-width="2"/>
+
+    <!-- LDR body -->
+    <rect x="710" y="115" width="200" height="150" rx="12"
+          fill="#282828" stroke="#a89984" stroke-width="2"/>
+
+    <!-- LDR label -->
+    <text x="810" y="135" text-anchor="middle"
+          fill="#b8bb26" font-size="13" font-family="monospace">
+      LDR
+    </text>
+
+    <!-- LDR CdS track (reduced height, LOW resistance) -->
+    <path
+      d="
+        M745 160
+        V215
+        C745 232 770 232 770 215
+        V160
+        C770 143 795 143 795 160
+        V215
+        C795 232 820 232 820 215
+        V160
+        C820 143 845 143 845 160
+        V215
+        C845 232 870 232 870 215
+        V160
+      "
+      fill="none"
+      stroke="#b8bb26"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+
+    <!-- Resistance bar LOW -->
+    <rect x="920" y="155" width="32" height="80" rx="6"
+          fill="#458588" stroke="#b8bb26" stroke-width="2"/>
+
+    <text x="936" y="270" text-anchor="middle"
+          fill="#b8bb26" font-size="14" font-family="monospace">
+      LOW Ω
+    </text>
+
+    <!-- Bottom explanation -->
+    <text x="480" y="330" text-anchor="middle"
+          fill="#d5c4a1" font-size="15" font-family="monospace">
+      Less light gives higher resistance, more light gives lower resistance
+    </text>
+
+  </g>
+</svg>

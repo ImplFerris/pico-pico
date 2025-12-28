@@ -1,29 +1,127 @@
-## Turn on LED(or Lamp) in low Light with Pico 
+# Turn on LED in low Light with Raspberry Pi Pico 
 
-In this exercise, we'll control an LED based on ambient light levels. The goal is to automatically turn on the LED in low light conditions. 
+In this exercise, we will build a small but practical project using an LDR. The Pico will automatically turn on an LED when the ambient light level drops below a certain point, meaning the LED turns on as it gets darker. You can extend this idea to control a real lamp, but that is outside the scope of this exercise and requires proper safety precautions.
 
-You can try this in a closed room by turning the room light on and off. When you turn off the room-light, the LED should turn on, given that the room is dark enough, and turn off again when the room-light is switched back on. Alternatively, you can adjust the sensitivity threshold or cover the light sensor (LDR) with your hand or some object to simulate different light levels.
+You can try this in a closed room by switching the room light on and off. When the light is turned off and the room becomes dark enough, the LED should turn on, and it should turn off again when the room light is switched back on. Alternatively, you can adjust the sensitivity threshold or cover the LDR with your hand or another object to simulate different light levels.
 
-Note: You may need to adjust the ADC threshold based on your room's lighting conditions and the specific LDR you are using.
+> [!Tip]
+> You may need to adjust the ADC threshold based on your room's lighting conditions and the specific LDR you are using.
 
-## Setup
 
 ## Hardware Requirements
 
-- **LED** – Any standard LED (choose your preferred color).
-- **LDR (Light Dependent Resistor)** – Used to detect light intensity.
+You are going to need the following components for this exercise:
+
+- LED
+- LDR
 - **Resistors**
-  - **330Ω** – For the LED to limit current and prevent damage. (You might have to choose based on your LED)
-  - **10kΩ** – For the LDR, forming a voltage divider in the circuit. (You might have to choose based on your LDR)
-- **Jumper Wires** – For connecting components on a breadboard or microcontroller.
+  - 330 ohm: This is used with the LED to limit the current and protect it. You may need to choose a different value depending on the LED you are using.
+  - 10 k ohm: This is used with the LDR to form the voltage divider. You may need to adjust this value depending on the characteristics of your LDR.
+- Jumper wires:    These are used to connect everything together on a breadboard or directly to the microcontroller.
 
+## Circuit to Connect LED and LDR with Pico
 
-## Circuit to connect LED, LDR with Pico 
+<img style="display: block; margin: auto;" alt="pico2" src="./images/ldr-pico-led-circuit.png"/>
 
-1. **One side of the LDR** is connected to **AGND** (Analog Ground).
-2. The **other side of the LDR** is connected to **GPIO26 (ADC0)**, which is the analog input pin of the pico2
-3. A **resistor** is connected in series with the LDR to create a voltage divider between the LDR and **ADC_VREF** (the reference voltage for the ADC).
-    - From the datasheet: "ADC_VREF is the ADC power supply (and reference) voltage, and is generated on Pico 2 by filtering the 3.3V supply. This pin can be used with an external reference if better ADC performance is required"
+### LDR (ADC) Connection
 
+We are going to connect the LDR as a voltage divider and feed the divider output into an ADC pin on the Pico. Here, the LDR acts as R1 and is connected to the 3.3 V supply, which means the ADC value decreases as the light level drops.
 
-<img style="display: block; margin: auto;" alt="pico2" src="./images/ldr-pico-led-circuit.jpg"/>
+<table>
+  <thead>
+    <tr>
+      <th>Pico Pin</th>
+      <th style="width: 250px; margin: 0 auto;">Wire</th>
+      <th>Component</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3.3&nbsp;V</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire red" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>One end of the LDR</td>
+    </tr>
+    <tr>
+      <td>GPIO&nbsp;28 (ADC2)</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire green" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Junction between LDR and 10&nbsp;kΩ resistor</td>
+    </tr>
+    <tr>
+      <td>10&nbsp;kΩ resistor</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire purple" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Other end of the LDR</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire black" style="width: 200px; margin: 0 auto;">
+          <div class="female-left"></div>
+          <div class="female-right"></div>
+        </div>
+      </td>
+      <td>Other end of the 10&nbsp;kΩ resistor</td>
+    </tr>
+  </tbody>
+</table>
+
+### LED Connection
+
+The LED will be connected to a GPIO pin 15 and will turn on automatically when the light level drops.
+
+<table>
+<thead>
+  <tr>
+    <th>Pico Pin</th>
+    <th style="width: 250px; margin: 0 auto;">Wire</th>
+    <th>Component</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>GPIO 15</td>
+    <td style="text-align: center; vertical-align: middle; padding: 0;">
+      <div class="wire orange" style="width: 200px; margin: 0 auto;">
+        <div class="female-left"></div>
+        <div class="female-right"></div>
+      </div>
+    </td>
+    <td>330&nbsp;Ω resistor</td>
+  </tr>
+  <tr>
+    <td>330&nbsp;Ω resistor</td>
+    <td style="text-align: center; vertical-align: middle; padding: 0;">
+      <div class="wire yellow" style="width: 200px; margin: 0 auto;">
+        <div class="female-left"></div>
+        <div class="female-right"></div>
+      </div>
+    </td>
+    <td>Anode (long leg) of LED</td>
+  </tr>
+  <tr>
+    <td>GND</td>
+    <td style="text-align: center; vertical-align: middle; padding: 0;">
+      <div class="wire black" style="width: 200px; margin: 0 auto;">
+        <div class="female-left"></div>
+        <div class="female-right"></div>
+      </div>
+    </td>
+    <td>Cathode (short leg) of LED</td>
+  </tr>
+</tbody>
+</table>
+

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2025 implrust.com
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+-->
+<svg viewBox="0 0 800 320"
+     xmlns="http://www.w3.org/2000/svg"
+     font-family="monospace">
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#282828"/>
+
+  <!-- ===== LEFT: Sensor as R2 ===== -->
+  <text x="260" y="40" text-anchor="middle" font-size="14" fill="#ebdbb2">
+    Sensor as R2 (Bottom)
+  </text>
+
+  <!-- Vin -->
+  <text x="260" y="65" text-anchor="middle" fill="#d5c4a1">Vin</text>
+  <line x1="260" y1="75" x2="260" y2="95" stroke="#a89984"/>
+
+  <!-- R1 -->
+  <rect x="235" y="95" width="50" height="30"
+        fill="#5f819d" stroke="#a89984"/>
+  <text x="260" y="115" text-anchor="middle" fill="#ebdbb2">R1</text>
+
+  <!-- Junction -->
+  <line x1="260" y1="125" x2="260" y2="145" stroke="#a89984"/>
+  <circle cx="260" cy="145" r="4" fill="#d79921"/>
+
+  <!-- Vout -->
+  <line x1="260" y1="145" x2="300" y2="145" stroke="#a89984"/>
+  <text x="305" y="149" fill="#d5c4a1">Vout</text>
+
+  <!-- Down to Sensor -->
+  <line x1="260" y1="145" x2="260" y2="175" stroke="#a89984"/>
+
+  <!-- Sensor -->
+  <rect x="225" y="175" width="70" height="30"
+        fill="#6b8e6b" stroke="#a89984"/>
+  <text x="260" y="195" text-anchor="middle" fill="#ebdbb2">Sensor</text>
+
+  <!-- GND -->
+  <line x1="260" y1="205" x2="260" y2="225" stroke="#a89984"/>
+  <line x1="240" y1="225" x2="280" y2="225" stroke="#928374"/>
+  <line x1="245" y1="230" x2="275" y2="230" stroke="#928374"/>
+  <line x1="250" y1="235" x2="270" y2="235" stroke="#928374"/>
+
+  <!-- ===== RIGHT: Sensor as R1 ===== -->
+  <text x="540" y="40" text-anchor="middle" font-size="14" fill="#ebdbb2">
+    Sensor as R1 (Top)
+  </text>
+
+  <!-- Vin -->
+  <text x="540" y="65" text-anchor="middle" fill="#d5c4a1">Vin</text>
+  <line x1="540" y1="75" x2="540" y2="95" stroke="#a89984"/>
+
+  <!-- Sensor -->
+  <rect x="505" y="95" width="70" height="30"
+        fill="#6b8e6b" stroke="#a89984"/>
+  <text x="540" y="115" text-anchor="middle" fill="#ebdbb2">Sensor</text>
+
+  <!-- Junction -->
+  <line x1="540" y1="125" x2="540" y2="145" stroke="#a89984"/>
+  <circle cx="540" cy="145" r="4" fill="#d79921"/>
+
+  <!-- Vout -->
+  <line x1="540" y1="145" x2="580" y2="145" stroke="#a89984"/>
+  <text x="585" y="149" fill="#d5c4a1">Vout</text>
+
+  <!-- Down to R2 -->
+  <line x1="540" y1="145" x2="540" y2="175" stroke="#a89984"/>
+
+  <!-- R2 -->
+  <rect x="515" y="175" width="50" height="30"
+        fill="#5f819d" stroke="#a89984"/>
+  <text x="540" y="195" text-anchor="middle" fill="#ebdbb2">R2</text>
+
+  <!-- GND -->
+  <line x1="540" y1="205" x2="540" y2="225" stroke="#a89984"/>
+  <line x1="520" y1="225" x2="560" y2="225" stroke="#928374"/>
+  <line x1="525" y1="230" x2="555" y2="230" stroke="#928374"/>
+  <line x1="530" y1="235" x2="550" y2="235" stroke="#928374"/>
+
+</svg>
