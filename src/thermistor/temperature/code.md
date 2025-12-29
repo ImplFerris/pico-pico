@@ -247,7 +247,11 @@ Text::new(&buff, Point::new(5, 20), text_style)
 display.flush().await.expect("failed to send to display");
 
 Timer::after_secs(2).await;
+
 ```
+## Flash
+
+Once you flash the firmware, you should see the temperature along with the resistance and ADC values. You can move the setup to a different room, observe how the readings change between day and night, or take it outdoors using an external power supply to see how the temperature responds in different conditions.
 
 ## The full code
 
