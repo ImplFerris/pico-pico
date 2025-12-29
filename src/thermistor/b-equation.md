@@ -19,18 +19,13 @@ This is the thermistor's resistance at a known temperature, usually 25°C. For e
 
 **B (Beta value)**:
 
-The Beta value describes how quickly resistance changes with temperature. It is a material property and is provided in the datasheet. Common values range from 3000 to 4000 K.
+The B value is a constant usually provided by the manufacturers. The value describes how quickly resistance changes with temperature. Common values range from 3000 to 4000 K.
 
 The datasheet often specifies B over a temperature range, such as B₂₅/₈₅ = 3950, meaning the Beta value is 3950 between 25°C and 85°C.
 
 **Temperature in Kelvin**:
-The equation requires temperature in Kelvin, not Celsius. To convert:
-- Kelvin = Celsius + 273.15
-- Celsius = Kelvin - 273.15
 
-The B value is a constant usually provided by the manufacturers. The Beta value describes how quickly resistance changes with temperature. It is a material property and is provided in the datasheet. Common values range from 3000 to 4000 K.
-
-The datasheet often specifies B over a temperature range, such as B₂₅/₈₅ = 3950, meaning the Beta value is 3950 between 25°C and 85°C.
+The temperature in the B equation must be in Kelvin (Kelvin = Celsius + 273.15), not Celsius. Convert to Kelvin before using the equation, and subtract 273.15 from the result to get Celsius again.
 
 ## Example Calculation
 

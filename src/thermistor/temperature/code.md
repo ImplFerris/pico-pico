@@ -24,16 +24,16 @@ embedded-graphics = "0.8"
 ```
 - **[`ssd1306`](https://docs.rs/ssd1306/latest/ssd1306/)**: Driver crate for controlling SSD1306-based OLED displays.
 
-- **[`heapless`](https://docs.rs/heapless/latest/heapless/)**: In a `no_std` environment, Rust's standard `String` type is not available because it requires heap allocation. This crate provides stack-allocated, fixed-size data structures. We use it to store formatted text such as ADC values, resistance, and temperature before sending them to the OLED.
+- **[`heapless`](https://docs.rs/heapless/latest/heapless/)**: In a no_std environment, Rust's standard String type is not available because it requires heap allocation. This crate provides stack-allocated, fixed-size data structures. We use it to store formatted text such as ADC values, resistance, and temperature before sending them to the OLED.
 
-- **[`libm`](https://crates.io/crates/libm)**: Provides mathematical functions for `no_std` environments. This is required to compute the natural logarithm when using the B equation.
+- **[`libm`](https://crates.io/crates/libm)**: Provides mathematical functions for no_std environments. This is required to compute the natural logarithm when using the B equation.
 
 - **[`embedded-graphics`](https://docs.rs/embedded-graphics/latest/embedded_graphics/)**:  
   The SSD1306 driver supports different ways of writing content to the display.
 
-  When you use `into_buffered_graphics_mode()`, the display is treated like a pixel buffer. Text and shapes are first drawn into an in-memory framebuffer using the `embedded-graphics` API, and then the whole buffer is sent to the OLED. This mode requires the `embedded-graphics` crate.
+  When you use `into_buffered_graphics_mode`, the display is treated like a pixel buffer. Text and shapes are first drawn into an in-memory framebuffer using the embedded-graphics API, and then the whole buffer is sent to the OLED. This mode requires the embedded-graphics crate.
 
-  When you use `into_terminal_mode()`, the driver provides a simple text-based interface. You write characters directly to the display without drawing pixels or shapes yourself. In this case, `embedded-graphics` is not required.
+  When you use `into_terminal_mode`, the driver provides a simple text-based interface. You write characters directly to the display without drawing pixels or shapes yourself. In this case, embedded-graphics is not required.
 
 
 ## Additional imports
