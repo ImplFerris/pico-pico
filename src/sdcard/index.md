@@ -4,9 +4,11 @@ In this section, we will explore how to use the SD Card reader module. Depending
 
  
 ## MMC
+
 The MultiMediaCard (MMC) was introduced as an early type of flash memory storage, preceding the SD Card. It was commonly used in devices such as camcorders, digital cameras, and portable music players. MMCs store data as electrical charges in flash memory cells, unlike optical disks, which rely on laser-encoded data on reflective surfaces.
 
 ## SD (Secure Digital) Card
+
 The Secure Digital Card (SDC), commonly referred to as an SD Card, is an evolution of the MMC. SD Cards are widely used as external storage in electronic devices such as cameras, smartphones.  A smaller variant, the microSD card, is commonly used in smartphones, drones, and other devices.
 
 <img style="display: block; margin: auto;" alt="SD cards" src="./images/sd-cards.png"/>

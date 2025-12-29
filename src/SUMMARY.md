@@ -4,6 +4,7 @@
     - [Pinout](./pico2-pinout.md)
     - [Additional Hardware](./additional-hardware.md)
         - [Breadboard](./core-concepts/basics/breadboard.md)
+        - [Components](./components.md)
     - [Dev Environment](./setup.md)
     - [Quick Start](./quick-start.md)
     - [Abstraction Layers](./abstraction-layers.md)
