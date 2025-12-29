@@ -18,7 +18,7 @@ Component names are provided for reference. Before purchasing, check the corresp
 - Breadboard
 - Jumper wires (male-male, male-female)
 - LED
-- Resistors (common values, 220 ohm, 1k ohm, 10k ohm)
+- Resistors (common values: 330 ohm, 1k ohm, 2.2k ohm, 10k ohm)
 - Push button (tactile switch)
 - LDR (Light Dependent Resistor)
 - NTC Thermistor (10k)
