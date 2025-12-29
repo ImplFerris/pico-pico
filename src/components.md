@@ -26,7 +26,7 @@ Component names are provided for reference. Before purchasing, check the corresp
 - LCD display (16x2, HD44780 compatible)
 - Ultrasonic sensor (HC-SR04 / HC-SR04+)
 - Buzzer (active and passive)
-- Servo motor (SG90 or similar)
+- Servo motor (SG90)
 - RFID module (RC522)
 - Micro SD Card Reader Module (SPI)
 - Joystick module (PS2 type)
