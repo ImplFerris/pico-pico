@@ -8,7 +8,7 @@ In this configuration, the NTC thermistor is placed on the top of the voltage di
 
 > [!Important]
 > Swapping the thermistor and the fixed resistor will invert the behavior of the output voltage.
-> If you place the thermistor as R2 instead of R1, increase in temperature will cause \( V_{out} \) to decrease instead.
+> If you place the thermistor as R2 instead of R1, increase in temperature will cause \\( V_{out} \\) to decrease instead.
 
 ### Thermistor at 25°C
 

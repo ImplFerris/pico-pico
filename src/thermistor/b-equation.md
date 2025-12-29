@@ -9,7 +9,11 @@ The B equation, also called the Beta parameter method, is the simplest way to co
 \frac{1}{T} = \frac{1}{T_0} + \frac{1}{B} \ln \left( \frac{R}{R_0} \right)
 \\]
 
-In this equation, T is the temperature in Kelvin that we want to find. \\( T_0 \\) is the reference temperature, usually 298.15K (25°C), where the thermistor's resistance is known. R is the measured resistance at the unknown temperature T. \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10kΩ for common thermistors. B is the B-value of the thermistor, a material constant. The ln represents the natural logarithm function.
+In this equation, T is the temperature in Kelvin that we want to find. R is the measured resistance at the unknown temperature T.
+
+\\( T_0 \\) is the reference temperature, usually 298.15K (25°C), where the thermistor's resistance is known.  \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10kΩ for common thermistors. 
+
+B is the B-value of the thermistor, a material constant. And, the ln represents the natural logarithm function.
 
 ### Understanding the parameters
 
@@ -29,8 +33,7 @@ The temperature in the B equation must be in Kelvin (Kelvin = Celsius + 273.15),
 
 ## Example Calculation
 
-Given a thermistor with reference temperature \\( T_0 = 298.15K \\) (25°C + 273.15), reference resistance \\( R_0 = 10k\Omega \\), B-value B = 3950, and a measured resistance R = 10,475Ω, we can calculate the temperature.
-
+Let us say the measured resistance of the thermistor is 10,475 Ω, which corresponds to R in the equation. To calculate the temperature, we substitute this value along with the reference temperature \\( T_0 = 298.15K \\) (25°C), the reference resistance \\( R_0 = 10k\Omega \\), and the thermistor B-value of 3950 into the B equation.
 
 **Step 1**: Calculate the resistance ratio
 \\[

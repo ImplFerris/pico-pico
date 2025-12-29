@@ -23,8 +23,6 @@ Thermistor manufacturers are aware of this behavior and provide detailed datashe
 
 Each entry in the datasheet represents a known and measured point on the thermistor curve. Together, these points describe how resistance changes across the temperature range.
 
-Instead of guessing the temperature from resistance, we can use these known reference points.
-
 ## Common approaches used in practice
 
 There are three widely used methods to convert thermistor resistance into temperature:
