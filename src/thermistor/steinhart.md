@@ -1,25 +1,32 @@
 
-## Steinhart Hart equation
-The Steinhart-Hart equation provides a more accurate temperature-resistance relationship over a wide temperature range. 
+# Steinhart Hart equation
+
+The Steinhart-Hart equation is a more accurate method for converting thermistor resistance into temperature compared to the simpler B equation. It uses three coefficients to model the thermistor's non-linear behavior across a wider temperature range with higher precision.
+
+> [!Tip]
+> We won't be using this formula in our program. We will keep it simple and use the B equation.
+
+## The Steinhart-Hart formula
+
 \\[
 \frac{1}{T} = A + B \ln R + C (\ln R)^3
 \\]
 
-Where:
-- T is the temperature in **Kelvins**. (Formula to calculate kelvin from degree Celsius, K = °C + 273.15)
-- R is the resistance at temperature T in **Ohms**.
-- A, B, and C are constants specific to the thermistor's material, often provided by the manufacturer. For better accuracy, you may need to calibrate and determine these values yourself. Some datasheets provide resistance values at various temperatures, which can also be used to calculate this.
-
+In this equation, T is the temperature in Kelvin that we want to find. R is the measured resistance in ohms. A, B, and C are the Steinhart-Hart coefficients, which are specific to each thermistor. The ln represents the natural logarithm function.
 
 ### Calibration
-To determine the accurate values for A, B, and C, place the thermistor in three temperature conditions: room temperature, ice water, and boiling water. For each condition, measure the thermistor's resistance using the ADC value and use a reliable thermometer to record the actual temperature. Using the resistance values and corresponding temperatures, calculate the coefficients:
-- Assign A to the ice water temperature,
-- B to the room temperature, and
-- C to the boiling water temperature.
+
+To determine the accurate values for A, B, and C, place the thermistor in three known temperature conditions, typically ice water (cold), room temperature, and hot or boiling water.
+
+For each condition, measure the thermistor's resistance using the ADC value and record the actual temperature using a reliable thermometer. Make sure all temperatures are converted to Kelvin before further calculations.
+
+Using these three resistance and temperature pairs together, the Steinhart-Hart coefficients A, B, and C are calculated by solving a system of equations. The coefficients are not assigned individually to cold, room, or hot temperatures. Instead, all three calibration points collectively define a curve that fits the thermistor’s non-linear behavior across the measured range.
+
+Once the coefficients are obtained, the same A, B, and C values can be used to calculate temperature for any resistance value within that range. 
 
 ### Calculating Steinhart-Hart Coefficients
 
-With three resistance and temperature data points, we can find the A, B and C.
+With three resistance and temperature data points, we can calculate the Steinhart-Hart coefficients A, B, and C.
 
 $$
 \begin{bmatrix}
@@ -67,10 +74,10 @@ $$
 A = Y_1 - \left(B + L_1^2 C\right) L_1
 $$
 
-
 <span style="color: green;">Good news, Everyone!</span> You don't need to calculate the coefficients manually. Simply provide the resistance and temperature values for cold, room, and hot environments, and use the form below to determine A, B and C
 
 ### ADC value and Resistance Calculation
+
 <span style="color: orange;">Note:</span> if you already have the temperature and corresponding resistance, you can directly use the second table to input those values.
 
 If you have the ADC value and want to calculate the resistance, use this table to find the corresponding resistance at different temperatures. As you enter the ADC value for each temperature, the calculated resistance will be automatically updated in the second table.
@@ -393,7 +400,7 @@ fn steinhart_temp_calc(
 
 fn main() {
     // Example inputs
-     let a = 2.10850817e-3;
+    let a = 2.10850817e-3;
     let b = 7.97920473e-5;
     let c = 6.53507631e-7;
     let resistance = 10000.0;
@@ -409,7 +416,8 @@ fn main() {
 }
 ```
 
-### Referemce
+## References
+
 - [Thermistor Calculator](https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalculator.html) 
 - [Thermistor Steinhart-Hart Coefficients for Calculating Motor Temperature](https://www.servo.jp/member/admin/document_upload/AN144-Thermistor-Steinhart-Hart-Coefficients.pdf) 
 - [Calibrate Steinhart-Hart Coefficients for Thermistors](https://www.thinksrs.com/downloads/PDFs/ApplicationNotes/LDC%20Note%204%20NTC%20Calculatorold.pdf) 

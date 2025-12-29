@@ -43,6 +43,18 @@ Step Size = 3.3V / 4,096 = 0.81 mV
 The 12-bit converter offers significantly finer precision, which can be critical in applications requiring accurate measurements.
 
 
+## ADC Formula
+
+Conceptually, an ADC converts an input voltage into a digital number using the following relationship:
+
+\\[
+ADC = \frac{V_{in}}{V_{ref}} \times 2^{\text{bits}}
+\\]
+
+Where:
+- \\(V_{in}\\) is the input voltage
+- \\(V_{ref}\\) is the reference voltage
+
 ## Converting ADC Values to Voltage
 
 When you read from the ADC in your code, it returns a raw digital value between 0 and 4095 (for a 12-bit ADC). This number represents where the measured voltage falls within the 0V to 3.3V range. To convert this raw value back into an actual voltage, you need a simple calculation.

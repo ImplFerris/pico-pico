@@ -1,17 +1,21 @@
 # Thermistor
 
-In this section, we'll be using a thermistor with the Raspberry Pi Pico.  A thermistor is a variable resistor that changes its resistance based on the temperature. The amount of change in resistance depends on its composition.  The term comes from combining "thermal" and "resistor.". 
+A thermistor is a resistor whose value changes with temperature. As temperature goes up or down, the resistance changes in a predictable way.  The name "thermistor" is derived from a combination of the words "thermal" and "resistor."
 
-Thermistors are categorized into two types:
-- NTC (Negative Temperature Coefficient): 
-    - Resistance decreases as temperature increases. 
-    - They are primarily used for temperature sensing and inrush current limiting.
-    - We'll be using the NTC thermistor to measure temperature in our exercise.
+From the microcontroller point of view, a thermistor is just another resistor connected to an ADC pin. The ADC does not know anything about temperature. It only measures voltage. We do the rest in the code.
+
+## NTC vs PTC
+
+There are two common types of thermistors.
+
+An NTC thermistor has lower resistance at higher temperatures. This is the most common type used for temperature measurement in embedded systems.
+
 <img style="display: block; margin: auto;" alt="pico2" src="./images/ntc-resistor.png"/>
 
-- PTC (Positive Temperature Coefficient): 
-    - Resistance increases as temperature rises.
-    - They primarily protect against overcurrent and overtemperature conditions as resettable fuses and are commonly used in air conditioners, medical devices, battery chargers, and welding equipment.
+
+A PTC thermistor has higher resistance at higher temperatures. These are usually used for protection or current limiting rather than precise sensing.
+
+In this chapter, we are going to work with an NTC thermistor.
 
 
 ## Reference

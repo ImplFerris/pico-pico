@@ -1,62 +1,73 @@
 
-## B Equation
-The B equation is simpler but less precise. 
+# B Equation
+
+The B equation, also called the Beta parameter method, is the simplest way to convert thermistor resistance into temperature. It uses a single material constant provided by the manufacturer to approximate the thermistor's behavior.
+
+## The B equation formula
+
 \\[
 \frac{1}{T} = \frac{1}{T_0} + \frac{1}{B} \ln \left( \frac{R}{R_0} \right)
 \\]
 
-Where:
+In this equation, T is the temperature in Kelvin that we want to find. \\( T_0 \\) is the reference temperature, usually 298.15K (25°C), where the thermistor's resistance is known. R is the measured resistance at the unknown temperature T. \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10kΩ for common thermistors. B is the B-value of the thermistor, a material constant. The ln represents the natural logarithm function.
 
-- T is the temperature in **Kelvin**.
-- \\( T_0 \\)  is the reference temperature (usually 298.15K or 25°C), where the thermistor's resistance is known (typically 10kΩ).
-- R is the **resistance** at temperature T.
-- \\( R_0 \\) is the **resistance** at the reference temperature \\( T_0 \\) (often 10kΩ).
-- B is the **B-value** of the thermistor.
+### Understanding the parameters
 
-The B value is a constant usually provided by the manufacturers, changes based on the material of a thermistor. It describes the gradient of the resistive curve over a specific temperature range between two points(i.e \\( T_0 \\) vs \\( R_0 \\) and T vs R). You can even rewrite the above formula to get B value yourself by calibrating the resistance at two temperatures.
+**R₀ (Reference resistance)**:
 
-**Example Calculation:**
+This is the thermistor's resistance at a known temperature, usually 25°C. For example, a "10kΩ thermistor" has R₀ = 10,000 ohms at 25°C. This value should be specified in the datasheet.
 
-Given:
-- Reference temperature \\( T_0 = 298.15K \\) (i.e., 25°C + 273.15 to convert to Kelvin)
-- Reference resistance \\( R_0 = 10k\Omega \\)
-- B-value B = 3950 (typical for many thermistors)
-- Measured resistance at temperature T: 10475Ω
+**B (Beta value)**:
 
-### Step 1: Apply the B-parameter equation
-Substitute the given values:
+The Beta value describes how quickly resistance changes with temperature. It is a material property and is provided in the datasheet. Common values range from 3000 to 4000 K.
 
+The datasheet often specifies B over a temperature range, such as B₂₅/₈₅ = 3950, meaning the Beta value is 3950 between 25°C and 85°C.
+
+**Temperature in Kelvin**:
+The equation requires temperature in Kelvin, not Celsius. To convert:
+- Kelvin = Celsius + 273.15
+- Celsius = Kelvin - 273.15
+
+The B value is a constant usually provided by the manufacturers. The Beta value describes how quickly resistance changes with temperature. It is a material property and is provided in the datasheet. Common values range from 3000 to 4000 K.
+
+The datasheet often specifies B over a temperature range, such as B₂₅/₈₅ = 3950, meaning the Beta value is 3950 between 25°C and 85°C.
+
+## Example Calculation
+
+Given a thermistor with reference temperature \\( T_0 = 298.15K \\) (25°C + 273.15), reference resistance \\( R_0 = 10k\Omega \\), B-value B = 3950, and a measured resistance R = 10,475Ω, we can calculate the temperature.
+
+
+**Step 1**: Calculate the resistance ratio
 \\[
-\frac{1}{T} = \frac{1}{298.15} + \frac{1}{3950} \ln \left( \frac{10,475}{10,000} \right)
+\frac{R}{R_0} = \frac{10475}{10000} = 1.0475
+\\]
+
+**Step 2**: Calculate the natural logarithm of the ratio
+\\[
+\ln(1.0475) = 0.04641
+\\]
+
+**Step 3**: Apply the B equation
+\\[
+\frac{1}{T} = \frac{1}{298.15} + \frac{1}{3950} \times 0.04641
 \\]
 
 \\[
-\frac{1}{T} = 0.003354016 + \frac{1}{3950} \ln(1.0475)
+\frac{1}{T} = 0.003354 + 0.00001175 = 0.003366
 \\]
 
+**Step 4**: Calculate T by taking the reciprocal
 \\[
-\frac{1}{T} = 0.003354016 + (0.000011748)
+T = \frac{1}{0.003366} = 297.1K
 \\]
 
+**Step 5**: Convert to Celsius
 \\[
-\frac{1}{T} = 0.003365764
+T = 297.1 - 273.15 = 23.95°C
 \\]
 
-### Step 2: Calculate the temperature (T)
+The measured resistance of 10,475Ω corresponds to a temperature of approximately 24°C.
 
-\\[
-T = \frac{1}{0.003365764} = 297.10936358 (Kelvin)
-\\]
-
-Convert to Celsius:
-
-\\[
-T_{Celsius} = 297.10936358 - 273.15 \approx 23.95936358°C
-\\]
-
-### Result:
-
-The temperature corresponding to a resistance of 10475Ω is approximately **23.96°C**.
 
 ### Rust function
 
@@ -83,7 +94,7 @@ const REF_TEMP: f64 = 25.0;  // Reference temperature 25°C
 
 fn main() {
     let t0 = celsius_to_kelvin(REF_TEMP);
-    let r = 9546.0; // Measured resistance in ohms
+    let r = 10475.0; // Measured resistance in ohms
     
     let temperature_kelvin = calculate_temperature(r, REF_RES, t0, B_VALUE);
     let temperature_celsius = kelvin_to_celsius(temperature_kelvin);
