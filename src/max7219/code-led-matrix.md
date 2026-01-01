@@ -2,6 +2,9 @@
 
 Let us move on to the coding part. In this program, we will draw a square on the 8x8 LED matrix using embedded-graphics.
 
+> [!Tip]
+> Drawing a square is just an example, but once you learn the basics, you can do much more with it. You can scroll text, display icons or smilies, and even animate objects. You can check out the examples here: [https://github.com/ImplFerris/max7219-examples](https://github.com/ImplFerris/max7219-examples). You can also try building a simple clock using daisy-chained matrices.
+
 As usual, create a new project using the provided template.
 
 ```rust
