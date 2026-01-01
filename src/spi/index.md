@@ -1,22 +1,22 @@
 # Serial Peripheral Interface (SPI)
 
-In this section, we will learn what SPI is and how to use the SPI communication buses of the ESP32.
+In this section, we will learn what SPI is and how to use the SPI communication buses of the Raspberry Pi Pico.
 
 ## What is SPI?
 
 SPI stands for Serial Peripheral Interface. It is one of the most common ways for microcontrollers to communicate with devices like displays, sensors, and SD Cards. Technically, it is called as a serial, full duplex, and synchronous interface. But what do those terms mean?
 
-- Serial means data is sent one bit at a time. Imagine a single-lane bridge where only one car can pass at a time. Each bit of data is like a car crossing the bridge one after another in a line. This is different from a multi-lane highway (parallel communication) where many cars can go side by side all at once.
+- **Serial** means data is sent one bit at a time, one after another, over a single data line. This is different from parallel communication, where multiple bits are sent at the same time using multiple data lines.
 
-- Full duplex means two devices can talk to each other at the same time. Imagine two people having a phone call. They can both speak and listen at the same time. That's full duplex. In contrast, half duplex would be like using a walkie talkie - only one person can talk at a time while the other listens, and then they switch.
+- **Full duplex** means two devices can send and receive data at the same time. Both devices can transmit to each other simultaneously without waiting for the other to finish. This is different from half duplex, where devices must take turns: one sends while the other receives.
 
-- Synchronous means both devices use the same clock to stay in sync. Think of two people playing catch, but they throw and catch only when a whistle blows. The whistle acts like a clock signal, making sure both sides know exactly when to send and receive data.
+- **Synchronous** means both devices use a shared clock signal. This clock defines exactly when each bit of data is sent and read, so both sides stay aligned during communication.
 
 ## Controller and Peripheral
 
 SPI uses a controller-peripheral model (previously called master-slave). The controller is the device that starts the communication and provides the clock signal. The peripheral is the device that responds to the controller.
 
-In most embedded projects, the ESP32 acts as the controller, and devices like displays, sensors, or SD Cards are peripherals.
+In our case, the Raspberry Pi Pico acts as the controller, and devices like displays, sensors, or SD Cards are peripherals.
 
 <img style="display: block; margin: auto;" alt="SPI Single Bus Multiple SPI Device" src="./images/spi-bus.svg"/>
 <p align="center"><em>Figure: Single SPI bus with a controller and a single peripheral</em></p>

@@ -8,11 +8,11 @@ Since we will be using an OLED display in the next chapter, and it communicates 
 
 I2C stands for Inter-Integrated Circuit, also written as I²C. It's one of the popular communication methods used by microcontrollers to talk to sensors, displays (like OLEDs), and other chips. It is a serial, half-duplex, and synchronous interface. Let's break down what that means.
 
-- Serial means data is transferred one bit at a time over a single data line. Think of it like a one-lane bridge where cars (bits of data) pass through one after another in a straight line.
+- **Serial** means data is transferred one bit at a time, in sequence. Each bit is sent individually rather than sending multiple bits at once. These bits are carried over a data signal during communication.
 
-- Half-duplex means data travels in only one direction at a time. Imagine using a walkie-talkie - only one person can talk while the other listens, and then they switch roles.
+- **Half duplex** means data travels in only one direction at a time. A device either sends data or receives data, but not both at the same time. The direction switches as needed during communication.
 
-- Synchronous means both devices rely on a shared clock signal to coordinate communication. Picture two people throwing a ball to each other, but only when a referee blows a whistle. That whistle acts like a clock signal, ensuring timing stays in sync.
+- **Synchronous** means both devices rely on a shared clock signal. This clock defines exactly when each bit of data is sent and read, keeping both devices aligned during communication.
 
 ## Controller and Target
 
