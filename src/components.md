@@ -27,6 +27,7 @@ Component names are provided for reference. Before purchasing, check the corresp
 - Ultrasonic sensor (HC-SR04 / HC-SR04+)
 - Buzzer (active and passive)
 - Servo motor (SG90)
+- MAX7219 8X8 Dot LED Matrix Display Module
 - RFID module (RC522)
 - Micro SD Card Reader Module (SPI)
 - Joystick module (PS2 type)

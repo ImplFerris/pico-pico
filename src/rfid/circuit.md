@@ -1,4 +1,4 @@
-## Circuit
+# Connecting RC522 with Raspberry Pi Pico
  
 The introduction has become quite lengthy, so we will move the circuit diagram for connecting the Pico to the RFID reader to a separate page. Additionally, there are more pins that involved in this than any of the previous components we've used so far.
 
@@ -73,6 +73,7 @@ There are 8 pins in the RC522 RFID module.
 </table>
 
 ## Connecting the RFID Reader to the Raspberry Pi Pico
+
 To establish communication between the Raspberry Pi Pico and the RFID Reader, we will use the SPI (Serial Peripheral Interface) protocol.  The SPI interface can handle data speed up to 10 Mbit/s. We wont be utilizing the following Pins: RST, IRQ at the moment.
 
 <table>

@@ -1,41 +1,67 @@
 # RFID
 
-In this section, we will use the RFID Card Reader (RC522) module to read data from RFID tags and key fob tags. 
+We will use the RFID Card Reader (RC522) module to read data from RFID tags and key fobs.
 
+<div style="text-align: center; margin: 20px 0;">
+  <img style="display: block; margin: auto; " alt="MIFARE Memory layout" src="./images/rfid-card-tag.jpg"/>
+  <div style="margin-top: 10px; font-style: italic; color: #666;">
+    Photo credits to Security Instrument Corp
+  </div>
+</div>
+
+RFID is commonly used in systems like apartment access keys, office entry cards, smart parking setups, hotel keycards, toll passes, and contactless credit cards. These systems all work in a similar way. You bring a card or tag close to a reader, and the reader identifies it wirelessly.
+
+We will do a similar thing using the Raspberry Pi Pico, but instead of just reading data, we will also learn how to write data to RFID tags and understand how the system works.
 
 ## What is RFID?
-You've probably used them without even realizing it; on your apartment key, at the office, in parking lots, or with a contactless credit card. If you've got a toll pass in your car or used a hotel keycard, then yep, you've already seen them in action.
 
-RFID (Radio Frequency Identification) is a technology that uses radio waves to identify and track objects, animals. It wirelessly transmits the stored data from a tag (containing a chip and antenna) to a reader when in range.
- 
-## Categories By Range  
-RFID systems can be categorized by their operating frequency. The three main types are:  
+RFID stands for Radio Frequency Identification. It is a wireless technology used to identify objects using radio waves.
 
-- **Low Frequency (LF)**: Operates at ~125 kHz with a short range (up to 10cm). It's slower and commonly used in access control and livestock tracking.  
+An RFID system has two main parts. One is the reader, and the other is the tag. The reader generates a radio field. When a tag comes close to this field, the tag is powered by it and sends data back to the reader. Most basic RFID tags do not have a battery.
 
-- **High Frequency (HF)**: Operates at 13.56 MHz with a range of 10cm to 1m. It offers moderate speed and is widely used in access control systems, such as office spaces, apartments, hotel keycards, as well as in ticketing, payments, and data transfer.  We are going to use this one (RC522 module which operates at 13.56MHz)
+The data stored on a tag can be as simple as a unique ID, or it can include small blocks of memory that can be read from and written to. The reader handles all the radio communication, and your microcontroller talks to the reader using a standard interface like SPI.
 
-- **Ultra-High Frequency (UHF)**: Operates at 860–960 MHz with a range of up to 12m. It's faster and commonly used in retail inventory management, anti-counterfeiting, and logistics.
+In this book, we will focus on short range RFID, where the tag needs to be very close to the reader. This is the type commonly used for access cards, key fobs, and similar systems.
+
+## Categories By Range
+
+RFID systems can be categorized by their operating frequency, which directly affects communication range, data rate, and typical use cases. The three main categories are Low Frequency (LF), High Frequency (HF), and Ultra High Frequency (UHF).
+
+- **Low Frequency (LF)**  
+LF RFID operates around 125 kHz. These systems have a very short read range, typically up to about 10 cm. Data transfer is slow, but LF RFID is relatively tolerant to interference from metal and liquids. Because of this, it is commonly used in simple access control systems and livestock tracking.
+
+- **High Frequency (HF)**  
+HF RFID operates at 13.56 MHz and typically offers a read range from about 10 cm up to 1 m, depending on antenna size and power. HF systems provide moderate data rates and support more complex protocols, allowing both read and write operations. This category is widely used in access control systems for offices, apartments, and hotels, as well as in ticketing, contactless payments, and short range data transfer.  
+    
+    We are going to use this category in this book, specifically the RC522 module, which operates at 13.56 MHz.
+
+- **Ultra High Frequency (UHF)**  
+UHF RFID operates in the 860 to 960 MHz range and supports much longer read distances, often up to 12 m or more. These systems offer higher data rates and can read multiple tags simultaneously. UHF RFID is commonly used in retail inventory management, logistics, supply chain tracking, and anti counterfeiting applications.
+
 
 ## Categories By Power source
-RFID tags can either be active or passive, depending on how they are powered.
 
-- **Active tags**: They have their own battery and can send signals on their own. These are typically used on large objects like rail cars, big reusable containers, and assets that need to be tracked over long distances.
-- **Passive tags:**  Unlike active tags, passive tags don't have a battery. They rely on the electromagnetic fields emitted by the RFID reader to power up. Once energized, they transmit data using radio waves. These are the most common type of RFID tags and are likely the ones you've encountered in everyday life. If you guessed it correctly, yes the RC522 is the passive tags.
+RFID tags can be categorized based on how they are powered. The two main types are active and passive tags.
 
-## Components:
+- **Active RFID Tags**  
+Active tags include an internal battery, which allows them to transmit signals on their own. This enables much longer communication ranges compared to passive tags. Active RFID tags are commonly used for tracking large assets such as rail cars, shipping containers, and equipment that must be monitored over long distances.
 
-RFID systems consist of an RFID Reader, technically referred to as the PCD (Proximity Coupling Device). In passive RFID tags, the reader powers the tag using an electromagnetic field. The tags themselves are called RFID Tags or, in technical terms, PICCs (Proximity Integrated Circuit Cards).  It is good to know its technical terms also, it will come in handy if you want to refer the datasheet and other documents.
+- **Passive RFID Tags**  
+Passive tags do not have a battery. Instead, they draw power from the electromagnetic field generated by the RFID reader. Once powered, the tag sends its data back to the reader using radio waves. Passive RFID tags are the most widely used type and are found in access cards, key fobs, and contactless payment systems.  
+The RC522 module used in this book works with passive RFID tags.
 
-Reader typically include memory components like FIFO buffers and EEPROM. They also incorporate cryptographic features to ensure secure communication with Tags, allowing only authenticated RFID readers to interact with them. For example, RFID readers from NXP Semiconductors use the Crypto-1 cipher for authentication.
 
-Each RFID tag has a hardcoded UID (Unique Identifier), which can be 4, 7, or 10 bytes in size.
- 
+## RFID System Components
+
+The RFID reader is technically referred to as the PCD (Proximity Coupling Device). In passive RFID systems, the reader generates an electromagnetic field that powers the tag and enables communication.
+
+The tag itself is called an RFID tag, or in technical terms, a PICC (Proximity Integrated Circuit Card). It is good to know these technical terms as well. They will come in handy if you want to refer to datasheets and other documents.
+
+RFID readers typically include internal components such as FIFO buffers and non volatile memory like EEPROM. Many readers also include cryptographic features to support secure communication with tags, allowing only authenticated readers to interact with protected data. For example, RFID readers from NXP Semiconductors use the Crypto-1 cipher for authentication.
+
+Each RFID tag has a hardcoded UID (Unique Identifier). Depending on the tag type, this UID can be 4, 7, or 10 bytes in size and is used to uniquely identify the tag.
 
 ## References
 - [What Is A RFID Antenna?](https://www.sannytelecom.com/what-is-a-rfid-antenna/)
 - [Types of RFID Systems](https://www.impinj.com/products/technology/how-can-rfid-systems-be-categorized)
-
- 
-
 
