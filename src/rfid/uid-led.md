@@ -59,12 +59,12 @@ Flash the program onto the Pico as you normally would:
 
 ```sh
 # if you are using debug probe
-# cargo flash --release  
+# cargo flash --release
 cargo embed --release
 
 # if you are using BOOTSEL approach
 cargo run --release
-``` 
+```
 
 Once the program is running, bring the matching RFID tag near the reader and observe the onboard LED turning on. Move the tag away and the LED turns off. Try a different card or key fob and you will see that the LED does not turn on for non matching UIDs.
 

@@ -11,7 +11,7 @@ The B equation, also called the Beta parameter method, is the simplest way to co
 
 In this equation, T is the temperature in Kelvin that we want to find. R is the measured resistance at the unknown temperature T.
 
-\\( T_0 \\) is the reference temperature, usually 298.15K (25°C), where the thermistor's resistance is known.  \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10kΩ for common thermistors. 
+\\( T_0 \\) is the reference temperature, usually 298.15K (25°C), where the thermistor's resistance is known.  \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10kΩ for common thermistors.
 
 B is the B-value of the thermistor, a material constant. And, the ln represents the natural logarithm function.
 
@@ -93,7 +93,7 @@ const REF_TEMP: f64 = 25.0;  // Reference temperature 25°C
 fn main() {
     let t0 = celsius_to_kelvin(REF_TEMP);
     let r = 10475.0; // Measured resistance in ohms
-    
+
     let temperature_kelvin = calculate_temperature(r, REF_RES, t0, B_VALUE);
     let temperature_celsius = kelvin_to_celsius(temperature_kelvin);
     println!("Temperature: {:.2} °C", temperature_celsius);

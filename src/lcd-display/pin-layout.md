@@ -149,7 +149,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
 
 ## Contrast Adjustment
 
-The Vo pin controls the contrast of the LCD by setting the voltage difference between VDD and Vo.  
+The Vo pin controls the contrast of the LCD by setting the voltage difference between VDD and Vo.
 Lower Vo values increase contrast, while higher values reduce it.
 
 The recommended approach is to use a potentiometer connected between VDD and GND, with the wiper connected to Vo. This allows easy adjustment while the LCD is powered.
@@ -161,8 +161,8 @@ If a potentiometer is not available, fixed resistors can be used as a voltage di
 
 The RS pin selects whether the LCD interprets incoming values as commands or as character data.
 
-- RS = LOW: command mode  
-- RS = HIGH: data mode  
+- RS = LOW: command mode
+- RS = HIGH: data mode
 
 
 ## Enable Pin (E)
@@ -175,3 +175,4 @@ To send data or a command, place the value on the data pins, set RS appropriatel
 
 
 
+It is used to control when data is transferred to the LCD display. The enable pin is typically kept low (E=0) but is set high (E=1) for a specific period of time to initiate a data transfer, and then returned to low.. The data is latched into the LCD on the transition from high to low.

@@ -3,9 +3,9 @@
 When working with embedded Rust, you will often come across terms like PAC, HAL, and BSP. These are the different layers that help you interact with the hardware. Each layer offers a different balance between flexibility and ease of use.
 
 Let's start from the highest level of abstraction down to the lowest.
- 
+
 <a href ="./images/abstraction-layers.png"><img alt="abstraction layers" style="display: block; margin: auto;" src="./images/abstraction-layers.png"/></a>
- 
+
 
 ## Board Support Package (BSP)
 
@@ -28,10 +28,10 @@ Embassy sits at the same level as HAL but provides an additional runtime environ
 Embassy provides a separate crate called `embassy-rp` specifically for Raspberry Pi microcontrollers (RP2040 and RP235x). This crate builds directly on top of the rp-pac (Raspberry Pi Peripheral Access Crate).
 
 Throughout this book, we will use both rp-hal and embassy-rp for different exercises.
- 
+
 ---
 
-> [!NOTE] 
+> [!NOTE]
 > The layers below the HAL are rarely used directly. In most cases, the PAC is accessed through the HAL, not on its own. Unless you are working with a chip that does not have a HAL available, there is usually no need to interact with the lower layers directly. In this book, we will focus on the HAL layer.
 
 

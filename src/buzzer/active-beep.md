@@ -1,6 +1,6 @@
 ## Beeping with an Active Buzzer
 
-Since you already know how an active buzzer works, we can make it beep by simply turning a GPIO pin on and off.  In this exercise, we use a GPIO pin to power the buzzer, wait for a short time, turn it off, and repeat. This creates a clear beeping sound. 
+Since you already know how an active buzzer works, we can make it beep by simply turning a GPIO pin on and off.  In this exercise, we use a GPIO pin to power the buzzer, wait for a short time, turn it off, and repeat. This creates a clear beeping sound.
 
 > [!Note]
 > This example is meant for an active buzzer. If you use a passive buzzer instead, the sound may be strange or inconsistent. Try this exercise only with an active buzzer.

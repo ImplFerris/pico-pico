@@ -42,9 +42,9 @@ fn panic(_info: &PanicInfo) -> ! {
         atomic::compiler_fence(Ordering::SeqCst);
     }
 }
-``` 
+```
 
-You can either use an external crate like this, or write your own panic handler function manually. It's up to you.  
+You can either use an external crate like this, or write your own panic handler function manually. It's up to you.
 
 **Resources:**
 - [Rust official doc](https://doc.rust-lang.org/nomicon/panic-handler.html)

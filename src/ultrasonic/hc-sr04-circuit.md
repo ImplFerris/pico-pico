@@ -24,7 +24,7 @@ Below are some resistor pairs you can use to bring the HC-SR04 Echo signal down 
 | 33 kΩ          | 47 kΩ          | 2.94 V         |
 | 47 kΩ          | 68 kΩ          | 2.96 V         |
 
-You can choose any resistor pair from the table because all of them bring the 5 V Echo signal down to a safe level near 3.3 V. In practice it is best to use the values you already have in your kit. 
+You can choose any resistor pair from the table because all of them bring the 5 V Echo signal down to a safe level near 3.3 V. In practice it is best to use the values you already have in your kit.
 
 
 ## Connection for the Raspberry Pi Pico 2 and Ultrasonic Sensor

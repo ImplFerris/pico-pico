@@ -63,7 +63,7 @@ async fn logger_task(usb: embassy_rp::Peri<'static, embassy_rp::peripherals::USB
 The logger task runs continuously and handles all USB communication in the background.
 
 
-## Main function 
+## Main function
 
 In the main function, we spawn the USB logger task.
 

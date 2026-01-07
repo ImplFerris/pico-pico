@@ -120,7 +120,7 @@ You can use `cargo embed` to flash your program and watch the log output in your
 
 ```sh
 cargo embed
-# or 
+# or
 cargo embed --release
 ```
 

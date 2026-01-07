@@ -56,7 +56,7 @@ Connection for the Pico and Ultrasonic:
   </tbody>
 </table>
 
-- **VCC**: Connect the VCC pin on the HC-SR04+ to the 3.3V pin on the Pico. 
+- **VCC**: Connect the VCC pin on the HC-SR04+ to the 3.3V pin on the Pico.
 - **Trig**: Connect to GPIO 17 on the Pico to start the ultrasonic sound pulses.
 - **Echo**: Connect to GPIO 16 on the Pico; this pin sends a pulse when it detects the reflected signal, and the pulse length shows how long the signal took to return.
 - **GND**: Connect to the ground pin on the Pico.

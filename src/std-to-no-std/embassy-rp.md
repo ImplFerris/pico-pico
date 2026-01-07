@@ -1,8 +1,8 @@
 # Embassy for Raspberry Pi Pico
 
-We already introduced the concept of HAL in the introduction chapter. For the Pico, we will use the Embassy RP HAL. The Embassy RP HAL targets the Raspberry Pi RP2040, as well as RP235x microcontrollers. 
+We already introduced the concept of HAL in the introduction chapter. For the Pico, we will use the Embassy RP HAL. The Embassy RP HAL targets the Raspberry Pi RP2040, as well as RP235x microcontrollers.
 
-The HAL supports blocking and async peripheral APIs. Using async APIs is better because the HAL automatically handles waiting for peripherals to complete operations in low power mode and manages interrupts, so you can focus on the primary functionality. 
+The HAL supports blocking and async peripheral APIs. Using async APIs is better because the HAL automatically handles waiting for peripherals to complete operations in low power mode and manages interrupts, so you can focus on the primary functionality.
 
 Let's add the embassy-rp crate to our project.
 
@@ -26,7 +26,7 @@ This gives us the peripheral singletons we need. Remember, we should only call t
 
 ## Timer
 
-We are going to replicate the quick start example by blinking the onboard LED. To create a blinking effect, we need a timer to add delays between turning the LED on and off. Without delays, the blinking would be too fast to see. 
+We are going to replicate the quick start example by blinking the onboard LED. To create a blinking effect, we need a timer to add delays between turning the LED on and off. Without delays, the blinking would be too fast to see.
 
 To handle timing, we'll use the "embassy-time" crate, which provides essential timing functions:
 

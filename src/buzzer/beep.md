@@ -88,7 +88,7 @@ cd pico2-embassy-projects/buzzer-beep
 ```
 
 ## rp-hal version
- 
+
 If you want to see the same example implemented using rp-hal, you can find it here.
 
 ```sh

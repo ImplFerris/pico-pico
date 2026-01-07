@@ -197,17 +197,17 @@ By default, the source clock frequency is set to the RP2350 system clock frequen
 
 > [!Note]
 > The divider is shown as an integer part and a fractional part.
->  
+>
 > The fractional value is **not** a decimal fraction. It represents a [4-bit fixed-point fraction](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/).
->  
+>
 > The effective divider is:
->  
+>
 > `DIV = DIV_INT + (DIV_FRAC / 16)`
->  
+>
 > For example, `DIV_INT = 45` and `DIV_FRAC = 13` means the divider is `45 + 0.8125`, not `45.13`.
 
 
-## Code 
+## Code
 
 If you are using rp-hal, you set the integer and fractional parts separately, like this:
 

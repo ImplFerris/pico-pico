@@ -83,11 +83,11 @@ This is used when you want to combine multiple grids to create a symbol. You can
     .text-left {
         text-align: left;
     }
-    
+
    .custom-char-tbl {
     width: 100%;
     border-collapse: collapse;
-     border: none; 
+     border: none;
 }
 
 .custom-char-tbl td {
@@ -95,8 +95,8 @@ This is used when you want to combine multiple grids to create a symbol. You can
     height: auto;
     text-align: center;
     vertical-align: middle;
-    padding: 0; 
-     border: none; 
+    padding: 0;
+     border: none;
 }
 
 .grid {
@@ -121,9 +121,9 @@ This is used when you want to combine multiple grids to create a symbol. You can
 }
 
 .custom-char-tbl td div.grid {
-    margin: auto; 
-    width: calc(20px * 5 + 5px * 6); 
-    height: calc(20px * 8 + 5px * 10); 
+    margin: auto;
+    width: calc(20px * 5 + 5px * 6);
+    height: calc(20px * 8 + 5px * 10);
 }
 
 </style>
@@ -225,7 +225,7 @@ This is used when you want to combine multiple grids to create a symbol. You can
         }
 
         const table = document.createElement('table');
-        table.classList.add('custom-char-tbl');  
+        table.classList.add('custom-char-tbl');
 
         for (let r = 0; r < rows; r++) {
             const tr = document.createElement('tr');

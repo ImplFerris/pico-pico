@@ -78,7 +78,7 @@ loop {
     servo
         .set_duty_cycle_fraction(120, 1000)
         .expect("invalid max duty cycle");
-        
+
     Timer::after_millis(1000).await;
 }
 ```

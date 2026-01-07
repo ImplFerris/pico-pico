@@ -123,7 +123,7 @@ Text::with_baseline("Hello, Rust!", Point::new(0, 16), text_style, Baseline::Top
     .expect("failed to draw text to display");
 ```
 
-We're rendering "Hello, Rust!" at position (0, 16), which is 16 pixels down from the top of the screen. We use the text style we defined earlier and align the text using its top edge with Baseline::Top. 
+We're rendering "Hello, Rust!" at position (0, 16), which is 16 pixels down from the top of the screen. We use the text style we defined earlier and align the text using its top edge with Baseline::Top.
 
 The .draw(&mut display) call renders the text into the display's internal buffer.  At this point, the text exists in RAM but is not yet visible on the physical screen.
 

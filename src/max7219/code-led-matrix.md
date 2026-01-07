@@ -37,7 +37,7 @@ The embedded-hal-bus crate bridges this gap. It provides adapters that wrap an S
 
 ## Additional Imports
 
-We now add the imports needed for SPI, the MAX7219 display driver, and drawing with embedded-graphics. 
+We now add the imports needed for SPI, the MAX7219 display driver, and drawing with embedded-graphics.
 ```rust
 // For MAX7219
 use embedded_hal_bus::spi::ExclusiveDevice;

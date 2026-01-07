@@ -22,7 +22,7 @@ cargo run --target=thumbv8m.main-none-eabihf
 ```
 
 > [!NOTE]
-> The example codes include a runner configuration in the `.cargo/config.toml` file, defined as:  
+> The example codes include a runner configuration in the `.cargo/config.toml` file, defined as:
 `runner = "picotool load -u -v -x -t elf"`.  This means that when you execute `cargo run`, it actually invokes the `picotool` with the `load` subcommand to flash the program.
 
 

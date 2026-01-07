@@ -9,13 +9,13 @@ You can either use the [manual method](/core-concepts/pwm/manual-calculate-top-d
 Using the manual method, I calculated a TOP value of 46,874 with a divider of 64. Using the form, I got a divider of 45.8125 with a TOP value of 65,483. We can use either of these configurations.
 
 > [!NOTE]
-> In rp-hal, you have to set the divider integer and fraction separately. So a divider of 64 becomes div_int = 64 and div_frac = 0. A divider of 45.8125 becomes div_int = 45 and div_frac = 13.  
+> In rp-hal, you have to set the divider integer and fraction separately. So a divider of 64 becomes div_int = 64 and div_frac = 0. A divider of 45.8125 becomes div_int = 45 and div_frac = 13.
 
 ## Position calculation based on top
 
 Once the TOP value for a 50 Hz PWM signal is known, we can calculate the duty cycle values required to position the servo.
 
-The servo determines its position by measuring the pulse width, which is the amount of time the signal stays high during each 20 ms PWM cycle. The exact pulse widths are not identical for all servos and can vary slightly depending on the specific servo model. 
+The servo determines its position by measuring the pulse width, which is the amount of time the signal stays high during each 20 ms PWM cycle. The exact pulse widths are not identical for all servos and can vary slightly depending on the specific servo model.
 
 In my case, the values were:
 
@@ -41,9 +41,9 @@ const PWM_TOP: u16 = 46_874;
 
 const TOP: u16 = PWM_TOP + 1;
 // 0.5ms is 2.5% of 20ms; 0 degrees in servo
-const MIN_DUTY: u16 = (TOP as f64 * (2.5 / 100.)) as u16; 
+const MIN_DUTY: u16 = (TOP as f64 * (2.5 / 100.)) as u16;
 // 1.5ms is 7.5% of 20ms; 90 degrees in servo
-const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16; 
+const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16;
 // 2.4ms is 12% of 20ms; 180 degree in servo
 const MAX_DUTY: u16 = (TOP as f64 * (12. / 100.)) as u16;
 ```
@@ -56,12 +56,12 @@ servo.set_duty_cycle(MIN_DUTY)
 
 ### Option 2: Using set_duty_cycle_fraction
 
-Another option is to use `set_duty_cycle_fraction`. This will help us to set percentage with fraction. 
+Another option is to use `set_duty_cycle_fraction`. This will help us to set percentage with fraction.
 
 In fact, set_duty_cycle_percent is a convenience method provided by embedded-hal that internally calls set_duty_cycle_fraction. It simply divides the input percentage by 100 and forwards the result as a fraction.
 
 From embedded-hal:
-  
+
 ```rust
  /// Set the duty cycle to `percent / 100`
 ///
@@ -102,7 +102,7 @@ For example:
 - 2.5% can be written as 25 / 1000  (in other words, 25 is 2.5% of 1000)
 - 7.5% can be written as 75 / 1000  (in other words, 75 is 7.5% of 1000)
 - 12% can be written as 120 / 1000  (in other words, 120 is 12% of 1000)
- 
+
 So in our code, we can apply it like this:
 
 ```rust

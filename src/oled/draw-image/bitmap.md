@@ -16,7 +16,7 @@ I have created the [Ferris BMP file](../images/ferris.bmp), which you can downlo
 
 ## Project base
 
-We will copy the oled-rawimg project and work on top of that. 
+We will copy the oled-rawimg project and work on top of that.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects
@@ -163,4 +163,4 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 ];
 
 // End of file
-``` 
+```

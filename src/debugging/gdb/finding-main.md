@@ -2,7 +2,7 @@
 
 When the Pico 2 resets, the CPU starts executing from the Reset Handler. To understand how our program starts, we will locate the Reset Handler, disassemble it, and follow the call chain until we reach our actual Rust main.
 
-When the Pico 2 starts up, the CPU does not jump straight into our Rust main function.  Instead, it follows a small chain of functions provided by the Cortex-M runtime.  
+When the Pico 2 starts up, the CPU does not jump straight into our Rust main function.  Instead, it follows a small chain of functions provided by the Cortex-M runtime.
 
 In this section, we will:
 

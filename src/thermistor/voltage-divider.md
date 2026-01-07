@@ -156,13 +156,13 @@ The thermistor's resistance decreases due to its negative temperature coefficien
         const slider = document.getElementById('thermistorSimTemp');
         const valueDisplay = document.getElementById('thermistorSimValue');
         const indicator = document.getElementById('thermistorSimIndicator');
-        
+
         const R2 = 10000; // Fixed resistor 10kΩ
         const Vin = 3.3;  // Supply voltage
         const R0 = 10000; // Resistance at 25°C
         const T0 = 25;    // Reference temperature
         const beta = 3950; // Beta coefficient (typical NTC)
-        
+
         // Calculate thermistor resistance using simplified Beta equation
         function getThermistorResistance(tempC) {
             const T = tempC + 273.15; // Convert to Kelvin
@@ -170,7 +170,7 @@ The thermistor's resistance decreases due to its negative temperature coefficien
             const R = R0 * Math.exp(beta * (1/T - 1/T0K));
             return R;
         }
-        
+
         function drawWire(x1, y1, x2, y2) {
             ctx.strokeStyle = '#fabd2f';
             ctx.lineWidth = 2;
@@ -180,13 +180,13 @@ The thermistor's resistance decreases due to its negative temperature coefficien
             ctx.lineTo(x2, y2);
             ctx.stroke();
         }
-        
+
         function drawResistor(x, y, label, value, isThermistor) {
             const h = 60, w = 15, z = 6;
             ctx.strokeStyle = '#fabd2f';
             ctx.lineWidth = 2;
             ctx.setLineDash([]);
-            
+
             ctx.beginPath();
             ctx.moveTo(x, y - h/2);
             for (let i = 0; i < z; i++) {
@@ -196,14 +196,14 @@ The thermistor's resistance decreases due to its negative temperature coefficien
             }
             ctx.lineTo(x, y + h/2);
             ctx.stroke();
-            
+
             ctx.fillStyle = '#ebdbb2';
             ctx.font = 'bold 14px monospace';
             ctx.textAlign = 'left';
             ctx.fillText(label, x + 25, y - 5);
             ctx.font = '12px monospace';
             ctx.fillText(value, x + 25, y + 10);
-            
+
             // Draw thermistor symbol (diagonal line through resistor)
             if (isThermistor) {
                 ctx.strokeStyle = '#fe8019';
@@ -213,7 +213,7 @@ The thermistor's resistance decreases due to its negative temperature coefficien
                 ctx.moveTo(x - 25, y - 25);
                 ctx.lineTo(x + 25, y + 25);
                 ctx.stroke();
-                
+
                 // Add "t°" symbol
                 ctx.fillStyle = '#fe8019';
                 ctx.font = 'bold 12px monospace';
@@ -221,56 +221,56 @@ The thermistor's resistance decreases due to its negative temperature coefficien
                 ctx.fillText('t°', x - 35, y + 5);
             }
         }
-        
+
         function drawVoltageSource(x, y, voltage) {
             ctx.strokeStyle = '#fabd2f';
             ctx.lineWidth = 2;
             ctx.setLineDash([]);
-            
+
             ctx.beginPath();
             ctx.moveTo(x - 20, y);
             ctx.lineTo(x + 20, y);
             ctx.stroke();
-            
+
             ctx.beginPath();
             ctx.moveTo(x - 12, y + 12);
             ctx.lineTo(x + 12, y + 12);
             ctx.stroke();
-            
+
             ctx.fillStyle = '#ebdbb2';
             ctx.font = '12px monospace';
             ctx.textAlign = 'right';
             ctx.fillText('Vin', x - 30, y + 5);
             ctx.fillText(voltage, x - 30, y + 18);
         }
-        
+
         function drawVoltageLabel(x, y, voltage) {
             ctx.strokeStyle = '#fabd2f';
             ctx.lineWidth = 2;
             ctx.setLineDash([]);
-            
+
             ctx.beginPath();
             ctx.moveTo(x, y);
             ctx.lineTo(x + 25, y);
             ctx.stroke();
-            
+
             ctx.fillStyle = '#fe8019';
             ctx.font = 'bold 12px monospace';
             ctx.textAlign = 'left';
             ctx.fillText('Vout', x + 30, y - 2);
             ctx.fillText(voltage, x + 30, y + 12);
         }
-        
+
         function drawCircuit() {
             ctx.fillStyle = '#1d2021';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             const temp = parseInt(slider.value);
             const R1 = getThermistorResistance(temp);
             const Vout = Vin * (R2 / (R1 + R2));
-            
+
             const lx = 80, rx = 270, ty = 80, r1y = 170, my = 260, r2y = 350, by = 440, vy = 250;
-            
+
             drawWire(lx, ty, rx, ty);
             drawWire(rx, ty, rx, r1y - 30);
             drawWire(rx, r1y + 30, rx, my);
@@ -279,25 +279,25 @@ The thermistor's resistance decreases due to its negative temperature coefficien
             drawWire(lx, by, rx, by);
             drawWire(lx, ty, lx, vy);
             drawWire(lx, vy + 10, lx, by);
-            
+
             drawVoltageSource(lx, vy, Vin.toFixed(1) + 'V');
-            
+
             let r1Display = R1 >= 1000 ? (R1/1000).toFixed(1) + 'kΩ' : R1.toFixed(0) + 'Ω';
             drawResistor(rx, r1y, 'RT', r1Display, true);
             drawResistor(rx, r2y, 'R2', (R2/1000).toFixed(1) + 'kΩ', false);
-            
+
             ctx.fillStyle = '#fabd2f';
             ctx.beginPath();
             ctx.arc(rx, my, 4, 0, Math.PI * 2);
             ctx.fill();
-            
+
             drawVoltageLabel(rx, my, (Vout * 1000).toFixed(0) + ' mV');
         }
-        
+
         function update() {
             const temp = parseInt(slider.value);
             valueDisplay.textContent = temp + '°C';
-            
+
             // Color transition from cold (blue) to hot (red)
             let hue, lightness;
             if (temp < 50) {
@@ -309,14 +309,14 @@ The thermistor's resistance decreases due to its negative temperature coefficien
                 hue = 70 - ((temp - 50) * 1.2); // 70 (yellow) to 10 (red)
                 lightness = 60 + ((temp - 50) * 0.2);
             }
-            
+
             indicator.style.background = `radial-gradient(circle, hsl(${hue}, 80%, ${lightness}%), hsl(${hue}, 80%, ${lightness - 20}%))`;
             indicator.style.boxShadow = `0 0 ${temp * 0.4}px hsla(${hue}, 100%, 50%, ${temp / 150 + 0.2})`;
             indicator.textContent = temp + '°';
-            
+
             drawCircuit();
         }
-        
+
         slider.addEventListener('input', update);
         update();
     })();

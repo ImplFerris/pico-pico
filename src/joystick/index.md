@@ -1,7 +1,7 @@
 # Joystick
 
 In this section, we'll explore how to use the Joystick Module. It is similar to the joysticks found on PS2 (PlayStation 2) controllers. They are commonly used in gaming, as well as for controlling drones, remote-controlled cars, robots, and other devices to adjust position or direction.
- 
+
 ## Meet the hardware - Joystick module
 
 <img style="display: block; margin: auto;width:250px;" alt="joystick" src="./images/joystick.jpg"/>
@@ -16,4 +16,3 @@ When you move the joystick from right to left or left to right(X axis), you can 
 <img style="display: block; margin: auto;width:550px;" alt="joystick" src="./images/joystick-potentiometers-push-button.jpg"/>
 
 You can also observe the push-button being pressed when you press down on the knob.
- 

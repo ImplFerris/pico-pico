@@ -12,7 +12,7 @@ We will continue using the mfrc522 crate to communicate with the RC522 RFID read
 
 ## Project from template
 
-We will start by creating a new project using the template. 
+We will start by creating a new project using the template.
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2

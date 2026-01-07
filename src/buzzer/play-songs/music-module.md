@@ -122,7 +122,7 @@ impl Song {
 }
 ```
 
-Tempo is given in beats per minute. One minute has 60,000 milliseconds, and a whole note is equal to four beats. Dividing by the tempo gives the time, in milliseconds, that one whole note should last. 
+Tempo is given in beats per minute. One minute has 60,000 milliseconds, and a whole note is equal to four beats. Dividing by the tempo gives the time, in milliseconds, that one whole note should last.
 
 For example, at 120 BPM, one beat lasts 500 ms, so a whole note lasts 2000 ms.
 

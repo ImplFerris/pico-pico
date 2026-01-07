@@ -7,7 +7,7 @@ Ultrasonic sensors work by emitting sound waves at a frequency too high (40 kH
 - **Transmitter:** Sends out ultrasonic sound waves.
 - **Receiver:** Detects the sound waves that bounce back from an object.
 
-**Formula to calculate distance**: 
+**Formula to calculate distance**:
 ```text
 Distance = (Time x Speed of Sound) / 2
 ```

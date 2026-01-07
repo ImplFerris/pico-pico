@@ -20,7 +20,7 @@ In this setup, we use USB serial to print the block data.
 
 ## Project from Template
 
-We will start by creating a new project using the template. 
+We will start by creating a new project using the template.
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
@@ -37,7 +37,7 @@ When prompted, enter a project name, for example "read-blocks", and select "Emba
 
 ## Additional Crates Required
 
-Update your Cargo.toml to add the required crates along with the existing dependencies. 
+Update your Cargo.toml to add the required crates along with the existing dependencies.
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
@@ -185,7 +185,7 @@ When accessing memory on the tag, we have to refer to blocks using absolute bloc
 To convert a sector number into the correct block number, we calculate an offset. Since each sector contains four blocks, multiplying the sector number by 4 gives the first block of that sector. This value is stored in block_offset and is then used as the starting point to read all blocks that belong to the selected sector.
 
 For the first sector, which is sector 0, the calculation is straightforward. The offset is 0 * 4, which gives block 0. This means sector 0 starts at block 0 and includes blocks 0, 1, 2, and 3. These are the blocks we read when we authenticate and access the first sector.
- 
+
 ## The main loop
 
 The main loop operates similarly to what we covered in the previous chapter. After selecting a tag, we proceed to read its blocks. Once the block data is read, the loop sends the HLTA and stop_crypto1 commands to put the card in HALT state.
@@ -259,12 +259,12 @@ cd pico2-embassy-projects/rfid/blocks-over-usb/
 Use `cargo embed` to flash and run the program, since the template already configures RTT and defmt and the output appears in the terminal after flashing completes.
 ```sh
 cargo embed --release
-``` 
+```
 {{#endtab }}
 {{#tab name="USB Serial" }}
 
 Flashing the Pico works the same way as usual. In addition, we need a serial terminal to view the output over USB.
-  
+
 ### Connecting to the Serial Port
 
 Open a terminal and connect to the Pico using:
@@ -299,7 +299,7 @@ Bring the RFID tag close to the reader, and the system console will display the 
 {{#tab name="USB Serial" }}
 
 Bring the RFID tag close to the reader, and the USB serial terminal will display the data bytes read from the blocks of the first sector (sector 0).
- 
+
 <img style="display: block; margin: auto;" src="./images/rfid-read-block-0.png"/>
 
 {{#endtab }}

@@ -48,7 +48,7 @@ The Echo pin on the ultrasonic sensor receives the returning signal, which allow
 let mut echo = pins.gpio16.into_pull_down_input();
 ```
 
-## 🦇 Light it Up 
+## 🦇 Light it Up
 
 ### Step 1: Send the Trigger Pulse
 First, we need to send a short pulse to the trigger pin to start the ultrasonic measurement.
@@ -65,7 +65,7 @@ trigger.set_low().ok().unwrap();
 ```
 
 ### Step 2: Measure the Echo Time
-Next, we will use two loops. The first loop will run as long as the echo pin state is LOW. Once it goes HIGH, we will record the current time in a variable. Then, we start the second loop, which will continue as long as the echo pin remains HIGH. When it returns to LOW, we will record the current time in another variable. The difference between these two times gives us the pulse width. 
+Next, we will use two loops. The first loop will run as long as the echo pin state is LOW. Once it goes HIGH, we will record the current time in a variable. Then, we start the second loop, which will continue as long as the echo pin remains HIGH. When it returns to LOW, we will record the current time in another variable. The difference between these two times gives us the pulse width.
 
 ```rust
 let mut time_low = 0;
@@ -89,7 +89,7 @@ let time_passed = time_high - time_low;
 ### Step 3: Calculate Distance
 To calculate the distance, we need to use the pulse width. The pulse width tells us how long it took for the ultrasonic waves to travel to an obstacle and return. Since the pulse represents the round-trip time, we divide it by 2 to account for the journey to the obstacle and back.
 
-The speed of sound in air is approximately 0.0343 cm per microsecond. By multiplying the time (in microseconds) by this value and dividing by 2, we obtain the distance to the obstacle in centimeters. 
+The speed of sound in air is approximately 0.0343 cm per microsecond. By multiplying the time (in microseconds) by this value and dividing by 2, we obtain the distance to the obstacle in centimeters.
 
 ```rust
 let distance = time_passed as f64 * 0.0343 / 2.0;

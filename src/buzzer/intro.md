@@ -50,6 +50,6 @@ For our exercises, a passive buzzer is recommended because it lets us control th
 A buzzer typically has two pins: a positive pin used for the signal and a ground pin. The positive side is often marked with a "+" symbol and is usually the longer pin, while the negative side is shorter, similar to an LED.
 
 That said, some passive buzzers are non-polarized. In those cases, either pin can be connected to the signal or ground. Always check the markings or the datasheet if you are unsure.
- 
+
 ## Reference
 - [Pico official guide on buzzer](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/9)

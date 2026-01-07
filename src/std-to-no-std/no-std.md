@@ -52,7 +52,7 @@ Now the code should be like this
 
 
 fn main() {
-    
+
 }
 ```
 
