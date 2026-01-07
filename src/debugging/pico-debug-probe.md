@@ -38,8 +38,7 @@ Once the SWD pins are soldered, your Pico is ready to connect to the Debug Probe
 Your Debug Probe may not ship with the latest firmware, especially the version that adds support for the Pico 2 (RP2350 chip). Updating the firmware is recommended before you start.
 
 
-The official Raspberry Pi documentation provides clear instructions for updating the Debug Probe. Follow the steps provided [here](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#updating-the-firmware-on-the-debug-probe).
-
+The official Raspberry Pi documentation provides clear instructions for updating the Debug Probe. Follow [the steps provided](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#updating-the-firmware-on-the-debug-probe).
 
 ## Connecting Pico with Debug Probe
 

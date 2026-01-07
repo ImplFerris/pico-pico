@@ -64,8 +64,7 @@ MEMORY {
 ...
 ```
 
-There are a few more settings required in memory.x for RP2350. We do not need to write those by hand. Instead, we will use the file provided in the embassy-rp examples repository. You can download it from [here](https://github.com/embassy-rs/embassy/blob/a6d392b24c5f010a8b5b2a00326c04b05a4ab0f0/examples/rp235x/memory.x) and place it in the root of your project.
-
+There are a few more settings required in memory.x for RP2350. We do not need to write those by hand. Instead, we will use the [file provided in the embassy-rp examples repository](https://github.com/embassy-rs/embassy/blob/a6d392b24c5f010a8b5b2a00326c04b05a4ab0f0/examples/rp235x/memory.x) and place it in the root of your project.
 
 ## Codegen Option for Linker
 

@@ -4,10 +4,9 @@ In this section, we'll learn how to connect an OLED display module to the Raspbe
 
 <img style="display: block; margin: auto;" title="oled display" src="./images/oled.jpg"/>
 
+To give you an idea of what is possible, I have built a few games using an OLED display. One of them is Pico Rex, a tiny dinosaur jumping game inspired by Chrome's offline dino. You can [check it out its GitHub project](https://github.com/ImplFerris/pico-rex).
 
-To give you an idea of what is possible, I have built a few games using an OLED display. One of them is Pico Rex, a tiny dinosaur jumping game inspired by Chrome's offline dino. You can check it out [here](https://github.com/ImplFerris/pico-rex).
-
-I have also made a small flappy-style game and a shooter game, which you can find along with other examples [here](https://github.com/implferris#embedded-rust-games).
+I have also made a small [flappy-style game and a shooter game (along with other examples)](https://github.com/implferris#embedded-rust-games).
 
 As you learn how to use the display, feel free to experiment and build your own ideas. Even simple animations or text updates can be surprisingly fun to create.
 
@@ -28,4 +27,4 @@ For this exercise, we'll use a 0.96-inch OLED monochrome module with a resolutio
 
 The SSD1306 is the integrated controller chip that powers many small OLED displays including the module we are going to use(0.96-inch 128x64 module).  This controller handles the communication between the Pico and the OLED panel, enabling the display to show text, graphics, and more.
 
-**DataSheet:**  You can find the datasheet for SSD1306 [here](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf).
+**DataSheet:** [datasheet for SSD1306](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf).

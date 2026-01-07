@@ -10,12 +10,11 @@ You can find driver crates by searching for the hardware controller name HD44780
 While looking around, I came across several Rust crates that can control this LCD. Some of them even support async. You could also write your own driver by referring to the datasheet, but that is beyond the scope of this chapter.
 
 > [!TIP]
-> If you want to learn how to write your own embedded Rust drivers, you can refer to the Rust Embedded Drivers (RED) book here: [https://red.implrust.com/]
+> If you want to learn how to write your own embedded Rust drivers, you can refer to the [Rust Embedded Drivers (RED) book](https://red.implrust.com/)
 
 For now, we will use one of the existing crates. You are free to try other crates later. Just read the crate documentation and adapt the code if needed.
 
-In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver) 
-(https://red.implrust.com/)
+In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver)
 
 
 ### Project from template

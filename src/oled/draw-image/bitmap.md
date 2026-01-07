@@ -9,7 +9,7 @@ The crate requires the image to be in BMP format. If your image is in another fo
 convert ferris.png -monochrome ferris.bmp
 ```
 
-I have created the Ferris BMP file, which you can use for this exercise. Download it from [here](../images/ferris.bmp).
+I have created the [Ferris BMP file](../images/ferris.bmp), which you can download and use for this exercise.
 
 <img style="display: block; margin: auto;" alt="ferris bmp file" src="../images/ferris.bmp"/>
 
