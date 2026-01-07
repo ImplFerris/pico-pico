@@ -140,6 +140,7 @@ Then continue:
 ```
 
 If you get interrupted, continue again
+
 ```sh
 Thread 1 received signal SIGINT, Interrupt.
 core::ptr::write_volatile<u32> (dst=0xd0000018, src=33554432)
@@ -148,6 +149,7 @@ core::ptr::write_volatile<u32> (dst=0xd0000018, src=33554432)
 ```
 
 Continue again:
+
 ```sh
 (gdb) c
 Continuing.
@@ -183,8 +185,7 @@ Let's also examine the current value in the GPIO_OUT register:
 0xd0000010:     0x00000000
 ```
 
-Right now it shows all zeros. At this stage, the LED is still off because we haven't executed the store instruction yet.
-
+Right now it shows all zeros. At this stage, the LED is still off because we haven't executed the store instruction yet.r
 
 Now let's step forward by one instruction:
 

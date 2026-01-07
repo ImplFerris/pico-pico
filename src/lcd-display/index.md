@@ -6,7 +6,6 @@ These displays are designed to show ASCII characters, and they also support up t
 
 <img style="display: block; margin: auto;width:500px;" alt="lcd1602" src="./images/lcd1602.jpg"/>
 
-
 ## Variants
 
 HD44780-compatible LCDs come in different physical formats. The most common ones are 16x2 displays, which have 16 columns and 2 rows, and 20x4 displays, which have 20 columns and 4 rows. They also differ in backlight color, such as blue, yellow, or green.
@@ -56,6 +55,7 @@ To connect the Pico and the LCD safely, we need to handle this voltage differenc
 Alternatively, you can power the LCD with 3.3 V. This avoids the voltage issue, but the display backlight and contrast will be noticeably dimmer.
 
 ## Datasheet
+
 - You can access the datasheet for the HD44780 from [Sparkfun](https://www.sparkfun.com/datasheets/LCD/HD44780.pdf) or [MIT site](https://academy.cba.mit.edu/classes/output_devices/44780.pdf)
 - [LCD Driver Data Book](https://www.crystalfontz.com/controllers/datasheet-viewer.php?id=433)
 - [LCD Module 1602A Datasheet](https://www.openhacks.com/uploadsproductos/eone-1602a1.pdf)

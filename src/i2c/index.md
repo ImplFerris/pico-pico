@@ -33,10 +33,8 @@ The I2C bus uses just two lines, which are shared by all connected devices:
 
 - SDA (Serial Data Line): Transfers the data in both directions. Sometimes devices label them as SDI.
 
-
 <img style="display: block; margin: auto;" alt="I2C Single Controller and Multiple Target" src="./images/ic2-multi-target-single-controller.svg"/>
 <p align="center"><em>Figure: Single Controller and Multiple Target</em></p>
-
 
 All connected devices share the same two wires. The controller selects which target to communicate with by sending that device's unique address.
 
@@ -61,5 +59,3 @@ The good news is that in Embedded Rust, you don't need to implement the I2C prot
 ## Resources
 
 - [Basics of the I2C Communication Protocol](https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/): Refer this if you want in-depth understanding how the controller communincates with target.
-
-

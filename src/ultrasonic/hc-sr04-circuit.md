@@ -24,8 +24,7 @@ Below are some resistor pairs you can use to bring the HC-SR04 Echo signal down 
 | 33 kΩ          | 47 kΩ          | 2.94 V         |
 | 47 kΩ          | 68 kΩ          | 2.96 V         |
 
-You can choose any resistor pair from the table because all of them bring the 5 V Echo signal down to a safe level near 3.3 V. In practice it is best to use the values you already have in your kit.
-
+You can choose any resistor pair from the table because all of them bring the 5 V Echo signal down to a safe level near 3.3 V. In practice it is best to use the values you already have in your kit.r
 
 ## Connection for the Raspberry Pi Pico 2 and Ultrasonic Sensor
 
@@ -86,9 +85,7 @@ You can choose any resistor pair from the table because all of them bring the 5 
 - **Echo**: Connect to GPIO 16 on the Pico 2 through a voltage divider (1kΩ resistor from Echo pin, 2kΩ or 2.2kΩ resistor to ground). The junction between the resistors connects to GPIO 16. This divider steps down the 5V Echo signal to ~3.4V, protecting the Pico's 3.3V GPIO pins.
 - **GND**: Connect to any ground pin on the Pico 2.
 
-
 <a href="./images/HC-SR04-pico2-rp2350-voltage-divider-circuit.png"><img style="display: block; margin: auto;" alt="pico2" src="./images/HC-SR04-pico2-rp2350-voltage-divider-circuit.png"/></a>
-
 
 ## Connection for the Pico 2 and LED
 

@@ -47,5 +47,6 @@ fn panic(_info: &PanicInfo) -> ! {
 You can either use an external crate like this, or write your own panic handler function manually. It's up to you.
 
 **Resources:**
+
 - [Rust official doc](https://doc.rust-lang.org/nomicon/panic-handler.html)
 - [The Embedded Rust Book](https://docs.rust-embedded.org/book/start/panicking.html)

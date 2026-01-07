@@ -126,4 +126,3 @@ The OLED display is connected using I2C. SDA is connected to GPIO&nbsp;16 and SC
     </tr>
   </tbody>
 </table>
-

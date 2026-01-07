@@ -36,7 +36,6 @@ The HC-SR04+ is a simple and low cost ultrasonic distance sensor. It can measure
 
 In this project, we'll build a proximity detector that gradually brightens an LED as objects get closer. When the sensor detects something within 30 cm, the LED will glow brighter using PWM. You can change the distance value if you want to try different ideas.
 
-
 <img style="display: block; margin: auto;width:500px" alt="ultrasonic" src="./images/hc-sr04-ultrasonic.jpg"/>
 
 ## Prerequisites
@@ -45,7 +44,6 @@ Before starting, get familiar with yourself on these topics
 
 - [PWM](../core-concepts/pwm/index.md)
 - [Voltage Divider](../core-concepts/voltage-divider.md)
-
 
 ## Hardware Requirements
 

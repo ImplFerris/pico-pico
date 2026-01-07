@@ -35,6 +35,7 @@ For each sector, we print a header and then call read_sector to authenticate and
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 fn dump_memory<E, COMM>(
     uid: &mfrc522::Uid,
@@ -56,8 +57,10 @@ where
     Ok(())
 }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 fn dump_memory<E, COMM>(
     uid: &mfrc522::Uid,
@@ -92,9 +95,9 @@ async fn logger_task(usb: embassy_rp::Peri<'static, embassy_rp::peripherals::USB
     embassy_usb_logger::run!(8192, log::LevelFilter::Info, driver);
 }
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## Identify Block Type
 
@@ -160,8 +163,10 @@ where
     Ok(())
 }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 fn read_sector<E, COMM>(
     uid: &mfrc522::Uid,
@@ -205,9 +210,9 @@ where
     Ok(())
 }
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## The main loop
 
@@ -215,6 +220,7 @@ The main loop stays mostly the same. The only difference is that we now call dum
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 loop {
     if let Ok(atqa) = rfid.reqa() {
@@ -231,8 +237,10 @@ loop {
     Timer::after_millis(200).await;
 }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 loop {
     if let Ok(atqa) = rfid.reqa() {
@@ -249,9 +257,9 @@ loop {
     Timer::after_millis(200).await;
 }
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## Clone the existing project
 
@@ -263,6 +271,7 @@ You can clone (or refer) project I created and navigate to the `memory-dump` fol
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/rfid/memory-dump/
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
 You can clone (or refer) project I created and navigate to the `memory-dump-usb` folder.
@@ -271,6 +280,7 @@ You can clone (or refer) project I created and navigate to the `memory-dump-usb`
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/rfid/memory-dump-usb/
 ```
+
 {{#endtab }}
 {{#endtabs }}
 

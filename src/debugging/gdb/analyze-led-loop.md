@@ -2,7 +2,6 @@
 
 Now that we've traced the execution path from reset to our main function, let's set breakpoints in the LED loop and observe how the GPIO registers change when we toggle the LED.
 
-
 ## Understanding the LED Loop
 
 Let me show you the disassembled code from the __cortex_m_rt_main function again. We need to look for the `bl` instructions. The `bl` stands for "branch and link" - these are instructions that call other functions. Specifically, we're looking for the calls to set_high and set_low functions.
@@ -42,7 +41,6 @@ This means GDB created a breakpoint at that address, and it corresponds to line 
 ```
 
 You'll see: `Breakpoint 2 at 0x1000030c: file src/main.rs, line 65.`
-
 
 Now let's reset everything to start fresh:
 
@@ -85,7 +83,6 @@ Thread 1 hit Breakpoint 1, 0x100002f8 in pico_debug::__cortex_m_rt_main () at sr
 
 The program stopped right before calling set_high. This is the perfect moment to check what the register looks like before we turn the LED on.
 
-
 ## Checking GPIO Registers Before set_high
 
 Let's look at what's currently in the GPIO_OUT register:
@@ -97,7 +94,6 @@ Let's look at what's currently in the GPIO_OUT register:
 The x/x command means "examine this memory address and show me the value in hexadecimal format."
 
 You'll probably get an error message "Cannot access memory at address 0xd0000010". This happens because GDB doesn't automatically know about peripheral registers. We need to tell GDB that it's allowed to read from this memory region.
-
 
 ### Making SIO Peripheral Accessible in GDB
 
@@ -120,10 +116,12 @@ If you want to map even less and be more precise, you can use:
 This gives us just 256 bytes, which covers all the basic SIO registers we need, including GPIO_OUT at 0xD0000010. The key point is that we map enough memory to include the registers we want to read, without needing to map the entire SIO region.
 
 Now try reading GPIO_OUT again:
+
 ```sh
 (gdb) x/x 0xd0000010
 0xd0000010:     0x00000000
 ```
+
 We get the value 0x00000000. This means all 32 bits are zero, so all GPIO pins are currently off. Our LED is off.
 
 ## Continue to the Second Breakpoint
@@ -162,12 +160,12 @@ The value changed from `0x00000000` to `0x02000000`.  You should also see the LE
 
 Let me explain what `0x02000000` means. In binary, this is `00000010 00000000 00000000 00000000`. If you count from the right starting at 0, bit 25 is now set to 1. That's exactly what set_high did - it turned on bit 25 of the GPIO_OUT register, which turned on GPIO25, which lit up the LED.
 
-
 ## Continue to See set_low in Action
 
 Now let's continue one more time to see what happens when set_low executes. But first, let's note that the LED is currently on and GPIO_OUT shows `0x02000000` with bit 25 set to 1.
 
 Let's continue:
+
 ```sh
 (gdb) continue
 Continuing.
@@ -196,7 +194,6 @@ The program ran through set_low and the delay, and looped back to our first brea
 ```
 
 The value is back to `0x00000000`. Bit 25 is now 0, which means GPIO25 is off and the LED is off. You should see the LED turned off on your board.
-
 
 ## What We Learned
 

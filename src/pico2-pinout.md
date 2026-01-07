@@ -19,7 +19,6 @@ The Raspberry Pi Pico 2 has the following power pins. These are marked in red (p
 
 - **GND** pins are used to complete electrical circuits and are connected to the system ground. The Pico 2 provides multiple GND pins spread across the board for convenience when connecting external devices.
 
-
 ## GPIO Pins
 
 When you want your microcontroller (i.e Pico) to interact with the world; like turning on lights, reading button presses, sensing temperature, or controlling motors; you need a way to connect and communicate with these external components. That's exactly what GPIO pins do: they're your Raspberry Pi Pico 2's connection points to external components.
@@ -125,6 +124,7 @@ The Raspberry Pi Pico 2 provides a dedicated 3-pin debug header for SWD (Serial 
 ![Raspberry Pi Pico 2 SWD Pins](./images/raspberry-pi-pico2-rp2350-swd-pins.png)
 
 This interface consists of the following signals:
+
 - **SWDIO** - Serial data line
 - **SWCLK** - Serial clock line
 - **GND** - Ground reference

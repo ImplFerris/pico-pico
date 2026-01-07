@@ -47,6 +47,7 @@ const HALF_DUTY: u16 = (TOP as f64 * (7.5 / 100.)) as u16;
 // 2.4ms is 12% of 20ms; 180 degree in servo
 const MAX_DUTY: u16 = (TOP as f64 * (12. / 100.)) as u16;
 ```
+
 Once the duty value is calculated, it can be applied like this:
 
 ```rust
@@ -99,6 +100,7 @@ Remember that 2.5% can be written as the fraction 2.5/100. Since we can't use de
 Now we have an equivalent fraction using only integers. We can apply the same conversion to our other percentages:
 
 For example:
+
 - 2.5% can be written as 25 / 1000  (in other words, 25 is 2.5% of 1000)
 - 7.5% can be written as 75 / 1000  (in other words, 75 is 7.5% of 1000)
 - 12% can be written as 120 / 1000  (in other words, 120 is 12% of 1000)

@@ -3,6 +3,7 @@
 You can use BMP (.bmp) files directly instead of raw image data by utilizing the [tinybmp](https://docs.rs/tinybmp/latest/tinybmp/) crate. tinybmp is a lightweight BMP parser designed for embedded environments. While it is mainly intended for drawing BMP images to embedded_graphics DrawTargets, it can also be used to parse BMP files for other applications.
 
 ## BMP file
+
 The crate requires the image to be in BMP format. If your image is in another format, you will need to convert it to BMP. For example, you can use the following command on Linux to convert a PNG image to a monochrome BMP:
 
 ```sh
@@ -12,7 +13,6 @@ convert ferris.png -monochrome ferris.bmp
 I have created the [Ferris BMP file](../images/ferris.bmp), which you can download and use for this exercise.
 
 <img style="display: block; margin: auto;" alt="ferris bmp file" src="../images/ferris.bmp"/>
-
 
 ## Project base
 

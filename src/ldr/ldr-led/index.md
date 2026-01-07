@@ -7,7 +7,6 @@ You can try this in a closed room by switching the room light on and off. When t
 > [!Tip]
 > You may need to adjust the ADC threshold based on your room's lighting conditions and the specific LDR you are using.
 
-
 ## Hardware Requirements
 
 You are going to need the following components for this exercise:
@@ -124,4 +123,3 @@ The LED will be connected to a GPIO pin 15 and will turn on automatically when t
   </tr>
 </tbody>
 </table>
-

@@ -15,12 +15,14 @@ For example, to get the binary representation of the character "#," the upper 4 
 In the `hd44780-driver` crate we are using, we can write characters directly as a single byte or a sequence of bytes.
 
 #### Write single byte
+
 ```rust
 lcd.write_byte(0x23, &mut timer).unwrap();
 lcd.write_byte(0b00100011, &mut timer).unwrap();
 ```
 
 #### Write multiple bytes
+
 ```rust
 lcd.write_bytes(&[0x23, 0x24], &mut timer).unwrap();
 ```

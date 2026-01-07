@@ -34,4 +34,3 @@ The joystick has a total of 5 pins: power supply, ground, X-axis output, Y-axis 
     </tr>
   </tbody>
 </table>
-

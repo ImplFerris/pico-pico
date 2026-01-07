@@ -206,7 +206,6 @@ By default, the source clock frequency is set to the RP2350 system clock frequen
 >
 > For example, `DIV_INT = 45` and `DIV_FRAC = 13` means the divider is `45 + 0.8125`, not `45.13`.
 
-
 ## Code
 
 If you are using rp-hal, you set the integer and fractional parts separately, like this:
@@ -236,7 +235,6 @@ servo_config.divider = FixedU16::<U4>::from_num(45.8125);
 // or
 // servo_config.divider = fixed::types::U12F4::from_num(45.8125);
 ```
-
 
 <script type="module">
   import init, { calculate_pwm } from "./assets/pwm_freq_top.js";

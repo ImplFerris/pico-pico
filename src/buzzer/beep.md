@@ -6,7 +6,6 @@ We will repeatedly switch the PWM duty cycle between 50 percent and 0 percent, w
 
 You can try this without changing the PWM frequency. In this example, we set the PWM frequency to 440.0 Hz, which corresponds to the A4 musical note. You do not need to know anything about musical notes for this. The important point is that we generate a fixed-frequency tone and turn the sound on and off by changing the duty cycle.
 
-
 ## Create Project from template
 
 We will start by creating a new project using the Embassy framework. As usual, generate the project from the template with cargo-generate:
@@ -16,7 +15,6 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 ```
 
 When prompted, give your project a name like "buzzer-beep" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
-
 
 ## Additional imports
 
@@ -77,7 +75,6 @@ loop {
 
 If you want the beep to be shorter or faster, you can adjust the delay values.
 
-
 ## Clone the existing project
 
 You can clone (or refer to) the project I created and navigate to the `buzzer-beep` folder.
@@ -95,12 +92,3 @@ If you want to see the same example implemented using rp-hal, you can find it he
 git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-rp-projects/buzzer-beep
 ```
-
-
-
-
-
-
-
-
-

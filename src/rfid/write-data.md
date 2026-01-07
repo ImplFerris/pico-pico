@@ -9,7 +9,6 @@ Writing is done using the mf_write function provided by the mfrc522 crate. This 
 > [!CAUTION]
 > Writing to the wrong block can permanently change authentication keys or access bits.  Avoid writing to sector trailer blocks unless you fully understand their structure.
 
-
 ## Writing a Block
 
 We begin by defining a helper function that performs the write operation. The function receives the tag UID, the sector number, the block number relative to the sector, a 16 byte data buffer, and a mutable reference to the RFID reader. Inside the function, the absolute block number is calculated and the sector is authenticated before the write is performed.
@@ -108,4 +107,3 @@ If you are interested in an rp-hal based version of this example, you can find i
 git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-rp-projects/rfid/write-data/
 ```
-

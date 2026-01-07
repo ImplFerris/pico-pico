@@ -26,7 +26,6 @@ Here's the derived formula to get the TOP for the target frequency:
 {f_{PWM} \times (\text{CSR\_PH\_CORRECT} + 1) \times \left( \text{DIV\_INT} + \frac{\text{DIV\_FRAC}}{16} \right)} - 1
 \\]
 
-
 Where:
 - \\( f_{PWM} \\) is the desired PWM frequency.
 - \\( f_{sys} \\) is the system clock frequency. For the pico2, it is is 150MHZ.
@@ -38,7 +37,6 @@ We're not going to use phase correct mode and we're not using fraction for the d
 \frac{f_{sys}}
 {f_{PWM} \times \text{DIV\_INT}} - 1
 \\]
-
 
 ### TOP for 50Hz
 
@@ -59,6 +57,5 @@ We want the PWM frequency to be 50 Hz. To achieve that, we substitute the system
 \\[
 \text{top} = 46,874
 \\]
-
 
 You can experiment with different divider values (even including fraction) and corresponding top values.

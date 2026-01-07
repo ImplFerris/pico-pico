@@ -23,7 +23,6 @@ ssd1306 = { version = "0.10.0", features = ["async"] }
 
 We will enable the `async` feature so the ssd1306 driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
 
-
 ## Additional imports
 
 Add these imports at the top of your main.rs:
@@ -99,7 +98,6 @@ display
     .expect("failed to initialize the display");
 ```
 Finally, display.init() sends initialization commands to the display hardware. This wakes up the display and configures it properly.
-
 
 ## Writing Text
 

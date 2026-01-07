@@ -12,12 +12,11 @@ An NTC thermistor has lower resistance at higher temperatures. This is the most 
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/ntc-resistor.png"/>
 
-
 A PTC thermistor has higher resistance at higher temperatures. These are usually used for protection or current limiting rather than precise sensing.
 
 In this chapter, we are going to work with an NTC thermistor.
 
-
 ## Reference
+
 - [Thermistor Basics](https://www.teamwavelength.com/thermistor-basics/)
 - [Thermistors](https://www.electronics-tutorials.ws/io/thermistors.html)

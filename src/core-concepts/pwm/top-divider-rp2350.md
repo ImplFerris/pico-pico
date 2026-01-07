@@ -2,7 +2,6 @@
 
 Sometimes you need to specify a precise frequency for PWM output. For example, hobby servos typically operate at 50Hz. However, neither embassy-rp nor rp-hal provide a straightforward method to set the frequency directly (at least to my knowledge). Instead, we need to work with the underlying PWM hardware configuration. The embassy-rp crate allows you to configure PWM through a `Config` struct that has various fields, with our focus being on the top and divider parameters. Let's explore how these work.
 
-
 ## How PWM Works Inside the RP2350
 
 The RP2350's PWM slice is driven by a clock. This clock is much faster than the PWM signal you actually want on the pin. The PWM hardware uses a counter that repeatedly counts from 0 up to TOP, then wraps back to 0. The TOP register controls how high the counter goes before wrapping.
@@ -53,7 +52,6 @@ PWM frequency:
 f_{PWM} = \frac{150,000,000}{1,500} = 100,000 \text{ Hz (100 kHz)}
 \\]
 
-
 ### Why TOP Alone Is Not Enough
 
 The TOP register is 16 bits wide, so the maximum value it can hold is 65,535. This means the counter goes through 65,536 steps before wrapping back to zero. If we apply this maximum TOP value to the same calculation we used in the examples above, the resulting PWM frequency comes out to about 2,288 Hz.
@@ -88,7 +86,6 @@ So far, we have assumed that the PWM counter counts in one direction, from 0 up 
 
 In phase correct mode, the PWM counter does not jump back to zero when it reaches TOP. Instead, it counts up from 0 to TOP, then counts back down from TOP to 0. This creates a symmetric, up-and-down counting pattern.
 
-
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/pwm-top-cc-phase-correct-mode.png" alt="PWM Top and CC Register in Phase correct mode of RP2350" style="max-width:70%; height:auto; display:block; margin:0 auto;"/>
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Image from the RP2350 Datasheet</div>
@@ -99,7 +96,6 @@ Because of this, one full PWM cycle now includes both the upward count and the d
 The important takeaway is simple: enabling phase correct mode halves the PWM frequency for the same TOP and divider values.
 
 This mode is often used when you want cleaner, more symmetric PWM signals, especially for things like motor control.
-
 
 ## The PWM Frequency Formula
 
@@ -118,12 +114,12 @@ f_{PWM} = \frac{f_{sys}}{\text{period}} = \frac{f_{sys}}{(\text{TOP} + 1) \times
 \\]
 
 Where:
+
 - \\( f_{PWM} \\) is the PWM output frequency.
 - \\( f_{sys} \\) is the system clock frequency. For the pico2, it is is 150MHZ.
 
 ### Divider and Fraction
 
 In the formula we discussed earlier, there is one important part we have not explained yet: DIV_FRAC. This controls the fractional part of the clock divider in the RP2350.
-
 
 The RP2350 clock divider is split into two parts. DIV_INT is the integer part and sets the whole number division. DIV_FRAC is the fractional part and allows finer control over the division ratio. Together, they let you slow down the PWM counter more precisely than using an integer divider alone.  One important rule is that when DIV_INT is set to 0, you must not set any DIV_FRAC bits.

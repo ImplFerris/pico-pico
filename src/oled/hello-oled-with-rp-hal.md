@@ -9,9 +9,11 @@ To generate the project, run:
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
+
 When prompted, choose a name for your project-let's go with "oh-led". Don't forget to select `rp-hal` as the HAL.
 
 Then, navigate into the project folder:
+
 ```sh
 cd PROJECT_NAME
 # For example, if you named your project "oh-led":
@@ -21,11 +23,13 @@ cd PROJECT_NAME
 ### Add Additional Dependencies
 
 Since we are using the SSD1306 OLED display, we need to include the SSD1306 driver. To add this dependency, use the following Cargo command:
+
 ```sh
 cargo add ssd1306@0.10.0
 ```
 
 We will use the embedded_graphics crate to handle graphical rendering on the OLED display, to draw images, shapes, and text.
+
 ```sh
 cargo add embedded-graphics@0.8.1
 ```
@@ -107,7 +111,6 @@ Text::with_baseline(
 ```
 
 Here, we are writing the message at coordinates (x=0, y=16).
-
 
 ### Write out data to a display
 
@@ -249,6 +252,7 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 ```
 
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `hello-oled` folder.
 
 ```sh

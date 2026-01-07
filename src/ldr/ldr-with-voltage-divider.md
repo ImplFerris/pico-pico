@@ -18,7 +18,6 @@ When the LDR is exposed to strong light, its resistance is low. This causes a la
 
 <img style="display: block; margin: auto;" alt="voltage-divider-ldr1" src="./images/voltage-divider-ldr1.png"/>
 
-
 ### Example output for low light
 
 As the light level decreases, the resistance of the LDR increases. This reduces the output voltage.
@@ -30,7 +29,6 @@ As the light level decreases, the resistance of the LDR increases. This reduces 
 In darkness, the LDR resistance becomes very high, causing the output voltage
 
 <img style="display: block; margin: auto;" alt="voltage-divider-ldr3" src="./images/voltage-divider-ldr3.png"/>
-
 
 ## LDR Voltage Divider Simulator
 

@@ -53,4 +53,3 @@ The required power supply and pulse width can vary depending on the servo motor 
 </table>
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/pico-servo-circuit.png"/>
-

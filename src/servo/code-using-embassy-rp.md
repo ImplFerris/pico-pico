@@ -10,7 +10,6 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 
 When prompted, give your project a name like "servo-motor" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
 
-
 ## Additional Imports
 
 In addition to the usual boilerplate imports, you'll need to add these specific imports to your project.
@@ -84,7 +83,6 @@ loop {
 ```
 
 If everything works, you should see the servo horn move to the first position, pause briefly, move to the next position, and then move to the final position before returning back again.
-
 
 ## Clone the existing project
 

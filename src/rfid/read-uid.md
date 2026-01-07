@@ -106,7 +106,6 @@ loop {
 
 The reqa method sends a Request command to detect cards in proximity. When a card responds with its ATQA (Answer To Request), we call select to perform the anti-collision protocol and retrieve the UID. The UID bytes are formatted as hexadecimal and sent through defmt to the RTT console.
 
-
 ## Clone the existing project
 
 You can clone (or refer) project I created and navigate to the `print-uid` folder.

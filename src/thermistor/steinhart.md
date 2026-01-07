@@ -45,6 +45,7 @@ $$
 $$
 
 Where:
+
 - \\( R_1, R_2, R_3 \\) are the resistance values at temperatures \\( T_1, T_2, T_3 \\).
 
 **Let's calculate the coefficients**
@@ -122,9 +123,10 @@ Please note that the ADC bits may need to be adjusted if you're using a differen
   </table>
 </form>
 
-
 ### Coefficients Finder
+
 Adjust the temperature by entering a value in either Fahrenheit or Celsius; the form will automatically convert it to the other format. Provide the resistance corresponding to each temperature, and then click the "Calculate Coefficients" button.
+
 <form id="steinhartForm" onsubmit="calcCoeffBtnClicked(event)">
 <table>
 <thead>
@@ -177,7 +179,6 @@ Adjust the temperature by entering a value in either Fahrenheit or Celsius; the 
     <span id="actualC"></span>
 </p>
 
-
 <button type="submit" id="submitBtn" >Calculate Coefficients</button>
 </form>
 
@@ -193,8 +194,7 @@ Adjust the temperature by entering a value in either Fahrenheit or Celsius; the 
 <input type="text" name="tc" id="resultCelsius" readonly>
 
 <label for="tf">Result (°F): </label>
-<input type="text" name="tf" id="resultFahrenheit" readonly>
-
+<input type="text" name="tf" id="resultFahrenheit" readonly>r
 
 <!-- Error Message Section -->
 <p id="errorMessage" style="color: red; display: none;">Error: Please calculate the coefficients (A, B, C) first.</p>
@@ -275,7 +275,6 @@ function calcTempFromFarenhit(celsiusId, fahrenheitId, kelvinId, resistanceId) {
         document.getElementById(kelvinId).value = "";
     }
 }
-
 
 function validateInput() {
     const resistanceCold = document.getElementById("resistanceCold").value;
@@ -370,6 +369,7 @@ function calculateTemperatureFromResistance() {
 </script>
 
 ### Rust function
+
 ```rust
 fn steinhart_temp_calc(
     resistance: f64, // Resistance in Ohms
@@ -404,7 +404,6 @@ fn main() {
     let b = 7.97920473e-5;
     let c = 6.53507631e-7;
     let resistance = 10000.0;
-
 
     match steinhart_temp_calc(resistance, a, b, c) {
         Ok((celsius, fahrenheit)) => {

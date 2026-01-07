@@ -28,6 +28,7 @@ If we want to increase the bus speed, we can change the frequency field:
 let mut config = Config::default();
 config.frequency = 400_000;
 ```
+
 If our circuit already includes external pullup resistors, we can disable the internal ones:
 
 ```rust
@@ -81,7 +82,6 @@ If we're building a more complex application that needs to handle multiple thing
 bind_interrupts!(struct Irqs {
     I2C0_IRQ => i2c::InterruptHandler<I2C0>;
 });
-
 
 let mut i2c = I2c::new_async(
     p.I2C0,

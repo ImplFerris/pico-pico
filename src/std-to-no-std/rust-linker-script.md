@@ -28,7 +28,6 @@ The big difference is that our project is missing some important sections like .
 
 You can also use `cargo size` command provided by the [cargo-binutils](https://github.com/rust-embedded/cargo-binutils) toolset to compare them.
 
-
 <div class="image-with-caption" style="text-align:center; display:inline-block;">
     <img src="./images/cargo-size.png" alt="Cargo size on Quick Start vs our Project" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">cargo size: Quick Start vs our Project</div>
@@ -87,7 +86,6 @@ cargo run --release
 ```
 
 Phew... we took a normal Rust project, turned it into a no_std firmware for the Pico. Finally, we can now see the LED blinking.
-
 
 ## Resources
 

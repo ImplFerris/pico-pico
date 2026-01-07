@@ -18,7 +18,6 @@ Because, what is seeing? ... You're looking but what you're really doing is filt
 
 Here's the magic: when this switching happens super quickly, our eyes can't keep up. Instead of seeing the blinking, it just looks like the brightness changes! The longer the LED stays ON, the brighter it seems, and the shorter it's ON, the dimmer it looks. It's like tricking your brain into thinking the LED is smoothly dimming or brightening.
 
-
 ## Core Logic
 
 What we will do in our program is gradually increase the duty cycle from a low value to a high value in the first loop, with a small delay between each change. This creates the fade-in effect. After that, we run another loop that decreases the duty cycle from high to low, again with a small delay. This creates the fade-out effect.

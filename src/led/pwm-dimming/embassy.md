@@ -109,7 +109,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 // End of file
 ```
 
-
 ## Clone the existing project
 
 You can clone the project I created and navigate to the `external-led` folder:

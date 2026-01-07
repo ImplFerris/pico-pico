@@ -62,7 +62,6 @@ Connection for the Pico and Ultrasonic:
 - **GND**: Connect to the ground pin on the Pico.
 - **LED**: Connect the anode (long leg) of the LED to GPIO 3.
 
-
 Connection for the Pico and LED:
 
 <table>
@@ -106,6 +105,5 @@ Connection for the Pico and LED:
     </tr>
   </tbody>
 </table>
-
 
 <a href="./images/pico-ultrasonic-led.jpg"><img style="display: block; margin: auto;" alt="pico2" src="./images/pico-ultrasonic-led.jpg"/></a>

@@ -42,7 +42,6 @@ The I2C adapter simplifies the connection by converting I2C commands into parall
   </tbody>
 </table>
 
-
 ## Parallel Interface Pin Layout
 
 In the parallel interface, the microcontroller talks directly to the HD44780 controller. This gives more control but requires more wiring and careful timing.
@@ -145,8 +144,6 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
   </tbody>
 </table>
 
-
-
 ## Contrast Adjustment
 
 The Vo pin controls the contrast of the LCD by setting the voltage difference between VDD and Vo.
@@ -156,7 +153,6 @@ The recommended approach is to use a potentiometer connected between VDD and GND
 
 If a potentiometer is not available, fixed resistors can be used as a voltage divider between VDD and GND, with the midpoint connected to Vo.
 
-
 ## Register Select Pin (RS)
 
 The RS pin selects whether the LCD interprets incoming values as commands or as character data.
@@ -164,15 +160,10 @@ The RS pin selects whether the LCD interprets incoming values as commands or as 
 - RS = LOW: command mode
 - RS = HIGH: data mode
 
-
 ## Enable Pin (E)
 
 The Enable pin controls when data is latched into the LCD.
 
 To send data or a command, place the value on the data pins, set RS appropriately, then pulse E HIGH and bring it back LOW. The LCD reads the data on the HIGH to LOW transition.
-
-
-
-
 
 It is used to control when data is transferred to the LCD display. The enable pin is typically kept low (E=0) but is set high (E=1) for a specific period of time to initiate a data transfer, and then returned to low.. The data is latched into the LCD on the transition from high to low.

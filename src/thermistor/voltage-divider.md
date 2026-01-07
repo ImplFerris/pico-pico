@@ -16,7 +16,6 @@ The thermistor has a resistance of 10kΩ at 25°C, resulting in an output voltag
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/thermistor0.png"/>
 
-
 ## Thermistor at 10°C
 
 The thermistor's resistance increases, resulting in a lower output voltage (\\( V_{out} \\)).

@@ -20,7 +20,6 @@ If we were using rp-hal, we could use `rp235x_hal::entry` for the RP2350 chip. H
 
 > The Embassy Executor is an async/await executor designed for embedded usage along with support functionality for interrupts and timers. You can read the official [Embassy book](https://embassy.dev/book) to understand in depth how Embassy works.
 
-
 ### Cortex-m Run Time
 
 If you follow the [`embassy_executor::main`](https://github.com/embassy-rs/embassy/blob/2c1c5232e8767887cbad5f28abf9a39ae78dd6c4/embassy-executor-macros/src/lib.rs#L69) macro, you'll see it uses another macro depending on the architecture. Since the Pico 2 is Cortex-M, it uses `cortex_m_rt::entry`. This comes from the cortex_m_rt crate, which provides startup code and minimal runtime for Cortex-M microcontrollers.
@@ -56,7 +55,6 @@ async fn main(_spawner: Spawner) {}
 
 We have changed the function signature. The function must accept a Spawner as its argument to satisfy embassy’s requirements, and the function is now marked as async.
 
-
 ## Are we there yet?
 
 Hoorah! Now try building the project - it should compile successfully.
@@ -72,12 +70,12 @@ It will show something like this:
 ```sh
 target/thumbv8m.main-none-eabihf/debug/pico-from-scratch: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), statically linked, with debug_info, not stripped
 ```
+
 As you can see, the binary is built for a 32-bit ARM. That means our base setup for Pico is working.
 
 But are we there yet? Not quite. We've crossed half the stage - we now have a valid binary ready for Pico, but there's more to do before we can run it on real hardware.
 
-
 **Resources:**
+
 - [Rust official doc](https://doc.rust-lang.org/reference/crates-and-source-files.html?highlight=no_main#the-no_main-attribute)
 - [Writing an OS in Rust Book](https://os.phil-opp.com/freestanding-rust-binary/#overwriting-the-entry-point)
-

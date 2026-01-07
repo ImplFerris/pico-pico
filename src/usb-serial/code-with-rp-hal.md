@@ -13,8 +13,8 @@ To set up the project, generate it from the provided template:
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
-When prompted, give your project a name, like "usb-serial-led" and select `RP-HAL` as the HAL.
 
+When prompted, give your project a name, like "usb-serial-led" and select `RP-HAL` as the HAL.
 
 ### Additional Crates required
 
@@ -90,6 +90,7 @@ We use a fake VID and PID for development, provide basic string descriptors, and
 ## Tracking the Greeting Message
 
 We declare a flag to track whether the greeting message has already been sent. This flag is checked inside the main loop to ensure the message is sent only once.
+
 ```rust
 let mut said_hello = false;
 ```
@@ -253,8 +254,8 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 // End of file
 ```
 
-
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `usb-serial-led` folder.
 
 ```sh
@@ -281,14 +282,17 @@ Run the following command to connect to the Pico's serial port:
 ```sh
 tio /dev/ttyACM0
 ```
+
 This will open a terminal session for communicating with the Pico.
 
 ### Flashing and Running the Code
 
 Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
+
 ```sh
 cargo run
 ```
+
 If everything is set up correctly, you should see a "Connected" message in the tio terminal, followed by the "Hello, Rust!" message sent from the Pico.
 
 <img style="display: block; margin: auto;" src="./images/tio-usb-pico.png"/>

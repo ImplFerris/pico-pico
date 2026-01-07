@@ -43,5 +43,3 @@ The same MAX7219 chip is also commonly used with 7-segment LED displays. The int
 The MAX7219 uses a serial interface that is similar to SPI. It needs three control signals. DIN is the data line used to send information to the chip. CLK is the clock signal that tells the chip when to read each bit. CS, sometimes labeled LOAD, is used to latch the data into the chip.
 
 On the microcontroller side, we use the SPI peripheral in a write only manner to send data to the MAX7219. The chip does not send any data back. It only receives commands and updates the display based on what we send.
-
-

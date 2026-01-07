@@ -9,8 +9,8 @@ As usual, we are going to start by generating a new project from the template.
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
-When prompted, give your project a name, like "temperature-oled" and select `embassy` as the HAL.
 
+When prompted, give your project a name, like "temperature-oled" and select `embassy` as the HAL.
 
 ## Additional Crates required
 
@@ -22,6 +22,7 @@ heapless = "0.9.2"
 libm = "0.2.15"
 embedded-graphics = "0.8"
 ```
+
 - **[`ssd1306`](https://docs.rs/ssd1306/latest/ssd1306/)**: Driver crate for controlling SSD1306-based OLED displays.
 
 - **[`heapless`](https://docs.rs/heapless/latest/heapless/)**: In a no_std environment, Rust's standard String type is not available because it requires heap allocation. This crate provides stack-allocated, fixed-size data structures. We use it to store formatted text such as ADC values, resistance, and temperature before sending them to the OLED.
@@ -34,7 +35,6 @@ embedded-graphics = "0.8"
   When you use `into_buffered_graphics_mode`, the display is treated like a pixel buffer. Text and shapes are first drawn into an in-memory framebuffer using the embedded-graphics API, and then the whole buffer is sent to the OLED. This mode requires the embedded-graphics crate.
 
   When you use `into_terminal_mode`, the driver provides a simple text-based interface. You write characters directly to the display without drawing pixels or shapes yourself. In this case, embedded-graphics is not required.
-
 
 ## Additional imports
 
@@ -160,7 +160,6 @@ display
 let text_style = MonoTextStyle::new(&FONT_7X13_BOLD, BinaryColor::On);
 ```
 
-
 ## ADC Setup
 
 We configure the ADC channel connected to the thermistor pin. We then initialize the ADC peripheral using the interrupt bindings defined earlier.
@@ -249,6 +248,7 @@ display.flush().await.expect("failed to send to display");
 Timer::after_secs(2).await;
 
 ```
+
 ## Flash
 
 Once you flash the firmware, you should see the temperature along with the resistance and ADC values. You can move the setup to a different room, observe how the readings change between day and night, or take it outdoors using an external power supply to see how the temperature responds in different conditions.
@@ -411,7 +411,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 // End of file
 ```
-
 
 ## Clone the existing project
 
