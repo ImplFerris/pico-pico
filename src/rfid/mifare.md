@@ -11,7 +11,7 @@ The MIFARE Classic 1K card is divided into 16 sectors, with each sector containi
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Memory organization</div>
 </div>
 
-This diagram is based on the memory layout shown in the datasheet. I have added color coding and separator lines to make the structure easier to read. Each sector is separated using a yellow horizontal line. The sector trailer block is highlighted in dark red. All regular data blocks are shown in green. The manufacturer block is highlighted separately to distinguish it from user writable data. 
+This diagram is based on the memory layout shown in the datasheet. I have added color coding and separator lines to make the structure easier to read. Each sector is separated using a yellow horizontal line. The sector trailer block is highlighted in dark red. All regular data blocks are shown in green. The manufacturer block is highlighted separately to distinguish it from user writable data.
 
 ### Sector Trailer
 
@@ -81,17 +81,17 @@ The last block of each sector, known as the "trailer" holds two secret keys and 
 
 ### Manufacturer Block
 
-The first block (block 0) of the first sector(sector 0) contains IC manufacturer's data including the UID. This block is write-protected.  
+The first block (block 0) of the first sector(sector 0) contains IC manufacturer's data including the UID. This block is write-protected.
 
 ### Data Block
 
 Since each sector has a trailer block, so only 3 blocks can be used for data storage in each sector. However, the first sector only has 2 usable blocks because the first block stores manufacturer data.
 
-To read or write the data, you first need to authenticate with either Key A or Key B of that sector. 
+To read or write the data, you first need to authenticate with either Key A or Key B of that sector.
 
-The data blocks can be further classified into two categories based on the access bits(we will explain about it later). 
+The data blocks can be further classified into two categories based on the access bits(we will explain about it later).
 - read/write block: These are standard data blocks that allow basic operations such as reading and writing data.
-- value block: These blocks are ideal for applications like electronic purses, where they are commonly used to store numeric values, such as account balances. So, you can perform incrementing (e.g., adding $10 to a balance) or decrementing (e.g., deducting $5 for a transaction). 
+- value block: These blocks are ideal for applications like electronic purses, where they are commonly used to store numeric values, such as account balances. So, you can perform incrementing (e.g., adding $10 to a balance) or decrementing (e.g., deducting $5 for a transaction).
 
 ## Reference
 - Datasheet: [MIFARE Classic EV1 1K - Mainstream contactless smart card IC for fast and easy solution development](https://www.nxp.com/docs/en/data-sheet/MF1S50YYX_V1.pdf)

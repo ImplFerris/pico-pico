@@ -62,4 +62,4 @@ In this case, the signal is "high" for 12% of the cycle, which causes the servo 
 
 ### Reference
 -  [Learn to Control Servo motor using PWM - Wokwi Style](https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/)
- 
+

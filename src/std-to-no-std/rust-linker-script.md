@@ -53,7 +53,7 @@ For the RP2350, the datasheet (chapter 2.2, Address map) specifies that flash st
 ```text
 MEMORY {
     FLASH : ORIGIN = 0x10000000, LENGTH = 2048K
-    
+
     RAM : ORIGIN = 0x20000000, LENGTH = 512K
     SRAM4 : ORIGIN = 0x20080000, LENGTH = 4K
     SRAM5 : ORIGIN = 0x20081000, LENGTH = 4K
@@ -75,7 +75,7 @@ To fix this, we tell Cargo to pass the linker script `link.x` to the linker.  Th
 ```toml
 [target.thumbv8m.main-none-eabihf]
 runner = "picotool load -u -v -x -t elf" # we alerady added this
-rustflags = ["-C", "link-arg=-Tlink.x"]  # This is the new line 
+rustflags = ["-C", "link-arg=-Tlink.x"]  # This is the new line
 ```
 
 ## Run Pico Run
@@ -91,5 +91,4 @@ Phew... we took a normal Rust project, turned it into a no_std firmware for the 
 
 ## Resources
 
--  [Everything You Never Wanted To Know About Linker Script](https://mcyoung.xyz/2021/06/01/linker-script/)
-
+- [Everything You Never Wanted To Know About Linker Script](https://mcyoung.xyz/2021/06/01/linker-script/)

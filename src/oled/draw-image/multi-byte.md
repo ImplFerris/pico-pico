@@ -57,7 +57,7 @@ fn main(){
     const BITS_PER_PIXEL: usize = 1;
     let width = 31;
     let data = IMG_DATA;
-    
+
     println!("Bytes Per Row:{}", bytes_per_row(width,BITS_PER_PIXEL));
     let height = data.len() / bytes_per_row(width, BITS_PER_PIXEL);
     println!("Height: {}", height);

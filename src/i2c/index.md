@@ -29,9 +29,9 @@ I2C makes it easy to connect many devices on the same two wires. You can connect
 
 The I2C bus uses just two lines, which are shared by all connected devices:
 
-- SCL (Serial Clock Line): Carries the clock signal from the controller. Sometimes devices label them as SCK. 
+- SCL (Serial Clock Line): Carries the clock signal from the controller. Sometimes devices label them as SCK.
 
-- SDA (Serial Data Line): Transfers the data in both directions. Sometimes devices label them as SDI. 
+- SDA (Serial Data Line): Transfers the data in both directions. Sometimes devices label them as SDI.
 
 
 <img style="display: block; margin: auto;" alt="I2C Single Controller and Multiple Target" src="./images/ic2-multi-target-single-controller.svg"/>

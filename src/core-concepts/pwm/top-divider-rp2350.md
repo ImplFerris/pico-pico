@@ -70,7 +70,7 @@ The clock divider slows down the clock that drives the PWM counter. Instead of c
 
 When the divider is increased, each count takes longer. This means the counter needs more time to go from 0 to TOP, so the PWM frequency becomes lower. This is what allows us to reach low frequencies like 50 Hz, which are impossible using TOP alone.
 
-Let's look at one more simplified example before introducing the actual formula from the RP2350's datasheet. 
+Let's look at one more simplified example before introducing the actual formula from the RP2350's datasheet.
 
 Suppose we set TOP to 1,499, so the counter goes through 1,500 steps (0 through 1,499). Now, if we set the clock divider to 10, each step takes 10 system clock cycles instead of 1.
 
@@ -82,7 +82,7 @@ Without the divider, we got 100 kHz for the same TOP value. Now with a divider o
 
 ## Phase Correct Mode
 
-Bear with me for a moment. Before introducing the actual formula, there is one more important concept we need to understand. 
+Bear with me for a moment. Before introducing the actual formula, there is one more important concept we need to understand.
 
 So far, we have assumed that the PWM counter counts in one direction, from 0 up to TOP, and then immediately wraps back to 0. This is not the only way PWM can work. In phase correct mode, the counter behaves differently, and that has a direct effect on the PWM frequency.
 
@@ -96,7 +96,7 @@ In phase correct mode, the PWM counter does not jump back to zero when it reache
 
 Because of this, one full PWM cycle now includes both the upward count and the downward count. In other words, the counter takes roughly twice as long to complete a full cycle compared to the normal up-counting mode.
 
-The important takeaway is simple: enabling phase correct mode halves the PWM frequency for the same TOP and divider values. 
+The important takeaway is simple: enabling phase correct mode halves the PWM frequency for the same TOP and divider values.
 
 This mode is often used when you want cleaner, more symmetric PWM signals, especially for things like motor control.
 
@@ -121,9 +121,9 @@ Where:
 - \\( f_{PWM} \\) is the PWM output frequency.
 - \\( f_{sys} \\) is the system clock frequency. For the pico2, it is is 150MHZ.
 
-### Divider and Fraction 
+### Divider and Fraction
 
 In the formula we discussed earlier, there is one important part we have not explained yet: DIV_FRAC. This controls the fractional part of the clock divider in the RP2350.
 
 
-The RP2350 clock divider is split into two parts. DIV_INT is the integer part and sets the whole number division. DIV_FRAC is the fractional part and allows finer control over the division ratio. Together, they let you slow down the PWM counter more precisely than using an integer divider alone.  One important rule is that when DIV_INT is set to 0, you must not set any DIV_FRAC bits.        
+The RP2350 clock divider is split into two parts. DIV_INT is the integer part and sets the whole number division. DIV_FRAC is the fractional part and allows finer control over the division ratio. Together, they let you slow down the PWM counter more precisely than using an integer divider alone.  One important rule is that when DIV_INT is set to 0, you must not set any DIV_FRAC bits.

@@ -14,13 +14,13 @@ While looking around, I came across several Rust crates that can control this LC
 
 For now, we will use one of the existing crates. You are free to try other crates later. Just read the crate documentation and adapt the code if needed.
 
-In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver) 
+In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver)
 (https://red.implrust.com/)
 
 
 ### Project from template
 
-We will start by creating a new project using the template. 
+We will start by creating a new project using the template.
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1

@@ -1,7 +1,7 @@
 # Read SD Card with Raspberry Pi Pico
 
-Let's create a simple program that reads a file from the SD card and outputs its content over USB serial. Make sure the SD card is formatted with FAT32 and contains a file to read (for example, "RUST.TXT" with the content "Ferris"). 
- 
+Let's create a simple program that reads a file from the SD card and outputs its content over USB serial. Make sure the SD card is formatted with FAT32 and contains a file to read (for example, "RUST.TXT" with the content "Ferris").
+
 ### Project from template
 
 To set up the project, run:
@@ -32,10 +32,10 @@ embedded-hal-bus = "0.2.0"
 // sd card driver
 embedded-sdmmc = "0.8.1"
 ```
-Except for the embedded-sdmmc crate, we have already used all these crates in previous exercises. 
+Except for the embedded-sdmmc crate, we have already used all these crates in previous exercises.
 
-- The usbd-serial and usb-device crates are used for sending or receiving data to and from a computer via USB serial. The heapless crate acts as a helper, providing a buffer before printing data to USB serial. 
-- The embedded-hal-bus crate offers the necessary traits for SPI and I²C buses, which are essential for interfacing the Pico with the SD card reader.  
+- The usbd-serial and usb-device crates are used for sending or receiving data to and from a computer via USB serial. The heapless crate acts as a helper, providing a buffer before printing data to USB serial.
+- The embedded-hal-bus crate offers the necessary traits for SPI and I²C buses, which are essential for interfacing the Pico with the SD card reader.
 - The embedded-sdmmc crate is a driver for reading and writing files on FAT-formatted SD cards.
 
  ### Additional imports
@@ -56,7 +56,7 @@ use embedded_sdmmc::{SdCard, TimeSource, Timestamp, VolumeIdx, VolumeManager};
 Make sure to check out the [USB serial](../usb-serial/action.md) tutorial for setting up the USB serial. We won't go over the setup here to keep it simple.
 
 
-### Dummy Timesource 
+### Dummy Timesource
 The TimeSource is needed to retrieve timestamps and manage file metadata. Since we won't be using this functionality, we'll create a DummyTimeSource that implements the TimeSource trait. This is necessary for compatibility with the embedded-sdmmc crate.
 
 

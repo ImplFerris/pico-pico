@@ -4,15 +4,14 @@ In this section, we will learn how to create a dimming effect (i.e. reducing and
 
 To make it dim, we use a technique called PWM (Pulse Width Modulation). You can refer to [the intro in the PWM section](../../core-concepts/pwm/index.md).
 
-We will gradually increment the PWM's duty cycle to increase the brightness, then we gradually decrement the PWM duty cycle to  reduce the brightness of the LED. This effectively creates the dimming LED effect. 
-
+We will gradually increment the PWM's duty cycle to increase the brightness, then we gradually decrement the PWM duty cycle to  reduce the brightness of the LED. This effectively creates the dimming LED effect.
 
 ## The Eye
 
 "
-Come in close... Closer... 
+Come in close... Closer...
 
-Because the more you think you see... The easier it’ll be to fool you... 
+Because the more you think you see... The easier it’ll be to fool you...
 
 Because, what is seeing? ... You're looking but what you're really doing is filtering, interpreting, searching for meaning...
 "

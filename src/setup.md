@@ -58,7 +58,7 @@ rustup target add riscv32imac-unknown-none-elf
 ## probe-rs - Flashing and Debugging Tool
 
 probe-rs is a modern, Rust-native toolchain for flashing and debugging embedded devices. It supports ARM and RISC-V targets and works directly with hardware debug probes. When you use a Debug Probe with the Pico 2, probe-rs is the tool you rely on for both flashing firmware and debugging.
- 
+
 Install probe-rs using the official installer script:
 
 ```bash

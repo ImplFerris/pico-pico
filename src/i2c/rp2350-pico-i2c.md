@@ -11,7 +11,7 @@ Both I2C controllers support multiple pin options for SDA and SCL. You only choo
 | I2C0 - SDA     | GP0, GP4, GP8, GP12, GP16, GP20 |
 | I2C0 - SCL     | GP1, GP5, GP9, GP13, GP17, GP21 |
 | I2C1 - SDA     | GP2, GP6, GP10, GP14, GP18, GP26|
-| I2C1 - SCL     | GP3, GP7, GP11, GP15, GP19, GP27| 
+| I2C1 - SCL     | GP3, GP7, GP11, GP15, GP19, GP27|
 
 <br/>
 

@@ -51,7 +51,7 @@ use heapless::String;
 
 ### USB Serial
 Make sure you've completed the USB serial section and added the boilerplate code from there into your project.
- 
+
 ```rust
     let usb_bus = UsbBusAllocator::new(hal::usb::UsbBus::new(
         pac.USB,
@@ -76,7 +76,7 @@ Make sure you've completed the USB serial section and added the boilerplate code
 ```
 
 ### Pin setup
-Let's set up the ADC and configure GPIO 27 and GPIO 26, which are mapped to the VRX and VRY pins of the joystick: 
+Let's set up the ADC and configure GPIO 27 and GPIO 26, which are mapped to the VRX and VRY pins of the joystick:
 
 ```rust
 let mut adc = hal::Adc::new(pac.ADC, &mut pac.RESETS);
@@ -87,7 +87,7 @@ let mut adc_pin_1 = hal::adc::AdcPin::new(pins.gpio27).unwrap();
 let mut adc_pin_0 = hal::adc::AdcPin::new(pins.gpio26).unwrap();
 ```
 
-We also configure GPIO15 as a pull-up input for the button: 
+We also configure GPIO15 as a pull-up input for the button:
 
 ```rust
 let mut btn = pins.gpio15.into_pull_up_input();

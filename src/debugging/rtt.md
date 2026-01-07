@@ -4,7 +4,7 @@ When developing embedded systems, you need a way to see what's happening inside 
 
 ## What is RTT?
 
-RTT is a communication method that lets your microcontroller send messages to your computer through the debug probe you're already using to flash your programs. 
+RTT is a communication method that lets your microcontroller send messages to your computer through the debug probe you're already using to flash your programs.
 
 When you connect the Raspberry Pi Debug Probe to Pico, you're creating a connection that can do two things:
 

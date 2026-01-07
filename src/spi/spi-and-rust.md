@@ -10,7 +10,7 @@ The embedded-hal crate defines standard traits for working with SPI, so that dri
 
 - SpiBus: Represents full control over the SPI bus, including the SCK, MOSI, and MISO lines. This must be implemented by the microcontroller's HAL crate. For example, the esp-hal crate implements SpiBus. If you are curious, you can look at the implementation [here](https://github.com/esp-rs/esp-hal/blob/de67c3101346cdbe030ffa1bb95b13943ee8d790/esp-hal/src/spi/master.rs#L2703).
 
-- SpiDevice: Represents access to a single SPI device that may share the bus with others. It takes control of the chip select (CS) pin and ensures the device is properly selected before communication and released afterward. 
+- SpiDevice: Represents access to a single SPI device that may share the bus with others. It takes control of the chip select (CS) pin and ensures the device is properly selected before communication and released afterward.
 
 ## Platform-Independent Drivers
 

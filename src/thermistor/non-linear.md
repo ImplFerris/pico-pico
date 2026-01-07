@@ -41,7 +41,7 @@ These coefficients are either provided by the manufacturer or derived from calib
 
 A lookup table stores known temperature and resistance pairs. These values are taken directly from the thermistor datasheet or from calibration measurements. When a resistance is measured, it is compared against the table to find the closest matching temperature. If the resistance lies between two entries, interpolation can be used to estimate the temperature between them.
 
-In the next chapters, we will see in detail how to use B equation and Steinhart-Hart equation to determine the temperature. 
+In the next chapters, we will see in detail how to use B equation and Steinhart-Hart equation to determine the temperature.
 
 ## References
 

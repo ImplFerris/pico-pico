@@ -84,7 +84,7 @@ git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/servo-motor
 ```
 
-## The Full Code 
+## The Full Code
 ```rust
 #![no_std]
 #![no_main]
