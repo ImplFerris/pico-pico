@@ -23,7 +23,7 @@ The only method that the HAL is required to implement is transaction. The trait 
 
 The generic type parameter A specifies the address mode and has a default type parameter of `SevenBitAddress`. So, in most cases you don't need to specify it manually. For 10-bit addressing, you can use TenBitAddress instead.
 
-Microcontroller-specific HAL crates (like esp-hal, stm32-hal, or nrf-hal) implement this trait for their I2C peripherals. For example, the esp-hal crate implements I2C. If you are curious, you can look at the implementation [here](https://github.com/esp-rs/esp-hal/blob/de67c3101346cdbe030ffa1bb95b13943ee8d790/esp-hal/src/i2c/master/mod.rs#L671).
+Microcontroller-specific HAL crates (like esp-hal, stm32-hal, or nrf-hal) implement this trait for their I2C peripherals. For example, the esp-hal crate implements I2C. If you are curious, you can look at [the implementation](https://github.com/esp-rs/esp-hal/blob/de67c3101346cdbe030ffa1bb95b13943ee8d790/esp-hal/src/i2c/master/mod.rs#L671).
 
 > In addition to the regular embedded-hal crate, there is an async version called embedded-hal-async. It defines similar traits, but they are designed to work with async code, which is useful when writing non-blocking drivers or tasks in embedded systems.
 

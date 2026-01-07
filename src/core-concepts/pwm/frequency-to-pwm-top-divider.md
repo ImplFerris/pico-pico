@@ -2,7 +2,7 @@
 
 In MicroPython, you can set the PWM frequency directly without manually calculating the TOP and divider values. Internally, MicroPython computes these values from the target frequency and the system clock.
 
-I wanted to see if there was something similar available in Rust. While discussing this in the rp-rs Matrix chat, 9names ported the [relevant C code](https://github.com/micropython/micropython/blob/634125820744efa33679fb95a6e441dadaa4f6a7/ports/rp2/machine_pwm.c#L212C13-L212C36) from MicroPython that calculates TOP and divider values into Rust. This code takes the target frequency and source clock frequency as input and gives us the corresponding TOP and divider values. You can find that implementation [here](https://github.com/9names/rp2040_rust_playground/tree/main/rp2040-pwm-freq).
+I wanted to see if there was something similar available in Rust. While discussing this in the rp-rs Matrix chat, 9names ported the [relevant C code](https://github.com/micropython/micropython/blob/634125820744efa33679fb95a6e441dadaa4f6a7/ports/rp2/machine_pwm.c#L212C13-L212C36) from MicroPython that calculates TOP and divider values into Rust. This code takes the target frequency and source clock frequency as input and gives us the corresponding TOP and divider values. You can find that implementation [in 9names Rust playground](https://github.com/9names/rp2040_rust_playground/tree/main/rp2040-pwm-freq).
 
 You can use that Rust code directly in your own project. I compiled the same code to WASM and built a small form around it so that you can try it out here.
 
@@ -217,7 +217,7 @@ pwm.set_div_int(45);
 pwm.set_div_frac(13);
 ```
 
-If you are using embassy-rp, both parts are combined into a single divider field inside the Config struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post explaining them in detail, which you can read [here](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/):
+If you are using embassy-rp, both parts are combined into a single divider field inside the Config struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post [Working with Fixed-Point Numbers in Rust Using the fixed Crate](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/) explaining them in detail.
 
 If you only need an integer divider, you can simply convert a u8 value:
 

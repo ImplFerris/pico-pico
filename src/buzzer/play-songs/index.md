@@ -2,7 +2,7 @@
 
 In this section, we will play songs on a buzzer using the Raspberry Pi Pico.  
 
-If you are not familiar with musical notes or sheet music, you can check the basic theory explained [here](./music-theory.md). This part is optional and only meant to give enough background to follow the example.
+If you are not familiar with musical notes or sheet music, you can check the [basic theory explained](./music-theory.md). This part is optional and only meant to give enough background to follow the example.
 
 For clarity, the code is split into Rust modules. You can also keep everything in a single file, as we have done so far, but splitting it makes the example easier to follow:
 
