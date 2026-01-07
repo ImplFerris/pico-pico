@@ -18,7 +18,7 @@ Additional components used in this book include LEDs, the HC SR04 ultrasonic sen
 
 The Raspberry Pi Debug Probe makes flashing the Pico 2 much easier. Without it you must press the BOOTSEL button each time you want to upload new firmware. The probe also gives you proper debugging support, which is very helpful.
 
-This tool is optional. You can follow the entire book without owning one(except the one specific to debug probe). When I first started with the Pico, I worked without a probe and only bought it later.
+This tool is optional. You can follow the entire book without owning one (except the one specific to debug probe). When I first started with the Pico, I worked without a probe and only bought it later.
 
 <div class="image-with-caption" style="text-align:center;">
     <img src="./images/Raspberry Pi Pico Debug Probe Hardware.jpg" alt="Raspberry Pi Debug Probe connected with Pico" style="width:400px; height:auto; display:block; margin:auto;"/>

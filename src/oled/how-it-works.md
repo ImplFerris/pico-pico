@@ -8,7 +8,7 @@ In the datasheet, the 128 columns are referred to as segments, while the 64 rows
 
 ## Memory
 
-The OLED display's pixels are arranged in a page structure within GDDRAM (Graphics Display DRAM). GDDRAM is divided into 8 pages (From Page 0 to Page 7), each consisting of 128 columns (segments) and 8 rows(commons).
+The OLED display's pixels are arranged in a page structure within GDDRAM (Graphics Display DRAM). GDDRAM is divided into 8 pages (From Page 0 to Page 7), each consisting of 128 columns (segments) and 8 rows (commons).
 
 <img style="display: block; margin: auto;" title="oled display" src="./images/gddram-oled-display-page-structure.png"/>
 (This image is taken from the datasheet)

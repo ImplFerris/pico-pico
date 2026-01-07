@@ -22,7 +22,7 @@ The Raspberry Pi Pico 2 has the following power pins. These are marked in red (p
 
 ## GPIO Pins
 
-When you want your microcontroller(i.e Pico) to interact with the world; like turning on lights, reading button presses, sensing temperature, or controlling motors; you need a way to connect and communicate with these external components. That's exactly what GPIO pins do: they're your Raspberry Pi Pico 2's connection points to external components.
+When you want your microcontroller (i.e Pico) to interact with the world; like turning on lights, reading button presses, sensing temperature, or controlling motors; you need a way to connect and communicate with these external components. That's exactly what GPIO pins do: they're your Raspberry Pi Pico 2's connection points to external components.
 
 The Raspberry Pi Pico 2 includes 26 General Purpose Input/Output (GPIO) pins, labeled GPIO0 through GPIO29, though not all numbers are exposed on the headers. These GPIOs are highly flexible and can be used to read inputs like switches or sensors, or to control outputs such as LEDs, motors, or other devices.
 

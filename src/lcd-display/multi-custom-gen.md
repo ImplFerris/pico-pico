@@ -1,7 +1,7 @@
 ## Multi-Cell Custom Glyph Generator
 
-This is used when you want to combine multiple grids to create a symbol. You can utilize adjacent grids on the 16x2 LCD display to design a custom symbol or character.  You can view the example symbol created with this generator and how to use in Rust in the next page.
- 
+This is used when you want to combine multiple grids to create a symbol. You can utilize adjacent grids on the 16x2 LCD display to design a custom symbol or character. You can view the example symbol created with this generator and how to use in Rust in the next page.
+
 <style>
     .container {
         display: flex;

@@ -106,7 +106,7 @@ cd pico2-quick
 
 You cannot just use `cargo run` like we did before, unless you modified the `config.toml`.  Because the quick start project is set up to use picotool as its runner. You can comment out the picotool runner and enable the probe-rs runner. Then you can use the `cargo run` command.
 
-Or more simply (i recommend this), you can just use the following commands provided by `probe-rs`. This will flash your program using the Debug Probe:
+Or more simply (I recommend this), you can just use the following commands provided by `probe-rs`. This will flash your program using the Debug Probe:
 
 ```sh
 cargo flash

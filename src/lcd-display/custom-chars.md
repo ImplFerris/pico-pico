@@ -1,6 +1,6 @@
 # Custom Glyphs
 
-Besides the supported characters, you can create your own custom characters(glyphs), like smileys or heart symbols. The module includes 64 bytes of Character Generator RAM (CGRAM), allowing up to 8 custom glyphs.
+Besides the supported characters, you can create your own custom characters (glyphs), like smileys or heart symbols. The module includes 64 bytes of Character Generator RAM (CGRAM), allowing up to 8 custom glyphs.
 
 The controller provides 64 bytes of Character Generator RAM (CGRAM). Each custom glyph occupies 8 bytes, so you can store up to 8 custom glyphs at a time.
 

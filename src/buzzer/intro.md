@@ -12,23 +12,23 @@ Buzzers are commonly found in alarms, timers, notification systems, computers, a
 
 There are two types you will commonly encounter in embedded projects:
 
-### Active Buzzer:
+### Active Buzzer
 
 This type has a built-in oscillator. You only need to supply power, and it will start making sound immediately. Active buzzers are very easy to use but offer limited control over pitch.
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/active-buzzer.png"/>
 
-**How to identify**: 
+#### How to identify
 
 An active buzzer usually has a white covering on top and a smooth black casing at the bottom. The simplest way to identify it is to connect it directly to a battery. If it produces sound without any additional circuitry, it is an active buzzer.
 
-### Passive Buzzer:
+### Passive Buzzer
 
 A passive buzzer does not generate sound on its own. You must drive it using a PWM or square wave signal. This allows you to control the frequency, making it possible to generate different tones or even simple melodies.
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/passive-buzzer.png"/>
 
-**How to identify**: 
+#### How to identify
 
 A passive buzzer typically has no white covering on top and often looks like a small PCB with a blue or green base. When connected directly to a battery, it will not produce any sound.
 

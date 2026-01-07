@@ -1,6 +1,6 @@
 # Real-Time Transfer (RTT)
 
-When developing embedded systems, you need a way to see what's happening inside your program. On a normal computer, you would use `println!` to print messages to the terminal. But on a microcontroller, there's no screen or terminal attached. Real-Time Transfer (RTT) solves this problem by letting you print debug messages and logs from your microcontroller to your computer.
+When developing embedded systems, you need a way to see what's happening inside your program. On a normal computer, you would use `println!` to print messages to the terminal, but on a microcontroller, there's no screen or terminal attached. Real-Time Transfer (RTT) solves this problem by letting you print debug messages and logs from your microcontroller to your computer.
 
 ## What is RTT?
 

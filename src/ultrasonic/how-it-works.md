@@ -72,7 +72,7 @@ When the sensor's waves hit an object, they bounce back to the module. As you ca
 
 **Pulse width and the distance:**
 
-The pulse width (amount of time it stays high) produced by the `Echo` pin will range from about 150µs to 25,000µs(25ms); this is only if it hits an object. If there is no object, it will produce a pulse width of around 38ms.
 
 
 
+The pulse width (amount of time it stays high) produced by the `Echo` pin will range from about 150µs to 25,000µs (25ms); this is only if it hits an object. If there is no object, it will produce a pulse width of around 38ms.

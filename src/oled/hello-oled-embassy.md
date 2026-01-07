@@ -51,7 +51,7 @@ use embedded_graphics::{
 
 ## Bind I2C Interrupt
 
-We discussed this in detail in the interrupts section, so you should already be familiar with what it does.  This binds the `I2C0_IRQ` interrupt to the Embassy I2C interrupt handler for `I2C0`.
+We discussed this in detail in the interrupts section, so you should already be familiar with what it does. This binds the `I2C0_IRQ` interrupt to the Embassy I2C interrupt handler for `I2C0`.
 
 ```rust
 bind_interrupts!(struct Irqs {
