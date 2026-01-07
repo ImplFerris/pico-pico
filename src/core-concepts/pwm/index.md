@@ -27,6 +27,6 @@ For example, an analog signal could be 0V, 0.5V, 1.5V, 2.8V, 3.1V, or any other 
 
 Here's the challenge: most microcontroller pins are digital. They can only output HIGH or LOW. But what if you want to:
 
-Dim an LED to 50% brightness instead of just fully ON or fully OFF (like we did in the quick-start blinking example)? Or Control a servo motor to any position between 0° and 180°? Or Adjust the speed of a fan or control temperature gradually?
+Dim an LED to 50% brightness instead of just fully ON or fully OFF (like we did in the quick-start blinking example)? Or control a servo motor to any position between 0° and 180°? Or adjust the speed of a fan or control temperature gradually?
 
 You need something that acts like an analog output, but you only have digital pins. This is where PWM comes in.

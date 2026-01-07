@@ -1,6 +1,6 @@
 # Dimming LED
 
-In this section, we will learn how to create a dimming effect(i.e. reducing and increasing the brightness gradually) for an LED using the Raspberry Pi Pico 2. First, we will dim the onboard LED, which is connected to GPIO pin 25 (based on the datasheet). 
+In this section, we will learn how to create a dimming effect (i.e. reducing and increasing the brightness gradually) for an LED using the Raspberry Pi Pico 2. First, we will dim the onboard LED, which is connected to GPIO pin 25 (based on the datasheet).
 
 To make it dim, we use a technique called PWM (Pulse Width Modulation). You can refer to [the intro in the PWM section](../../core-concepts/pwm/index.md).
 
@@ -14,7 +14,7 @@ Come in close... Closer...
 
 Because the more you think you see... The easier it’ll be to fool you... 
 
-Because, what is seeing?.... You're looking but what you're really doing is filtering, interpreting, searching for meaning...
+Because, what is seeing? ... You're looking but what you're really doing is filtering, interpreting, searching for meaning...
 "
 
 Here's the magic: when this switching happens super quickly, our eyes can't keep up. Instead of seeing the blinking, it just looks like the brightness changes! The longer the LED stays ON, the brighter it seems, and the shorter it's ON, the dimmer it looks. It's like tricking your brain into thinking the LED is smoothly dimming or brightening.

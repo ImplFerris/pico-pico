@@ -25,6 +25,6 @@ For this exercise, we'll use a 0.96-inch OLED monochrome module with a resolutio
 
 ### SSD1306
 
-The SSD1306 is the integrated controller chip that powers many small OLED displays including the module we are going to use(0.96-inch 128x64 module).  This controller handles the communication between the Pico and the OLED panel, enabling the display to show text, graphics, and more.
+The SSD1306 is the integrated controller chip that powers many small OLED displays including the module we are going to use (0.96-inch 128x64 module). This controller handles the communication between the Pico and the OLED panel, enabling the display to show text, graphics, and more.
 
 **DataSheet:** [datasheet for SSD1306](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf).
