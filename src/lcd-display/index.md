@@ -23,7 +23,7 @@ To simplify wiring, some modules include an I2C adapter board. This adapter sits
 
 When we use the parallel interface, we connect multiple GPIO pins from the microcontroller directly to the LCD. These pins carry control signals and data lines, along with power and contrast control.
 
-This approach requires more wiring and uses many GPIO pins, but it closely reflects how the HD44780 controller operates internally. It is useful for understanding the timing, commands, and low-level behavior of the display. 
+This approach requires more wiring and uses many GPIO pins, but it closely reflects how the HD44780 controller operates internally. It is useful for understanding the timing, commands, and low-level behavior of the display.
 
 ### I2C Interface
 

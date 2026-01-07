@@ -1,5 +1,5 @@
 # Read SD Card with Raspberry Pi Pico
- 
+
 In this chapter, we are going to read a file from a microSD card and print its contents. Before continuing, you will need an SD card that is already formatted as FAT32, and it must contain a file named RUST.TXT. For this example, you can put the text Ferris inside.
 
 ## Select Your Output Method
@@ -12,7 +12,7 @@ If you are using a debug probe, we print messages using defmt over RTT. If you a
 
 The USB serial setup is the same as what we used in the earlier USB Serial chapter. You may need to follow the same steps to set up the USB logger. I will not be repeating those steps here.
 
-From a code point of view, the difference mostly comes down to this: 
+From a code point of view, the difference mostly comes down to this:
 
 - Since we use defmt with a debug probe, logging is done using defmt::info!
 - On the other hand, when using USB serial, we use the log crate, so logging is done with log::info!.

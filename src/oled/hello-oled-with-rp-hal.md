@@ -1,6 +1,6 @@
 # Hello Rust on OLED
 
-The same hello world we will do with rp-hal also. 
+The same hello world we will do with rp-hal also.
 
 ## Generating From template
 
@@ -108,12 +108,12 @@ Text::with_baseline(
 
 Here, we are writing the message at coordinates (x=0, y=16).
 
- 
+
 ### Write out data to a display
 
 ```rust
 display.flush().expect("failed to flush data to display");
-``` 
+```
 
 ## Complete code
 

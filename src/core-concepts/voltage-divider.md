@@ -35,7 +35,7 @@ The output voltage \\( V_{out} \\) is 1.65V.
 ```rust,editable
 fn main() {
     // You can edit the code
-    // You can modify values and run the code 
+    // You can modify values and run the code
     let vin: f64 = 3.3;
     let r1: f64 = 10000.0;
     let r2: f64 = 10000.0;
@@ -95,7 +95,7 @@ I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/ci
         const r1 = parseFloat(document.getElementById('r1').value) || 0;
         const r2 = parseFloat(document.getElementById('r2').value) || 0;
 
-        document.getElementById('filledFormula').textContent = 
+        document.getElementById('filledFormula').textContent =
             `Filled Formula: Vout = ${vin} × (${r2} / (${r1} + ${r2}))`;
     }
 
@@ -105,13 +105,13 @@ I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/ci
         const r2 = parseFloat(document.getElementById('r2').value);
 
         if (isNaN(vin) || isNaN(r1) || isNaN(r2) || r1 <= 0 || r2 <= 0) {
-            document.getElementById('result').textContent = 
+            document.getElementById('result').textContent =
                 "Please enter valid positive numbers for all fields.";
             return;
         }
 
         const vout = vin * (r2 / (r1 + r2));
-        document.getElementById('result').textContent = 
+        document.getElementById('result').textContent =
             `Output Voltage (Vout): ${vout.toFixed(2)} V`;
     }
 

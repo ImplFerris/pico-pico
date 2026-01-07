@@ -54,7 +54,7 @@ use heapless::String;
 ## USB Serial
 
 Make sure you've completed the USB serial section and added the boilerplate code from there into your project.
- 
+
 ```rust
     let usb_bus = UsbBusAllocator::new(hal::usb::UsbBus::new(
         pac.USB,

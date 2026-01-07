@@ -7,7 +7,7 @@
 
 ## Power Pins
 
-Power pins are essential for keeping your Raspberry Pi Pico 2 running and supplying electricity to the sensors, LEDs, motors, and other components you connect to it. 
+Power pins are essential for keeping your Raspberry Pi Pico 2 running and supplying electricity to the sensors, LEDs, motors, and other components you connect to it.
 
 The Raspberry Pi Pico 2 has the following power pins. These are marked in red (power) and black (ground) in the pinout diagrams. These pins are used to supply power to the board and to external components.
 
@@ -51,7 +51,7 @@ There are also two special pins that support analog readings:
 - **ADC_VREF** is the reference voltage for the ADC. By default, it's connected to 3.3V, meaning the ADC will convert anything between 0V and 3.3V into a number. But you can supply a different voltage here (like 1.25V) if you want more precise measurements in a smaller range.
 
 - **AGND** is the analog ground, used to provide a clean ground for analog signals. This helps reduce noise and makes your analog readings more accurate. If you're using an analog sensor, it's a good idea to connect its ground to AGND instead of a regular GND pin.
- 
+
 ## I2C Pins
 
 The Raspberry Pi Pico 2 supports I2C, a communication protocol used to connect multiple devices using just two wires. It is commonly used with sensors, displays, and other peripherals.

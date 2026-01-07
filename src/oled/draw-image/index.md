@@ -14,12 +14,12 @@ I chose 8 as the width to keep the example simple. This makes it easy to represe
 
 ## Ohm symbol on the OLED Display (128x64)
 
-Let me show you how it looks when the Ohm symbol is positioned on the OLED display (128x64 resolution) at position zero(x is 0 and y is also 0). 
+Let me show you how it looks when the Ohm symbol is positioned on the OLED display (128x64 resolution) at position zero(x is 0 and y is also 0).
 <img style="display: block; margin: auto;" title="ohm symbol in 128x64 pixel" src="../images/resistance-128x64-oled.png"/>
 
 This is an enlarged illustration. When you see the symbol on the actual display module, it will be small.
 
 ## Reference
 
-- [Embedded Graphics' ImageRaw Documentation](https://docs.rs/embedded-graphics/latest/embedded_graphics/image/struct.ImageRaw.html) 
+- [Embedded Graphics' ImageRaw Documentation](https://docs.rs/embedded-graphics/latest/embedded_graphics/image/struct.ImageRaw.html)
 - [Image2Bytes](https://implferris.github.io/image2bytes/): Convert image to Hex byte array

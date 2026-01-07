@@ -209,7 +209,7 @@ where
 {{#endtabs }}
 
 
-## The main loop 
+## The main loop
 
 The main loop stays mostly the same. The only difference is that we now call dump_memory instead of reading a single sector.
 

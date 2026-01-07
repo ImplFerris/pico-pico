@@ -97,7 +97,7 @@ i2c.write_read(SENSOR_ADDR, &[TEMP_REGISTER], &mut buffer).await?;
 ```
 
 Some of the details here, like interrupts, may not be familiar yet. We will introduce interrupts later in the book, so do not worry if this part feels unfamiliar for now.
- 
+
 ## Target (Slave) mode
 
 The Pico can also act as an I2C target device (also known as a slave device), where it responds to requests from another controller. However, for most of our projects in this book, we'll be using the Pico as the controller that talks to sensors and other peripherals, so we won't cover target mode here.

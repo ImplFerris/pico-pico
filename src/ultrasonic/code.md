@@ -53,7 +53,7 @@ The duty cycle determines LED brightness; 0 is completely off, and max_duty is f
 
 
 ## Configuring Trigger and Echo Pins
- 
+
 As you know, we have to send a signal to the trigger pin from the Pico, so we'll configure GPIO pin 17 (connected to the trigger pin) as an Output with an initial Low state. The sensor indicates distance through pulses on the echo pin, meaning it sends signals to the Pico (input to the Pico). So we'll configure GPIO pin 16 (connected to the echo pin) as an Input.
 
 ```rust

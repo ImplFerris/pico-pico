@@ -4,7 +4,7 @@ You probably know about cross compilation already. In this section, we'll explor
 
 You can write code on one computer and make programs that run on totally different computers. For example, you can work on Linux and build .exe files for Windows. You can even target bare-metal microcontrollers like the RP2350, ESP32, or STM32.
 
-> **TL;DR** 
+> **TL;DR**
 >
 >We have to use either "thumbv8m.main-none-eabihf" or "riscv32imac-unknown-none-elf" as the target when building our binary for the Pico 2.
 >
@@ -72,7 +72,7 @@ That's what we call a target triple, and it tells the compiler exactly what kind
 `<architecture>-<vendor>-<os>-<abi>`
 ```
 
-But the pattern is not always consistent. Sometimes the ABI part won't be there. In other cases, even the vendor or both vendor and ABI might be absent. The structure can get messy, and there are plenty of exceptions. If you want to dive deeper into all the quirks and edge cases, check out the article "What the Hell Is a Target Triple?" linked in the references. 
+But the pattern is not always consistent. Sometimes the ABI part won't be there. In other cases, even the vendor or both vendor and ABI might be absent. The structure can get messy, and there are plenty of exceptions. If you want to dive deeper into all the quirks and edge cases, check out the article "What the Hell Is a Target Triple?" linked in the references.
 
 Let's break down what this target triple actually means:
 

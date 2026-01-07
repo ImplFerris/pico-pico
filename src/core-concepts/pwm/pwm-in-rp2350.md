@@ -44,8 +44,8 @@ I have created a small form that helps you figure out which GPIO pin maps to whi
     </select>
     <div id="result-container" style="display: none;">
         <div class="pwm-info">
-            <strong>GPIO:</strong> <span id="gpio-value"></span> | 
-            <strong>PWM Slice:</strong> <span id="slice-value"></span> | 
+            <strong>GPIO:</strong> <span id="gpio-value"></span> |
+            <strong>PWM Slice:</strong> <span id="slice-value"></span> |
             <strong>Channel:</strong> <span id="channel-value"></span>
         </div>
         <div class="code-header">Embassy</div>

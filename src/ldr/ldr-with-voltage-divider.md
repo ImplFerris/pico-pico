@@ -1,4 +1,4 @@
-# Simulation of LDR in Voltage Divider 
+# Simulation of LDR in Voltage Divider
 
 To understand how an LDR behaves in a voltage divider, I created a simple simulation using Falstad. In the circuit, the LDR is shown as a resistor symbol with arrows pointing toward it, indicating incident light.
 
@@ -145,7 +145,7 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
     </div>
 </div>
 </div>
-  
+
   <script>
     (function() {
       const canvas = document.getElementById('ldrSimCanvas');
@@ -153,17 +153,17 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
       const slider = document.getElementById('ldrSimBrightness');
       const valueDisplay = document.getElementById('ldrSimValue');
       const indicator = document.getElementById('ldrSimIndicator');
-      
+
       const R2 = 10000;
       const Vin = 3.3;
-      
+
       function getLDRResistance(brightness) {
         const minR = 1000;
         const maxR = 1000000;
         const normalized = brightness / 100;
         return maxR * Math.pow(minR / maxR, normalized);
       }
-      
+
       function drawWire(x1, y1, x2, y2) {
         ctx.strokeStyle = '#fabd2f';
         ctx.lineWidth = 2;
@@ -173,13 +173,13 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
         ctx.lineTo(x2, y2);
         ctx.stroke();
       }
-      
+
       function drawResistor(x, y, label, value, isLDR) {
         const h = 60, w = 15, z = 6;
         ctx.strokeStyle = '#fabd2f';
         ctx.lineWidth = 2;
         ctx.setLineDash([]);
-        
+
         ctx.beginPath();
         ctx.moveTo(x, y - h/2);
         for (let i = 0; i < z; i++) {
@@ -189,19 +189,19 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
         }
         ctx.lineTo(x, y + h/2);
         ctx.stroke();
-        
+
         ctx.fillStyle = '#ebdbb2';
         ctx.font = 'bold 14px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(label, x + 25, y - 5);
         ctx.font = '12px monospace';
         ctx.fillText(value, x + 25, y + 10);
-        
+
         if (isLDR) {
           ctx.strokeStyle = '#fabd2f';
           ctx.fillStyle = '#fabd2f';
           ctx.lineWidth = 2;
-          
+
           ctx.beginPath();
           ctx.moveTo(x - 35, y - 20);
           ctx.lineTo(x - 20, y - 10);
@@ -211,7 +211,7 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
           ctx.lineTo(x - 20, y - 15);
           ctx.lineTo(x - 25, y - 10);
           ctx.fill();
-          
+
           ctx.beginPath();
           ctx.moveTo(x - 35, y);
           ctx.lineTo(x - 20, y + 10);
@@ -223,56 +223,56 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
           ctx.fill();
         }
       }
-      
+
       function drawVoltageSource(x, y, voltage) {
         ctx.strokeStyle = '#fabd2f';
         ctx.lineWidth = 2;
         ctx.setLineDash([]);
-        
+
         ctx.beginPath();
         ctx.moveTo(x - 20, y);
         ctx.lineTo(x + 20, y);
         ctx.stroke();
-        
+
         ctx.beginPath();
         ctx.moveTo(x - 12, y + 12);
         ctx.lineTo(x + 12, y + 12);
         ctx.stroke();
-        
+
         ctx.fillStyle = '#ebdbb2';
         ctx.font = '12px monospace';
         ctx.textAlign = 'right';
         ctx.fillText('Vin', x - 30, y + 5);
         ctx.fillText(voltage, x - 30, y + 18);
       }
-      
+
       function drawVoltageLabel(x, y, voltage) {
         ctx.strokeStyle = '#fabd2f';
         ctx.lineWidth = 2;
         ctx.setLineDash([]);
-        
+
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.lineTo(x + 25, y);
         ctx.stroke();
-        
+
         ctx.fillStyle = '#fe8019';
         ctx.font = 'bold 12px monospace';
         ctx.textAlign = 'left';
         ctx.fillText('Vout', x + 30, y - 2);
         ctx.fillText(voltage, x + 30, y + 12);
       }
-      
+
       function drawCircuit() {
         ctx.fillStyle = '#1d2021';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
+
         const brightness = parseInt(slider.value);
         const R1 = getLDRResistance(brightness);
         const Vout = Vin * (R2 / (R1 + R2));
-        
+
         const lx = 80, rx = 270, ty = 80, r1y = 170, my = 260, r2y = 350, by = 440, vy = 250;
-        
+
         drawWire(lx, ty, rx, ty);
         drawWire(rx, ty, rx, r1y - 30);
         drawWire(rx, r1y + 30, rx, my);
@@ -281,32 +281,32 @@ In darkness, the LDR resistance becomes very high, causing the output voltage
         drawWire(lx, by, rx, by);
         drawWire(lx, ty, lx, vy);
         drawWire(lx, vy + 10, lx, by);
-        
+
         drawVoltageSource(lx, vy, Vin.toFixed(1) + 'V');
-        
+
         let r1Display = R1 >= 1000 ? (R1/1000).toFixed(1) + 'kΩ' : R1.toFixed(0) + 'Ω';
         drawResistor(rx, r1y, 'R1', r1Display, true);
         drawResistor(rx, r2y, 'R2', (R2/1000).toFixed(1) + 'k');
-        
+
         ctx.fillStyle = '#fabd2f';
         ctx.beginPath();
         ctx.arc(rx, my, 4, 0, Math.PI * 2);
         ctx.fill();
-        
+
         drawVoltageLabel(rx, my, (Vout * 1000).toFixed(0) + ' mV');
       }
-      
+
       function update() {
         const brightness = parseInt(slider.value);
         valueDisplay.textContent = brightness + '%';
-        
+
         const lightness = 20 + (brightness * 0.5);
         indicator.style.background = `radial-gradient(circle, hsl(45, 70%, ${lightness}%), hsl(45, 70%, ${lightness - 15}%))`;
         indicator.style.boxShadow = `0 0 ${brightness * 0.3}px hsla(45, 100%, 50%, ${brightness / 100})`;
-        
+
         drawCircuit();
       }
-      
+
       slider.addEventListener('input', update);
       update();
     })();

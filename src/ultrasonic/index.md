@@ -1,4 +1,4 @@
-# Bat Beacon: Distance Sensor Project 🦇 
+# Bat Beacon: Distance Sensor Project 🦇
 
 If you've seen the Batman Begins movie, you'll remember the scene where Batman uses a device that emits ultrasonic signals to summon a swarm of bats. It's one of the coolest gadgets in his arsenal! While we won't be building a bat-summoning beacon today, we will be working with the similar ultrasonic technology.
 
@@ -23,12 +23,12 @@ The HC-SR04+ is a simple and low cost ultrasonic distance sensor. It can measure
 
 > [!TIP]
 > The HC-SR04 normally operates at 5V, which can be problematic for the Raspberry Pi Pico. If possible, purchase the **HC-SR04+** version, which works with both 3.3V and 5V, making it more suitable for the Pico.
-> 
+>
 > **Why This Matters:**
 > The HC-SR04's Echo pin outputs a 5V signal, but the Pico's GPIO pins can only safely handle 3.3V. Connecting 5V directly to the Pico could damage it.
-> 
+>
 > **Your Options:**
-> 
+>
 > 1. **Buy the HC-SR04+ variant** (recommended and easiest solution)
 > 2. **Use a voltage divider** on the Echo pin to reduce the 5V signal to 3.3V
 > 3. **Use a logic level converter** to safely step down the voltage
@@ -61,7 +61,7 @@ The HC-SR04 Sensor module has a transmitter and receiver. The module has Trigger
 
 ## Datasheet
 
-Most electronic components come with a datasheet. It's a technical document that tells you everything you need to know about how the component works, its electrical characteristics, and how to use it properly. 
+Most electronic components come with a datasheet. It's a technical document that tells you everything you need to know about how the component works, its electrical characteristics, and how to use it properly.
 
 For the HC-SR04 ultrasonic sensor, you can find the datasheet here:
 [https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf)

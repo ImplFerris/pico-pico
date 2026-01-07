@@ -115,7 +115,7 @@ If you want to map even less and be more precise, you can use:
 
 ```sh
 (gdb) mem 0xD0000000 0xD0000100 rw nocache
-``` 
+```
 
 This gives us just 256 bytes, which covers all the basic SIO registers we need, including GPIO_OUT at 0xD0000010. The key point is that we map enough memory to include the registers we want to read, without needing to map the entire SIO region.
 
