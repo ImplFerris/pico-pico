@@ -2,7 +2,7 @@
 
 "cargo-generate is a developer tool to help you get up and running quickly with a new Rust project by leveraging a pre-existing git repository as a template."
 
-Read more about [here](https://github.com/cargo-generate/cargo-generate).
+Read more about on [cargo-generate GitHub project](https://github.com/cargo-generate/cargo-generate).
  
 ## Prerequisites
 

@@ -67,7 +67,7 @@ curl -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-r
 
 For latest installation instructions, better refer to the [official probe-rs documentation](https://probe.rs/).
 
-By default, debug probes on Linux can only be accessed with root privileges. To avoid using sudo for every command, you should install the appropriate udev rules that allow regular users to access the probe. Follow the instructions provided [here](https://probe.rs/docs/getting-started/probe-setup/).
+By default, debug probes on Linux can only be accessed with root privileges. To avoid using sudo for every command, you should install the appropriate udev rules that allow regular users to access the probe. Follow [the instructions provided](https://probe.rs/docs/getting-started/probe-setup/).
 
 **Quick summary:**
 1. [Download the udev rules](https://probe.rs/files/69-probe-rs.rules) file from the probe-rs repository
