@@ -4,6 +4,10 @@ In this section, we are going to set up communication between our device (Pico) 
 
 This is especially useful when you do not have a debug probe and want to print sensor readings or status messages to the system console to quickly see what is going on. I have personally used this approach many times before I actually bought a debug probe.
 
+> [!Tip]
+> If you are using a debug probe, you can skip this chapter for now. You can always come back to it later when you want to exchange data with a computer using USB, such as sending messages, reading input, or building simple command based interfaces.
+
+
 ## CDC ACM
 
 When you plug a USB device into a computer, the computer needs to know what kind of device it is and how to talk to it. USB solves this by defining standard device types, called classes.

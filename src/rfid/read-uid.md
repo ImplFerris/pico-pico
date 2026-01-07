@@ -1,160 +1,125 @@
-# Read UID
+# How to Read an RFID Card UID with Raspberry Pi Pico in Embedded Rust
 
-Alright, let's get to the fun part and dive into some action! We'll start by writing a simple program to read the UID of the RFID tag.
+Now that the wiring is complete, we will move on to the coding part. Let us keep things simple. We will first detect an RFID card and read its UID. We will not deal with authentication or data access yet.
 
-### mfrc522 Driver
-We will be using the awesome crate  "[mfrc522](https://crates.io/crates/mfrc522)". It is still under development. However, it has everything what we need for purposes.
+In this section, we will print the UID using a debug probe. Logging is done with defmt, and the output appears in the host console through RTT. If you have a debug probe, this is the simplest way to print and inspect the output.
 
-### USB Serial
-To display the tag data, we'll use USB serial, which we covered in the last chapter. This will allow us to read from the RFID tag and display the UID on the computer.
+> [!Important]
+> In the next section, we will read the same UID but print it using USB serial instead. This is useful when you do not have a debug probe and want to print data to the system console. You are not limited to these two approaches. You may also display the UID on an OLED screen.
 
-### Project from template
+## mfrc522 Driver
 
-To set up the project, run:
+We will use the [mfrc522](https://crates.io/crates/mfrc522) crate to communicate with the RC522 RFID reader. The crate provides the core functionality required to detect cards and read their UIDs. While it is still under development, it is sufficient for the features we need in this chapter.
+
+## Project from template
+
+We will start by creating a new project using the template. 
+
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
-```
-When prompted, give your project a name, like "rfid-uid" and select `RP-HAL` as the HAL.
-
-Then, navigate into the project folder:
-```sh
-cd PROJECT_NAME
-# For example, if you named your project "rfid-uid":
-# cd rfid-uid
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-### Additional Crates required
-Update your Cargo.toml to add these additional crate along with the existing dependencies.
-```rust
-usbd-serial = "0.2.2"
-usb-device = "0.3.2"
-heapless = "0.8.0"
+When prompted, enter a project name, for example "print-uid", and select "Embassy" as the HAL. Ensure to enable "defmt" for logging.
+
+## Additional Crates required
+
+Update your Cargo.toml to add the required crates along with the existing dependencies. The set of crates depends on how the output is printed.
+
+```toml
 mfrc522 = "0.8.0"
-embedded-hal-bus = "0.2.0"
+embedded-hal-bus = "0.3.0"
 ```
-We have added embedded-hal-bus, which provides the necessary traits for SPI and I2C buses. This is required for interfacing the Pico with the RFID reader.
 
+The mfrc522 crate provides the driver for communicating with the RC522 RFID reader and handles card detection and UID reading. The embedded-hal-bus crate enables SPI bus sharing through the ExclusiveDevice wrapper, which the mfrc522 driver requires.
 
-### Additional imports
+## Additional imports
+
+Add these imports to your main.rs file:
+
 ```rust
-use hal::fugit::RateExtU32;
-use core::fmt::Write;
+// For SPI
+use embassy_rp::spi::Spi;
+use embassy_rp::spi;
+use embassy_time::Delay;
+use embedded_hal_bus::spi::ExclusiveDevice;
 
-// to prepare buffer with data before writing into USB serial
-use heapless::String;
-
-// for setting up USB Serial
-use usb_device::{class_prelude::*, prelude::*};
-use usbd_serial::SerialPort;
+// For CS Pin
+use embassy_rp::gpio::{Level, Output};
 
 // Driver for the MFRC522
-use mfrc522::{comm::blocking::spi::SpiInterface, Mfrc522};
-
-use embedded_hal_bus::spi::ExclusiveDevice;
+use mfrc522::{Mfrc522, comm::blocking::spi::SpiInterface};
 ```
 
-Make sure to check out the [USB serial](../usb-serial/action.md) tutorial for setting up the USB serial. We won't go over the setup here to keep it simple.
+## Setting Up SPI for the RFID Reader
 
-
-### Helper Function to Print UID in Hex
-
-We'll use this helper function to convert the u8 byte array (in this case UID) into a printable hex string.  You could also just use raw bytes and enable hex mode in tio(requires latest version) or minicom, but I find this approach easier. In hex mode, it prints everything in hex, including normal text. 
+Let's set up the SPI bus and the pins connected to the reader. This example uses SPI0:
 
 ```rust
-fn print_hex_to_serial<B: UsbBus>(data: &[u8], serial: &mut SerialPort<B>) {
-    let mut buff: String<64> = String::new();
-    for &d in data.iter() {
-        write!(buff, "{:02x} ", d).unwrap();
-    }
-    serial.write(buff.as_bytes()).unwrap();
-}
+let miso = p.PIN_0;
+let cs_pin = Output::new(p.PIN_1, Level::High);
+let clk = p.PIN_2;
+let mosi = p.PIN_3;
+
+let mut config = spi::Config::default();
+config.frequency = 1000_000;
+
+let spi_bus = Spi::new_blocking(p.SPI0, clk, mosi, miso, config);
 ```
 
-### Setting Up the SPI for the RFID Reader
-Now, let's configure the SPI bus and the necessary pins to communicate with the RFID reader.
+We configure the SPI bus to run at 1 MHz, which provides reliable communication with the RFID reader. The chip select pin starts high, which is the idle state for SPI devices.
+
+## Getting the `SpiDevice` from SPI Bus
+
+The mfrc522 driver expects an SpiDevice rather than a raw SPI bus. We use the embedded-hal-bus crate to create this device:
 
 ```rust
-let spi_mosi = pins.gpio7.into_function::<hal::gpio::FunctionSpi>();
-let spi_miso = pins.gpio4.into_function::<hal::gpio::FunctionSpi>();
-let spi_sclk = pins.gpio6.into_function::<hal::gpio::FunctionSpi>();
-let spi_bus = hal::spi::Spi::<_, _, _, 8>::new(pac.SPI0, (spi_mosi, spi_miso, spi_sclk));
-let spi_cs = pins.gpio5.into_push_pull_output();
-let spi = spi_bus.init(
-    &mut pac.RESETS,
-    clocks.peripheral_clock.freq(),
-    1_000.kHz(),
-    embedded_hal::spi::MODE_0,
-);
+let spi = ExclusiveDevice::new(spi_bus, cs_pin, Delay).expect("Failed to get exclusive device");
 ```
 
-### Getting the `SpiDevice` from SPI Bus
-To work with the `mfrc522` crate, we need an `SpiDevice`. Since we only have the SPI bus from RP-HAL, we'll use the `embedded_hal_bus` crate to get the `SpiDevice` from the SPI bus.
+We use ExclusiveDevice since our setup has just one device on the SPI bus. This wrapper holds the SPI bus and CS pin together, automatically controlling the chip select line during each read or write operation. The delay parameter provides timing control.
 
-```rust
-let spi = ExclusiveDevice::new(spi, spi_cs, timer).unwrap();
-```
+## Initialize the mfrc522
 
-### Initialize the mfrc522
+With the SPI device ready, we can now initialize the RFID reader.
+
 ```rust
 let itf = SpiInterface::new(spi);
-let mut rfid = Mfrc522::new(itf).init().unwrap();
+let mut rfid = Mfrc522::new(itf)
+    .init()
+    .expect("failed to initialize the RFID reader");
 ```
 
-### Read the UID and Print
-The main logic for reading the UID is simple. We continuously send the REQA command. If a tag is present, it send us the ATQA response. We then use this response to select the tag and retrieve the UID.
- 
-Once we have the UID, we use our helper function to print the UID bytes in hex format via USB serial.
+## Read the UID and Print
+
+The main loop continuously checks for nearby RFID cards. When a card is detected, we read its UID and display it:
 
 ```rust
 loop {
-    // to estabilish USB serial
-    let _ = usb_dev.poll(&mut [&mut serial]);
-
     if let Ok(atqa) = rfid.reqa() {
         if let Ok(uid) = rfid.select(&atqa) {
-            serial.write("\r\nUID: \r\n".as_bytes()).unwrap();
-            print_hex_to_serial(uid.as_bytes(), &mut serial);
-            timer.delay_ms(500);
+            defmt::info!("UID: {:02x}", uid.as_bytes());
+            Timer::after_millis(500).await;
         }
     }
 }
 ```
 
+The reqa method sends a Request command to detect cards in proximity. When a card responds with its ATQA (Answer To Request), we call select to perform the anti-collision protocol and retrieve the UID. The UID bytes are formatted as hexadecimal and sent through defmt to the RTT console.
+
 
 ## Clone the existing project
-You can clone (or refer) project I created and navigate to the `rfid-uid` folder.
+
+You can clone (or refer) project I created and navigate to the `print-uid` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/rfid-uid/
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/rfid/print-uid/
 ```
 
 ## How to Run ?
-The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
 
-### tio
-Make sure you have tio installed on your system. If not, you can install it using:
-```sh
-apt install tio
-```
+Don't forget to use the cargo embed --release command to flash instead of cargo flash --release when you are using a debug probe. I already configured in the template to open up the RTT when flashed, you should see the defmt output.
 
-### Connecting to the Serial Port
-Run the following command to connect to the Pico's serial port:
-
-```sh
-tio /dev/ttyACM0
-```
-This will open a terminal session for communicating with the Pico.
-
-### Flashing and Running the Code
-Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
-```sh
-cargo run
-```
-If everything is set up correctly, you should see a "Connected" message in the tio terminal.
-
-### Reading the UID
-Now, bring the RFID tag near the reader. You should see the UID bytes displayed in hex format on the USB serial terminal.
+Now, bring the RFID tag near the reader. You should see the UID bytes displayed in hex format in the RTT console.
  
-<img style="display: block; margin: auto;" src="./images/uid-print-to-usb-serial.png"/>
-
+<img style="display: block; margin: auto;" src="./images/print-rfid-uid-with-defmt.png"/>

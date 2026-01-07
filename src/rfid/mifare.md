@@ -6,7 +6,12 @@ The MIFARE Classic 1K card is divided into 16 sectors, with each sector containi
 
 16 sectors × 4 blocks/sector × 16 bytes/block = 1024 bytes = 1KB
 
-<a href="./images/mifare-memory-layout.jpg"><img style="display: block; margin: auto;" alt="MIFARE Memory layout" src="./images/mifare-memory-layout.jpg"/></a>
+<div class="image-with-caption" style="text-align:center; ">
+    <img src="./images/mifare-memory-layout.png" alt="MIFARE 1K Memory organization" style="height:auto; display:block; margin:0 auto;"/>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Memory organization</div>
+</div>
+
+This diagram is based on the memory layout shown in the datasheet. I have added color coding and separator lines to make the structure easier to read. Each sector is separated using a yellow horizontal line. The sector trailer block is highlighted in dark red. All regular data blocks are shown in green. The manufacturer block is highlighted separately to distinguish it from user writable data. 
 
 ### Sector Trailer
 
@@ -80,7 +85,7 @@ The first block (block 0) of the first sector(sector 0) contains IC manufacturer
 
 ### Data Block
 
-Each sector has a trailer block, so only 3 blocks can be used for data storage in each sector. However, the first sector only has 2 usable blocks because the first block stores manufacturer data.
+Since each sector has a trailer block, so only 3 blocks can be used for data storage in each sector. However, the first sector only has 2 usable blocks because the first block stores manufacturer data.
 
 To read or write the data, you first need to authenticate with either Key A or Key B of that sector. 
 

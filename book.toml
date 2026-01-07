@@ -15,7 +15,9 @@ mathjax-support = true
 # Pretty confusing to look at the chapter 
 sidebar-header-nav = false
 
-additional-css = ["theme/css/custom.css"]
+additional-css = ["theme/css/custom.css", "theme/tabs.css"]
+additional-js = ["theme/tabs.js"]
+
 
 [output.html.fold]
 enable = true
@@ -29,3 +31,5 @@ editable = true
 "/led/pwm-rp2350.html" = "/core-concepts/pwm/pwm-in-rp2350.html"
 "/servo/pwm.html" = "/servo/how-servo-works.html"
 "/servo/servo.html" = "/servo/index.html"
+
+[preprocessor.tabs]
