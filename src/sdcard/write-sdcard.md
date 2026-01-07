@@ -17,4 +17,3 @@ serial.write("Written".as_bytes()).unwrap();
 ```
 
 To verify, you can either connect the SD card directly to your computer or modify the SD card reading program to read and print the content of this file.
-

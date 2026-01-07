@@ -50,7 +50,6 @@ A pull-down resistor works in the opposite direction:W
 
 When the button is not pressed, the GPIO pin is connected to ground through the resistor, reading LOW. When pressed, the button connects the pin directly to 3.3V, and the pin reads HIGH.
 
-
 ## Internal Pull Resistors
 
 The Raspberry Pi Pico has built-in pull-up and pull-down resistors on every GPIO pin. You don't need to add external resistors for basic button inputs. You can enable them in software.

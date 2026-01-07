@@ -2,7 +2,6 @@
 
 We'll start by generating the project using the template, then modify the code to fit the current project's requirements.
 
-
 ## Generating From template
 
 Refer to the [Template section](../cargo-generate.md) for details and instructions.
@@ -12,9 +11,11 @@ To generate the project, run:
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
+
 When prompted, choose a name for your project-let's go with "bat-beacon". Don't forget to select `rp-hal` as the HAL.
 
 Then, navigate into the project folder:
+
 ```sh
 cd PROJECT_NAME
 # For example, if you named your project "bat-beacon":
@@ -22,6 +23,7 @@ cd PROJECT_NAME
 ```
 
 ## Setup the LED Pin
+
 You should understand this code by now. If not, please complete the Blink LED section first.
 
 Quick recap: Here, we're configuring the PWM for the LED, which allows us to control the brightness by adjusting the duty cycle.
@@ -35,6 +37,7 @@ led.output_to(pins.gpio3);   // Set GPIO 3 as the PWM output pin
 ```
 
 ## Setup the Trigger Pin
+
 The Trigger pin on the ultrasonic sensor is used to start the ultrasonic pulse. It needs to be set as an output so we can control it to send the pulse.
 
 ```rust
@@ -42,6 +45,7 @@ let mut trigger = pins.gpio17.into_push_pull_output();
 ```
 
 ## Setup the Echo Pin
+
 The Echo pin on the ultrasonic sensor receives the returning signal, which allows us to measure the time it took for the pulse to travel to an object and back. It's set as an input to detect the returning pulse.
 
 ```rust
@@ -51,6 +55,7 @@ let mut echo = pins.gpio16.into_pull_down_input();
 ## 🦇 Light it Up
 
 ### Step 1: Send the Trigger Pulse
+
 First, we need to send a short pulse to the trigger pin to start the ultrasonic measurement.
 
 ```rust
@@ -65,6 +70,7 @@ trigger.set_low().ok().unwrap();
 ```
 
 ### Step 2: Measure the Echo Time
+
 Next, we will use two loops. The first loop will run as long as the echo pin state is LOW. Once it goes HIGH, we will record the current time in a variable. Then, we start the second loop, which will continue as long as the echo pin remains HIGH. When it returns to LOW, we will record the current time in another variable. The difference between these two times gives us the pulse width.
 
 ```rust
@@ -87,6 +93,7 @@ let time_passed = time_high - time_low;
 ```
 
 ### Step 3: Calculate Distance
+
 To calculate the distance, we need to use the pulse width. The pulse width tells us how long it took for the ultrasonic waves to travel to an obstacle and return. Since the pulse represents the round-trip time, we divide it by 2 to account for the journey to the obstacle and back.
 
 The speed of sound in air is approximately 0.0343 cm per microsecond. By multiplying the time (in microseconds) by this value and dividing by 2, we obtain the distance to the obstacle in centimeters.
@@ -96,6 +103,7 @@ let distance = time_passed as f64 * 0.0343 / 2.0;
 ```
 
 ### Step 4: PWM Duty cycle for LED
+
 Finally, we adjust the LED brightness based on the measured distance.
 
 The duty cycle percentage is calculated using our own logic, you can modify it to suit your needs. When the object is closer than 30 cm, the LED brightness will increase. The closer the object is to the ultrasonic module, the higher the calculated ratio will be, which in turn adjusts the duty cycle. This results in the LED brightness gradually increasing as the object approaches the sensor.
@@ -148,8 +156,8 @@ loop {
 }
 ```
 
-
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `ultrasonic` folder.
 
 ```sh
@@ -158,5 +166,6 @@ cd pico2-rp-projects/ultrasonic
 ```
 
 ## Your Challenge
+
 1. Use Embassy framework instead of rp-hal
 2. Use the onboard LED instead

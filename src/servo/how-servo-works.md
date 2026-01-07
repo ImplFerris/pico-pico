@@ -28,7 +28,6 @@ The duty cycle represents the percentage of time the signal stays high during ea
 
 ### Example Calculations
 
-
 **For a 0.5ms pulse (0° position), the duty cycle is calculated as:**
 
 A 0.5ms pulse means the signal is "high" for 0.5 milliseconds within each 20ms cycle. The servo interprets this as a command to move to the 0-degree position.
@@ -59,7 +58,6 @@ A 2.4ms pulse means the signal is "high" for 2.4 milliseconds in the 20ms cycle.
 
 In this case, the signal is "high" for 12% of the cycle, which causes the servo to rotate to 180 degrees.
 
-
 ### Reference
--  [Learn to Control Servo motor using PWM - Wokwi Style](https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/)
 
+-  [Learn to Control Servo motor using PWM - Wokwi Style](https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/)

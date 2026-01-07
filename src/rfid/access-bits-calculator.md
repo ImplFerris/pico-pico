@@ -51,7 +51,6 @@ Click the "Edit" button in each row of the table to select your preferred access
 > [!CAUTION]
 > Writing an incorrect value to the access condition bits can make the sector inaccessible.
 
-
 **Access Bits**
 <div style="display: flex; align-items: center;">
   <input type="text"
@@ -62,7 +61,6 @@ Click the "Edit" button in each row of the table to select your preferred access
   <div id="error-box"   style="ddisplay: none;  color: #FF2800; font-size: 18px; margin-left: 10px; font-weight:bold">
   </div>
 </div>
-
 
 **Data Block Access Conditions:**
 
@@ -120,7 +118,6 @@ Click the "Edit" button in each row of the table to select your preferred access
     </tr>
   </tbody>
 </table>
-
 
 <!-- Nested Table Template -->
 <div class="nested-table" id="nested-table">
@@ -373,8 +370,6 @@ Click the "Edit" button in each row of the table to select your preferred access
     </tbody>
   </table>
 </div>
-
-
 
 <script>
   function toggleNestedTable(button, tmplId, colSpan) {
@@ -826,5 +821,6 @@ Click the "Edit" button in each row of the table to select your preferred access
 </script>
 
 ## References
+
 - This UI is inspired from this calculator: [Mifarecalc](https://gitlab.com/limentas/mifare-calc)
 - [MIFARE-Classic-1K-Access-Bits-Calculator ](https://github.com/akafugu/MIFARE-Classic-1K-Access-Bits-Calculator)

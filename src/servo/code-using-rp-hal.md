@@ -10,7 +10,6 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 
 When prompted, give your project a name like "servo-motor" and choose "rp-hal" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
 
-
 ## Additional Imports
 
 Along with the usual rp hal boilerplate, we need to bring in the trait that allows us to update the PWM duty cycle.
@@ -19,7 +18,6 @@ Along with the usual rp hal boilerplate, we need to bring in the trait that allo
 // For PWM
 use embedded_hal::pwm::SetDutyCycle;
 ```
-
 
 ## Initialize PWM Slice
 
@@ -74,7 +72,6 @@ loop {
 }
 ```
 
-
 ## Clone the existing project
 
 You can clone (or refer) project I created and navigate to the `servo-motor` folder.
@@ -85,6 +82,7 @@ cd pico2-projects/servo-motor
 ```
 
 ## The Full Code
+
 ```rust
 #![no_std]
 #![no_main]

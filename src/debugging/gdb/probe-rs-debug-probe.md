@@ -32,13 +32,12 @@ enabled = true
 
 For this exercise, I have created a simple LED blink program using rp-hal. It does not use Embassy to keep things simple. The Embed.toml file is already set up, so you can clone the project and start working right away:
 
-```
+```sh
 git clone https://github.com/ImplFerris/pico-debug
 cd pico-debug
 ```
 
 If you run the cargo embed command now, the GDB server will start automatically and listen on port 1337 (the default port used by probe-rs).
-
 
 ## Connecting GDB to the Remote Server
 

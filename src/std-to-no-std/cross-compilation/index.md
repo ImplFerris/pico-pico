@@ -23,6 +23,7 @@ cargo build
 ```
 
 You can confirm what kind of binary it just produced using the file command:
+
 ```sh
 file ./target/debug/pico-from-scratch
 ```
@@ -37,8 +38,8 @@ This will give an output like the following. This tells you it is a 64-bit ELF b
 
 Now let's say you want to build a binary for Windows without leaving your Linux machine. That's where cross-compilation comes into play.
 
-
 First, you need to tell Rust about the target platform. You only have to do this once:
+
 ```sh
 rustup target add x86_64-pc-windows-gnu
 ```
@@ -50,14 +51,17 @@ Now build your project again, this time specifying the target:
 ```sh
 cargo build --target x86_64-pc-windows-gnu
 ```
+
 That's it. Rust will now create a Windows .exe binary, even though you're still on Linux. The output binary will be located at `target/x86_64-pc-windows-gnu/debug/pico-from-scratch.exe`
 
 You can inspect the file type like this:
+
 ```sh
 file target/x86_64-pc-windows-gnu/debug/pico-from-scratch.exe
 ```
 
 It will give you output like this, a 64 bit PE32+ File format file for windows.
+
 ```sh
 target/x86_64-pc-windows-gnu/debug/pico-from-scratch.exe: PE32+ executable (console) x86-64, for MS Windows
 ```
@@ -83,8 +87,6 @@ Let's break down what this target triple actually means:
 - **OS (windows)**: This tells Rust that we want to build something that runs on Windows.
 
 - **ABI (gnu)**: This part tells Rust to use the GNU toolchain to build the binary.
-
-
 
 ## Reference
 

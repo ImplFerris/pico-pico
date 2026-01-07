@@ -92,7 +92,6 @@ Here is the interactive simulation. Use the sliders to adjust the duty cycle and
 
 If you change the duty cycle from "low to high" and "high to low" in the simulation, you should notice the LED kind of giving a dimming effect.
 
-
 <script>
   const pwmCanvas = document.getElementById('pwmCanvas');
   const pwmCtx = pwmCanvas.getContext('2d');

@@ -4,7 +4,6 @@ A voltage divider is a simple circuit that reduces a higher input voltage to a l
 
 The resistor connected to the input voltage is called \\( R_{1} \\), and the resistor connected to ground is called \\( R_{2} \\). The output voltage \\( V_{out} \\) is measured at the point between \\( R_{1} \\) and \\( R_{2} \\), and it will be a fraction of the input voltage \\( V_{in} \\).
 
-
 ## Circuit
 
 <img style="display: block; margin: auto;" alt="Voltage Divider" src="./images/voltage-divider.png"/>
@@ -28,9 +27,7 @@ Substitute the values:
 V_{out} = 3.3V \times \frac{10 k\Omega}{10 k\Omega + 10 k\Omega} = 3.3V \times \frac{10}{20} = 3.3V \times 0.5 = 1.65V
 \\]
 
-
 The output voltage \\( V_{out} \\) is 1.65V.
-
 
 ```rust,editable
 fn main() {
@@ -51,6 +48,7 @@ fn main() {
 Voltage dividers are used in applications like potentiometers, where the resistance changes as the knob is rotated, adjusting the output voltage. They are also used to measure resistive sensors such as light sensors and thermistors, where a known voltage is applied, and the microcontroller reads the voltage at the center node to determine sensor values like temperature.
 
 ## Voltage Divider Simulation
+
 <style>
 canvas {
     border: 1px solid #ccc;
@@ -77,11 +75,9 @@ canvas {
 
 <canvas id="circuitCanvas" width="600" height="400"></canvas>
 
-
 ## Simulator in Falstad website
 
 I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/circuit/) to create the diagram. It's a great tool for drawing circuits. You can download the file I created, [`voltage-divider.circuitjs.txt`](./voltage-divider.circuitjs.txt), and import it to experiment with the circuit.
-
 
 <script>
     function updateAndCalculate() {

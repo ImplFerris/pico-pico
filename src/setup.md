@@ -1,6 +1,7 @@
 # Setup
 
 ## Picotool
+
 picotool is a tool for working with RP2040/RP2350 binaries, and interacting with RP2040/RP2350 devices when they are in BOOTSEL mode.
 
 [Picotool Repo](https://github.com/raspberrypi/picotool)
@@ -8,8 +9,8 @@ picotool is a tool for working with RP2040/RP2350 binaries, and interacting with
 > [!TIP]
 > Alternatively, you can download the pre-built binaries of the SDK tools from <a href="https://github.com/raspberrypi/pico-sdk-tools">here</a>, which is a simpler option than following these steps.
 
-
 Here's a quick summary of the steps I followed:
+
 ```sh
 # Install dependencies
 sudo apt install build-essential pkg-config libusb-1.0-0-dev cmake
@@ -30,6 +31,7 @@ git clone https://github.com/raspberrypi/picotool
 ```
 
 Build and install Picotool
+
 ```sh
 cd picotool
 mkdir build && cd build
@@ -40,14 +42,15 @@ sudo make install
 ```
 
 On Linux you can add udev rules in order to run picotool without sudo:
+
 ```sh
 cd ../
 # In picotool cloned directory
 sudo cp udev/60-picotool.rules /etc/udev/rules.d/
 ```
 
-
 ## Rust Targets
+
 To build and deploy Rust code for the RP2350 chip, you'll need to add the appropriate targets:
 
 ```sh
@@ -70,6 +73,7 @@ For latest installation instructions, better refer to the [official probe-rs doc
 By default, debug probes on Linux can only be accessed with root privileges. To avoid using sudo for every command, you should install the appropriate udev rules that allow regular users to access the probe. Follow [the instructions provided](https://probe.rs/docs/getting-started/probe-setup/).
 
 **Quick summary:**
+
 1. [Download the udev rules](https://probe.rs/files/69-probe-rs.rules) file from the probe-rs repository
 2. Copy it to `/etc/udev/rules.d/`
 3. Reload udev rules with `sudo udevadm control --reload`

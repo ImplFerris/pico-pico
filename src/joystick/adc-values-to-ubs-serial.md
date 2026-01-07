@@ -4,16 +4,18 @@ In this program, we'll observe how joystick movement affects ADC values in real 
 
 As you move the joystick, the corresponding ADC values will be printed in the system. You can compare these values with the [previous Movement and ADC Diagram](./movement-and-12-bit-adc-value.md);they should approximately match the values shown. Pressing the joystick knob will print **"Button Pressed"** along with the current coordinates.
 
-
 ### Project from template
 
 To set up the project, run:
+
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
 ```
+
 When prompted, give your project a name, like "joystick-usb" and select `RP-HAL` as the HAL.
 
 Then, navigate into the project folder:
+
 ```sh
 cd PROJECT_NAME
 # For example, if you named your project "joystick-usb":
@@ -21,6 +23,7 @@ cd PROJECT_NAME
 ```
 
 ### Additional Crates required
+
 Update your Cargo.toml to add these additional crate along with the existing dependencies.
 
 ```rust
@@ -32,11 +35,12 @@ embedded_hal_0_2 = { package = "embedded-hal", version = "0.2.5", features = [
   "unproven",
 ] }
 ```
+
 The first three should be familiar by now; they set up USB serial communication so we can send data between the Pico and the computer. heapless is a helper function for buffers.
 
 embedded_hal_0_2 is the new crate. You might already have embedded-hal with version "1.0.0" in your Cargo.toml. So, you may wonder why we need this version. The reason is that Embedded HAL 1.0.0 doesn't include an ADC trait to read ADC values, and the RP-HAL uses the one from version 0.2. (Don't remove the existing embedded-hal 1.0.0; just add this one along with it.)
 
- ### Additional imports
+### Additional imports
 
 ```rust
 /// This trait is the interface to an ADC that is configured to read a specific channel at the time
@@ -50,6 +54,7 @@ use heapless::String;
 ```
 
 ### USB Serial
+
 Make sure you've completed the USB serial section and added the boilerplate code from there into your project.
 
 ```rust
@@ -76,6 +81,7 @@ Make sure you've completed the USB serial section and added the boilerplate code
 ```
 
 ### Pin setup
+
 Let's set up the ADC and configure GPIO 27 and GPIO 26, which are mapped to the VRX and VRY pins of the joystick:
 
 ```rust
@@ -133,6 +139,7 @@ if vry.abs_diff(prev_vry) > 100 {
     print_vals = true;
 }
 ```
+
 Using a threshold filters out small ADC fluctuations, avoids unnecessary prints, and ensures updates only for significant changes.
 
 **Printing the Coordinates**
@@ -150,6 +157,7 @@ if print_vals {
 ```
 
 ### Button Press Detection with State Transition
+
 The button is normally in a high state. When you press the knob button, it switches from high to low. However, since the program runs in a loop, simply checking if the button is low could lead to multiple detections of the press. To avoid this, we only register the press once by detecting a high-to-low transition, which indicates that the button has been pressed.
 
 To achieve this, we track the previous state of the button and compare it with the current state before printing the "button pressed" message. If the button is currently in a low state (pressed) and the previous state was high (not pressed), we recognize it as a new press and print the message. Then, we update the previous state to the current state, ensuring the correct detection of future transitions.
@@ -162,7 +170,6 @@ if btn_state && !prev_btn_state {
 }
 prev_btn_state = btn_state;
 ```
-
 
 ### The Full code
 
@@ -298,6 +305,7 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 ```
 
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `joystick-usb` folder.
 
 ```sh
@@ -305,29 +313,36 @@ git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/joystick-usb/
 ```
 
+## How to Run?
 
-## How to Run ?
 The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
 
 ### tio
+
 Make sure you have tio installed on your system. If not, you can install it using:
+
 ```sh
 apt install tio
 ```
 
 ### Connecting to the Serial Port
+
 Run the following command to connect to the Pico's serial port:
 
 ```sh
 tio /dev/ttyACM0
 ```
+
 This will open a terminal session for communicating with the Pico.
 
 ### Flashing and Running the Code
+
 Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
+
 ```sh
 cargo run
 ```
+
 If everything is set up correctly, you should see a "Connected" message in the tio terminal. As you move the joystick, the coordinates will be printed. Pressing the knob downwards will also display a "Button pressed" message.
 
 <img style="display: block; margin: auto;" src="./images/joystick-usb-output.png"/>

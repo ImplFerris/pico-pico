@@ -35,7 +35,6 @@ heapless = "0.9.2"
 
 The embassy-usb-logger crate provides logging support over USB. The log crate is used for logging macros such as log::info!. The heapless crate is used to format the UID without heap allocation.
 
-
 ## Additional imports
 
 ```rust
@@ -80,8 +79,7 @@ async fn logger_task(usb: embassy_rp::Peri<'static, embassy_rp::peripherals::USB
 }
 ```
 
-The `#[embassy_executor::task]` attribute marks this function as an async task that can be spawned by the Embassy executor. The task accepts the USB peripheral as a parameter and creates a USB driver with our interrupt configuration. The embassy_usb_logger::run! macro sets up the USB logger with a 1024-byte buffer and Info log level filtering.
-
+The `#[embassy_executor::task]` attribute marks this function as an async task that can be spawned by the Embassy executor. The task accepts the USB peripheral as a parameter and creates a USB driver with our interrupt configuration. The embassy_usb_logger::run! macro sets up the USB logger with a 1024-byte buffer and Info log level filtering.r
 
 ### Helper Function to Print UID in Hex
 
@@ -128,7 +126,6 @@ let spi_bus = Spi::new_blocking(p.SPI0, clk, mosi, miso, config);
 
 This configures the SPI bus with a frequency of 1 MHz, which is suitable for the RC522 module. The chip select (CS) pin is initialized high (inactive state), as SPI chip select is active low.
 
-
 ## Getting the `SpiDevice` from SPI Bus
 
 The mfrc522 driver expects an SpiDevice rather than a raw SPI bus. We use the embedded-hal-bus crate to create this device:
@@ -162,7 +159,6 @@ let mut rfid = match Mfrc522::new(itf).init() {
 ```
 
 The SpiInterface wraps our SPI device for use with the mfrc522 driver. We then attempt to initialize the RFID reader. If initialization succeeds, we log a success message and continue. If it fails, we log the error and enter an infinite loop, as we cannot proceed without a working RFID reader.
-
 
 ## Read the UID and Print
 
@@ -201,6 +197,7 @@ The method to flash (run the code) on the Pico is the same as usual. However, we
 ### tio
 
 Make sure you have tio installed on your system. If not, you can install it using:
+
 ```sh
 apt install tio
 ```
@@ -239,4 +236,3 @@ If you are interested in an rp-hal based version of this example, you can find i
 git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-rp-projects/rfid/print-uid/
 ```
-

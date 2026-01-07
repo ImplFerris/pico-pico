@@ -6,7 +6,6 @@ These two ideas describe how fast the PWM signal repeats.
 
 <img style="display: block; margin: auto;" alt="Period and Frequency" src="./images/pwm-period-frequency.svg"/>
 
-
 ## Period
 
 The period is the total time it takes for one complete ON-OFF cycle to finish. In other words, it is the time from one point in the signal until that same point appears again in the next cycle.
@@ -16,12 +15,12 @@ For example:
 - In the top part of the diagram, one complete cycle takes 1 second, so the period is 1 second. This is a slow-changing signal.
 - In the bottom part of the diagram, one complete cycle takes 0.2 seconds, so the period is 0.2 seconds. This is a faster-changing signal.
 
-
 ## Frequency
 
 Frequency tells us how many complete cycles happen in one second. It's measured in Hertz (Hz).
 
 For example:
+
 - 1 Hz = 1 cycle per second (like the top part of the diagram)
 - 5 Hz = 5 cycles per second (like the bottom part of the diagram)
 
@@ -34,6 +33,7 @@ The frequency of a signal and its period are inversely related.
 \\]
 
 This means:
+
 - When the period gets shorter, the frequency gets higher
 - When the period gets longer, the frequency gets lower
 

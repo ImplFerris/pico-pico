@@ -6,7 +6,6 @@ Let's start from the highest level of abstraction down to the lowest.
 
 <a href ="./images/abstraction-layers.png"><img alt="abstraction layers" style="display: block; margin: auto;" src="./images/abstraction-layers.png"/></a>
 
-
 ## Board Support Package (BSP)
 
 A BSP, also referred as Board Support Crate in Rust, tailored to specific development boards.  It combines the HAL with board-specific configurations, providing ready to use interfaces for onboard components like LEDs, buttons, and sensors. This allows developers to focus on application logic instead of dealing with low-level hardware details. Since there is no popular BSP specifically for the Raspberry Pi Pico 2, we will not be using this approach in this book.
@@ -33,7 +32,6 @@ Throughout this book, we will use both rp-hal and embassy-rp for different e
 
 > [!NOTE]
 > The layers below the HAL are rarely used directly. In most cases, the PAC is accessed through the HAL, not on its own. Unless you are working with a chip that does not have a HAL available, there is usually no need to interact with the lower layers directly. In this book, we will focus on the HAL layer.
-
 
 ## Peripheral Access Crate (PAC)
 
