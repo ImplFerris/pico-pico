@@ -4,7 +4,7 @@ So far, we've been toggling output pins between High and Low states to control a
 
 Since we will be using an OLED display in the next chapter, and it communicates over I2C, this is the first protocol we are going to explore. OLED displays are one of the modules I enjoy the most. I've used them to make small games and a bunch of fun personal projects.
 
-##  What Is I2C?
+## What Is I2C?
 
 I2C stands for Inter-Integrated Circuit, also written as I²C. It's one of the popular communication methods used by microcontrollers to talk to sensors, displays (like OLEDs), and other chips. It is a serial, half-duplex, and synchronous interface. Let's break down what that means.
 
@@ -21,7 +21,7 @@ I2C uses a controller-target model. The controller (formerly known as master) is
 <img style="display: block; margin: auto;" alt="I2C Single Controller and Single Target" src="./images/i2c-bus.svg"/>
 <p align="center"><em>Figure: Single Controller and Single Target</em></p>
 
-In typical embedded projects, the microcontroller(e.g: Pico) acts as the controller, and connected devices like displays(eg: OLED) or sensors act as targets.
+In typical embedded projects, the microcontroller (e.g: Pico) acts as the controller, and connected devices like displays (e.g: OLED) or sensors act as targets.
 
 I2C makes it easy to connect many devices on the same two wires. You can connect multiple targets to a single controller, which is the most common setup. I2C also supports multiple controllers on the same bus, so more than one controller can talk to one or more targets.
 
