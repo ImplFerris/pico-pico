@@ -80,7 +80,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td>
         Contrast control pin.<br>
         - This pin expects an analog voltage between GND and VDD.<br>
-        - Recommended: Use a 10k potentiometer as a voltage divider, with the wiper connected to V<sub>o</sub> and the other two pins to VDD and GND.<br>
+        - Recommended: Use a 10 k potentiometer as a voltage divider, with the wiper connected to V<sub>o</sub> and the other two pins to VDD and GND.<br>
         - Alternative: Use fixed resistors as a voltage divider between VDD and GND, with the midpoint connected to V<sub>o</sub>.
       </td>
     </tr>
