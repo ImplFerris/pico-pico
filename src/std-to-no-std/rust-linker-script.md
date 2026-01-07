@@ -44,13 +44,13 @@ However, the linker does not automatically know the memory layout of the RP2350.
 
 We are not going to write the linker script ourselves. The cortex-m-rt crate already provides the main linker script (link.x), but it only knows about the Cortex-M core. It does not know anything about the specific microcontroller we are using. Every microcontroller has its own flash size, RAM size, and memory layout, and cortex-m-rt cannot guess these values.
 
-Because of this, cortex-m-rt expects the user or the board support crate to supply a small linker script called memory.x. This file describes the memory layout of the target device.
+Because of this, cortex-m-rt expects the user or the board support crate to supply a small linker script called `memory.x`. This file describes the memory layout of the target device.
 
-In memory.x, we must define the memory regions that the device has. At minimum, we need two regions: one named FLASH and one named RAM. The .text and .rodata sections of the program are placed in the FLASH region. The .bss and .data sections, along with the heap, are placed in the RAM region.
+In `memory.x`, we must define the memory regions that the device has. At minimum, we need two regions: one named `FLASH` and one named `RAM`. The `.text` and `.rodata` sections of the program are placed in the `FLASH` region. The `.bss` and `.data` sections, along with the heap, are placed in the `RAM` region.
 
-For the RP2350, the datasheet (chapter 2.2, Address map) specifies that flash starts at address 0x10000000 and SRAM starts at 0x20000000. So our memory.x file will look something like this:
+For the RP2350, the datasheet (chapter 2.2, Address map) specifies that flash starts at address `0x10000000` and SRAM starts at `0x20000000`. So our `memory.x` file will look something like this:
 
-```
+```text
 MEMORY {
     FLASH : ORIGIN = 0x10000000, LENGTH = 2048K
     
@@ -64,14 +64,13 @@ MEMORY {
 ...
 ```
 
-There are a few more settings required in memory.x for RP2350. We do not need to write those by hand. Instead, we will use the [file provided in the embassy-rp examples repository](https://github.com/embassy-rs/embassy/blob/a6d392b24c5f010a8b5b2a00326c04b05a4ab0f0/examples/rp235x/memory.x) and place it in the root of your project.
+There are a few more settings required in `memory.x` for RP2350. We do not need to write those by hand. Instead, we will use the [file provided in the embassy-rp examples repository](https://github.com/embassy-rs/embassy/blob/a6d392b24c5f010a8b5b2a00326c04b05a4ab0f0/examples/rp235x/memory.x) and place it in the root of your project.
 
 ## Codegen Option for Linker
 
-Putting the memory.x file in the project folder is not enough. We also need to make sure the linker actually uses the linker script provided by cortex-m-rt.
+Putting the `memory.x` file in the project folder is not enough. We also need to make sure the linker actually uses the linker script provided by `cortex-m-rt`.
 
-
-To fix this, we tell Cargo to pass the linker script (link.x) to the linker.  There are multiple ways we can pass the argument to the rust. we can use the method like .cargo/config.toml or build script (build.rs) file. In the quick start, we are using the build.rs. So we will use the .cargo/config.toml approach. In the file, update the target section with the following
+To fix this, we tell Cargo to pass the linker script `link.x` to the linker.  There are multiple ways we can pass the argument to the rust. we can use the method like `.cargo/config.toml` or build script `build.rs` file. In the quick start, we are using the `build.rs`. So we will use the `.cargo/config.toml` approach. In the file, update the target section with the following
 
 ```toml
 [target.thumbv8m.main-none-eabihf]

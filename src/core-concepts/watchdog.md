@@ -1,6 +1,6 @@
 # Watchdog
 
-This book was originally written using rp-hal. Later, I revised it to primarily use Embassy. When working with rp-hal, there is a step where we explicitly configure the watchdog. To explain why that line exists and what it actually does, this chapter introduces the concept of a watchdog.
+This book was originally written using `rp-hal`. Later, I revised it to primarily use Embassy. When working with `rp-hal`, there is a step where we explicitly configure the watchdog. To explain why that line exists and what it actually does, this chapter introduces the concept of a watchdog.
 
 In January 1994, the Clementine spacecraft successfully mapped the Moon. While it was traveling toward the asteroid Geographos, a floating point exception occurred on May 7, 1994, in the Honeywell 1750 processor. This processor handled telemetry and several other critical spacecraft functions.
 
