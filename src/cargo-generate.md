@@ -31,8 +31,9 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 ```
 
 This will prompt you to answer a few questions:
-Project name: Name your project.
-HAL choice: You can choose between embassy or rp-hal.
+
+- Project name: Name your project.
+- HAL choice: You can choose between `embassy` or `rp-hal`.
 
 ## Step 2: Default LED Blink Example
 By default, the project will be generated with a simple LED blink example. The code structure may look like this:
@@ -45,5 +46,5 @@ By default, the project will be generated with a simple LED blink example. The c
 Once the project is generated, you can decide to keep the default LED blink code or remove it and replace it with your own code based on the HAL you selected.
 
 ## Removing Unwanted Code
-You can remove the blink logic from src/main.rs and replace it with your own code. Modify the Cargo.toml dependencies and project structure as needed for your project.
+You can remove the blink logic from `src/main.rs` and replace it with your own code. Modify the `Cargo.toml` dependencies and project structure as needed for your project.
 
