@@ -118,7 +118,7 @@ cd pico2-embassy-projects/rfid/print-uid/
 
 ## How to Run ?
 
-Don't forget to use the cargo embed --release command to flash instead of cargo flash --release when you are using a debug probe. I already configured in the template to open up the RTT when flashed, you should see the defmt output.
+Don't forget to use the `cargo embed --release` command to flash instead of `cargo flash --release` when you are using a debug probe. I already configured in the template to open up the RTT when flashed, you should see the defmt output.
 
 Now, bring the RFID tag near the reader. You should see the UID bytes displayed in hex format in the RTT console.
  
