@@ -19,6 +19,8 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
 
 There is also a variant called the Pico 2 W, which includes Wi‑Fi and Bluetooth capabilities and is powered by the RP2350 chip. However, it is not fully compatible with the examples we've provided. If you want to follow along without adjustments, we recommend using the standard Pico 2 (non‑wireless) version. If you choose to buy the Pico 2 W or already have one, you still can follow along. Expect small differences, such as the onboard LED being used by Wi-Fi by default, but the core concepts remain the same.
 
+The **H** variants of both include a pinheader, which makes development a bit easier.
+
 ## Datasheets
 
 For detailed technical information, specifications, and guidelines, refer to the official datasheets:
