@@ -15,8 +15,7 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 ```
 
 When prompted, give your project a name, for example "cdc-logger", and select embassy as the HAL. You do not need to enable defmt for this setup.
-
-
+r
 ## Additional crates required
 
 Update your Cargo.toml to include the USB logger crate.
@@ -62,7 +61,6 @@ async fn logger_task(usb: embassy_rp::Peri<'static, embassy_rp::peripherals::USB
 
 The logger task runs continuously and handles all USB communication in the background.
 
-
 ## Main function
 
 In the main function, we spawn the USB logger task.
@@ -84,7 +82,6 @@ loop {
     Timer::after_secs(1).await;
 }
 ```
-
 
 ## Clone the existing project
 
@@ -124,6 +121,7 @@ Open another terminal, navigate to the project folder, and flash the code onto t
 ```sh
 cargo run --release
 ```
+
 Once the program starts running, you should see the counter value printed once every second in the tio terminal.
 
 <img style="display: block; margin: auto;" src="./images/embassy-usb-logger-usb-serial-raspberry-pi-pico.png"/>

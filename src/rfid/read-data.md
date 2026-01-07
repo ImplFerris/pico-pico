@@ -17,7 +17,6 @@ In this setup, we use USB serial to print the block data.
 {{#endtab }}
 {{#endtabs }}
 
-
 ## Project from Template
 
 We will start by creating a new project using the template.
@@ -41,13 +40,16 @@ Update your Cargo.toml to add the required crates along with the existing depend
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```toml
 mfrc522 = "0.8.0"
 embedded-hal-bus = "0.3.0"
 heapless = { version = "0.9.2", features = ["defmt"] }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```toml
 mfrc522 = "0.8.0"
 embedded-hal-bus = "0.3.0"
@@ -56,6 +58,7 @@ embassy-usb-logger = "0.5.1"
 log = "0.4"
 heapless = "0.9.2"
 ```
+
 {{#endtab }}
 {{#endtabs }}
 
@@ -63,6 +66,7 @@ heapless = "0.9.2"
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 // For SPI
 use embassy_rp::spi::Spi;
@@ -80,8 +84,10 @@ use mfrc522::{Mfrc522, comm::blocking::spi::SpiInterface};
 use core::fmt::Write;
 use heapless::String;
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 // For USB
 use embassy_rp::{peripherals::USB, usb};
@@ -102,6 +108,7 @@ use mfrc522::{Mfrc522, comm::blocking::spi::SpiInterface};
 use core::fmt::Write;
 use heapless::String;
 ```
+
 {{#endtab }}
 {{#endtabs }}
 
@@ -125,6 +132,7 @@ This helper converts raw bytes into a hexadecimal format and prints them.
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 fn print_hex(data: &[u8]) {
     let mut buff: String<64> = String::new();
@@ -134,8 +142,10 @@ fn print_hex(data: &[u8]) {
     defmt::println!("{}", buff);
 }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 fn print_hex(data: &[u8]) {
     let mut buff: String<64> = String::new();
@@ -145,9 +155,9 @@ fn print_hex(data: &[u8]) {
     log::info!("{}", buff);
 }
 ```
-{{#endtab }}
-{{#endtabs }}
 
+{{#endtab }}
+{{#endtabs }}r
 
 ## Read the block
 
@@ -192,6 +202,7 @@ The main loop operates similarly to what we covered in the previous chapter. Aft
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 loop {
     if let Ok(atqa) = rfid.reqa() {
@@ -208,8 +219,10 @@ loop {
     Timer::after_millis(100).await;
 }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 loop {
     if let Ok(atqa) = rfid.reqa() {
@@ -226,9 +239,9 @@ loop {
     Timer::after_millis(100).await;
 }
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## Clone the existing project
 
@@ -240,6 +253,7 @@ You can clone (or refer) project I created and navigate to the `read-blocks` fol
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/rfid/read-blocks/
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
 You can clone (or refer) project I created and navigate to the `blocks-over-usb` folder.
@@ -248,18 +262,20 @@ You can clone (or refer) project I created and navigate to the `blocks-over-usb`
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/rfid/blocks-over-usb/
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## How to Run?
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
 Use `cargo embed` to flash and run the program, since the template already configures RTT and defmt and the output appears in the terminal after flashing completes.
+
 ```sh
 cargo embed --release
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
 
@@ -278,9 +294,11 @@ This will open a terminal session for communicating with the Pico.
 ### Flashing and Running the Code
 
 Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
+
 ```sh
 cargo run --release
 ```
+
 If everything is set up correctly, you should see a "Connected" message in the tio terminal.
 
 {{#endtab }}
@@ -304,7 +322,6 @@ Bring the RFID tag close to the reader, and the USB serial terminal will display
 
 {{#endtab }}
 {{#endtabs }}
-
 
 ## rp-hal version
 

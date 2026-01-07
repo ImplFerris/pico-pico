@@ -28,7 +28,6 @@ error: could not compile `pico-from-scratch` (bin "pico-from-scratch") due to 3 
 
 There are so many errors here. Lets fix one by one. The first error says the target may not support the standard library. That's true. We already know that. The problem is, we didn't tell Rust that we don't want to use std.  That's where no_std attribute comes into play.
 
-
 ## #![no_std]
 
 The #![no_std] attribute disables the use of the standard library (std). This is necessary most of the times for embedded systems development, where the environment typically lacks many of the resources (like an operating system, file system, or heap allocation) that the standard library assumes are available.
@@ -50,7 +49,6 @@ Now the code should be like this
 ```rust
 #![no_std]
 
-
 fn main() {
 
 }
@@ -58,8 +56,8 @@ fn main() {
 
 With this fix, we've taken care of two errors and cut down the list. There's still one more issue showing up, and we'll fix that in the next section.
 
-
 **Resources:**
+
 - [Rust official doc](https://doc.rust-lang.org/reference/names/preludes.html#the-no_std-attribute)
 - [The Embedded Rust Book](https://docs.rust-embedded.org/book/intro/no-std.html)
 - [Writing an OS in Rust Book](https://os.phil-opp.com/freestanding-rust-binary/#the-no-std-attribute)

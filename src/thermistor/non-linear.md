@@ -10,7 +10,6 @@ A thermistor does not change resistance evenly as temperature changes. The relat
 
 At lower temperatures, a small change in temperature produces a large change in resistance. At higher temperatures, the same temperature change produces a much smaller resistance change. This behavior is a fundamental property of thermistors.
 
-
 <img style="display: block; margin: auto;" alt="non-linearity" src="./images/thermistor-non-linearity.jpg"/>
 
 Because of this curve, there is no simple rule such as:

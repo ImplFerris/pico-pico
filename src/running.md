@@ -25,7 +25,6 @@ cargo run --target=thumbv8m.main-none-eabihf
 > The example codes include a runner configuration in the `.cargo/config.toml` file, defined as:
 `runner = "picotool load -u -v -x -t elf"`.  This means that when you execute `cargo run`, it actually invokes the `picotool` with the `load` subcommand to flash the program.
 
-
 ## Build and Run for RISC-V
 
 Use this command to build and run programs on the Raspberry Pi Pico 2 n RISC-V mode, utilizing the Hazard3 processors.
@@ -39,6 +38,7 @@ cargo build --target=riscv32imac-unknown-none-elf
 ```
 
 Follow the same BOOTSEL steps as described above.
+
 ```sh
 # Run the program
 cargo run --target=riscv32imac-unknown-none-elf

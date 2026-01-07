@@ -66,7 +66,6 @@ T = 297.1 - 273.15 = 23.95°C
 
 The measured resistance of 10,475Ω corresponds to a temperature of approximately 24°C.
 
-
 ### Rust function
 
 ```rust

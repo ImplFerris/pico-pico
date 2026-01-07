@@ -6,9 +6,7 @@ This example code is taken from rp235x-hal repo (It also includes additional exa
 
 ["https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples"](https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples)
 
-
 ## The main code
-
 
 ```rust
 #![no_std]

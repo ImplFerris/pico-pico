@@ -8,7 +8,6 @@ From now on, we'll use more external parts with the Pico. Before we get there, i
 - Resistor
 - Jumper wires
 
-
 ## Components Overview
 
 1. LED: An LED (Light Emitting Diode) lights up when current flows through it. The longer leg (anode) connects to positive, and the shorter leg (cathode) connects to ground. We'll connect the anode to GP13 (with a resistor) and the cathode to GND.
@@ -57,7 +56,6 @@ From now on, we'll use more external parts with the Pico. Before we get there, i
   </tbody>
 </table>
 
-
 <img style="display: block; margin: auto;" alt="pico2" src="../images/pico-external-led.png"/>
 
 You can connect the Pico to the LED using jumper wires directly, or you can place everything on a breadboard. If you're unsure about the hardware setup, you can also refer the [Raspberry pi guide](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/7).
@@ -70,9 +68,7 @@ You can connect the Pico to the LED using jumper wires directly, or you can plac
 > [!TIP]
 > On the Pico, the pin labels are on the back of the board, which can feel inconvenient when plugging in wires. I often had to check the pinout diagram whenever I wanted to use a GPIO pin. Use the Raspberry Pi logo on the front as a reference point and match it with the [pinout diagram](../pico2-pinout.md) to find the correct pins. Pin positions 2 and 39 are also printed on the front and can serve as additional guides.
 
-
 ## LED Blink - Simulation
-
 
 <style>
 .wrap{
@@ -161,8 +157,6 @@ In this simulation I set the default delay to 5000 milliseconds so the animation
     </div>
   </div>
 </div>
-
-
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

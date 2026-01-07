@@ -12,16 +12,17 @@ In this section, we will:
 
 3. Follow the chain until we reach our real Rust main
 
-
 ## Read the Reset Vector Entry
 
 The Cortex-M processor starts execution by reading a table at the beginning of flash memory called the vector table.
 
 The first two entries are:
+
 - **Word 0** (offset 0x00): Initial stack pointer value
 - **Word 1** (offset 0x04): Reset handler address
 
 On Pico 2, flash starts at address 0x10000000 so:
+
 - The initial stack pointer value is stored at 0x10000000
 - Reset handler address is at 0x10000004
 
@@ -30,6 +31,7 @@ On Pico 2, flash starts at address 0x10000000 so:
 The reset handler is the first function that runs when the processor powers on or resets. It performs initialization and eventually calls our `main` function.
 
 Read it in GDB:
+
 ```sh
 (gdb) x/wx 0x10000004
 ```
@@ -92,6 +94,7 @@ Let's disassemble it.
 ```
 
 Output:
+
 ```sh
 Dump of assembler code for function main:
    0x1000031c <+0>:     push    {r7, lr}
@@ -111,6 +114,7 @@ pico_debug::__cortex_m_rt_main
 Rust function names are mangled by default and look unreadable.
 
 Enable demangling:
+
 ```sh
 set print asm-demangle on
 ```

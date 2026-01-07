@@ -23,8 +23,7 @@ use embassy_rp::pwm::{Pwm, SetDutyCycle};
 use embassy_time::Instant;
 ```
 
-We need GPIO types to control our trigger and echo pins, PWM to control the LED brightness, and timing utilities to measure the ultrasonic pulse duration.
-
+We need GPIO types to control our trigger and echo pins, PWM to control the LED brightness, and timing utilities to measure the ultrasonic pulse duration.r
 
 ## Mapping GPIO Pins
 
@@ -37,6 +36,7 @@ By now, you should be familiar with PWM from the Dimming LED section. We will cr
 // For external LED connected on GPIO 3
 let mut led = Pwm::new_output_b(p.PWM_SLICE1, p.PIN_3, Default::default());
 ```
+
 You can use either the onboard LED or an external LED. I prefer using the external LED. You can see the gradual brightness changes much better.
 
 Next, let's initialize the LED to be off and get its maximum duty cycle value:
@@ -49,8 +49,7 @@ let max_duty = led.max_duty_cycle();
 // defmt::info!("Max duty cycle {}", max_duty);
 ```
 
-The duty cycle determines LED brightness; 0 is completely off, and max_duty is fully on.
-
+The duty cycle determines LED brightness; 0 is completely off, and max_duty is fully on.r
 
 ## Configuring Trigger and Echo Pins
 

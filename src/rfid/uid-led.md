@@ -9,12 +9,12 @@ This should give you a basic authorized vs unauthorized feel. Simply checking th
 Before writing the LED control logic, you need to know the UID of your RFID card.
 
 Run the code from the previous chapter that prints the UID. When you bring your card near the reader, you will see output like this:
+
 ```sh
 UID: 13 37 73 31
 ```
 
 These are the four bytes you'll hardcode into the program as [0x13, 0x37, 0x73, 0x31].
-
 
 ## Logic
 
@@ -41,8 +41,6 @@ loop {
 }
 ```
 
-
-
 ## Clone the existing project
 
 You can clone (or refer) project I created and navigate to the `rfid-led` folder.
@@ -51,7 +49,6 @@ You can clone (or refer) project I created and navigate to the `rfid-led` folder
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/rfid/rfid-led/
 ```
-
 
 ## Light it Up
 

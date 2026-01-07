@@ -31,7 +31,6 @@ Here are some of the most common types of peripherals found in embedded systems:
 | **Timer** | Used for generating delays, measuring time intervals, counting events, or triggering actions at specific times. |
 | **RTC** (Real-Time Clock) | Keeps track of current time and date even when the system is powered off, typically backed by a battery. |
 
-
 ## Peripherals in Rust
 
 In embedded Rust, peripherals are accessed using a singleton model. One of Rust's core goals is safety, and that extends to how it manages hardware access. To ensure that no two parts of a program can accidentally control the same peripheral at the same time, Rust enforces exclusive ownership through this singleton approach.

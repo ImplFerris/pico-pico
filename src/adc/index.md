@@ -42,7 +42,6 @@ Step Size = 3.3V / 4,096 = 0.81 mV
 
 The 12-bit converter offers significantly finer precision, which can be critical in applications requiring accurate measurements.
 
-
 ## ADC Formula
 
 Conceptually, an ADC converts an input voltage into a digital number using the following relationship:
@@ -80,5 +79,5 @@ Voltage = (1000 × 3.3) / 4096 = 0.806V
 ```
 
 ## Reference
-- [What is Analog to Digital Converter & Its Working](https://www.elprocus.com/analog-to-digital-converter/)
 
+- [What is Analog to Digital Converter & Its Working](https://www.elprocus.com/analog-to-digital-converter/)
