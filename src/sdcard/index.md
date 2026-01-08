@@ -1,35 +1,35 @@
 # SD Card (SDC/MMC)
 
-In this section, we will explore how to use the SD Card reader module. Depending on your project, you can use the SD card to store collected data from sensors, save game ROMs and progress, or store other types of information.
-
+Sooner or later, you may want to store data that does not fit in flash memory. This could be sensor logs, configuration files, game assets, or anything else that needs to survive a power cycle. One of the most practical ways to do this is by using an SD card. In this section, we are going to learn how to use an SD card module with the Raspberry Pi Pico.
  
-## MMC
+## MMC (MultiMediaCard)
 
-The MultiMediaCard (MMC) was introduced as an early type of flash memory storage, preceding the SD Card. It was commonly used in devices such as camcorders, digital cameras, and portable music players. MMCs store data as electrical charges in flash memory cells, unlike optical disks, which rely on laser-encoded data on reflective surfaces.
+The MultiMediaCard (MMC) was introduced as an early type of flash memory storage, preceding the SD Card. It was commonly used in devices such as camcorders, digital cameras, and portable music players. 
+
+Like modern flash storage, MMC stores data as electrical charge in flash memory cells. This is very different from optical media such as CDs or DVDs, which store data as physical marks read by a laser.
+
+Although MMC cards themselves are mostly obsolete today, they are still relevant because SD cards inherited many ideas from MMC.
 
 ## SD (Secure Digital) Card
 
-The Secure Digital Card (SDC), commonly referred to as an SD Card, is an evolution of the MMC. SD Cards are widely used as external storage in electronic devices such as cameras, smartphones.  A smaller variant, the microSD card, is commonly used in smartphones, drones, and other devices.
+The Secure Digital Card, usually called an SD card, built on the ideas of MMC and expanded them. SD cards became extremely popular and are now used in cameras, embedded systems, and single board computers. There is a smaller variant called the microSD card that is typically used in microcontroller projects.
 
 <img style="display: block; margin: auto;" alt="SD cards" src="./images/sd-cards.png"/>
 <p style="text-align: center; font-size: smaller; margin-top: 5px;">
 Image credit: Based on <a href="https://en.wikipedia.org/wiki/File:SD_Cards.svg">SD card</a> by <a href="https://commons.wikimedia.org/wiki/User:Tkgd2007">Tkgd2007</a>, licensed under the GFDL and CC BY-SA 3.0, 2.5, 2.0, 1.0.
 </p>
 
-SD cards read and write data in blocks, typically 512 bytes in size, allowing them to function as block devices; this makes SD cards behave much like hard drives.
-
-## Protocol
-To communicate with an SD card, we can use the SD Bus protocol, SPI protocol, or UHS-II Bus protocol. The Raspberry Pi (but not the Raspberry Pi Pico) uses the SD Bus protocol, which is more complex than SPI. The full specs of the SD Bus protocol are not accessible to the public and are only available through the SD Association. We will be using the SPI protocol, as the Rust driver we will be using is designed to work with it.
+Internally, SD cards read and write data in fixed size blocks, typically 512 bytes; Because of this, data is accessed in blocks rather than as individual bytes. Filesystems such as FAT sit on top of these blocks and manage how files are stored and retrieved.
 
 ## Hardware Requirements
+
 We'll be using the Micro SD Card adapter module. You can search for either "Micro SD Card Reader Module" or "Micro SD Card Adapter" to find them.
  
 <img style="width: 450px;margin: auto;display: block; " alt="Micro SD Card adapter module" src="./images/micro-sd-card-adapter-reader-module.jpg"/>
  
-And of course, you'll need a microSD card. The SD card should be formatted with FAT32; Depending on your computer's hardware, you might need a separate SD card adapter (not the one mentioned above) to format the microSD card. Some laptops comes with direct microSD card support.
+And of course, you'll need a microSD card. The SD card should be formatted with FAT32; Depending on your computer, you may need a separate SD or USB adapter to format the card, since not all laptops have a microSD slot.
 
 ## References:
 
 - I highly recommend watching Jonathan Pallant's [talk](https://www.youtube.com/watch?v=-ewuFNKIAVI) at Euro Rust 2024 on writing an SD card driver in Rust.  He wrote the driver we are going to use (originally he created it to run MS-DOS on ARM). It is not intended for production systems.
 - If you want to understand how it works under the hood in SPI mode, you can refer to this article: [How to Use MMC/SDC](http://elm-chan.org/docs/mmc/mmc_e.html)
-- [Wikipedia](https://en.wikipedia.org/wiki/SD_card)

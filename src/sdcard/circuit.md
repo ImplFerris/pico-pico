@@ -1,9 +1,15 @@
-## Circuit
+# Connecting Micro SD Card Reader with Raspberry Pi Pico
 
-### microSD Card Pin Mapping for SPI Mode
+In this section, we are going to wire a microSD card reader module to the Raspberry Pi Pico using SPI mode.
 
-We'll focus only on the microSD card since that's what we're using. The microSD has 8 pins, but we only need 6 for SPI mode. You may have noticed that the SD card reader module we have also has only 6 pins, with markings for the SPI functions. The table below shows the microSD card pins and their corresponding SPI functions.
- 
+## microSD Card Pin Mapping for SPI Mode
+
+We will focus only on the microSD card itself, since that is what we are using. A microSD card has 8 physical pins, but in SPI mode only 6 of them are actually required.
+
+You may have noticed that most microSD card reader modules also expose only 6 pins. That is because those modules are already wired internally for SPI operation, and the unused pins are simply not brought out.
+
+The table below shows how the microSD card pins map to SPI signals.
+
 <div style="display: flex; align-items: center;gap:18px;">
   <img style="width: 180px;" alt="microSD Card Pin Diagram" src="./images/micro-sd-card-pin.png"/>
   <table>
@@ -50,10 +56,16 @@ We'll focus only on the microSD card since that's what we're using. The microSD 
   </table>
 </div>
 
-### Connecting the Raspberry Pi Pico to the SD Card Reader
+## Connecting the Raspberry Pi Pico to the SD Card Reader
 
-The microSD card operates at 3.3V, so using 5V to power it could damage the card. However, the reader module comes with an onboard voltage regulator and logic shifter, allowing it to safely be connected to the 5V power supply of the Pico.
- 
+Before connecting your SD card module, check its datasheet or product specifications for the input voltage requirements. SD card modules have different voltage requirements depending on their design.
+
+Verify that your module supports 3.3V input before connecting it to the Pico's 3V3(OUT) pin.
+
+If your module requires a higher voltage than 3.3V, you will need additional level shifting circuitry to protect the Pico's GPIO pins. The Raspberry Pi Pico's GPIO pins are not 5V tolerant and can be permanently damaged by 5V signals on the data lines.
+
+### Wiring Diagram
+
 <table>
   <thead>
     <tr>
@@ -104,7 +116,7 @@ The microSD card operates at 3.3V, so using 5V to power it could damage the card
       <td>MISO</td>
     </tr>
         <tr>
-      <td>5V</td>
+      <td>3.3V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -126,4 +138,5 @@ The microSD card operates at 3.3V, so using 5V to power it could damage the card
   </tbody>
 </table>
 <br/>
+
 <img style="display: block; margin: auto;" alt="SD Card reader pico connection" src="./images/sd-card-reader-module-pico-connection.jpg"/>

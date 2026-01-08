@@ -65,4 +65,4 @@ The MAX7219 display requires five connections to the Raspberry Pi Pico 2. This e
 </table>
 <br/>
 
-![Connecting Raspberry Pi Pico 2 with MAX7219 LED Matrix](./images/circuit-to-connect-max7219-led-matrix-with-raspberry-pi-pico.png)
+<img style="display: block; margin: auto;" alt="Connecting Raspberry Pi Pico 2 with MAX7219 LED Matrix" src="./images/circuit-to-connect-max7219-led-matrix-with-raspberry-pi-pico.png"/>
