@@ -2,7 +2,6 @@
 
 We will create a simple program that prints "Hello, Rust!" on the LCD screen. This helps us quickly check that the wiring, I2C setup, and LCD configuration are correct before moving on to the next exercise.
 
-
 ## HD44780 Drivers
 
 You can find driver crates by searching for the hardware controller name HD44780. Sometimes searching by the display module name, such as lcd1602, also works.
@@ -14,17 +13,17 @@ While looking around, I came across several Rust crates that can control this LC
 
 For now, we will use one of the existing crates. You are free to try other crates later. Just read the crate documentation and adapt the code if needed.
 
-In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver) 
+In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver)
 (https://red.implrust.com/)
-
 
 ### Project from template
 
-We will start by creating a new project using the template. 
+We will start by creating a new project using the template.
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
 ```
+
 When prompted, give your project a name, like "hello-lcd" and select `embassy` as the HAL.
 
 ### Additional Crates required
@@ -102,7 +101,6 @@ Finally, let's write our message to the LCD:
 lcd.write_str("Hello, Rust!", &mut Delay)
     .expect("failed to write text to LCD");
 ```
-
 
 ## Clone the existing project
 

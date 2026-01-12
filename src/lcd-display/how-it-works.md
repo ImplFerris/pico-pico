@@ -10,7 +10,7 @@ A 16x2 LCD has 2 rows and 16 columns, so it can display a total of 32 characters
 
 <img style="display: block; margin: auto;" alt="lcd1602" src="./images/lcd1602-pixel-layout.png"/>
 
-These dots turn on and off to form letters, numbers, and symbols. 
+These dots turn on and off to form letters, numbers, and symbols.
 
 ### Displaying Text and Custom Characters on 16x2 LCD
 
@@ -27,7 +27,7 @@ When using the parallel interface, 8-bit mode sends a full byte at once using al
 When using an I2C adapter, the adapter board drives the LCD using the 4-bit parallel interface internally. We do not need to configure this ourselves, because the adapter handles it automatically.
 
 To keep wiring simple and practical, we will use 4-bit mode.
- 
+
 ## Adjust the contrast
 
 When we power on the LCD, we should see the dot matrix on the screen. If the text is not clearly visible after running the program, the contrast needs adjustment.

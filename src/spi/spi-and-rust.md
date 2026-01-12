@@ -10,7 +10,7 @@ The embedded-hal crate defines standard traits for working with SPI, so that dri
 
 - SpiBus: Represents full control over the SPI bus, including the SCK, MOSI, and MISO lines. This must be implemented by the microcontroller's HAL crate. For example, the esp-hal crate implements SpiBus. If you are curious, you can look at the implementation [here](https://github.com/esp-rs/esp-hal/blob/de67c3101346cdbe030ffa1bb95b13943ee8d790/esp-hal/src/spi/master.rs#L2703).
 
-- SpiDevice: Represents access to a single SPI device that may share the bus with others. It takes control of the chip select (CS) pin and ensures the device is properly selected before communication and released afterward. 
+- SpiDevice: Represents access to a single SPI device that may share the bus with others. It takes control of the chip select (CS) pin and ensures the device is properly selected before communication and released afterward.
 
 ## Platform-Independent Drivers
 
@@ -21,12 +21,10 @@ As long as your driver only depends on the SpiDevice or SpiBus traits, it can ru
 ## Sharing the SPI Bus
 
 In many projects, multiple SPI devices share the same SPI bus. For example, you might have a display, an SD card, and a temperature sensor all connected to the same MOSI, MISO, and SCK lines. The only thing that separates them is their chip select (CS) pin.
-
-
+r
 <img style="display: block; margin: auto;" alt="SPI Single Bus Multiple SPI Device" src="./images/mcu-spi-single-bus-multiple-spi-device.svg"/>
 
 <p align="center"><em>Figure: Single SPI bus with a controller and multiple peripherals</em></p>
-
 
 If you give full control of the SPI bus to just one driver (using SpiBus), the others can't use it. Instead, we need a way to share the SPI bus safely across multiple devices.
 
@@ -44,7 +42,6 @@ That's where the embedded-hal-bus crate comes in. It provides ready-to-use wrapp
 
 <img style="display: block; margin: auto;" alt="SPI Single Bus Multiple SPI Device" src="./images/spi-embedded-hal-rust-ecosystem.svg"/>
 
-
 - If your project only uses one SPI device and doesn't need sharing, you can use the `ExclusiveDevice` struct - it gives exclusive access to the bus for one device.
 
 - But if your project has multiple SPI devices sharing the same bus, you can choose one of the shared access implementations such as `AtomicDevice` or `CriticalSectionDevice`. These manage access to the bus so that each device gets a turn without interfering with the others.
@@ -54,4 +51,3 @@ These structs allow you to focus on using or building drivers without worrying a
 ## Resources
 
 - [embedded-hal docs on SPI](https://docs.rs/embedded-hal/latest/embedded_hal/spi/index.html): This documentation provides in-depth details on how SPI traits are structured and how they are intended to be used across different platforms.
-

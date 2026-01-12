@@ -25,7 +25,6 @@ let button = Input::new(p.PIN_15, Pull::Up);
 
 We've connected one side of the button to GPIO 15. The other side is connected to Ground. This means when we press the button, the pin gets pulled to the LOW state. As we discussed earlier, without a pull resistor, the input would be left in a floating state and read unreliable values. So we enable the internal pull-up resistor to keep the pin HIGH by default.
 
-
 ## Led as Output
 
 We configure the LED pin as an output, starting in the LOW state (off). If you're using an external LED, uncomment the first line for GPIO 16. If you're using the Pico's built-in LED, use GPIO 25 as shown. Just make sure your circuit matches whichever pin you choose.

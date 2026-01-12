@@ -90,7 +90,7 @@ Instead, peripherals can raise an interrupt to get the processor's attention. Wh
 > [!Tip]
 > Think of it like the difference between standing in front of the washing machine checking every minute if it's done versus doing other things while it runs and having it beep when the cycle finishes.
 
-With interrupts, the processor runs its main code freely and only stops when something actually needs attention. 
+With interrupts, the processor runs its main code freely and only stops when something actually needs attention.
 
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/interrupts-overview.svg" alt="Interrupt overview" style="height:auto; display:block; margin:0 auto;"/>
@@ -108,7 +108,7 @@ On most microcontrollers, this state is pushed onto the stack automatically by t
 
 The code that runs in response to an interrupt is called an Interrupt Service Routine (ISR).
 
-An ISR should be short and fast. While an ISR is running, normal program execution is paused. Long or blocking operations inside an ISR can cause missed events and timing problems. 
+An ISR should be short and fast. While an ISR is running, normal program execution is paused. Long or blocking operations inside an ISR can cause missed events and timing problems.
 
 ## The Interrupt Vector Table
 
@@ -152,9 +152,9 @@ In embedded systems, this is usually handled by temporarily disabling interrupts
 
 The goal is not to block interrupts for long periods of time, but to protect very small and sensitive pieces of code where consistency matters.
 
-In the embedded Rust ecosystem, the [`critical-section`](https://docs.rs/critical-section/latest/critical_section/) crate provides a universal, portable API for entering critical sections across many platforms and environments. It defines functions like `acquire`, `release`, and `with` that libraries and applications can use to run code with interrupts disabled or otherwise protected. 
+In the embedded Rust ecosystem, the [`critical-section`](https://docs.rs/critical-section/latest/critical_section/) crate provides a universal, portable API for entering critical sections across many platforms and environments. It defines functions like `acquire`, `release`, and `with` that libraries and applications can use to run code with interrupts disabled or otherwise protected.
 
-Example: 
+Example:
 
 ```rust
 use core::cell::Cell;

@@ -1,7 +1,7 @@
 # Read SD Card with Raspberry Pi Pico
 
-Let's create a simple program that reads a file from the SD card and outputs its content over USB serial. Make sure the SD card is formatted with FAT32 and contains a file to read (for example, "RUST.TXT" with the content "Ferris"). 
- 
+Let's create a simple program that reads a file from the SD card and outputs its content over USB serial. Make sure the SD card is formatted with FAT32 and contains a file to read (for example, "RUST.TXT" with the content "Ferris").
+
 ### Project from template
 
 To set up the project, run:
@@ -32,13 +32,14 @@ embedded-hal-bus = "0.2.0"
 // sd card driver
 embedded-sdmmc = "0.8.1"
 ```
-Except for the embedded-sdmmc crate, we have already used all these crates in previous exercises. 
 
-- The usbd-serial and usb-device crates are used for sending or receiving data to and from a computer via USB serial. The heapless crate acts as a helper, providing a buffer before printing data to USB serial. 
-- The embedded-hal-bus crate offers the necessary traits for SPI and I²C buses, which are essential for interfacing the Pico with the SD card reader.  
+Except for the embedded-sdmmc crate, we have already used all these crates in previous exercises.
+
+- The usbd-serial and usb-device crates are used for sending or receiving data to and from a computer via USB serial. The heapless crate acts as a helper, providing a buffer before printing data to USB serial.
+- The embedded-hal-bus crate offers the necessary traits for SPI and I²C buses, which are essential for interfacing the Pico with the SD card reader.
 - The embedded-sdmmc crate is a driver for reading and writing files on FAT-formatted SD cards.
 
- ### Additional imports
+### Additional imports
 
  ```rust
 use usb_device::{class_prelude::*, prelude::*};
@@ -55,10 +56,9 @@ use embedded_sdmmc::{SdCard, TimeSource, Timestamp, VolumeIdx, VolumeManager};
 
 Make sure to check out the [USB serial](../usb-serial/action.md) tutorial for setting up the USB serial. We won't go over the setup here to keep it simple.
 
+### Dummy Timesource
 
-### Dummy Timesource 
 The TimeSource is needed to retrieve timestamps and manage file metadata. Since we won't be using this functionality, we'll create a DummyTimeSource that implements the TimeSource trait. This is necessary for compatibility with the embedded-sdmmc crate.
-
 
 ```rust
 /// Code from https://github.com/rp-rs/rp-hal-boards/blob/main/boards/rp-pico/examples/pico_spi_sd_card.rs
@@ -83,6 +83,7 @@ impl TimeSource for DummyTimesource {
 ```
 
 ### Setting Up the SPI for the SD Card Reader
+
 Now, let's configure the SPI bus and the necessary pins to communicate with the SD Card reader.
 
 ```rust
@@ -102,6 +103,7 @@ let spi = spi_bus.init(
 ```
 
 ### Getting the `SpiDevice` from SPI Bus
+
 To work with the embedded-sdmmc crate, we need an `SpiDevice`. Since we only have the SPI bus from RP-HAL, we'll use the `embedded_hal_bus` crate to get the `SpiDevice` from the SPI bus.
 
 ```rust
@@ -114,6 +116,7 @@ let spi = ExclusiveDevice::new(spi, spi_cs, timer).unwrap();
 let sdcard = SdCard::new(spi, timer);
 let mut volume_mgr = VolumeManager::new(sdcard, DummyTimesource::default());
 ```
+
 ###  Print the size of the SD Card
 
 ```rust
@@ -130,6 +133,7 @@ match volume_mgr.device().num_bytes() {
 ```
 
 ### Open the directory
+
 Let's open the volume with the volume manager then open the root directory.
 
 ```rust
@@ -145,6 +149,7 @@ let Ok(mut root_dir) = volume0.open_root_dir() else {
 ```
 
 ### Open the file in read-only mode
+
 ```rust
 let Ok(mut my_file) =  root_dir.open_file_in_dir("RUST.TXT", embedded_sdmmc::Mode::ReadOnly) else {
     serial.write("err in open_file_in_dir".as_bytes()).unwrap();
@@ -153,6 +158,7 @@ let Ok(mut my_file) =  root_dir.open_file_in_dir("RUST.TXT", embedded_sdmmc::Mod
 ```
 
 ### Read the file content and print
+
 ```rust
 while !my_file.is_eof() {
     let mut buffer = [0u8; 32];
@@ -165,6 +171,7 @@ serial.write(buff.as_bytes()).unwrap();
 ```
 
 ## Full code
+
 ```rust
 #![no_std]
 #![no_main]
@@ -338,6 +345,7 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 ```
 
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `read-sdcard` folder.
 
 ```sh
@@ -346,15 +354,18 @@ cd pico2-projects/read-sdcard/
 ```
 
 ## How to Run ?
+
 The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
 
 ### tio
+
 Make sure you have tio installed on your system. If not, you can install it using:
 ```sh
 apt install tio
 ```
 
 ### Connecting to the Serial Port
+
 Run the following command to connect to the Pico's serial port:
 
 ```sh
@@ -363,10 +374,13 @@ tio /dev/ttyACM0
 This will open a terminal session for communicating with the Pico.
 
 ### Flashing and Running the Code
+
 Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
+
 ```sh
 cargo run
 ```
+
 If everything is set up correctly, you should see a "Connected" message in the tio terminal. It will then print the card size and the content of the file once the timer's ticks reach 2,000,000.
 
 <img style="display: block; margin: auto;" src="./images/sd-card-read-output.png"/>

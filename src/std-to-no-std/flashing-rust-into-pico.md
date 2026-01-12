@@ -21,6 +21,7 @@ picotool load -u -v -x -t elf ./target/thumbv8m.main-none-eabihf/debug/pico-from
 ```
 
 Here's what each flag does:
+
 - `-u` for update mode (only writes what's changed)
 - `-v` to verify everything wrote correctly
 - `-x` to run the program immediately after loading
@@ -34,6 +35,7 @@ Typing that long command every time gets tedious. Let's simplify it by updating 
 [target.thumbv8m.main-none-eabihf]
 runner = "picotool load -u -v -x -t elf"
 ```
+
 Now, you can just type:
 
 ```sh
@@ -44,8 +46,6 @@ cargo run --release
 cargo run
 ```
 
-and your program will be flashed and executed on the Pico. 
+and your program will be flashed and executed on the Pico.
 
 But at this point, it still won't actually flash. We're missing one important step.
-
-

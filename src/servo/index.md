@@ -4,7 +4,6 @@ Servo motors let you control position accurately. You might use them to point a 
 
 In this chapter, we'll make a servo sweep through three positions: 0°, 90°, and 180°.
 
-
 ## Hardware Used
 
 For this chapter, we will use the following components:
@@ -14,7 +13,6 @@ For this chapter, we will use the following components:
   - Female-to-Male(or Male to Male depending on how you are connecting) jumper wires for connecting the Pico 2 to the servo motor pins (Ground, Power, and Signal).
 
 The SG90 is small, cheap, and easy to find. It is commonly used in learning projects and works well for demonstrations.
-
 
 ## Servo Motor Basics
 

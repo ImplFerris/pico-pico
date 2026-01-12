@@ -40,7 +40,7 @@ loop {
         Timer::after_millis(8).await;
         let _ = pwm.set_duty_cycle_percent(i);
     }
-    
+
     for i in (0..=100).rev() {
         Timer::after_millis(8).await;
         let _ = pwm.set_duty_cycle_percent(i);
@@ -108,7 +108,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 // End of file
 ```
-
 
 ## Clone the existing project
 

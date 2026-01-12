@@ -11,7 +11,7 @@ We have already seen how the voltage divider works and how two resistors can be 
 
 ## Using Voltage Dividers with ADC
 
-When using a voltage divider with an ADC, the goal is usually to scale a voltage so that it stays within the ADC input range.Design the voltage divider so that the maximum expected input voltage produces an output voltage below the ADC reference voltage.  
+When using a voltage divider with an ADC, the goal is usually to scale a voltage so that it stays within the ADC input range.Design the voltage divider so that the maximum expected input voltage produces an output voltage below the ADC reference voltage.
 
 For a 3.3 V system, it is good practice to aim for 3.0 V or less to allow some margin for supply variation and noise.
 

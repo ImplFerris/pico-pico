@@ -7,7 +7,6 @@ This is especially useful when you do not have a debug probe and want to print s
 > [!Tip]
 > If you are using a debug probe, you can skip this chapter for now. You can always come back to it later when you want to exchange data with a computer using USB, such as sending messages, reading input, or building simple command based interfaces.
 
-
 ## CDC ACM
 
 When you plug a USB device into a computer, the computer needs to know what kind of device it is and how to talk to it. USB solves this by defining standard device types, called classes.
@@ -32,9 +31,8 @@ When you flash the code in this exercise, the device will appear as /dev/ttyACM0
 We will be using the example taken from the RP-HAL repository. It uses two crates: [usb-device](https://crates.io/crates/usb-device), an USB stack for embedded devices in Rust, and [usbd-serial](https://crates.io/crates/usbd-serial), which implements the USB CDC-ACM serial port class. The SerialPort class in usbd-serial implements a stream-like buffered serial port and can be used in a similar way to UART.
 
 ## References
+
 - [CDC: Communication Device Class (ACM)](https://www.keil.com/pack/doc/mw/usb/html/group__usbd__cdc_functions__acm.html)
 - [USB Device CDC ACM Class](https://docs.silabs.com/protocol-usb/1.2.0/protocol-usb-cdc/)
 - [What is the difference between /dev/ttyUSB and /dev/ttyACM?](https://rfc1149.net/blog/2013/03/05/what-is-the-difference-between-devttyusbx-and-devttyacmx/)
 - [Defined Class Codes](https://www.usb.org/defined-class-codes)
-
-

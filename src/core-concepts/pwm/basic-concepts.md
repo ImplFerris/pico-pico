@@ -25,9 +25,9 @@ So instead of saying the signal is ON for 1 millisecond, we can say it is ON for
 <img style="display: block; margin: auto;" alt="LED PWM" src="../images/led-pwm.jpg" />
 
 For example:
-- A 0% duty cycle means the signal is always LOW (0V average). 
-- A 50% duty cycle means the signal is HIGH and LOW for equal amounts of time (1.65V average on a 3.3V system). 
-- A 75% duty cycle means the signal is HIGH for 75% of the time and LOW for 25% of the time. 
+- A 0% duty cycle means the signal is always LOW (0V average).
+- A 50% duty cycle means the signal is HIGH and LOW for equal amounts of time (1.65V average on a 3.3V system).
+- A 75% duty cycle means the signal is HIGH for 75% of the time and LOW for 25% of the time.
 - A 100% duty cycle means the signal is always HIGH (3.3V).
 
 Changing the duty cycle changes how much power is delivered to the load, which is why an LED appears dim, medium bright, or fully bright in the image above.

@@ -4,7 +4,7 @@ So far, we've been toggling output pins between High and Low states to control a
 
 Since we will be using an OLED display in the next chapter, and it communicates over I2C, this is the first protocol we are going to explore. OLED displays are one of the modules I enjoy the most. I've used them to make small games and a bunch of fun personal projects.
 
-##  What Is I2C?
+## What Is I2C?
 
 I2C stands for Inter-Integrated Circuit, also written as I²C. It's one of the popular communication methods used by microcontrollers to talk to sensors, displays (like OLEDs), and other chips. It is a serial, half-duplex, and synchronous interface. Let's break down what that means.
 
@@ -21,7 +21,7 @@ I2C uses a controller-target model. The controller (formerly known as master) is
 <img style="display: block; margin: auto;" alt="I2C Single Controller and Single Target" src="./images/i2c-bus.svg"/>
 <p align="center"><em>Figure: Single Controller and Single Target</em></p>
 
-In typical embedded projects, the microcontroller(e.g: Pico) acts as the controller, and connected devices like displays(eg: OLED) or sensors act as targets.
+In typical embedded projects, the microcontroller (e.g: Pico) acts as the controller, and connected devices like displays (e.g: OLED) or sensors act as targets.
 
 I2C makes it easy to connect many devices on the same two wires. You can connect multiple targets to a single controller, which is the most common setup. I2C also supports multiple controllers on the same bus, so more than one controller can talk to one or more targets.
 
@@ -29,14 +29,12 @@ I2C makes it easy to connect many devices on the same two wires. You can connect
 
 The I2C bus uses just two lines, which are shared by all connected devices:
 
-- SCL (Serial Clock Line): Carries the clock signal from the controller. Sometimes devices label them as SCK. 
+- SCL (Serial Clock Line): Carries the clock signal from the controller. Sometimes devices label them as SCK.
 
-- SDA (Serial Data Line): Transfers the data in both directions. Sometimes devices label them as SDI. 
-
+- SDA (Serial Data Line): Transfers the data in both directions. Sometimes devices label them as SDI.
 
 <img style="display: block; margin: auto;" alt="I2C Single Controller and Multiple Target" src="./images/ic2-multi-target-single-controller.svg"/>
 <p align="center"><em>Figure: Single Controller and Multiple Target</em></p>
-
 
 All connected devices share the same two wires. The controller selects which target to communicate with by sending that device's unique address.
 
@@ -61,5 +59,3 @@ The good news is that in Embedded Rust, you don't need to implement the I2C prot
 ## Resources
 
 - [Basics of the I2C Communication Protocol](https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/): Refer this if you want in-depth understanding how the controller communincates with target.
-
-

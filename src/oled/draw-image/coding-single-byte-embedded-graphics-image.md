@@ -2,7 +2,6 @@
 
 By now, i hope you understand how the image is represented in the byte array. Now, let's move on to the coding part.
 
-
 ## Create Project
 
 As usual, generate the project from the template with cargo-generate:
@@ -12,7 +11,6 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 ```
 
 When prompted, give your project a name like "byte-oled" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
-
 
 ## Update Dependencies
 

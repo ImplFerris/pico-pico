@@ -1,6 +1,5 @@
 # Light Dependent Resistors (LDRs)
 
-
 Light Dependent Resistors (LDRs), also known as photoresistors, are among the simplest sensors you can use with a microcontroller. Their resistance changes based on the amount of light falling on them. More light results in lower resistance, while less light results in higher resistance.
 
 Because of this behavior, LDRs are commonly used in projects such as automatic street lights, screen brightness control, light meters, and basic day night detection.
@@ -8,7 +7,6 @@ Because of this behavior, LDRs are commonly used in projects such as automatic s
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/ldr-resistane-with-light-intensity.svg" alt="LDR Resistance Change With Light Intensity" style="height:auto; display:block; margin:0 auto;"/>
 </div>
-
 
 ## How an LDR Works
 
@@ -21,7 +19,6 @@ The resistance change is not linear, and the exact values vary between different
 
 We will not go into the details of the semiconductor materials used in LDRs or the physics behind them. If you are curious and want to explore this further, you can read this article and do additional research: [https://www.elprocus.com/ldr-light-dependent-resistor-circuit-and-working/](https://www.elprocus.com/ldr-light-dependent-resistor-circuit-and-working/)
 
-
 ## Components Needed:
 
 <div class="image-with-caption" style="text-align:center; ">
@@ -30,6 +27,7 @@ We will not go into the details of the semiconductor materials used in LDRs or t
 </div>
 
 You will need the following components:
+
 - LDR (Light Dependent Resistor)
 - Resistor (typically 10kΩ); needed to create voltage divider
 - Jumper wires (as usual)

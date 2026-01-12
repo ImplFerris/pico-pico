@@ -7,7 +7,7 @@
 
 ## Power Pins
 
-Power pins are essential for keeping your Raspberry Pi Pico 2 running and supplying electricity to the sensors, LEDs, motors, and other components you connect to it. 
+Power pins are essential for keeping your Raspberry Pi Pico 2 running and supplying electricity to the sensors, LEDs, motors, and other components you connect to it.
 
 The Raspberry Pi Pico 2 has the following power pins. These are marked in red (power) and black (ground) in the pinout diagrams. These pins are used to supply power to the board and to external components.
 
@@ -19,10 +19,9 @@ The Raspberry Pi Pico 2 has the following power pins. These are marked in red (p
 
 - **GND** pins are used to complete electrical circuits and are connected to the system ground. The Pico 2 provides multiple GND pins spread across the board for convenience when connecting external devices.
 
-
 ## GPIO Pins
 
-When you want your microcontroller(i.e Pico) to interact with the world; like turning on lights, reading button presses, sensing temperature, or controlling motors; you need a way to connect and communicate with these external components. That's exactly what GPIO pins do: they're your Raspberry Pi Pico 2's connection points to external components.
+When you want your microcontroller (i.e Pico) to interact with the world; like turning on lights, reading button presses, sensing temperature, or controlling motors; you need a way to connect and communicate with these external components. That's exactly what GPIO pins do: they're your Raspberry Pi Pico 2's connection points to external components.
 
 The Raspberry Pi Pico 2 includes 26 General Purpose Input/Output (GPIO) pins, labeled GPIO0 through GPIO29, though not all numbers are exposed on the headers. These GPIOs are highly flexible and can be used to read inputs like switches or sensors, or to control outputs such as LEDs, motors, or other devices.
 
@@ -51,7 +50,7 @@ There are also two special pins that support analog readings:
 - **ADC_VREF** is the reference voltage for the ADC. By default, it's connected to 3.3V, meaning the ADC will convert anything between 0V and 3.3V into a number. But you can supply a different voltage here (like 1.25V) if you want more precise measurements in a smaller range.
 
 - **AGND** is the analog ground, used to provide a clean ground for analog signals. This helps reduce noise and makes your analog readings more accurate. If you're using an analog sensor, it's a good idea to connect its ground to AGND instead of a regular GND pin.
- 
+
 ## I2C Pins
 
 The Raspberry Pi Pico 2 supports I2C, a communication protocol used to connect multiple devices using just two wires. It is commonly used with sensors, displays, and other peripherals.
@@ -125,6 +124,7 @@ The Raspberry Pi Pico 2 provides a dedicated 3-pin debug header for SWD (Serial 
 ![Raspberry Pi Pico 2 SWD Pins](./images/raspberry-pi-pico2-rp2350-swd-pins.png)
 
 This interface consists of the following signals:
+
 - **SWDIO** - Serial data line
 - **SWCLK** - Serial clock line
 - **GND** - Ground reference

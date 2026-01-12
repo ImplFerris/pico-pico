@@ -23,10 +23,9 @@ The only method that the HAL is required to implement is transaction. The trait 
 
 The generic type parameter A specifies the address mode and has a default type parameter of `SevenBitAddress`. So, in most cases you don't need to specify it manually. For 10-bit addressing, you can use TenBitAddress instead.
 
-Microcontroller-specific HAL crates (like esp-hal, stm32-hal, or nrf-hal) implement this trait for their I2C peripherals. For example, the esp-hal crate implements I2C. If you are curious, you can look at the implementation [here](https://github.com/esp-rs/esp-hal/blob/de67c3101346cdbe030ffa1bb95b13943ee8d790/esp-hal/src/i2c/master/mod.rs#L671).
+Microcontroller-specific HAL crates (like esp-hal, stm32-hal, or nrf-hal) implement this trait for their I2C peripherals. For example, the esp-hal crate implements I2C. If you are curious, you can look at [the implementation](https://github.com/esp-rs/esp-hal/blob/de67c3101346cdbe030ffa1bb95b13943ee8d790/esp-hal/src/i2c/master/mod.rs#L671).
 
 > In addition to the regular embedded-hal crate, there is an async version called embedded-hal-async. It defines similar traits, but they are designed to work with async code, which is useful when writing non-blocking drivers or tasks in embedded systems.
-
 
 ## Platform-Independent Drivers
 
@@ -49,12 +48,10 @@ You can use I2C in two ways:
 
 <img style="display: block; margin: auto;" alt="I2C Single Controller Multiple Devices" src="./images/i2c-embedded-hal-rust-ecosystem.svg"/>
 
-
 - Without sharing: If your application only talks to one I2C device, you can pass the I2C bus instance provided by the HAL (which implements the I2c trait) directly to the driver.
 
 - With sharing: If your application needs to communicate with multiple I2C devices on the same bus, you can wrap the I2C bus instance (provided by the HAL) using one of the sharing types from the embedded-hal-bus crate, such as AtomicDevice or CriticalSectionDevice. This allows safe, coordinated access across multiple drivers.
- 
+
 ## Resources
 
 - [embedded-hal docs on I2C](https://docs.rs/embedded-hal/latest/embedded_hal/i2c/index.html): This documentation provides in-depth details on how I2C traits are structured and how they are intended to be used across different platforms.
-

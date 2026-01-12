@@ -23,7 +23,6 @@ ssd1306 = { version = "0.10.0", features = ["async"] }
 
 We will enable the `async` feature so the ssd1306 driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
 
-
 ## Additional imports
 
 Add these imports at the top of your main.rs:
@@ -100,7 +99,6 @@ display
 ```
 Finally, display.init() sends initialization commands to the display hardware. This wakes up the display and configures it properly.
 
-
 ## Writing Text
 
 Before we can draw text, we need to define how the text should look:
@@ -123,7 +121,7 @@ Text::with_baseline("Hello, Rust!", Point::new(0, 16), text_style, Baseline::Top
     .expect("failed to draw text to display");
 ```
 
-We're rendering "Hello, Rust!" at position (0, 16), which is 16 pixels down from the top of the screen. We use the text style we defined earlier and align the text using its top edge with Baseline::Top. 
+We're rendering "Hello, Rust!" at position (0, 16), which is 16 pixels down from the top of the screen. We use the text style we defined earlier and align the text using its top edge with Baseline::Top.
 
 The .draw(&mut display) call renders the text into the display's internal buffer.  At this point, the text exists in RAM but is not yet visible on the physical screen.
 

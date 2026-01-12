@@ -1,4 +1,4 @@
-# Turn on LED in low Light with Raspberry Pi Pico 
+# Turn on LED in low Light with Raspberry Pi Pico
 
 In this exercise, we will build a small but practical project using an LDR. The Pico will automatically turn on an LED when the ambient light level drops below a certain point, meaning the LED turns on as it gets darker. You can extend this idea to control a real lamp, but that is outside the scope of this exercise and requires proper safety precautions.
 
@@ -6,7 +6,6 @@ You can try this in a closed room by switching the room light on and off. When t
 
 > [!Tip]
 > You may need to adjust the ADC threshold based on your room's lighting conditions and the specific LDR you are using.
-
 
 ## Hardware Requirements
 
@@ -124,4 +123,3 @@ The LED will be connected to a GPIO pin 15 and will turn on automatically when t
   </tr>
 </tbody>
 </table>
-

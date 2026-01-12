@@ -1,8 +1,8 @@
 # Playing Songs on a Passive Buzzer Using Rust and Raspberry Pi Pico
 
-In this section, we will play songs on a buzzer using the Raspberry Pi Pico.  
+In this section, we will play songs on a buzzer using the Raspberry Pi Pico.
 
-If you are not familiar with musical notes or sheet music, you can check the basic theory explained [here](./music-theory.md). This part is optional and only meant to give enough background to follow the example.
+If you are not familiar with musical notes or sheet music, you can check the [basic theory explained](./music-theory.md). This part is optional and only meant to give enough background to follow the example.
 
 For clarity, the code is split into Rust modules. You can also keep everything in a single file, as we have done so far, but splitting it makes the example easier to follow:
 
@@ -21,7 +21,7 @@ If you are not familiar with PWM on the Pico, I recommend reading the [PWM secti
 
 ## Song Repository
 
-In this exercise, we will play a theme on the buzzer as a demonstration.  
+In this exercise, we will play a theme on the buzzer as a demonstration.
 
 You can also refer to the `rust-embedded-songs` repository and try other songs:
 
