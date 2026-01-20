@@ -141,7 +141,7 @@
 - [SD Card (MMC/SDC)](./sdcard/index.md)
     - [Circuit](./sdcard/circuit.md)
     - [Read SD Card](./sdcard/read-sdcard.md)
-
+    - [Write Data](./sdcard/write-data.md)
 - [Joystick](./joystick/index.md)
     - [Movement and ADC](./joystick/movement-and-12-bit-adc-value.md)
     - [Pin layout](./joystick/pin-layout.md)

@@ -1,64 +1,103 @@
 # Read SD Card with Raspberry Pi Pico
-
-Let's create a simple program that reads a file from the SD card and outputs its content over USB serial. Make sure the SD card is formatted with FAT32 and contains a file to read (for example, "RUST.TXT" with the content "Ferris"). 
  
-### Project from template
+In this chapter, we are going to read a file from a microSD card and print its contents. Before continuing, you will need an SD card that is already formatted as FAT32, and it must contain a file named RUST.TXT. For this example, you can put the text Ferris inside.
 
-To set up the project, run:
+## Select Your Output Method
+
+In this section, I have given two output methods. Which one you use depends on whether you have a debug probe or not.
+
+There is no major difference in terms of logic or behavior. The program works the same way in both cases. The main difference is how the output is printed.
+
+If you are using a debug probe, we print messages using defmt over RTT. If you are using USB serial, we print messages using the log crate.
+
+The USB serial setup is the same as what we used in the earlier USB Serial chapter. You may need to follow the same steps to set up the USB logger. I will not be repeating those steps here.
+
+From a code point of view, the difference mostly comes down to this: 
+
+- Since we use defmt with a debug probe, logging is done using defmt::info!
+- On the other hand, when using USB serial, we use the log crate, so logging is done with log::info!.
+
+Select the tab below based on your setup:
+
+{{#tabs global="log-method" }}
+{{#tab name="Debug Probe" }}
+In this setup, we use defmt over RTT to print the file contents.
+{{#endtab }}
+{{#tab name="USB Serial" }}
+In this setup, we use USB serial logging to print the file contents.
+{{#endtab }}
+{{#endtabs }}
+
+## Project from template
+
+We will start by creating a new project using the template. 
+
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
-```
-When prompted, give your project a name, like "read-sdcard" and select `RP-HAL` as the HAL.
-
-Then, navigate into the project folder:
-```sh
-cd PROJECT_NAME
-# For example, if you named your project "read-sdcard":
-# cd read-sdcard
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-### Additional Crates required
+{{#tabs global="log-method" }}
+{{#tab name="Debug Probe" }}
+When prompted, enter a project name, for example "read-sdcard", and select "Embassy" as the HAL. Ensure to enable "defmt" for logging.
+{{#endtab }}
+{{#tab name="USB Serial" }}
+When prompted, enter a project name, for example "read-sdcard", and select "Embassy" as the HAL. You do not need to enable defmt for this setup.
+{{#endtab }}
+{{#endtabs }}
+
+## Additional Crates required
+
 Update your Cargo.toml to add these additional crate along with the existing dependencies.
 
-```rust
-// USB serial communication
-usbd-serial = "0.2.2"
-usb-device = "0.3.2"
-heapless = "0.8.0"
+{{#tabs global="log-method" }}
+{{#tab name="Debug Probe" }}
+```toml
+# To convert Spi bus to SpiDevice
+embedded-hal-bus = "0.3.0"
 
-// To convert Spi bus to SpiDevice
-embedded-hal-bus = "0.2.0"
-
-// sd card driver
-embedded-sdmmc = "0.8.1"
+# sd card driver
+embedded-sdmmc = "0.9.0"
 ```
-Except for the embedded-sdmmc crate, we have already used all these crates in previous exercises. 
+{{#endtab }}
+{{#tab name="USB Serial" }}
+```toml
+# To convert Spi bus to SpiDevice
+embedded-hal-bus = "0.3.0"
 
-- The usbd-serial and usb-device crates are used for sending or receiving data to and from a computer via USB serial. The heapless crate acts as a helper, providing a buffer before printing data to USB serial. 
-- The embedded-hal-bus crate offers the necessary traits for SPI and I²C buses, which are essential for interfacing the Pico with the SD card reader.  
-- The embedded-sdmmc crate is a driver for reading and writing files on FAT-formatted SD cards.
+# sd card driver
+embedded-sdmmc = "0.9.0"
 
- ### Additional imports
+embassy-usb-logger = "0.5.1"
+log = "0.4"
+```
+{{#endtab }}
+{{#endtabs }}
 
- ```rust
-use usb_device::{class_prelude::*, prelude::*};
-use usbd_serial::SerialPort;
 
-use hal::fugit::RateExtU32;
-use heapless::String;
+The embedded-sdmmc crate is a driver for reading and writing files on FAT-formatted SD cards.
 
-use core::fmt::Write;
+## Additional imports
 
+```rust
+// For SPI
+use embassy_rp::spi;
+use embassy_rp::spi::Spi;
+use embassy_time::Delay;
 use embedded_hal_bus::spi::ExclusiveDevice;
+
+// For CS Pin
+use embassy_rp::gpio::{Level, Output};
+
+// For SdCard
 use embedded_sdmmc::{SdCard, TimeSource, Timestamp, VolumeIdx, VolumeManager};
 ```
 
-Make sure to check out the [USB serial](../usb-serial/action.md) tutorial for setting up the USB serial. We won't go over the setup here to keep it simple.
 
+## Dummy TimeSource 
 
-### Dummy Timesource 
-The TimeSource is needed to retrieve timestamps and manage file metadata. Since we won't be using this functionality, we'll create a DummyTimeSource that implements the TimeSource trait. This is necessary for compatibility with the embedded-sdmmc crate.
+The SD card filesystem code requires a TimeSource implementation to supply timestamps for file metadata. Even though we are not creating or modifying files in this example, the trait still needs to be implemented.
 
+Since timestamps are not important here, we use a dummy implementation that always returns zeroed values.
 
 ```rust
 /// Code from https://github.com/rp-rs/rp-hal-boards/blob/main/boards/rp-pico/examples/pico_spi_sd_card.rs
@@ -82,291 +121,143 @@ impl TimeSource for DummyTimesource {
 }
 ```
 
-### Setting Up the SPI for the SD Card Reader
-Now, let's configure the SPI bus and the necessary pins to communicate with the SD Card reader.
+## Setting up SPI for the SD card reader
+
+Now we configure the SPI peripheral and the GPIO pins used to communicate with the SD card reader.
 
 ```rust
-let spi_cs = pins.gpio1.into_push_pull_output();
-let spi_sck = pins.gpio2.into_function::<hal::gpio::FunctionSpi>();
-let spi_mosi = pins.gpio3.into_function::<hal::gpio::FunctionSpi>();
-let spi_miso = pins.gpio4.into_function::<hal::gpio::FunctionSpi>();
-let spi_bus = hal::spi::Spi::<_, _, _, 8>::new(pac.SPI0, (spi_mosi, spi_miso, spi_sck));
+let miso = p.PIN_4;
+let cs_pin = Output::new(p.PIN_5, Level::High);
+let clk = p.PIN_6;
+let mosi = p.PIN_7;
 
-let spi = spi_bus.init(
-    &mut pac.RESETS,
-    clocks.peripheral_clock.freq(),
-    400.kHz(), // card initialization happens at low baud rate
-    embedded_hal::spi::MODE_0,
-);
+let mut config = spi::Config::default();
+config.frequency = 400_000;
 
+let spi_bus = Spi::new_blocking(p.SPI0, clk, mosi, miso, config);
 ```
 
-### Getting the `SpiDevice` from SPI Bus
-To work with the embedded-sdmmc crate, we need an `SpiDevice`. Since we only have the SPI bus from RP-HAL, we'll use the `embedded_hal_bus` crate to get the `SpiDevice` from the SPI bus.
+## Creating an SpiDevice from the SPI bus
+
+The SD card driver expects an SpiDevice, not a raw SPI bus.
 
 ```rust
-let spi = ExclusiveDevice::new(spi, spi_cs, timer).unwrap();
+let spi_device =
+    ExclusiveDevice::new(spi_bus, cs_pin, Delay).expect("Failed to get exclusive device");
 ```
 
-### Setup SD Card driver
+## Setting up the SD card driver
+
+With the SPI device ready, we can now create the SD card driver instance.
 
 ```rust
-let sdcard = SdCard::new(spi, timer);
-let mut volume_mgr = VolumeManager::new(sdcard, DummyTimesource::default());
+let sdcard = SdCard::new(spi_device, Delay);
 ```
-###  Print the size of the SD Card
+
+## Reading the SD card size
+
+Before opening any files, we read the total size of the card to confirm that initialization succeeded.
+
+{{#tabs global="log-method" }}
+{{#tab name="Debug Probe" }}
+```rust
+defmt::info!("Init SD card controller and retrieve card size...");
+let sd_size = sdcard.num_bytes().expect("failed to get sdcard size");
+defmt::info!("card size is {} bytes", sd_size);
+```
+{{#endtab }}
+{{#tab name="USB Serial" }}
+```rust
+log::info!("Init SD card controller and retrieve card size...");
+let sd_size = sdcard.num_bytes().expect("failed to get sdcard size");
+log::info!("card size is {} bytes", sd_size);
+```
+{{#endtab }}
+{{#endtabs }}
+
+
+## Opening the volume and root directory
+
+Next, we create a volume manager and open the first volume on the card.
 
 ```rust
-match volume_mgr.device().num_bytes() {
-    Ok(size) => {
-        write!(buff, "card size is {} bytes\r\n", size).unwrap();
-        serial.write(buff.as_bytes()).unwrap();
-    }
-    Err(e) => {
-        write!(buff, "Error: {:?}", e).unwrap();
-        serial.write(buff.as_bytes()).unwrap();
-    }
-}
+let volume_mgr = VolumeManager::new(sdcard, DummyTimesource::default());
+let volume0 = volume_mgr
+    .open_volume(VolumeIdx(0))
+    .expect("failed to open volume");
+
+let root_dir = volume0.open_root_dir().expect("failed to open root dir");
 ```
 
-### Open the directory
-Let's open the volume with the volume manager then open the root directory.
+## Opening the file
+
+With the root directory available, we open the file we want to read.
 
 ```rust
-let Ok(mut volume0) = volume_mgr.open_volume(VolumeIdx(0)) else {
-    let _ = serial.write("err in open_volume".as_bytes());
-    continue;
-};
-
-let Ok(mut root_dir) = volume0.open_root_dir() else {
-    serial.write("err in open_root_dir".as_bytes()).unwrap();
-    continue;
-};
+let my_file = root_dir
+    .open_file_in_dir("RUST.TXT", embedded_sdmmc::Mode::ReadOnly)
+    .expect("failed to open RUST.TXT file");
 ```
 
-### Open the file in read-only mode
-```rust
-let Ok(mut my_file) =  root_dir.open_file_in_dir("RUST.TXT", embedded_sdmmc::Mode::ReadOnly) else {
-    serial.write("err in open_file_in_dir".as_bytes()).unwrap();
-    continue;
-};
-```
+## Reading the file content
 
-### Read the file content and print
+Finally, we read the file in small chunks and print its contents.
+
+
+{{#tabs global="log-method" }}
+{{#tab name="Debug Probe" }}
 ```rust
 while !my_file.is_eof() {
     let mut buffer = [0u8; 32];
-    let num_read = my_file.read(&mut buffer).unwrap();
-    for b in &buffer[0..num_read] {
-        write!(buff, "{}", *b as char).unwrap();
+
+    if let Ok(n) = my_file.read(&mut buffer) {
+        if let Ok(s) = core::str::from_utf8(&buffer[..n]) {
+            defmt::info!("{}", s);
+        } else {
+            defmt::info!("{:02x}", &buffer[..n]);
+        }
     }
 }
-serial.write(buff.as_bytes()).unwrap();
 ```
-
-## Full code
+{{#endtab }}
+{{#tab name="USB Serial" }}
 ```rust
-#![no_std]
-#![no_main]
+while !my_file.is_eof() {
+    let mut buffer = [0u8; 32];
 
-use embedded_hal::delay::DelayNs;
-use hal::block::ImageDef;
-use panic_halt as _;
-use rp235x_hal::{self as hal, Clock};
-
-use usb_device::{class_prelude::*, prelude::*};
-use usbd_serial::SerialPort;
-
-use hal::fugit::RateExtU32;
-use heapless::String;
-
-use core::fmt::Write;
-
-use embedded_hal_bus::spi::ExclusiveDevice;
-use embedded_sdmmc::{SdCard, TimeSource, Timestamp, VolumeIdx, VolumeManager};
-
-#[link_section = ".start_block"]
-#[used]
-pub static IMAGE_DEF: ImageDef = hal::block::ImageDef::secure_exe();
-
-const XTAL_FREQ_HZ: u32 = 12_000_000u32;
-
-/// A dummy timesource, which is mostly important for creating files.
-#[derive(Default)]
-pub struct DummyTimesource();
-
-impl TimeSource for DummyTimesource {
-    // In theory you could use the RTC of the rp2040 here, if you had
-    // any external time synchronizing device.
-    fn get_timestamp(&self) -> Timestamp {
-        Timestamp {
-            year_since_1970: 0,
-            zero_indexed_month: 0,
-            zero_indexed_day: 0,
-            hours: 0,
-            minutes: 0,
-            seconds: 0,
+    if let Ok(n) = my_file.read(&mut buffer) {
+        if let Ok(s) = core::str::from_utf8(&buffer[..n]) {
+            log::info!("{}", s);
+        } else {
+            log::info!("{:02x}", &buffer[..n]);
         }
     }
 }
-
-#[hal::entry]
-fn main() -> ! {
-    let mut pac = hal::pac::Peripherals::take().unwrap();
-    let mut watchdog = hal::Watchdog::new(pac.WATCHDOG);
-
-    let clocks = hal::clocks::init_clocks_and_plls(
-        XTAL_FREQ_HZ,
-        pac.XOSC,
-        pac.CLOCKS,
-        pac.PLL_SYS,
-        pac.PLL_USB,
-        &mut pac.RESETS,
-        &mut watchdog,
-    )
-    .ok()
-    .unwrap();
-    let mut timer = hal::Timer::new_timer0(pac.TIMER0, &mut pac.RESETS, &clocks);
-
-    let sio = hal::Sio::new(pac.SIO);
-    let pins = hal::gpio::Pins::new(
-        pac.IO_BANK0,
-        pac.PADS_BANK0,
-        sio.gpio_bank0,
-        &mut pac.RESETS,
-    );
-
-    let usb_bus = UsbBusAllocator::new(hal::usb::UsbBus::new(
-        pac.USB,
-        pac.USB_DPRAM,
-        clocks.usb_clock,
-        true,
-        &mut pac.RESETS,
-    ));
-
-    let mut serial = SerialPort::new(&usb_bus);
-
-    let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(0x16c0, 0x27dd))
-        .strings(&[StringDescriptors::default()
-            .manufacturer("implRust")
-            .product("Ferris")
-            .serial_number("TEST")])
-        .unwrap()
-        .device_class(2) // 2 for the CDC, from: https://www.usb.org/defined-class-codes
-        .build();
-
-    let spi_cs = pins.gpio1.into_push_pull_output();
-    let spi_sck = pins.gpio2.into_function::<hal::gpio::FunctionSpi>();
-    let spi_mosi = pins.gpio3.into_function::<hal::gpio::FunctionSpi>();
-    let spi_miso = pins.gpio4.into_function::<hal::gpio::FunctionSpi>();
-    let spi_bus = hal::spi::Spi::<_, _, _, 8>::new(pac.SPI0, (spi_mosi, spi_miso, spi_sck));
-
-    let spi = spi_bus.init(
-        &mut pac.RESETS,
-        clocks.peripheral_clock.freq(),
-        400.kHz(), // card initialization happens at low baud rate
-        embedded_hal::spi::MODE_0,
-    );
-
-    let spi = ExclusiveDevice::new(spi, spi_cs, timer).unwrap();
-    let sdcard = SdCard::new(spi, timer);
-    let mut buff: String<64> = String::new();
-
-    let mut volume_mgr = VolumeManager::new(sdcard, DummyTimesource::default());
-
-    let mut is_read = false;
-    loop {
-        let _ = usb_dev.poll(&mut [&mut serial]);
-        if !is_read && timer.get_counter().ticks() >= 2_000_000 {
-            is_read = true;
-            serial
-                .write("Init SD card controller and retrieve card size...".as_bytes())
-                .unwrap();
-            match volume_mgr.device().num_bytes() {
-                Ok(size) => {
-                    write!(buff, "card size is {} bytes\r\n", size).unwrap();
-                    serial.write(buff.as_bytes()).unwrap();
-                }
-                Err(e) => {
-                    write!(buff, "Error: {:?}", e).unwrap();
-                    serial.write(buff.as_bytes()).unwrap();
-                }
-            }
-            buff.clear();
-
-            let Ok(mut volume0) = volume_mgr.open_volume(VolumeIdx(0)) else {
-                let _ = serial.write("err in open_volume".as_bytes());
-                continue;
-            };
-
-            let Ok(mut root_dir) = volume0.open_root_dir() else {
-                serial.write("err in open_root_dir".as_bytes()).unwrap();
-                continue;
-            };
-
-            let Ok(mut my_file) =
-                root_dir.open_file_in_dir("RUST.TXT", embedded_sdmmc::Mode::ReadOnly)
-            else {
-                serial.write("err in open_file_in_dir".as_bytes()).unwrap();
-                continue;
-            };
-
-            while !my_file.is_eof() {
-                let mut buffer = [0u8; 32];
-                let num_read = my_file.read(&mut buffer).unwrap();
-                for b in &buffer[0..num_read] {
-                    write!(buff, "{}", *b as char).unwrap();
-                }
-            }
-            serial.write(buff.as_bytes()).unwrap();
-        }
-        buff.clear();
-
-        timer.delay_ms(50);
-    }
-}
-
-#[link_section = ".bi_entries"]
-#[used]
-pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
-    hal::binary_info::rp_cargo_bin_name!(),
-    hal::binary_info::rp_cargo_version!(),
-    hal::binary_info::rp_program_description!(c"USB Fun"),
-    hal::binary_info::rp_cargo_homepage_url!(),
-    hal::binary_info::rp_program_build_attribute!(),
-];
 ```
+{{#endtab }}
+{{#endtabs }}
+
 
 ## Clone the existing project
+
+{{#tabs global="log-method" }}
+{{#tab name="Debug Probe" }}
 You can clone (or refer) project I created and navigate to the `read-sdcard` folder.
 
 ```sh
-git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/read-sdcard/
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/sdcard/read-sdcard/
 ```
-
-## How to Run ?
-The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
-
-### tio
-Make sure you have tio installed on your system. If not, you can install it using:
-```sh
-apt install tio
-```
-
-### Connecting to the Serial Port
-Run the following command to connect to the Pico's serial port:
+{{#endtab }}
+{{#tab name="USB Serial" }}
+You can clone (or refer) project I created and navigate to the `print-over-usb` folder.
 
 ```sh
-tio /dev/ttyACM0
+git clone https://github.com/ImplFerris/pico2-embassy-projects
+cd pico2-embassy-projects/sdcard/print-over-usb/
 ```
-This will open a terminal session for communicating with the Pico.
+{{#endtab }}
+{{#endtabs }}
 
-### Flashing and Running the Code
-Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
-```sh
-cargo run
-```
-If everything is set up correctly, you should see a "Connected" message in the tio terminal. It will then print the card size and the content of the file once the timer's ticks reach 2,000,000.
 
-<img style="display: block; margin: auto;" src="./images/sd-card-read-output.png"/>
+Once the program is running, the output will show the contents of RUST.TXT file.

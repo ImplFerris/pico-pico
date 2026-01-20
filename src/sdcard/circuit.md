@@ -58,11 +58,24 @@ The table below shows how the microSD card pins map to SPI signals.
 
 ## Connecting the Raspberry Pi Pico to the SD Card Reader
 
-Before connecting your SD card module, check its datasheet or product specifications for the input voltage requirements. SD card modules have different voltage requirements depending on their design.
+The Raspberry Pi Pico's GPIO pins are 3.3V tolerant and can be permanently damaged by 5V signals. Micro SD cards also operate at 3.3V and can be damaged if higher voltages are applied.
 
-Verify that your module supports 3.3V input before connecting it to the Pico's 3V3(OUT) pin.
+SD card reader modules come in different configurations:
 
-If your module requires a higher voltage than 3.3V, you will need additional level shifting circuitry to protect the Pico's GPIO pins. The Raspberry Pi Pico's GPIO pins are not 5V tolerant and can be permanently damaged by 5V signals on the data lines.
+**3.3V-only modules:** These modules are simple microSD breakout boards designed to run directly at 3.3V. Because both the Raspberry Pi Pico and the SD card use the same voltage, the module can be connected without any extra circuitry. Power it from the Pico's 3V3(OUT) pin and connect the SPI data lines directly to the Pico's GPIO pins. This is the simplest and safest option when working with the Raspberry Pi Pico.
+
+**5V modules with voltage regulation:** Some SD card modules are designed to be powered from 5V. These modules include extra components so the SD card itself still runs at 3.3V. Some higher-quality modules also make sure that all signal lines stay at safe 3.3V levels.
+
+If a 5V module is designed correctly, it can be used with the Raspberry Pi Pico. However, not all 5V modules handle the signal levels properly. Because of this, you should always check the module description or documentation before connecting it to the Pico.
+
+### The Module Used in This Guide
+
+The SD card module used in this guide is designed to be powered from 5V and outputs 3.3V signals, making it safe to use with the Raspberry Pi Pico.
+
+Power the module from the Pico's VBUS pin, which provides 5V when the Pico is powered through USB. Do not power this type of module from the Pico's 3.3V pin, as it may not work reliably.
+
+> [!Caution]
+> Always verify your SD card module outputs 3.3V signals before connecting it to the Pico. If uncertain, use a 3.3V-only module to avoid damaging your Pico.
 
 ### Wiring Diagram
 
@@ -76,9 +89,19 @@ If your module requires a higher voltage than 3.3V, you will need additional lev
   </thead>
   <tbody>
     <tr>
-      <td>GPIO 1</td>
+      <td>GPIO 4 (RX)</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire green" style="width: 200px; margin: 0 auto;">
+        <div class="wire purple" style="width: 200px; margin: 0 auto;">
+          <div class="male-left"></div>
+          <div class="male-right"></div>
+        </div>
+      </td>
+      <td>MISO</td>
+    </tr>
+    <tr>
+      <td>GPIO 5</td>
+      <td style="text-align: center; vertical-align: middle; padding: 0;">
+        <div class="wire yellow" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
           <div class="male-right"></div>
         </div>
@@ -86,7 +109,7 @@ If your module requires a higher voltage than 3.3V, you will need additional lev
       <td>CS</td>
     </tr>
     <tr>
-      <td>GPIO 2</td>
+      <td>GPIO 6</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire blue" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -96,27 +119,17 @@ If your module requires a higher voltage than 3.3V, you will need additional lev
       <td>SCK</td>
     </tr>
     <tr>
-      <td>GPIO 3</td>
+      <td>GPIO 7 (TX)</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire orange" style="width: 200px; margin: 0 auto;">
+        <div class="wire green" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
           <div class="male-right"></div>
         </div>
       </td>
       <td>MOSI</td>
     </tr>
-    <tr>
-      <td>GPIO 4</td>
-      <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire yellow" style="width: 200px; margin: 0 auto;">
-          <div class="male-left"></div>
-          <div class="male-right"></div>
-        </div>
-      </td>
-      <td>MISO</td>
-    </tr>
         <tr>
-      <td>3.3V</td>
+      <td>VBUS</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -139,4 +152,4 @@ If your module requires a higher voltage than 3.3V, you will need additional lev
 </table>
 <br/>
 
-<img style="display: block; margin: auto;" alt="SD Card reader pico connection" src="./images/sd-card-reader-module-pico-connection.jpg"/>
+<img style="display: block; margin: auto;" alt="SD Card reader pico connection" src="./images/sd-card-reader-module-pico-connection.png"/>
