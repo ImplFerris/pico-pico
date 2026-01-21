@@ -65,4 +65,4 @@ Let's connect the joystick to the Raspberry Pi Pico. We need to connect the VRX 
   </tbody>
 </table>
 
-<img style="display: block; margin: auto;margin-top:30px;" alt="joystick" src="./images/joystick-pico-circuit.jpg"/>
+<img style="display: block; margin: auto;margin-top:30px;" alt="joystick" src="./images/joystick-pico-circuit.png"/>
