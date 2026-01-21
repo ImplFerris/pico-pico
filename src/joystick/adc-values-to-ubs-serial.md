@@ -1,11 +1,11 @@
-## Sending Joystick Movement ADC Values to USB Serial
+# Sending Joystick ADC Values to USB Serial (RP-HAL)
 
-In this program, we'll observe how joystick movement affects ADC values in real time. We will connect the Raspberry Pi Pico with the joystick and set up USB serial communication. If you're not sure how to set up USB Serial, check the [USB Serial](../usb-serial/index.md) section.
+In the previous chapter, we used Embassy to read joystick ADC values and print them using logging. In the first version of this book, I was using RP-HAL while exploring and learning the ecosystem. I do not want to throw away that material, as it may still be useful for understanding older code or different approaches.
 
-As you move the joystick, the corresponding ADC values will be printed in the system. You can compare these values with the [previous Movement and ADC Diagram](./movement-and-12-bit-adc-value.md);they should approximately match the values shown. Pressing the joystick knob will print **"Button Pressed"** along with the current coordinates.
+This chapter shows the same joystick ADC example implemented using RP-HAL and USB serial. If you are not interested in the RP-HAL version, you can skip this chapter.
 
 
-### Project from template
+## Project from template
 
 To set up the project, run:
 ```sh
@@ -20,7 +20,8 @@ cd PROJECT_NAME
 # cd joystick-usb
 ```
 
-### Additional Crates required
+## Additional Crates required
+
 Update your Cargo.toml to add these additional crate along with the existing dependencies.
 
 ```rust
@@ -32,11 +33,12 @@ embedded_hal_0_2 = { package = "embedded-hal", version = "0.2.5", features = [
   "unproven",
 ] }
 ```
+
 The first three should be familiar by now; they set up USB serial communication so we can send data between the Pico and the computer. heapless is a helper function for buffers.
 
 embedded_hal_0_2 is the new crate. You might already have embedded-hal with version "1.0.0" in your Cargo.toml. So, you may wonder why we need this version. The reason is that Embedded HAL 1.0.0 doesn't include an ADC trait to read ADC values, and the RP-HAL uses the one from version 0.2. (Don't remove the existing embedded-hal 1.0.0; just add this one along with it.)
 
- ### Additional imports
+## Additional imports
 
 ```rust
 /// This trait is the interface to an ADC that is configured to read a specific channel at the time
@@ -49,7 +51,8 @@ use usbd_serial::SerialPort;
 use heapless::String;
 ```
 
-### USB Serial
+## USB Serial
+
 Make sure you've completed the USB serial section and added the boilerplate code from there into your project.
  
 ```rust
@@ -75,8 +78,9 @@ Make sure you've completed the USB serial section and added the boilerplate code
     let mut buff: String<64> = String::new();
 ```
 
-### Pin setup
-Let's set up the ADC and configure GPIO 27 and GPIO 26, which are mapped to the VRX and VRY pins of the joystick: 
+## ADC and Pin Setup
+
+The joystick wiring is the same as before. GPIO 27 and GPIO 26 are connected to the VRX and VRY pins of the joystick and are configured as ADC inputs. GPIO 15 is used for the joystick button with an internal pull-up.
 
 ```rust
 let mut adc = hal::Adc::new(pac.ADC, &mut pac.RESETS);
@@ -85,19 +89,13 @@ let mut adc = hal::Adc::new(pac.ADC, &mut pac.RESETS);
 let mut adc_pin_1 = hal::adc::AdcPin::new(pins.gpio27).unwrap();
 // VRY pin
 let mut adc_pin_0 = hal::adc::AdcPin::new(pins.gpio26).unwrap();
-```
 
-We also configure GPIO15 as a pull-up input for the button: 
-
-```rust
 let mut btn = pins.gpio15.into_pull_up_input();
 ```
 
-### Printing Co-ordinates
+## Printing Co-ordinates
 
-We want to print the coordinates only when the vrx or vry values change beyond a certain threshold. This avoids continuously printing unnecessary values.
-
-To achieve this, we initialize variables to store the previous values and a flag to determine when to print:
+Just like in the Embassy version, we avoid printing ADC values continuously. We track the previous readings and only print when the change crosses a threshold. The same approach is used for the button. We detect a press by checking for a state transition, so the message is printed only once per press.
 
 ```rust
 let mut prev_vrx: u16 = 0;
@@ -150,6 +148,7 @@ if print_vals {
 ```
 
 ### Button Press Detection with State Transition
+
 The button is normally in a high state. When you press the knob button, it switches from high to low. However, since the program runs in a loop, simply checking if the button is low could lead to multiple detections of the press. To avoid this, we only register the press once by detecting a high-to-low transition, which indicates that the button has been pressed.
 
 To achieve this, we track the previous state of the button and compare it with the current state before printing the "button pressed" message. If the button is currently in a low state (pressed) and the previous state was high (not pressed), we recognize it as a new press and print the message. Then, we update the previous state to the current state, ensuring the correct detection of future transitions.
@@ -298,6 +297,7 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
 ```
 
 ## Clone the existing project
+
 You can clone (or refer) project I created and navigate to the `joystick-usb` folder.
 
 ```sh
