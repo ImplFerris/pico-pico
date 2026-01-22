@@ -102,11 +102,11 @@ This is the electrically correct and safe method, but it adds a few extra wires 
 
 The circuit diagram may look a little confusing at first glance, but the idea is simple once you break it down.
 
+<h3>Power Connections (Connect These First)</h3>
+
 First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the level shifter. Connect the Pico VBUS (5 V) to the pin marked HV(High Voltage) on the level shifter. The LCD VCC pin is also powered directly from the Pico VBUS pin. Ground must be common, so connect Pico GND, the level shifter GND, and the LCD GND together.
 
-Now coming to the I2C lines. The Pico pins must always connect to the pins on the level shifter marked LVx, and the LCD pins must always connect to the corresponding pins marked HVx. Pico GPIO 16 (SDA) connects to LV1, and the LCD SDA pin connects to HV1. Pico GPIO 17 (SCL) connects to LV2, and the LCD SCL pin connects to HV2.
 
-<h3>Power Connections (Connect These First)</h3>
 <table>
   <thead>
     <tr>
@@ -188,6 +188,9 @@ Now coming to the I2C lines. The Pico pins must always connect to the pins on th
 </table>
 
 <h3>Data Connections (I2C Communication)</h3>
+
+Now coming to the I2C lines. The Pico pins must always connect to the pins on the level shifter marked LVx, and the LCD pins must always connect to the corresponding pins marked HVx. Pico GPIO 16 (SDA) connects to LV1, and the LCD SDA pin connects to HV1. Pico GPIO 17 (SCL) connects to LV2, and the LCD SCL pin connects to HV2.
+
 <table>
   <thead>
     <tr>
