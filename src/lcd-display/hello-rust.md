@@ -20,7 +20,7 @@ In this exercise, we will use this crate: [hd44780-driver](https://crates.io/cra
 We will start by creating a new project using the template.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name, like "hello-lcd" and select `embassy` as the HAL.

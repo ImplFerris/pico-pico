@@ -17,7 +17,7 @@ Create a new project:
 To set up the project, run:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 When prompted, give your project a name, like "active-beep" and select `embassy` as the HAL.
 

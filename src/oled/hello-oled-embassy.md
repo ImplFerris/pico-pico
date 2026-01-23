@@ -7,7 +7,7 @@ We are going to keep things simple. We will just display "Hello, Rust!" on the O
 As usual, generate the project from the template with cargo-generate:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name like "hello-oled" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.

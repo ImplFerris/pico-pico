@@ -9,7 +9,7 @@ Refer to the [Template section](../cargo-generate.md) for details and instructio
 To generate the project, run:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, choose a name for your project-let's go with "bat-beacon". Don't forget to select `rp-hal` as the HAL.

@@ -5,7 +5,7 @@ In this exercise, we repeat the same servo control example, but this time using 
 For this, we will rely on the [calculator form](../core-concepts/pwm/frequency-to-pwm-top-divider.md) to generate the TOP value and both the integer and fractional parts of the divider.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name like "servo-motor" and choose "rp-hal" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.

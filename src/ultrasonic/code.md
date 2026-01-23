@@ -3,7 +3,7 @@
 We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using rp-hal. As usual, generate the project from the template with cargo-generate:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name like "bat-beacon" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
