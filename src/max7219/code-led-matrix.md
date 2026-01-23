@@ -8,7 +8,7 @@ Let us move on to the coding part. In this program, we will draw a square on the
 As usual, create a new project using the provided template.
 
 ```rust
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name, like "hello-max7219" and select embassy as the HAL.

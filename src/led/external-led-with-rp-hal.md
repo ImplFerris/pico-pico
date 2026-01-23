@@ -7,7 +7,7 @@ We will create a new project again with cargo-generate and the same template.
 In your terminal, type:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When it asks you to select HAL, choose "rp-hal" this time.

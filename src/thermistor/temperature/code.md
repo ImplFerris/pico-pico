@@ -7,7 +7,7 @@ In this section, we move to the coding part.  We write the code that reads the t
 As usual, we are going to start by generating a new project from the template.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name, like "temperature-oled" and select `embassy` as the HAL.

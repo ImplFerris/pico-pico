@@ -7,7 +7,7 @@ The same hello world we will do with rp-hal also.
 To generate the project, run:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, choose a name for your project-let's go with "oh-led". Don't forget to select `rp-hal` as the HAL.
