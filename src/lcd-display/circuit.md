@@ -4,7 +4,7 @@ We are going to connect an LCD1602 character display fitted with an I2C adapter 
 
 ## Voltage compatibility problem
 
-The Raspberry Pi Pico uses 3.3 V logic on all GPIO pins. These pins are not 5 V tolerant. Anything significantly above 3.3 V on SDA or SCL can damage the Pico, either immediately or gradually over time.
+The Raspberry Pi Pico's GPIO pins are 3.3V tolerant. Anything significantly above 3.3 V on SDA or SCL can damage the Pico, either immediately or gradually over time.
 
 Most LCD1602 modules with an I2C backpack are designed to run at 5 V. The I2C backpack usually has pull-up resistors connected to its supply voltage. When powered at 5 V, this means SDA and SCL idle at 5 V.
 
@@ -149,7 +149,7 @@ First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the le
       <td>Raspberry Pi Pico</td>
       <td>3.3V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
-        <div class="wire red" style="width: 140px; margin: 0 auto;">
+        <div class="wire orange" style="width: 140px; margin: 0 auto;">
           <div class="male-left"></div>
           <div class="male-right"></div>
         </div>
