@@ -14,6 +14,8 @@ error[E0463]: can't find crate for `std`
   = note: the `thumbv8m.main-none-eabihf` target may not support the standard library
   = note: `std` is required by `pico_from_scratch` because it does not declare `#![no_std]`
 
+error: cannot resolve a prelude import
+
 error: cannot find macro `println` in this scope
  --> src/main.rs:2:5
   |
@@ -23,7 +25,7 @@ error: cannot find macro `println` in this scope
 error: `#[panic_handler]` function required, but not found
 
 For more information about this error, try `rustc --explain E0463`.
-error: could not compile `pico-from-scratch` (bin "pico-from-scratch") due to 3 previous errors
+error: could not compile `pico-from-scratch` (bin "pico-from-scratch") due to 4 previous errors
 ```
 
 There are so many errors here. Lets fix one by one. The first error says the target may not support the standard library. That's true. We already know that. The problem is, we didn't tell Rust that we don't want to use `std`.  That's where `no_std` attribute comes into play.
@@ -54,7 +56,7 @@ fn main() {
 }
 ```
 
-With this fix, we've taken care of two errors and cut down the list. There's still one more issue showing up, and we'll fix that in the next section.
+With this fix, we've taken care of three errors and cut down the list. There's still one more issue showing up, and we'll fix that in the next section.
 
 **Resources:**
 

@@ -28,9 +28,11 @@ There are some ready-made crates that provide a panic handler function for `no_s
 ```rust
 use panic_halt as _;
 ```
+
 This line pulls in the panic handler from the crate. Now, if a panic happens, the program just stops and stays in an infinite loop.
 
 In fact, the [panic_halt crate's code](https://github.com/korken89/panic-halt/blob/master/src/lib.rs) implements a simple panic handler, which looks like this:
+
 ```rust
 use core::panic::PanicInfo;
 use core::sync::atomic::{self, Ordering};
