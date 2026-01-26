@@ -4,10 +4,16 @@ We already introduced the concept of HAL in the introduction chapter. For the Pi
 
 The HAL supports blocking and async peripheral APIs. Using async APIs is better because the HAL automatically handles waiting for peripherals to complete operations in low power mode and manages interrupts, so you can focus on the primary functionality.
 
-Let's add the embassy-rp crate to our project.
+Let's add the embassy-rp crate to our project. Call `cargo`:
+
+```sh
+cargo add embassy-rp --features=rp235xa
+```
+
+Which will add this to our `Cargo.toml`:
 
 ```toml
-embassy-rp = { version = "0.8.0", features = [
+embassy-rp = { version = "0.9.0", features = [
   "rp235xa",
 ] }
 ```
@@ -30,14 +36,22 @@ We are going to replicate the quick start example by blinking the onboard LED. T
 
 To handle timing, we'll use the `embassy-time` crate, which provides essential timing functions:
 
+```sh
+cargo add embassy-time
+```
+
 ```rust
 embassy-time = { version = "0.5.0" }
 ```
 
 We also need to enable the time-driver feature in the `embassy-rp` crate. This configures the TIMER peripheral as a global time driver for embassy-time, running at a tick rate of 1 MHz:
 
+```sh
+cargo add embassy-rp --features=time-driver,critical-section-impl
+```
+
 ```toml
-embassy-rp = { version = "0.8.0", features = [
+embassy-rp = { version = "0.9.0", features = [
   "rp235xa",
   "time-driver",
   "critical-section-impl",
