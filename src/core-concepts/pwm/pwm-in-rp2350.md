@@ -63,11 +63,22 @@ Phase-correct PWM counts up to TOP, then counts back down to 0, creating a trian
 
 Configure PWM4 to operate in phase-correct mode for smoother output transitions.
 
+### Embassy
+
+```rust
+let mut pwm_config: Config = Default::default();
+pwm_config.phase_correct = true;
+let mut pwm_pin = Pwm::new_output_b(p.PWM_SLICE4, p.PIN_25, pwm_config);
+```
+
+### rp-hal
+
 ```rust
 pwm.set_ph_correct();
 ```
 
 Get a mutable reference to channel B of PWM4 and direct its output to GPIO pin 25.
+
 ```rust
 let channel = &mut pwm.channel_b;
 channel.output_to(pins.gpio25);
