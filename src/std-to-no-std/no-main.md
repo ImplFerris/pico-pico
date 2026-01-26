@@ -31,7 +31,7 @@ If you run `cargo expand` in the quick-start project, you can see how the macro 
 To make use of this, we need to add the `cortex-m` and `cortex-m-rt` crates to our project. Update the `Cargo.toml` file:
 
 ```toml
-cortex-m = { version = "0.7.6" }
+cortex-m = { version = "0.7.7" }
 cortex-m-rt = "0.7.5"
 ```
 
@@ -42,6 +42,14 @@ embassy-executor = { version = "0.9", features = [
   "arch-cortex-m",
   "executor-thread",
 ] }
+```
+
+Or easier, let `cargo` do its job, which updates your `Cargo.toml` automatically:
+
+```sh
+cargo add cortex-m
+cargo add cortex-m-rt
+cargo add embassy-executor --features=arch-cortex-m,executor-thread
 ```
 
 Then, in your `main.rs`, set up the entry point like this:
