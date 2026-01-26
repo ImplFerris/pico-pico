@@ -29,7 +29,7 @@ Here's what each flag does:
 
 ## cargo run command
 
-Typing that long command every time gets tedious. Let's simplify it by updating the ".cargo/config.toml" file. We can configure Cargo to automatically use picotool when we run `cargo run`:
+Typing that long command every time gets tedious. Let's simplify it by updating the `.cargo/config.toml` file. We can configure Cargo to automatically use picotool when we run `cargo run`:
 
 ```toml
 [target.thumbv8m.main-none-eabihf]

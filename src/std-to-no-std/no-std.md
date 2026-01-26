@@ -2,13 +2,13 @@
 
 Rust has two main foundational crates: std and core.
 
-- The std crate is the standard library. It gives you things like heap allocation, file system access, threads, and println!.
+- The std crate is the standard library. It gives you things like heap allocation, file system access, threads, and `println!()`.
 
 - The core crate is a minimal subset. It contains only the most essential Rust features, like basic types (Option, Result, etc.), traits, and few other operations. It doesn't depend on an operating system or runtime.
 
 When you try to build the project at this stage, you'll get a bunch of errors. Here's what it looks like:
 
-```sh
+```text
 error[E0463]: can't find crate for `std`
   |
   = note: the `thumbv8m.main-none-eabihf` target may not support the standard library
@@ -26,23 +26,23 @@ For more information about this error, try `rustc --explain E0463`.
 error: could not compile `pico-from-scratch` (bin "pico-from-scratch") due to 3 previous errors
 ```
 
-There are so many errors here. Lets fix one by one. The first error says the target may not support the standard library. That's true. We already know that. The problem is, we didn't tell Rust that we don't want to use std.  That's where no_std attribute comes into play.
+There are so many errors here. Lets fix one by one. The first error says the target may not support the standard library. That's true. We already know that. The problem is, we didn't tell Rust that we don't want to use `std`.  That's where `no_std` attribute comes into play.
 
 ## #![no_std]
 
-The #![no_std] attribute disables the use of the standard library (std). This is necessary most of the times for embedded systems development, where the environment typically lacks many of the resources (like an operating system, file system, or heap allocation) that the standard library assumes are available.
+The `#![no_std]` attribute disables the use of the standard library (`std`). This is necessary most of the times for embedded systems development, where the environment typically lacks many of the resources (like an operating system, file system, or heap allocation) that the standard library assumes are available.
 
-In the top of your src/main.rs file, add this line:
+In the top of your `src/main.rs` file, add this line:
 
 ```rs
 #![no_std]
 ```
 
-That's it. Now Rust knows that this project will only use the core library, not std.
+That's it. Now Rust knows that this project will only use the `core` library, not `std`.
 
 ## Println
 
-The println! macro comes from the [std crate](https://doc.rust-lang.org/std/macro.println.html). Since we're not using std in our project, we can't use println!. Let's go ahead and remove it from the code.
+The `println!` macro comes from the [std crate](https://doc.rust-lang.org/std/macro.println.html). Since we're not using std in our project, we can't use `println!`. Let's go ahead and remove it from the code.
 
 Now the code should be like this
 

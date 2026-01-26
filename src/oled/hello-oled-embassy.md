@@ -1,31 +1,31 @@
 # Hello OLED
 
-We are going to keep things simple. We will just display "Hello, Rust!" on the OLED display. We will first use Embassy, then we will do the same using rp-hal.
+We are going to keep things simple. We will just display "Hello, Rust!" on the OLED display. We will first use Embassy, then we will do the same using `rp-hal`.
 
 ## Create Project
 
-As usual, generate the project from the template with cargo-generate:
+As usual, generate the project from the template with `cargo-generate`:
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "hello-oled" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
+When prompted, give your project a name like "hello-oled" and choose "embassy" as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Update Dependencies
 
-Add the following lines to your Cargo.toml under dependencies:
+Add the following lines to your `Cargo.toml` under dependencies:
 
 ```toml
 embedded-graphics = "0.8.1"
 ssd1306 = { version = "0.10.0", features = ["async"] }
 ```
 
-We will enable the `async` feature so the ssd1306 driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
+We will enable the `async` feature so the `ssd1306` driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
 
 ## Additional imports
 
-Add these imports at the top of your main.rs:
+Add these imports at the top of your `main.rs`:
 
 ```rust
 // Interrupt Binding

@@ -2,17 +2,17 @@
 
 At this point, when you try to build the project, you’ll get this error:
 
-```sh
+```text
 error: `#[panic_handler]` function required, but not found
 ```
 
-When a Rust program panics, it is usually handled by a built-in panic handler that comes from the standard library. But in the last step, we added #![no_std], which tells Rust not to use the standard library. So now, there's no panic handler available by default.
+When a Rust program panics, it is usually handled by a built-in panic handler that comes from the standard library. But in the last step, we added `#![no_std]`, which tells Rust not to use the standard library. So now, there's no panic handler available by default.
 
 In a no_std environment, you are expected to define your own panic behavior, because there's no operating system or runtime to take over when something goes wrong.
 
-We can fix this by adding our own panic handler. Just create a function with the #[panic_handler] attribute. The function must accept a reference to PanicInfo, and its return type must be !, which means the function never returns.
+We can fix this by adding our own panic handler. Just create a function with the `#[panic_handler]` attribute. The function must accept a reference to `PanicInfo`, and its return type must be `!`, which means the function never returns.
 
-Add this to your src/main.rs:
+Add this to your `src/main.rs`:
 
 ```rust
 #[panic_handler]
@@ -23,7 +23,7 @@ fn panic(_: &core::panic::PanicInfo) -> ! {
 
 ## Panic crates
 
-There are some ready-made crates that provide a panic handler function for no_std projects. One simple and commonly used crate is "panic_halt", which just halts the execution when a panic occurs.
+There are some ready-made crates that provide a panic handler function for `no_std` projects. One simple and commonly used crate is "panic_halt", which just halts the execution when a panic occurs.
 
 ```rust
 use panic_halt as _;

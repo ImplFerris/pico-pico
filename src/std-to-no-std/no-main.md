@@ -2,11 +2,11 @@
 
 When you try to build at this stage, you'll get an error saying the main function requires the standard library. What?! (I controlled my temptation to insert a Mr. Bean meme here since not everyone will like meme.) So what now? Where does the program even start?
 
-In embedded systems, we don't use the regular "fn main" that relies on the standard library. Instead, we have to tell Rust that we'll bring our own entry point. And for that, we use the no_main attribute.
+In embedded systems, we don't use the regular `fn main` that relies on the standard library. Instead, we have to tell Rust that we'll bring our own entry point. For that, we use the `no_main` attribute.
 
-The `#![no_main]` attribute is to indicate that the program won't use the standard entry point (fn main).
+The `#![no_main]` attribute is to indicate that the program won't use the standard entry point (`fn main`).
 
-In the top of your src/main.rs file, add this line:
+In the top of your `src/main.rs` file, add this line:
 
 ```rs
 #![no_main]
@@ -22,13 +22,13 @@ If we were using rp-hal, we could use `rp235x_hal::entry` for the RP2350 chip. H
 
 ### Cortex-m Run Time
 
-If you follow the [`embassy_executor::main`](https://github.com/embassy-rs/embassy/blob/2c1c5232e8767887cbad5f28abf9a39ae78dd6c4/embassy-executor-macros/src/lib.rs#L69) macro, you'll see it uses another macro depending on the architecture. Since the Pico 2 is Cortex-M, it uses `cortex_m_rt::entry`. This comes from the cortex_m_rt crate, which provides startup code and minimal runtime for Cortex-M microcontrollers.
+If you follow the [`embassy_executor::main`](https://github.com/embassy-rs/embassy/blob/2c1c5232e8767887cbad5f28abf9a39ae78dd6c4/embassy-executor-macros/src/lib.rs#L69) macro, you'll see it uses another macro depending on the architecture. Since the Pico 2 is Cortex-M, it uses `cortex_m_rt::entry`. This comes from the `cortex_m_rt` crate, which provides startup code and minimal runtime for Cortex-M microcontrollers.
 
 <a href="./images/embassy-entry-point.svg"><img style="display: block; margin: auto;" alt="pico2" src="./images/embassy-entry-point.svg"/></a>
 
 If you run `cargo expand` in the quick-start project, you can see how the macro expands and the full execution flow. If you follow the rabbit hole, the program starts at the `__cortex_m_rt_main_trampoline` function. This function calls `__cortex_m_rt_main`, which sets up the Embassy executor and runs our main function.
 
-To make use of this, we need to add the cortex-m and cortex-m-rt crates to our project. Update the Cargo.toml file:
+To make use of this, we need to add the `cortex-m` and `cortex-m-rt` crates to our project. Update the `Cargo.toml` file:
 
 ```toml
 cortex-m = { version = "0.7.6" }
@@ -44,7 +44,7 @@ embassy-executor = { version = "0.9", features = [
 ] }
 ```
 
-Then, in your main.rs, set up the entry point like this:
+Then, in your `main.rs`, set up the entry point like this:
 
 ```rust
 use embassy_executor::Spawner;
@@ -53,7 +53,7 @@ use embassy_executor::Spawner;
 async fn main(_spawner: Spawner) {}
 ```
 
-We have changed the function signature. The function must accept a Spawner as its argument to satisfy embassy’s requirements, and the function is now marked as async.
+We have changed the function signature. The function must accept a `Spawner` as its argument to satisfy embassy’s requirements, and the function is now marked as `async`.
 
 ## Are we there yet?
 

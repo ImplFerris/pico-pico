@@ -27,7 +27,7 @@ bind_interrupts!(struct Irqs {
 });
 ```
 
-This tells Embassy that the I2C0_IRQ interrupt should be handled by the I2C driver for I2C0. Once this is in place, async I2C operations can sleep and wake correctly.
+This tells Embassy that the `I2C0_IRQ` interrupt should be handled by the I2C driver for `I2C0`. Once this is in place, async I2C operations can sleep and wake correctly.
 
 ## Using Async I2C
 

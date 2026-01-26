@@ -62,7 +62,7 @@ The Raspberry Pi Pico's GPIO pins are 3.3V tolerant and can be permanently damag
 
 SD card reader modules come in different configurations:
 
-**3.3V-only modules:** These modules are simple microSD breakout boards designed to run directly at 3.3V. Because both the Raspberry Pi Pico and the SD card use the same voltage, the module can be connected without any extra circuitry. Power it from the Pico's 3V3(OUT) pin and connect the SPI data lines directly to the Pico's GPIO pins. This is the simplest and safest option when working with the Raspberry Pi Pico.
+**3.3V-only modules:** These modules are simple microSD breakout boards designed to run directly at 3.3V. Because both the Raspberry Pi Pico and the SD card use the same voltage, the module can be connected without any extra circuitry. Power it from the Pico's `3V3(OUT)` pin and connect the SPI data lines directly to the Pico's GPIO pins. This is the simplest and safest option when working with the Raspberry Pi Pico.
 
 **5V modules with voltage regulation:** Some SD card modules are designed to be powered from 5V. These modules include extra components so the SD card itself still runs at 3.3V. Some higher-quality modules also make sure that all signal lines stay at safe 3.3V levels.
 

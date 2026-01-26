@@ -120,6 +120,6 @@ Where:
 
 ### Divider and Fraction
 
-In the formula we discussed earlier, there is one important part we have not explained yet: DIV_FRAC. This controls the fractional part of the clock divider in the RP2350.
+In the formula we discussed earlier, there is one important part we have not explained yet: `DIV_FRAC`. This controls the fractional part of the clock divider in the RP2350.
 
-The RP2350 clock divider is split into two parts. DIV_INT is the integer part and sets the whole number division. DIV_FRAC is the fractional part and allows finer control over the division ratio. Together, they let you slow down the PWM counter more precisely than using an integer divider alone.  One important rule is that when DIV_INT is set to 0, you must not set any DIV_FRAC bits.
+The RP2350 clock divider is split into two parts. `DIV_INT` is the integer part and sets the whole number division. `DIV_FRAC` is the fractional part and allows finer control over the division ratio. Together, they let you slow down the PWM counter more precisely than using an integer divider alone.  One important rule is that when `DIV_INT` is set to 0, you must not set any `DIV_FRAC` bits.

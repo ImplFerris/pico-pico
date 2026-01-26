@@ -8,7 +8,7 @@ For this, we will rely on the [calculator form](../core-concepts/pwm/frequency-t
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "servo-motor" and choose "rp-hal" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
+When prompted, give your project a name like "servo-motor" and choose "rp-hal" as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Additional Imports
 
@@ -48,7 +48,7 @@ servo.output_to(pins.gpio15);
 
 ## Main Loop
 
-Finally, inside the main loop, we update the duty cycle to move the servo between different positions. Just like in the Embassy example, we use set_duty_cycle_fraction.
+Finally, inside the main loop, we update the duty cycle to move the servo between different positions. Just like in the Embassy example, we use `set_duty_cycle_fraction`.
 
 ```rust
 loop {

@@ -36,16 +36,16 @@ Read it in GDB:
 (gdb) x/wx 0x10000004
 ```
 
-Example output:
+Example output - actual addresses might differ at your artifacts, use those to follow this chapters:
 
 ```sh
 0x10000004 <__RESET_VECTOR>:    0x1000010d
 ```
 
-This value is the address the CPU jumps to after reset. The last bit (the "Thumb bit") is always 1, so the actual address is 0x1000010c.
-But you can use either one of them (0x1000010d or 0x1000010c), GDB can handle it.
+This value is the address the CPU jumps to after reset. The last bit (the "Thumb bit") is always 1, so the actual address is `0x1000010c`.
+But you can use either one of them (`0x1000010d` or `0x1000010c`), GDB can handle it.
 
-Alternatively, you can also use the readelf program to find the entrypoint address:
+Alternatively, you can also use the `readelf` program to find the entrypoint address:
 
 ```sh
 arm-none-eabi-readelf -h ./target/thumbv8m.main-none-eabihf/debug/pico-debug
@@ -72,11 +72,11 @@ You will see assembly instructions for the reset handler. Look for a `bl` ([Bran
 0x10000148 <+60>:    udf     #0
 ```
 
-The Reset Handler calls a function located at 0x1000031c, which GDB shows as main.  But this is not our Rust main yet.
+The Reset Handler calls a function located at `0x1000031c`, which GDB shows as main. But this is not our Rust main yet.
 
 ## What is this "main"?
 
-The main at 0x1000031c is not our program's main function. It is a small wrapper created by the cortex-m-rt crate. This wrapper is often called the trampoline because it jumps to the real entry point later.
+The main at `0x1000031c` is not our program's main function. It is a small wrapper created by the `cortex-m-rt` crate. This wrapper is often called the trampoline because it jumps to the real entry point later.
 
 Its demangled name is usually:
 

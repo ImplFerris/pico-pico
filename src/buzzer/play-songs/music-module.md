@@ -2,7 +2,7 @@
 
 In the music module, we define constants for musical notes and their frequency values.
 
-Each note is stored as an f64 value so it can be used directly when configuring PWM frequency. A special REST value is also defined to represent silence between notes.
+Each note is stored as an `f64` value so it can be used directly when configuring PWM frequency. A special REST value is also defined to represent silence between notes.
 
 ```rust
 // Note frequencies in Hertz as f64
@@ -111,7 +111,7 @@ The whole_note field stores how long a whole note lasts, measured in millisecond
 
 ## Creating a song
 
-When creating a Song, we calculate the duration of a whole note from the tempo.
+When creating a `Song`, we calculate the duration of a whole note from the tempo.
 
 ```rust
 impl Song {
