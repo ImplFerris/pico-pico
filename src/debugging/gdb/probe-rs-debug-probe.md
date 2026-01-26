@@ -1,6 +1,6 @@
 # Debugging Embedded Rust on Raspberry Pi Pico 2 with GDB
 
-In this chapter, we will look at how to debug Embedded Rust programs on the Raspberry Pi Pico 2 (RP2350) using GDB. You will need a Debug Probe hardware and you must connect it to your Raspberry Pi Pico 2. Make sure you have read [this chapter](../pico-debug-probe.md) before continuing.
+In this chapter, we will look at how to debug Embedded Rust programs on the Raspberry Pi Pico 2 (RP2350) using GDB. You will need a Debug Probe hardware and you must connect it to your Raspberry Pi Pico 2. Make sure you have read [chapter "Debug Probe for Raspberry Pi Pico 2"](../pico-debug-probe.md) before continuing.
 
 ## What a Debug Probe Gives You
 
