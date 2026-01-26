@@ -126,6 +126,8 @@ If everything works, you should see the "Hello, World!" message in the system te
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">cargo embed showing defmt logs</div>
 </div>
 
+Use standard [Ctl]-[C] to exit this terminal.
+
 ## Reference
 
 - [Raspberry Pi Debug Probe - Official Documentation](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html)

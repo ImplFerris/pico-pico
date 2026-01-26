@@ -69,7 +69,7 @@ There are a few more settings required in `memory.x` for RP2350. We do not need 
 
 Putting the `memory.x` file in the project folder is not enough. We also need to make sure the linker actually uses the linker script provided by `cortex-m-rt`.
 
-To fix this, we tell Cargo to pass the linker script `link.x` to the linker.  There are multiple ways we can pass the argument to the rust. we can use the method like `.cargo/config.toml` or build script `build.rs` file. In the quick start, we are using the `build.rs`. So we will use the `.cargo/config.toml` approach. In the file, update the target section with the following
+To fix this, we tell Cargo to pass the linker script `link.x` to the linker.  There are multiple ways we can pass the argument to the rust. we can use the method like `.cargo/config.toml` or build script `build.rs` file. In the quick start, we are using the `build.rs`. So this time we will use the `.cargo/config.toml` approach. In the file, update the target section with the following:
 
 ```toml
 [target.thumbv8m.main-none-eabihf]
