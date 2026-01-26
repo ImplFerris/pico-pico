@@ -1,6 +1,6 @@
 ## Playing the Game of Thrones Melody
 
-In this section, we put everything together and work in the main.rs file.
+In this section, we put everything together and work in the `main.rs` file.
 
 By this point, we already have the note frequencies, song timing logic, and melody data. Here, we just wire them together using PWM and timers.
 
@@ -17,7 +17,7 @@ use crate::music::Song;
 
 ## Create the Song object
 
-Create a Song using the tempo defined for the Game of Thrones theme.
+Create a `Song` using the tempo defined for the Game of Thrones theme.
 
 ```rust
 let song = Song::new(got::TEMPO);

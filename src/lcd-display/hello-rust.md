@@ -27,7 +27,7 @@ When prompted, give your project a name, like "hello-lcd" and select `embassy` a
 
 ### Additional Crates required
 
-Add the following dependency to Cargo.toml along with the existing ones:
+Add the following dependency to `Cargo.toml` along with the existing ones:
 
 ```rust
 hd44780-driver = "0.4.0"

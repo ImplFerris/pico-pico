@@ -1,6 +1,6 @@
 # Hello Rust on OLED
 
-The same hello world we will do with rp-hal also.
+The same hello world we will do with `rp-hal` also.
 
 ## Generating From template
 

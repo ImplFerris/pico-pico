@@ -10,7 +10,7 @@ Once the circuit is loaded, adjust the brightness slider and observe how the res
 
 > [!Important]
 > Swapping the LDR and the fixed resistor will invert the behavior of the output voltage.
-> If you place the LDR as R2 (the bottom resistor) in the voltage divider, the relationship between light level and Vout is inverted because the equation changes.
+> If you place the LDR as R2 (the bottom resistor) in the voltage divider, the relationship between light level and \\( V_{out} \\) is inverted because the equation changes.
 
 ### Example output for full brightness
 

@@ -1,16 +1,16 @@
 # Rust Tutorial: Using the HC-SR04 Sensor with the Pico 2
 
-We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using rp-hal. As usual, generate the project from the template with cargo-generate:
+We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using `rp-hal`. As usual, generate the project from the template with `cargo-generate`:
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "bat-beacon" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
+When prompted, give your project a name like `bat-beacon` and choose `embassy` as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Additional Imports
 
-In addition to the usual boilerplate imports, you'll need to add these specific imports to your project.  Your code editor should provide auto-import suggestions for most of these, with the exception of the SetDutyCycle trait which you'll need to add manually.
+In addition to the usual boilerplate imports, you'll need to add these specific imports to your project.  Your code editor should provide auto-import suggestions for most of these, with the exception of the `SetDutyCycle` trait which you'll need to add manually.
 
 ```rust
 // For GPIO
@@ -49,7 +49,7 @@ let max_duty = led.max_duty_cycle();
 // defmt::info!("Max duty cycle {}", max_duty);
 ```
 
-The duty cycle determines LED brightness; 0 is completely off, and max_duty is fully on.r
+The duty cycle determines LED brightness; 0 is completely off, and `max_duty` is fully on.r
 
 ## Configuring Trigger and Echo Pins
 

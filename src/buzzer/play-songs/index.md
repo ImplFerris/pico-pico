@@ -15,7 +15,7 @@ A passive buzzer is recommended for this exercise, though you can use either a p
 
 We will use PWM to control the frequency of the signal sent to the buzzer. Each frequency corresponds to a musical note. The frequency (musical note) is held for a specific duration before switching to the next note, based on the music data.
 
-For example, the note `A4` is 440 Hz. To play this note, we configure the PWM output to 440 Hz and keep it active for the required duration before moving to the next note.
+For example, the note `a4` is 440 Hz. To play this note, we configure the PWM output to 440 Hz and keep it active for the required duration before moving to the next note.
 
 If you are not familiar with PWM on the Pico, I recommend reading the [PWM section](../../core-concepts/pwm/index.md) before continuing.
 
