@@ -39,4 +39,4 @@ In embedded Rust, peripherals are accessed using a singleton model. One of Rust'
 
 The singleton pattern ensures that only one instance of each peripheral exists in the entire program. This avoids common bugs caused by multiple pieces of code trying to modify the same hardware resource simultaneously.
 
-In embassy, peripherals are also exposed using this singleton model. But we won't be calling `Peripherals::take()` directly. Instead, we will use the `embassy_rp::init(Default::default())` function. This function takes care of basic system setup and internally calls Peripherals::take() for us. So we get access to all peripherals in a safe and ready-to-use form.
+In embassy, peripherals are also exposed using this singleton model. But we won't be calling `Peripherals::take()` directly. Instead, we will use the `embassy_rp::init(Default::default())` function. This function takes care of basic system setup and internally calls `Peripherals::take()` for us. So we get access to all peripherals in a safe and ready-to-use form.

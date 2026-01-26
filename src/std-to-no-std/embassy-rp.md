@@ -12,7 +12,7 @@ embassy-rp = { version = "0.8.0", features = [
 ] }
 ```
 
-We've enabled the rp235xa feature because our chip is the RP2350. If we were using the older Pico, we would instead enable the rp2040 feature.
+We've enabled the `rp235xa` feature because our chip is the RP2350. If we were using the older Pico, we would instead enable the `rp2040` feature.
 
 ## Initialize the embassy-rp HAL
 
@@ -28,13 +28,13 @@ This gives us the peripheral singletons we need. Remember, we should only call t
 
 We are going to replicate the quick start example by blinking the onboard LED. To create a blinking effect, we need a timer to add delays between turning the LED on and off. Without delays, the blinking would be too fast to see.
 
-To handle timing, we'll use the "embassy-time" crate, which provides essential timing functions:
+To handle timing, we'll use the `embassy-time` crate, which provides essential timing functions:
 
 ```rust
 embassy-time = { version = "0.5.0" }
 ```
 
-We also need to enable the time-driver feature in the embassy-rp crate. This configures the TIMER peripheral as a global time driver for embassy-time, running at a tick rate of 1MHz:
+We also need to enable the time-driver feature in the `embassy-rp` crate. This configures the TIMER peripheral as a global time driver for embassy-time, running at a tick rate of 1 MHz:
 
 ```toml
 embassy-rp = { version = "0.8.0", features = [

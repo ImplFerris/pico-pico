@@ -4,7 +4,7 @@ Besides the supported characters, you can create your own custom characters (gly
 
 The controller provides 64 bytes of Character Generator RAM (CGRAM). Each custom glyph occupies 8 bytes, so you can store up to 8 custom glyphs at a time.
 
-Each glyph is an 8x8 grid, where each row is represented by a single 8-bit value (u8). This makes it 8 bytes per glyph (8 rows × 1 byte per row). That is why, with a total of 64 bytes, you can only store up to 8 custom glyphs (8 glyphs × 8 bytes = 64 bytes).
+Each glyph is an 8x8 grid, where each row is represented by a single 8-bit value (`u8`). This makes it 8 bytes per glyph (8 rows × 1 byte per row). That is why, with a total of 64 bytes, you can only store up to 8 custom glyphs (8 glyphs × 8 bytes = 64 bytes).
 
 <img style="display: block; margin: auto;width:400px;" alt="custom characters grid" src="./images/custom-character-grid-bits.jpg"/>
 

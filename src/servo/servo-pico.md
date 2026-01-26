@@ -25,7 +25,7 @@ In my case, the values were:
 
 - 180° at about 2.4 ms, which corresponds to a 12% duty cycle since 2.4 ms is 12% of a 20 ms period.
 
-In the LED dimming chapter, changing the duty cycle was straightforward. We only cared about brightness, not frequency, so using `set_duty_cycle_percent` was sufficient. That function accepts a u8 value from 0 to 100, which works well for whole-number percentages.
+In the LED dimming chapter, changing the duty cycle was straightforward. We only cared about brightness, not frequency, so using `set_duty_cycle_percent` was sufficient. That function accepts a `u8` value from 0 to 100, which works well for whole-number percentages.
 
 For servo control, this approach is not suitable because the required duty cycles include fractional values such as 2.5%, 7.5%, and 12%.
 
@@ -89,7 +89,7 @@ fn set_duty_cycle_fraction(&mut self, num: u16, denom: u16) -> Result<(), Self::
 }
 ```
 
-This function does not accept floating-point values. Instead, it takes a numerator and a denominator, both as u16. To represent fractional percentages, we simply scale them into integers.
+This function does not accept floating-point values. Instead, it takes a numerator and a denominator, both as `u16`. To represent fractional percentages, we simply scale them into integers.
 
 Remember that 2.5% can be written as the fraction 2.5/100. Since we can't use decimals in the numerator, we multiply both the numerator and denominator by 10 to get equivalent integer fractions:
 

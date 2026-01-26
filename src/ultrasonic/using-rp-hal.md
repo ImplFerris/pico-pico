@@ -167,5 +167,5 @@ cd pico2-rp-projects/ultrasonic
 
 ## Your Challenge
 
-1. Use Embassy framework instead of rp-hal
+1. Use Embassy framework instead of `rp-hal`
 2. Use the onboard LED instead

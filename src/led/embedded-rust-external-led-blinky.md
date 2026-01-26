@@ -11,11 +11,11 @@ cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3
 
 You will be asked a few questions:
 
-1. For the project name, you can give anything. We will use external-led.
+1. For the project name, you can give anything. We will use `external-led`.
 
-2. Next, it asks us to Select HAL. We should choose "Embassy".
+2. Next, it asks us "Which HAL?" We should choose `embassy`.
 
-3. Then, it will ask whether we want to enable defmt logging. This works only if we use a debug probe, so you can choose based on your setup.  Anyway we are not going to write any log in this exercise.
+3. Then, it will ask whether we want to enable `defmt` logging. This works only if we use a debug probe, so you can choose based on your setup.  Anyway we are not going to write any log in this exercise.
 
 ## Imports
 
@@ -50,7 +50,7 @@ We are using the Output struct here because we want to send signals from the Pic
 > [!NOTE]
 > If you want to read signals from a component (like a button or sensor), you'll need to configure the GPIO pin as Input instead.
 
-Then we call set_high and set_low on the pin with a delay between them. This switches the pin between high and low, which turns the LED on and off.
+Then we call `set_high()` and `set_low()` on the pin with a delay between them. This switches the pin between high and low, which turns the LED on and off.
 
 ## The Full code
 

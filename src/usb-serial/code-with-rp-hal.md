@@ -265,7 +265,7 @@ cd pico2-projects/usb-serial-led/
 
 ## How to Run ?
 
-The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
+The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (`/dev/ttyACM0`). This allows us to read data from the Pico or send data to it.
 
 ### tio
 

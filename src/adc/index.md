@@ -16,7 +16,7 @@ Consider a simple example: a temperature monitoring system. A temperature sensor
 
 One of the most important characteristics of an ADC is its resolution, which determines how finely it can divide the analog input range into discrete digital values. Resolution is typically expressed in bits, such as 8-bit, 10-bit, or 12-bit. The number of bits decides how many different values the ADC can produce.
 
-An 8-bit ADC divides its input voltage range into 256 distinct levels(2^8). A 10-bit ADC provides 1,024 levels(2^10), and a 12-bit ADC offers 4,096 levels(2^12). As you can see, each additional bit doubles the number of levels, significantly improving precision. The more bits your ADC has, the smaller the voltage differences it can distinguish.
+An 8-bit ADC divides its input voltage range into 256 distinct levels (2<sup>8</sup>). A 10-bit ADC provides 1,024 levels (2<sup>10</sup>), and a 12-bit ADC offers 4,096 levels(2<sup>12</sup>). As you can see, each additional bit doubles the number of levels, significantly improving precision. The more bits your ADC has, the smaller the voltage differences it can distinguish.
 
 ### Example
 
@@ -28,7 +28,7 @@ The smallest voltage change the ADC can detect (called the step size) is calcula
 \text{Step Size} = \frac{\text{Vref}}{2^{\text{bits}}}
 \\]
 
-```sh
+```text
 Step Size = 3.3V / 1,024 = 3.22 mV
 ```
 
@@ -36,7 +36,7 @@ This means the ADC cannot tell the difference between two voltages that are clos
 
 Compare this to a 12-bit ADC with the same 3.3V reference:
 
-```sh
+```text
 Step Size = 3.3V / 4,096 = 0.81 mV
 ```
 
@@ -74,7 +74,7 @@ For the RP2350 with its 12-bit ADC and 3.3V reference voltage:
 
 Let's say we get an ADC reading of 1000.
 
-```sh
+```text
 Voltage = (1000 × 3.3) / 4096 = 0.806V
 ```
 

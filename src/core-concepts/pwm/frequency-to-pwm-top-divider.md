@@ -216,9 +216,9 @@ pwm.set_div_int(45);
 pwm.set_div_frac(13);
 ```
 
-If you are using embassy-rp, both parts are combined into a single divider field inside the Config struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post [Working with Fixed-Point Numbers in Rust Using the fixed Crate](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/) explaining them in detail.
+If you are using `embassy-rp`, both parts are combined into a single divider field inside the `Config` struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post [Working with Fixed-Point Numbers in Rust Using the fixed Crate](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/) explaining them in detail.
 
-If you only need an integer divider, you can simply convert a u8 value:
+If you only need an integer divider, you can simply convert a `u8` value:
 
 ```rust
 let mut servo_config: PwmConfig = Default::default();
@@ -226,7 +226,7 @@ servo_config.top = 46_874;
 servo_config.divider = 64.into();
 ```
 
-If you also want a fractional part, you need to add the "fixed" crate as a dependency and construct the divider using a fixed-point type:
+If you also want a fractional part, you need to add the `fixed` crate as a dependency and construct the divider using a fixed-point type:
 
 ```rust
 let mut servo_config: PwmConfig = Default::default();
