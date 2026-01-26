@@ -11,7 +11,7 @@ You can move the joystick knob vertically and horizontally, sending its position
 ## How it works?
 The joystick module has two 10K potentiometers: one for the X-axis and another for the Y-axis. It also includes a push button, which is visible.
 
-When you move the joystick from right to left or left to right(X axis), you can observe one of the potentiometers moving accordingly. Similarly, when you move it up and down(Y-axis), you can observe the other potentiometer moving along.
+When you move the joystick from right to left or left to right (X axis), you can observe one of the potentiometers moving accordingly. Similarly, when you move it up and down (Y-axis), you can observe the other potentiometer moving along.
 
 <img style="display: block; margin: auto;width:550px;" alt="joystick" src="./images/joystick-potentiometers-push-button.jpg"/>
 

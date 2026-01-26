@@ -48,4 +48,4 @@ cargo run
 
 and your program will be flashed and executed on the Pico.
 
-But at this point, it still won't actually flash. We're missing one important step.
+At this point, it still won't actually flash. We're missing one important step.
