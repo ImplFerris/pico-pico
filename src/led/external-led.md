@@ -58,7 +58,7 @@ From now on, we'll use more external parts with the Pico. Before we get there, i
 
 <img style="display: block; margin: auto;" alt="pico2" src="../images/pico-external-led.png"/>
 
-You can connect the Pico to the LED using jumper wires directly, or you can place everything on a breadboard. If you're unsure about the hardware setup, you can also refer the [Raspberry pi guide](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/7).
+You can connect the Pico to the LED using jumper wires directly, or you can place everything on a breadboard. If you're unsure about the hardware setup, you can also refer the [Raspberry Pi guide](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/7).
 
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/pico-2-rp2350-with-external-led.png" alt="Connecting External LED with Pico 2 (RP2350)" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>

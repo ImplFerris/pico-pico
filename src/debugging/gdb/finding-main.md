@@ -72,7 +72,7 @@ You will see assembly instructions for the reset handler. Look for a `bl` ([Bran
 0x10000148 <+60>:    udf     #0
 ```
 
-The Reset Handler calls a function located at `0x1000031c`, which GDB shows as main. But this is not our Rust main yet.
+The Reset Handler calls a function located at `0x1000031c`, which GDB shows as main - but this is not our Rust main yet.
 
 ## What is this "main"?
 

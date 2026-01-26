@@ -2,7 +2,7 @@
 
 Now let's talk about embedded systems. When it comes to compiling Rust code for a microcontroller, things work a little differently from normal desktop systems. Microcontrollers don’t usually run a full operating system like Linux or Windows. Instead, they run in a minimal environment, often with no OS at all. This is called a bare-metal environment.
 
-Rust supports this kind of setup through its **no_std** mode. In normal Rust programs, the standard library (`std`) handles things like file systems, threads, heap allocation, and I/O. But none of those exist on a bare-metal microcontroller. So instead of std, we use a much smaller `core` library, which provides only the essential building blocks.
+Rust supports this kind of setup through its **no_std** mode. In normal Rust programs, the standard library (`std`) handles things like file systems, threads, heap allocation, and I/O - but none of those exist on a bare-metal microcontroller. So instead of std, we use a much smaller `core` library, which provides only the essential building blocks.
 
 ## The Target Triple for Pico 2
 
