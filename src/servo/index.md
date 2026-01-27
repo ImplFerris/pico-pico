@@ -10,7 +10,7 @@ For this chapter, we will use the following components:
 
 - SG90 Micro Servo Motor
 - Jumper Wires:
-  - Female-to-Male(or Male to Male depending on how you are connecting) jumper wires for connecting the Pico 2 to the servo motor pins (Ground, Power, and Signal).
+  - Female-to-Male (or Male to Male depending on how you are connecting) jumper wires for connecting the Pico 2 to the servo motor pins (Ground, Power, and Signal).
 
 The SG90 is small, cheap, and easy to find. It is commonly used in learning projects and works well for demonstrations.
 

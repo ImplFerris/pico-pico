@@ -119,7 +119,7 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 ## Clone the existing project
 
-You can clone (or refer) project I created and navigate to the `button` folder.
+You can clone (or refer) the project I created and navigate to the `button` folder.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects

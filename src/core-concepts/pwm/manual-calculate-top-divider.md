@@ -28,7 +28,7 @@ Here's the derived formula to get the TOP for the target frequency:
 
 Where:
 - \\( f_{PWM} \\) is the desired PWM frequency.
-- \\( f_{sys} \\) is the system clock frequency. For the pico2, it is is 150 MHz.
+- \\( f_{sys} \\) is the system clock frequency. For the Pico 2, it is is 150 MHz.
 
 We're not going to use phase correct mode and we're not using fraction for the divider either, so let's simplify the formula further:
 

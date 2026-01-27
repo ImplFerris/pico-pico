@@ -38,7 +38,7 @@ Choose an active buzzer if you only need a simple, fixed tone or beep. It works 
 
 Choose a passive buzzer if you want more control over sound. Since it must be driven by a PWM or square-wave signal, you can generate different tones, melodies, or sound patterns.
 
-For our exercises, a passive buzzer is recommended because it lets us control the output frequency directly(play better tone). However, if you only have an active buzzer, you can still follow along. In fact, I personally used an active buzzer at first for this.
+For our exercises, a passive buzzer is recommended because it lets us control the output frequency directly (play better tone). However, if you only have an active buzzer, you can still follow along. In fact, I personally used an active buzzer at first for this.
 
 ## Hardware requirements
 

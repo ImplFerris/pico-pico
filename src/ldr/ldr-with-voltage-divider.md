@@ -4,7 +4,7 @@ To understand how an LDR behaves in a voltage divider, I created a simple simula
 
 You can import the circuit file I created, [`voltage-divider-ldr.circuitjs.txt`](./voltage-divider-ldr.circuitjs.txt), import into the [Falstad site](https://www.falstad.com/circuit/e-voltdivide.html) and play around. I have also embedded a small simulator at the bottom of this page, so you can use either option.
 
-In this configuration, the LDR is placed on the top of the voltage divider (i.e as R1), with a fixed resistor(as R2) at the bottom. This arrangement is commonly used because increasing light results in an increasing output voltage, which is intuitive when reading the value using an ADC.
+In this configuration, the LDR is placed on the top of the voltage divider (i.e as R1), with a fixed resistor (as R2) at the bottom. This arrangement is commonly used because increasing light results in an increasing output voltage, which is intuitive when reading the value using an ADC.
 
 Once the circuit is loaded, adjust the brightness slider and observe how the resistance of the LDR changes. At the same time, you can see how the output voltage \\( V_{out} \\) responds to those changes.
 

@@ -92,7 +92,7 @@ git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/usb-serial/cdc-logger/
 ```
 
-## How to Run ?
+## How to Run?
 
 The method to flash (run the code) on the Pico is the same as usual. However, we need to set up `tio` to interact with the Pico through the serial port (`/dev/ttyACM0`). This allows us to read data from the Pico or send data to it.
 

@@ -59,12 +59,12 @@ servo.set_duty_cycle(MIN_DUTY)
 
 Another option is to use `set_duty_cycle_fraction`. This will help us to set percentage with fraction.
 
-In fact, set_duty_cycle_percent is a convenience method provided by embedded-hal that internally calls set_duty_cycle_fraction. It simply divides the input percentage by 100 and forwards the result as a fraction.
+In fact, `set_duty_cycle_percent` is a convenience method provided by `embedded-hal` that internally calls `set_duty_cycle_fraction`. It simply divides the input percentage by 100 and forwards the result as a fraction.
 
 From embedded-hal:
 
 ```rust
- /// Set the duty cycle to `percent / 100`
+/// Set the duty cycle to `percent / 100`
 ///
 /// The caller is responsible for ensuring that `percent` is less than or equal to 100.
 #[inline]
