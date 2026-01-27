@@ -94,11 +94,11 @@ if button.is_high() {
 ```
 
 > [!IMPORTANT]
-> There's a hardware bug (E9) in the initial RP2350 chip released in 2024 that affects internal pull-down resistors.
+> There's a hardware bug (RP2350-E9) in the initial RP2350 chip released in 2024 that affects internal pull-down resistors.
 >
 > The bug causes the GPIO pin to read HIGH even when the button isn't pressed, which is the opposite of what should happen. You can read more about this issue in [Simon Monk's blog post](https://www.doctormonk.com/2024/09/are-pico-2-rp2350-gpio-pins-broken.html).
 >
-> The bug was fixed in the newer RP2350 A4 chip revision. If you're using an older chip, avoid using `Pull::Down` in your code. Instead, you can use an external pull-down resistor and set `Pull::None` in the code.
+> The bug was fixed in the newer RP2350 A3 chip revision. If you're using an older chip, avoid using `Pull::Down` in your code. Instead, you can use an external pull-down resistor and set `Pull::None` in the code.
 
 With a pull-down resistor enabled, the button should connect to 3.3V when pressed. The pin reads LOW when not pressed, and HIGH when pressed.
 
