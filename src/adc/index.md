@@ -4,7 +4,7 @@ I hope you are already familiar with the idea of analog and digital signals. The
 
 Microcontrollers, however, only understand discrete values. Internally, everything is represented as binary numbers, ones and zeros, HIGH and LOW. This creates a basic gap between the real world and digital logic. How does a digital system understand something that changes smoothly?
 
-This is where the Analog to Digital Converter(ADC) comes in.  An Analog to Digital Converter (ADC) measures an analog voltage and converts it into a digital number that our microcontrollers can process, store, and act upon.
+This is where the Analog to Digital Converter (ADC) comes in. An ADC measures an analog voltage and converts it into a digital number that our microcontrollers can process, store, and act upon.
 
 You may recall from the earlier chapter on PWM that we explored how a digital system can create an analog-like output by rapidly switching a pin on and off. ADC does the opposite. It allows the microcontroller to read and understand analog inputs from the real world. Together, peripherals like PWM and ADC allow embedded systems to both sense their environment and control it.
 

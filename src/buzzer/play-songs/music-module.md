@@ -1,4 +1,4 @@
-# Music module(music.rs)
+# Music module (music.rs)
 
 In the music module, we define constants for musical notes and their frequency values.
 

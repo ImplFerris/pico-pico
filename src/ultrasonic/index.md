@@ -4,7 +4,7 @@ If you've seen the Batman Begins movie, you'll remember the scene where Batman u
 
 ## Ultrasonic
 
-Ultrasonic waves are sound waves with frequencies above 20,000 Hz, beyond what human ears can detect. But many animals can. Bats use ultrasonic waves to fly in the dark and avoid obstacles. Dolphins use them to communicate and to sense objects underwater.
+Ultrasonic waves are sound waves with frequencies above 20,000 Hz, beyond what human ears can detect, but many animals can. Bats use ultrasonic waves to fly in the dark and avoid obstacles. Dolphins use them to communicate and to sense objects underwater.
 
 ### Ultrasonic Technology Around You
 
