@@ -10,7 +10,7 @@ Embassy provides a simple way to set up I2C in blocking mode:
 let sda = p.PIN_16;
 let scl = p.PIN_17;
 
-info!("set up i2c ");
+info!("set up i2c");
 let mut i2c = i2c::I2c::new_blocking(p.I2C0, scl, sda, Config::default());
 ```
 

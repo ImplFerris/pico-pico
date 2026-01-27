@@ -1,6 +1,6 @@
 # Inter-Integrated Circuit (I2C)
 
-So far, we've been toggling output pins between High and Low states to control an LED and reading the same two levels from a button. But working with interesting devices like display modules, RFID readers, and SD card readers requires something more. Simple pin toggling won't work here. We need a proper communication mechanism, and that's where communication protocols come in. The most common ones are I2C, SPI, and UART. Each one has its own advantages and disadvantages.
+So far, we've been toggling output pins between High and Low states to control an LED and reading the same two levels from a button, but working with interesting devices like display modules, RFID readers, and SD card readers requires something more. Simple pin toggling won't work here. We need a proper communication mechanism, and that's where communication protocols come in. The most common ones are I2C, SPI, and UART. Each one has its own advantages and disadvantages.
 
 Since we will be using an OLED display in the next chapter, and it communicates over I2C, this is the first protocol we are going to explore. OLED displays are one of the modules I enjoy the most. I've used them to make small games and a bunch of fun personal projects.
 
@@ -58,4 +58,4 @@ The good news is that in Embedded Rust, you don't need to implement the I2C prot
 
 ## Resources
 
-- [Basics of the I2C Communication Protocol](https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/): Refer this if you want in-depth understanding how the controller communincates with target.
+- [Basics of the I2C Communication Protocol](https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/): Refer this if you want in-depth understanding how the controller communicates with target.

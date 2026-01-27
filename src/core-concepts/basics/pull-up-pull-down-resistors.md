@@ -1,6 +1,6 @@
 # Pull-up and Pull-down Resistors
 
-When working with buttons, switches, and other digital inputs on your Raspberry Pi Pico, you'll quickly encounter a curious problem: what happens when nothing is connected to an input pin? The answer might surprise you; the pin becomes "floating," picking up electrical noise and giving you random, unpredictable readings. This is where pull-up and pull-down resistors come to the rescue.
+When working with buttons, switches, and other digital inputs on your Raspberry Pi Pico, you'll quickly encounter a curious problem: what happens when nothing is connected to an input pin? The answer might surprise you; the pin becomes "floating", picking up electrical noise and giving you random, unpredictable readings. This is where pull-up and pull-down resistors come to the rescue.
 
 ## The Floating Pin Problem
 
@@ -41,7 +41,7 @@ When the button is not pressed, current flows through the resistor to the GPIO p
 
 ## How Pull-down Resistors Work
 
-A pull-down resistor works in the opposite direction:W
+A pull-down resistor works in the opposite direction:
 
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/pull-down-resistor.svg" alt="Pull-Down Resistor" style="height:auto; display:block; margin:0 auto;"/>

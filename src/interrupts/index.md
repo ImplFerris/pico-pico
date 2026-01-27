@@ -73,7 +73,7 @@ That was a simple attempt to explain interrupts using an analogy. I hope you get
 
 ## Why We Need Interrupts
 
-In a simple program, the processor executes instructions one after another in a straight line. This works fine if your program is simple. But embedded systems often need to respond to external events: a button press, data from a sensor, a timer expiring.
+In a simple program, the processor executes instructions one after another in a straight line. This works fine if your program is simple, but embedded systems often need to respond to external events: a button press, data from a sensor, a timer expiring.
 
 Without interrupts, the only way to detect these events is through polling: continuously checking a status register or input pin in a loop to see if something has happened. It's like repeatedly asking:
 

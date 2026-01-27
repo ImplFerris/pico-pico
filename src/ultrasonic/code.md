@@ -49,7 +49,7 @@ let max_duty = led.max_duty_cycle();
 // defmt::info!("Max duty cycle {}", max_duty);
 ```
 
-The duty cycle determines LED brightness; 0 is completely off, and `max_duty` is fully on.r
+The duty cycle determines LED brightness; 0 is completely off, and `max_duty` is fully on.
 
 ## Configuring Trigger and Echo Pins
 
