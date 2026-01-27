@@ -59,7 +59,7 @@ I have created a small form that helps you figure out which GPIO pin maps to whi
 
 In standard PWM (fast PWM), the counter counts up from 0 to TOP, then immediately resets to 0. This creates asymmetric edges where the output changes at different points in the cycle.
 
-Phase-correct PWM counts up to TOP, then counts back down to 0, creating a triangular waveform. The output switches symmetrically - once going up and once coming down. This produces centered pulses with edges that mirror each other, reducing electromagnetic interference and creating smoother transitions. The trade-off is that phase-correct mode runs at half the frequency of standard PWM for the same TOP value.
+Phase-correct PWM counts up to TOP, then counts back down to 0, creating a triangular waveform. The output switches symmetrically - once going up and once coming down. This produces centered pulses with edges that mirror each other, reducing electromagnetic interference and creating smoother transitions. The trade-off is that phase-correct mode runs at half the frequency of standard PWM for the same TOP value. See [Phase Correct Mode](top-divider-rp2350.html#phase-correct-mode) later on for more details on it.
 
 Configure PWM4 to operate in phase-correct mode for smoother output transitions.
 
