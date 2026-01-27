@@ -1,6 +1,6 @@
 # Simulation - LED Dimming with PWM
 
-Here is a simulation to show the dimming effect on an LED based on the duty cycle and the High and Low parts of the square wave. I set the default speed very slow so it is clear and not annoying to watch. To start it, click the “Start animation” button. You can increase the speed by reducing the delay time and watching the changes.
+Here is a simulation to show the dimming effect on an LED based on the duty cycle and the high and low parts of the square wave. I set the default speed very slow so it is clear and not annoying to watch. To start it, click the “Start animation” button. You can increase the speed by reducing the delay time and watching the changes.
 
 <style>
 .pwm-container {
