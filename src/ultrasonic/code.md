@@ -78,7 +78,7 @@ fn calculate_duty_cycle(distance: f64, max_duty: u16) -> u16 {
 }
 ```
 
-This function takes the measured distance and the maximum duty cycle value. If the distance is between 2cm (the sensor's minimum range) and 30cm, we normalize it to a 0-1 range and multiply by the maximum duty cycle. Objects closer than 2cm or farther than 30cm result in the LED turning off (duty cycle of 0).
+This function takes the measured distance and the maximum duty cycle value. If the distance is between 2 cm (the sensor's minimum range) and 30 cm, we normalize it to a 0-1 range and multiply by the maximum duty cycle. Objects closer than 2 cm or farther than 30 cm result in the LED turning off (duty cycle of 0).
 
 ## Measuring Distance with the Sensor
 

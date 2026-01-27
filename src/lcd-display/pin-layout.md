@@ -22,7 +22,7 @@ The I2C adapter simplifies the connection by converting I2C commands into parall
     <tr>
       <td>1</td>
       <td><span class="slanted-text red">VCC</span></td>
-      <td>Power supply (typically 5V)</td>
+      <td>Power supply (typically 5 V)</td>
     </tr>
     <tr>
       <td>2</td>
@@ -70,7 +70,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td>2</td>
       <td><span class="slanted-text red">VDD</span></td>
       <td>
-        Power supply for the LCD logic, typically 5V.
+        Power supply for the LCD logic, typically 5 V.
       </td>
     </tr>
     <tr>
@@ -130,7 +130,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td><span class="slanted-text red">A</span></td>
       <td>
         Backlight anode.
-        Often connected to 5V.
+        Often connected to 5 V.
         Some modules include an onboard current-limiting resistor.
       </td>
     </tr>

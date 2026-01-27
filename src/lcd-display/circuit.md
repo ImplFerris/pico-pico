@@ -4,23 +4,23 @@ We are going to connect an LCD1602 character display fitted with an I2C adapter 
 
 ## Voltage compatibility problem
 
-The Raspberry Pi Pico's GPIO pins are 3.3V tolerant. Anything significantly above 3.3 V on SDA or SCL can damage the Pico, either immediately or gradually over time.
+The Raspberry Pi Pico's GPIO pins are 3.3 V tolerant. Anything significantly above 3.3 V on SDA or SCL can damage the Pico, either immediately or gradually over time.
 
-Most LCD1602 modules with an I2C backpack are designed to run at 5 V. The I2C backpack usually has pull-up resistors connected to its supply voltage. When powered at 5 V, this means SDA and SCL idle at 5 V.
+Most LCD1602 modules with an I2C backpack are designed to run at 5 V. The I2C backpack usually has pull-up resistors connected to its supply voltage. When powered at 5 V, this means SDA and SCL idle at 5 V.
 
-If SDA and SCL from such a module are connected directly to the Pico, the Pico GPIO pins will be exposed to 5 V. This is the core problem we must address.
+If SDA and SCL from such a module are connected directly to the Pico, the Pico GPIO pins will be exposed to 5 V. This is the core problem we must address.
 
 ## A commonly suggested shortcut you will see online
 
-Many online tutorials suggest powering the LCD1602 and its I2C backpack from 5 V and connecting SDA and SCL directly to the Pico.  I have tested this setup myself, and it does work. However, it is electrically unsafe, and long-term use can damage the Pico GPIO pins.
+Many online tutorials suggest powering the LCD1602 and its I2C backpack from 5 V and connecting SDA and SCL directly to the Pico.  I have tested this setup myself, and it does work. However, it is electrically unsafe, and long-term use can damage the Pico GPIO pins.
 
 For this reason, even though it functions, this wiring method should not be considered safe or recommended.
 
-## The lazy but reasonably safe approach: power everything at 3.3 V
+## The lazy but reasonably safe approach: power everything at 3.3 V
 
-For demos, experiments, and learning projects, the simplest and safest approach is to power the LCD1602 I2C module from the Pico 3.3 V rail instead of 5 V.
+For demos, experiments, and learning projects, the simplest and safest approach is to power the LCD1602 I2C module from the Pico 3.3 V rail instead of 5 V.
 
-When the LCD backpack is powered at 3.3 V, its I2C pull-up resistors pull SDA and SCL to 3.3 V instead of 5 V. This immediately removes the voltage compatibility problem, and SDA and SCL can be connected directly to the Pico.
+When the LCD backpack is powered at 3.3 V, its I2C pull-up resistors pull SDA and SCL to 3.3 V instead of 5 V. This immediately removes the voltage compatibility problem, and SDA and SCL can be connected directly to the Pico.
 
 The trade-off is that the LCD contrast and backlight brightness will be reduced. In most indoor environments, the display remains readable and is usually more than adequate for demonstrations and testing.
 
@@ -55,7 +55,7 @@ This approach avoids extra components, and avoids stressing the Pico GPIO pins.
           <div class="male-right"></div>
         </div>
       </td>
-      <td>3.3V</td>
+      <td>3.3 V</td>
       <td>3.3 power supply for the LCD</td>
     </tr>
     <tr>
@@ -89,11 +89,11 @@ This approach avoids extra components, and avoids stressing the Pico GPIO pins.
 
 ## Best approach: Using a level shifter
 
-If you need full backlight brightness, or if your LCD module does not work reliably at 3.3 V, then you must power it at 5 V. But this means you need to protect your Pico from the 5V signals.
+If you need full backlight brightness, or if your LCD module does not work reliably at 3.3 V, then you must power it at 5 V. But this means you need to protect your Pico from the 5 V signals.
 
 The solution is a bidirectional logic level converter (also called a level shifter). This small module converts signals between 3.3 volts and 5 volts in both directions. You can find these as "2-Channel" or "4-Channel I2C/SPI Logic Level Converter" modules.
 
-The Pico connects to the 3.3V side of the level shifter, the LCD connects to the 5V side. The level shifter makes sure the Pico only ever sees 3.3V signals, while the LCD gets the 5V signals it needs.
+The Pico connects to the 3.3 V side of the level shifter, the LCD connects to the 5 V side. The level shifter makes sure the Pico only ever sees 3.3 V signals, while the LCD gets the 5 V signals it needs.
 
 This is the electrically correct and safe method, but it adds a few extra wires and requires an additional module.
 
@@ -104,8 +104,7 @@ The circuit diagram may look a little confusing at first glance, but the idea is
 
 <h3>Power Connections (Connect These First)</h3>
 
-First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the level shifter. Connect the Pico VBUS (5 V) to the pin marked HV(High Voltage) on the level shifter. The LCD VCC pin is also powered directly from the Pico VBUS pin. Ground must be common, so connect Pico GND, the level shifter GND, and the LCD GND together.
-
+First, connect the Pico 3.3 V output to the pin marked LV (Low Voltage) on the level shifter. Connect the Pico VBUS (5 V) to the pin marked HV (High Voltage) on the level shifter. The LCD VCC pin is also powered directly from the Pico VBUS pin. Ground must be common, so connect Pico GND, the level shifter GND, and the LCD GND together.
 
 <table>
   <thead>
@@ -147,7 +146,7 @@ First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the le
     </tr>
     <tr>
       <td>Raspberry Pi Pico</td>
-      <td>3.3V</td>
+      <td>3.3 V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire orange" style="width: 140px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -156,11 +155,11 @@ First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the le
       </td>
       <td>Level Shifter</td>
       <td>LV</td>
-      <td>Low voltage power (3.3V side)</td>
+      <td>Low voltage power (3.3 V side)</td>
     </tr>
     <tr>
       <td>Raspberry Pi Pico</td>
-      <td>VBUS (5V)</td>
+      <td>VBUS (5 V)</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 140px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -169,11 +168,11 @@ First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the le
       </td>
       <td>Level Shifter</td>
       <td>HV</td>
-      <td>High voltage power (5V side)</td>
+      <td>High voltage power (5 V side)</td>
     </tr>
     <tr>
       <td>Raspberry Pi Pico</td>
-      <td>VBUS (5V)</td>
+      <td>VBUS (5 V)</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 140px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -182,7 +181,7 @@ First, connect the Pico 3.3 V output to the pin marked LV(Low Voltage) on the le
       </td>
       <td>LCD Display</td>
       <td>VCC</td>
-      <td>5V power supply for the LCD</td>
+      <td>5 V power supply for the LCD</td>
     </tr>
   </tbody>
 </table>
@@ -260,4 +259,4 @@ Now coming to the I2C lines. The Pico pins must always connect to the pins on th
 
 ### How it works?
 
-In simple terms, when the Pico communicates over an I2C line, the LVx side operates at 3.3 V, and the level shifter presents a 5 V signal on the matching HVx side for the LCD. When the LCD communicates at 5 V, the level shifter translates that signal back so the Pico only ever sees 3.3 V on the LVx side. This way, both devices operate at their required voltages without stressing the Pico GPIO pins.
+In simple terms, when the Pico communicates over an I2C line, the LVx side operates at 3.3 V, and the level shifter presents a 5 V signal on the matching HVx side for the LCD. When the LCD communicates at 5 V, the level shifter translates that signal back so the Pico only ever sees 3.3 V on the LVx side. This way, both devices operate at their required voltages without stressing the Pico GPIO pins.

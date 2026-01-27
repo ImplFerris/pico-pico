@@ -10,19 +10,19 @@ In this configuration, the NTC thermistor is placed on the top of the voltage di
 > Swapping the thermistor and the fixed resistor will invert the behavior of the output voltage.
 > If you place the thermistor as R2 instead of R1, increase in temperature will cause \\( V_{out} \\) to decrease instead.
 
-### Thermistor at 25°C
+### Thermistor at 25 °C
 
-The thermistor has a resistance of 10kΩ at 25°C, resulting in an output voltage (\\( V_{out} \\)) of 1.65V.
+The thermistor has a resistance of 10 kΩ at 25 °C, resulting in an output voltage (\\( V_{out} \\)) of 1.65 V.
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/thermistor0.png"/>
 
-## Thermistor at 10°C
+## Thermistor at 10 °C
 
 The thermistor's resistance increases, resulting in a lower output voltage (\\( V_{out} \\)).
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/thermistor2.png"/>
 
-## Thermistor at 100°C
+## Thermistor at 100 °C
 
 The thermistor's resistance decreases due to its negative temperature coefficient. This results in increase of output voltage.
 
@@ -141,9 +141,9 @@ The thermistor's resistance decreases due to its negative temperature coefficien
             <label class="thermistor-sim-label">🌡️ Temperature</label>
             <div class="thermistor-sim-slider-wrap">
                 <input type="range" class="thermistor-sim-slider" id="thermistorSimTemp" min="0" max="100" value="25">
-                <span class="thermistor-sim-value" id="thermistorSimValue">25°C</span>
+                <span class="thermistor-sim-value" id="thermistorSimValue">25 °C</span>
             </div>
-            <div class="thermistor-sim-indicator" id="thermistorSimIndicator">25°</div>
+            <div class="thermistor-sim-indicator" id="thermistorSimIndicator">25 °C</div>
         </div>
     </div>
 </div>
@@ -156,9 +156,9 @@ The thermistor's resistance decreases due to its negative temperature coefficien
         const valueDisplay = document.getElementById('thermistorSimValue');
         const indicator = document.getElementById('thermistorSimIndicator');
 
-        const R2 = 10000; // Fixed resistor 10kΩ
+        const R2 = 10000; // Fixed resistor 10 kΩ
         const Vin = 3.3;  // Supply voltage
-        const R0 = 10000; // Resistance at 25°C
+        const R0 = 10000; // Resistance at 25 °C
         const T0 = 25;    // Reference temperature
         const beta = 3950; // Beta coefficient (typical NTC)
 
@@ -279,39 +279,39 @@ The thermistor's resistance decreases due to its negative temperature coefficien
             drawWire(lx, ty, lx, vy);
             drawWire(lx, vy + 10, lx, by);
 
-            drawVoltageSource(lx, vy, Vin.toFixed(1) + 'V');
+            drawVoltageSource(lx, vy, Vin.toFixed(1) + ' V');
 
-            let r1Display = R1 >= 1000 ? (R1/1000).toFixed(1) + 'kΩ' : R1.toFixed(0) + 'Ω';
+            let r1Display = R1 >= 1000 ? (R1/1000).toFixed(1) + ' kΩ' : R1.toFixed(0) + ' Ω';
             drawResistor(rx, r1y, 'RT', r1Display, true);
-            drawResistor(rx, r2y, 'R2', (R2/1000).toFixed(1) + 'kΩ', false);
+            drawResistor(rx, r2y, 'R2', (R2/1000).toFixed(1) + ' kΩ', false);
 
             ctx.fillStyle = '#fabd2f';
             ctx.beginPath();
             ctx.arc(rx, my, 4, 0, Math.PI * 2);
             ctx.fill();
 
-            drawVoltageLabel(rx, my, (Vout * 1000).toFixed(0) + ' mV');
+            drawVoltageLabel(rx, my, (Vout * 1000).toFixed(0) + ' mV');
         }
 
         function update() {
             const temp = parseInt(slider.value);
-            valueDisplay.textContent = temp + '°C';
+            valueDisplay.textContent = temp + ' °C';
 
             // Color transition from cold (blue) to hot (red)
             let hue, lightness;
             if (temp < 50) {
-                // 0-50°C: Blue to Yellow
+                // 0-50 °C: Blue to Yellow
                 hue = 200 - (temp * 2.6); // 200 (blue) to 70 (yellow)
                 lightness = 50 + (temp * 0.2);
             } else {
-                // 50-100°C: Yellow to Red
+                // 50-100 °C: Yellow to Red
                 hue = 70 - ((temp - 50) * 1.2); // 70 (yellow) to 10 (red)
                 lightness = 60 + ((temp - 50) * 0.2);
             }
 
             indicator.style.background = `radial-gradient(circle, hsl(${hue}, 80%, ${lightness}%), hsl(${hue}, 80%, ${lightness - 20}%))`;
             indicator.style.boxShadow = `0 0 ${temp * 0.4}px hsla(${hue}, 100%, 50%, ${temp / 150 + 0.2})`;
-            indicator.textContent = temp + '°';
+            indicator.textContent = temp + ' °C';
 
             drawCircuit();
         }

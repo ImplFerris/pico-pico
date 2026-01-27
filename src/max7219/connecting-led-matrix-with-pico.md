@@ -42,7 +42,7 @@ The MAX7219 display requires five connections to the Raspberry Pi Pico 2. This e
       <td>DIN</td>
     </tr>
     <tr>
-      <td>VBUS (5V)</td>
+      <td>VBUS (5 V)</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>

@@ -4,19 +4,19 @@ A Liquid Crystal Display (LCD) works by using liquid crystals to control how lig
 
 The screen itself does not emit light. Instead, a backlight behind the display provides illumination. The liquid crystals selectively block this backlight to create dark areas, which form the visible characters on the screen.
 
-### 16x2 LCD Display and 5x8 Pixel Matrix
+### 16 × 2 LCD Display and 5 × 8 Pixel Matrix
 
-A 16x2 LCD has 2 rows and 16 columns, so it can display a total of 32 characters at once. Each character on the screen is built from a 5x8 pixel matrix. That means every character is formed using 5 vertical columns and 8 horizontal rows of tiny dots.
+A 16 × 2 LCD has 2 rows and 16 columns, so it can display a total of 32 characters at once. Each character on the screen is built from a 5x8 pixel matrix. That means every character is formed using 5 vertical columns and 8 horizontal rows of tiny dots.
 
 <img style="display: block; margin: auto;" alt="lcd1602" src="./images/lcd1602-pixel-layout.png"/>
 
 These dots turn on and off to form letters, numbers, and symbols.
 
-### Displaying Text and Custom Characters on 16x2 LCD
+### Displaying Text and Custom Characters on 16 × 2 LCD
 
-We do not need to draw individual pixels when displaying normal text. This is handled automatically by the HD44780 controller. When we send an ASCII character, the controller looks up the corresponding 5x8 pattern and displays it on the screen.
+We do not need to draw individual pixels when displaying normal text. This is handled automatically by the HD44780 controller. When we send an ASCII character, the controller looks up the corresponding 5 × 8 pattern and displays it on the screen.
 
-If we want to display custom symbols, such as icons or special characters, we can define our own 5x8 pixel patterns. These patterns are stored in the LCD memory, and once defined, we can display them like regular characters. One important limitation is that the LCD can store only 8 custom characters at a time.
+If we want to display custom symbols, such as icons or special characters, we can define our own 5 × 8 pixel patterns. These patterns are stored in the LCD memory, and once defined, we can display them like regular characters. One important limitation is that the LCD can store only 8 custom characters at a time.
 
 ### Data Transfer Mode
 

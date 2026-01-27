@@ -28,7 +28,7 @@ In this book, we will focus on short range RFID, where the tag needs to be very 
 RFID systems can be categorized by their operating frequency, which directly affects communication range, data rate, and typical use cases. The three main categories are Low Frequency (LF), High Frequency (HF), and Ultra High Frequency (UHF).
 
 - **Low Frequency (LF)**
-LF RFID operates around 125 kHz. These systems have a very short read range, typically up to about 10 cm. Data transfer is slow, but LF RFID is relatively tolerant to interference from metal and liquids. Because of this, it is commonly used in simple access control systems and livestock tracking.
+LF RFID operates around 125 kHz. These systems have a very short read range, typically up to about 10 cm. Data transfer is slow, but LF RFID is relatively tolerant to interference from metal and liquids. Because of this, it is commonly used in simple access control systems and livestock tracking.
 
 - **High Frequency (HF)**
 HF RFID operates at 13.56 MHz and typically offers a read range from about 10 cm up to 1 m, depending on antenna size and power. HF systems provide moderate data rates and support more complex protocols, allowing both read and write operations. This category is widely used in access control systems for offices, apartments, and hotels, as well as in ticketing, contactless payments, and short range data transfer.

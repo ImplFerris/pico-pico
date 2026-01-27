@@ -48,7 +48,7 @@ When the controller wants to talk to a target, it starts by sending a START cond
 
 ## Speed Modes
 
-I2C supports different speed modes depending on how fast data needs to be transferred. Standard mode goes up to 100 kbps, fast mode reaches 400 kbps, and Fast Mode Plus allows up to 1 Mbps. For even faster communication, High-Speed mode supports up to 3.4 Mbps. There is also an Ultra-Fast mode (5 Mbps).  The speed you can use depends on what speed modes are supported by both the microcontroller's I2C interface and the connected target devices.
+I2C supports different speed modes depending on how fast data needs to be transferred. Standard mode goes up to 100 kbps, fast mode reaches 400 kbps, and Fast Mode Plus allows up to 1 Mbps. For even faster communication, High-Speed mode supports up to 3.4 Mbps. There is also an Ultra-Fast mode (5 Mbps). The speed you can use depends on what speed modes are supported by both the microcontroller's I2C interface and the connected target devices.
 
 ## Why I2C?
 

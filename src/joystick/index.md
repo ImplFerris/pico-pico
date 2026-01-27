@@ -6,7 +6,7 @@ In this section, we'll explore how to use the Joystick Module. It is similar to 
 
 <img style="display: block; margin: auto;width:250px;" alt="joystick" src="./images/joystick.jpg"/>
 
-You can move the joystick knob vertically and horizontally, sending its position (X and Y axes) to the MCU (e.g., Pico). Additionally, the knob can be pressed down like a button.  The joystick typically operates at 5V, but it can also be connected to 3.3V.
+You can move the joystick knob vertically and horizontally, sending its position (X and Y axes) to the MCU (e.g., Pico). Additionally, the knob can be pressed down like a button.  The joystick typically operates at 5 V, but it can also be connected to 3.3 V.
 
 ## How it works?
 The joystick module has two 10K potentiometers: one for the X-axis and another for the Y-axis. It also includes a push button, which is visible.

@@ -1,9 +1,9 @@
 # Servo with Raspberry Pi Pico 2 (RP2350)
 
-The required power supply and pulse width can vary depending on the servo motor you use, so it is always best to check the datasheet or product specifications. The servo I am using operates in the 4.8V to 6V range, so I will power it with 5V.
+The required power supply and pulse width can vary depending on the servo motor you use, so it is always best to check the datasheet or product specifications. The servo I am using operates in the 4.8 V to 6 V range, so I will power it with 5 V.
 
 1. Ground (GND): Connect the servo's GND pin (typically the brown wire, though it may vary) to any ground pin on the Pico 2.
-2. Power (VCC): Connect the servo's VCC pin (usually the red wire) to the Pico 2's 5V power pin(VBUS).
+2. Power (VCC): Connect the servo's VCC pin (usually the red wire) to the Pico 2's 5 V power pin(VBUS).
 3. Signal (PWM): Connect the servo's control (signal) pin to GPIO15 on the Pico 2, configured for PWM. This is commonly the orange wire (may vary).
 
 <table style="margin-bottom:20px">
@@ -25,7 +25,7 @@ The required power supply and pulse width can vary depending on the servo motor 
         </div>
       </td>
       <td>Power (Red Wire)</td>
-      <td>Supplies 5V power to the servo.</td>
+      <td>Supplies 5 V power to the servo.</td>
     </tr>
     <tr>
       <td>GND</td>

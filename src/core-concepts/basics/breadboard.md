@@ -13,7 +13,7 @@ The picture shows how the holes are connected inside the breadboard.
 
 The long vertical lines on both sides are called power rails. People usually connect the power supply to the rail marked with "+" and the ground to the rail marked with "-". Each hole in a rail is connected from top to bottom.
 
-Let's say you want to give power to many parts. You only need to connect your power source (for example, 3.3V or 5V) to one point on the "+" rail. After that, you can use any other hole on the same rail to power your components.
+Let's say you want to give power to many parts. You only need to connect your power source (for example, 3.3 V or 5 V) to one point on the "+" rail. After that, you can use any other hole on the same rail to power your components.
 
 ## Middle area
 

@@ -1,6 +1,6 @@
 # Connecting the Joystick to the Raspberry Pi Pico
 
-Let's connect the joystick to the Raspberry Pi Pico. We need to connect the VRX and VRY pins to the ADC pins of the Pico. The joystick will be powered with 3.3V instead of 5V because the Pico's GPIO pins are only 3.3V tolerant. Connecting it to 5V could damage the Pico's pins. Thankfully, the joystick can operate at 3.3V as well.
+Let's connect the joystick to the Raspberry Pi Pico. We need to connect the VRX and VRY pins to the ADC pins of the Pico. The joystick will be powered with 3.3 V instead of 5 V because the Pico's GPIO pins are only 3.3 V tolerant. Connecting it to 5 V could damage the Pico's pins. Thankfully, the joystick can operate at 3.3 V as well.
 
 <table>
   <thead>
@@ -22,7 +22,7 @@ Let's connect the joystick to the Raspberry Pi Pico. We need to connect the VRX 
       <td>GND</td>
     </tr>
     <tr>
-      <td>3.3V</td>
+      <td>3.3 V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>

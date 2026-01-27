@@ -74,7 +74,7 @@ let i2c_bus = I2c::new_async(p.I2C0, scl, sda, Irqs, i2c_config);
 
 We have connected the OLED's SDA line to Pin 16 and the SCL line to Pin 17. Throughout this chapter we will keep using these same pins. If you have connected your display to a different valid I2C pair, adjust the code to match your wiring.
 
-We are using the new_async method to create an I2C instance in async mode. This allows I2C transfers to await instead of blocking the CPU. We use a 400 kHz bus speed, which is commonly supported by SSD1306 displays.
+We are using the new_async method to create an I2C instance in async mode. This allows I2C transfers to await instead of blocking the CPU. We use a 400 kHz bus speed, which is commonly supported by SSD1306 displays.
 
 ## Initialize Display
 

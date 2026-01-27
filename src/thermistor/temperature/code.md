@@ -88,11 +88,11 @@ We define a few constants that describe the thermistor and ADC behavior.
 const ADC_LEVELS: f64 = 4096.0;
 
 const B_VALUE: f64 = 3950.0;
-const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10kΩ)
-const REF_TEMP: f64 = 25.0; // Reference temperature 25°C
+const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10 kΩ)
+const REF_TEMP: f64 = 25.0; // Reference temperature 25 °C
 ```
 
-The thermistor we used has a resistance of 10 kΩ at 25°C and a B value of 3950. The pico has a 12-bit ADC resolution, so 4096 possible ADC levels.
+The thermistor we used has a resistance of 10 kΩ at 25 °C and a B value of 3950. The pico has a 12-bit ADC resolution, so 4096 possible ADC levels.
 
 ## Helper functions
 
@@ -133,7 +133,7 @@ fn celsius_to_kelvin(celsius: f64) -> f64 {
 
 ## Display Setup
 
-We configure the OLED to use I2C with SDA on GPIO 16 and SCL on GPIO 17. We set the I2C frequency to 400 kHz.
+We configure the OLED to use I2C with SDA on GPIO 16 and SCL on GPIO 17. We set the I2C frequency to 400 kHz.
 
 We initialize the SSD1306 display in buffered graphics mode. In this mode, all drawing operations happen in memory first. The content is sent to the OLED only when we flush the buffer. We also define the text style, you can adjust the font size.
 
@@ -180,7 +180,7 @@ let mut buff: String<64> = String::new();
 
 ### Convert the Reference Temperature to Kelvin
 
-We define the reference temperature for the thermistor as 25°C. Since the B equation requires temperature in Kelvin, we convert this value once during initialization. This avoids repeating the conversion inside the loop.
+We define the reference temperature for the thermistor as 25 °C. Since the B equation requires temperature in Kelvin, we convert this value once during initialization. This avoids repeating the conversion inside the loop.
 
 ```rust
 let ref_temp = celsius_to_kelvin(REF_TEMP);
@@ -309,8 +309,8 @@ bind_interrupts!(struct Irqs {
 const ADC_LEVELS: f64 = 4096.0;
 
 const B_VALUE: f64 = 3950.0;
-const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10kΩ)
-const REF_TEMP: f64 = 25.0; // Reference temperature 25°C
+const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10 kΩ)
+const REF_TEMP: f64 = 25.0; // Reference temperature 25 °C
 
 // We have already covered about this formula in ADC chpater
 fn adc_to_resistance(adc_value: u16, r2_res: f64) -> f64 {

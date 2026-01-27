@@ -8,7 +8,7 @@ This is where the Analog to Digital Converter(ADC) comes in.  An Analog to Digit
 
 You may recall from the earlier chapter on PWM that we explored how a digital system can create an analog-like output by rapidly switching a pin on and off. ADC does the opposite. It allows the microcontroller to read and understand analog inputs from the real world. Together, peripherals like PWM and ADC allow embedded systems to both sense their environment and control it.
 
-Consider a simple example: a temperature monitoring system. A temperature sensor outputs a voltage that changes with temperature, for example 0 V at 0°C and 3.3 V at 100°C. Without an ADC, this smooth voltage signal would be meaningless to the microcontroller. The ADC samples the voltage at regular intervals and converts each sample into a digital value. Your code can then read that value, interpret it as a temperature, and respond accordingly.
+Consider a simple example: a temperature monitoring system. A temperature sensor outputs a voltage that changes with temperature, for example 0 V at 0 °C and 3.3 V at 100 °C. Without an ADC, this smooth voltage signal would be meaningless to the microcontroller. The ADC samples the voltage at regular intervals and converts each sample into a digital value. Your code can then read that value, interpret it as a temperature, and respond accordingly.
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/adc.jpg"/>
 
@@ -20,7 +20,7 @@ An 8-bit ADC divides its input voltage range into 256 distinct levels (2<sup>8</
 
 ### Example
 
-Let's make this concrete with an example. Suppose you are using a 10-bit ADC with a reference voltage of 3.3V. The ADC will represent voltages from 0V to 3.3V as digital values from 0 to 1,023.
+Let's make this concrete with an example. Suppose you are using a 10-bit ADC with a reference voltage of 3.3 V. The ADC will represent voltages from 0 V to 3.3 V as digital values from 0 to 1,023.
 
 The smallest voltage change the ADC can detect (called the step size) is calculated as:
 
@@ -29,15 +29,15 @@ The smallest voltage change the ADC can detect (called the step size) is calcula
 \\]
 
 ```text
-Step Size = 3.3V / 1,024 = 3.22 mV
+Step Size = 3.3 V / 1,024 = 3.22 mV
 ```
 
-This means the ADC cannot tell the difference between two voltages that are closer than about 3.22 mV. For example, if a sensor output changes from 1.500 V to 1.502 V, the ADC will likely report the same digital value for both.
+This means the ADC cannot tell the difference between two voltages that are closer than about 3.22 mV. For example, if a sensor output changes from 1.500 V to 1.502 V, the ADC will likely report the same digital value for both.
 
-Compare this to a 12-bit ADC with the same 3.3V reference:
+Compare this to a 12-bit ADC with the same 3.3 V reference:
 
 ```text
-Step Size = 3.3V / 4,096 = 0.81 mV
+Step Size = 3.3 V / 4,096 = 0.81 mV
 ```
 
 The 12-bit converter offers significantly finer precision, which can be critical in applications requiring accurate measurements.
@@ -56,7 +56,7 @@ Where:
 
 ## Converting ADC Values to Voltage
 
-When you read from the ADC in your code, it returns a raw digital value between 0 and 4095 (for a 12-bit ADC). This number represents where the measured voltage falls within the 0V to 3.3V range. To convert this raw value back into an actual voltage, you need a simple calculation.
+When you read from the ADC in your code, it returns a raw digital value between 0 and 4095 (for a 12-bit ADC). This number represents where the measured voltage falls within the 0 V to 3.3 V range. To convert this raw value back into an actual voltage, you need a simple calculation.
 
 The conversion formula is:
 
@@ -64,7 +64,7 @@ The conversion formula is:
 \text{Voltage} = \frac{\text{ADC Reading} \times \text{Reference Voltage}}{2^{\text{bits}}}
 \\]
 
-For the RP2350 with its 12-bit ADC and 3.3V reference voltage:
+For the RP2350 with its 12-bit ADC and 3.3 V reference voltage:
 
 \\[
 \text{Voltage} = \frac{\text{ADC Reading} \times 3.3}{4096}
@@ -75,7 +75,7 @@ For the RP2350 with its 12-bit ADC and 3.3V reference voltage:
 Let's say we get an ADC reading of 1000.
 
 ```text
-Voltage = (1000 × 3.3) / 4096 = 0.806V
+Voltage = (1000 × 3.3) / 4096 = 0.806 V
 ```
 
 ## Reference

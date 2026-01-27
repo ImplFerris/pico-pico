@@ -16,7 +16,7 @@ let mut i2c = i2c::I2c::new_blocking(p.I2C0, scl, sda, Config::default());
 
 We use the `new_blocking` method to create an I2C instance that waits for each operation to finish before continuing. First we choose which I2C peripheral we want to work with, either I2C0 or I2C1. Once we select the peripheral, we must pair it with the correct GPIO pins for SCL and SDA.
 
-For the configuration, the default implementation gives us standard 100 kHz communication and also enables internal pullups.
+For the configuration, the default implementation gives us standard 100 kHz communication and also enables internal pullups.
 
 ## Customizing Config
 

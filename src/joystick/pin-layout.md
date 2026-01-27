@@ -18,15 +18,15 @@ The joystick has a total of 5 pins: power supply, ground, X-axis output, Y-axis 
     </tr>
     <tr>
       <td><span class="slanted-text red">VCC</span></td>
-      <td>Power supply pin (typically 5V or 3.3V ).</td>
+      <td>Power supply pin (typically 5 V or 3.3 V).</td>
     </tr>
     <tr>
       <td><span class="slanted-text green">VRX</span></td>
-      <td>The X-axis analog output pin varies its voltage based on the joystick's horizontal position, ranging from 0V to VCC as the joystick is moved left and right.</td>
+      <td>The X-axis analog output pin varies its voltage based on the joystick's horizontal position, ranging from 0 V to VCC as the joystick is moved left and right.</td>
     </tr>
     <tr>
       <td><span class="slanted-text blue">VRY</span></td>
-      <td>The Y-axis analog output pin varies its voltage based on the joystick's vertical position, ranging from 0V to VCC as the joystick is moved up and down.</td>
+      <td>The Y-axis analog output pin varies its voltage based on the joystick's vertical position, ranging from 0 V to VCC as the joystick is moved up and down.</td>
     </tr>
     <tr>
       <td><span class="slanted-text purple">SW</span></td>

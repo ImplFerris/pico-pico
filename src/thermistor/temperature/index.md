@@ -8,7 +8,7 @@ By now, you should already be familiar with using an OLED display with the Raspb
 
 - NTC 103 Thermistor: 10K OHM, 5mm epoxy coated disc
 - An OLED display: (0.96 Inch I2C/IIC 4-Pin, 128x64 resolution, SSD1306 chip)
-- 10kΩ Resistor: Used with the thermistor to form a voltage divider
+- 10 kΩ Resistor: Used with the thermistor to form a voltage divider
 - Jumper wires
 
 ## Circuit to connect OLED, Thermistor with Raspberry Pi Pico
@@ -17,7 +17,7 @@ By now, you should already be familiar with using an OLED display with the Raspb
 
 ### Thermistor Connection
 
-We are going to connect the thermistor as a voltage divider and feed the divider output into an ADC pin on the Pico. Here, the thermistor acts as R1 and is connected to the 3.3 V supply, which means the ADC value decreases as the temperature increases (NTC behavior).
+We are going to connect the thermistor as a voltage divider and feed the divider output into an ADC pin on the Pico. Here, the thermistor acts as R1 and is connected to the 3.3 V supply, which means the ADC value decreases as the temperature increases (NTC behavior).
 
 <table>
   <thead>

@@ -17,17 +17,17 @@ V_{out} = V_{in} \times \frac{R_2}{R_1 + R_2}
 ### Example Calculation for \\( V_{out} \\)
 
 Given:
-- \\( V_{in} = 3.3V \\)
-- \\( R_1 = 10 k\Omega \\)
-- \\( R_2 = 10 k\Omega \\)
+- \\( V_{in} = 3.3 V \\)
+- \\( R_1 = 10 k\Omega \\)
+- \\( R_2 = 10 k\Omega \\)
 
 Substitute the values:
 
 \\[
-V_{out} = 3.3V \times \frac{10 k\Omega}{10 k\Omega + 10 k\Omega} = 3.3V \times \frac{10}{20} = 3.3V \times 0.5 = 1.65V
+V_{out} = 3.3 V \times \frac{10 k\Omega}{10 k\Omega + 10 k\Omega} = 3.3 V \times \frac{10}{20} = 3.3 V \times 0.5 = 1.65 V
 \\]
 
-The output voltage \\( V_{out} \\) is 1.65V.
+The output voltage \\( V_{out} \\) is 1.65 V.
 
 ```rust,editable
 fn main() {
@@ -71,7 +71,7 @@ canvas {
 <p class="formula" id="filledFormula">
     Filled Formula: V<sub>out</sub> = 3.3 × (10000 / (10000 + 10000))
 </p>
-<p id="result">Output Voltage (Vout): 1.65 V</p>
+<p id="result">Output Voltage (Vout): 1.65 V</p>
 
 <canvas id="circuitCanvas" width="600" height="400"></canvas>
 

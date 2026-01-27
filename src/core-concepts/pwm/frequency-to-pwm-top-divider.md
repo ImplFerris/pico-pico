@@ -6,7 +6,7 @@ I wanted to see if there was something similar available in Rust. While discussi
 
 You can use that Rust code directly in your own project. I compiled the same code to WASM and built a small form around it so that you can try it out here.
 
-By default, the source clock frequency is set to the RP2350 system clock frequency of 150 MHz, and the target frequency is set to 50 Hz. You can change both values if needed.
+By default, the source clock frequency is set to the RP2350 system clock frequency of 150 MHz, and the target frequency is set to 50 Hz. You can change both values if needed.
 
 <style>
   .pwm-card {

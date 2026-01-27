@@ -9,7 +9,7 @@ To understand PWM, we first need to understand what is digital and analog signal
 
 ### Digital Signals
 
-A digital signal has only two states: HIGH or LOW. In microcontrollers, HIGH typically means the full voltage (5 V or 3.3 V), and LOW means 0V. There's nothing in between. Think of it like a light switch that can only be fully ON or fully OFF.
+A digital signal has only two states: HIGH or LOW. In microcontrollers, HIGH typically means the full voltage (5 V or 3.3 V), and LOW means 0 V. There's nothing in between. Think of it like a light switch that can only be fully ON or fully OFF.
 
 <img style="display: block; margin: auto;" alt="Digital Signals" src="./images/digial-signal.svg"/>
 
