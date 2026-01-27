@@ -21,8 +21,8 @@ Frequency tells us how many complete cycles happen in one second. It's measured 
 
 For example:
 
-- 1 Hz = 1 cycle per second (like the top part of the diagram)
-- 5 Hz = 5 cycles per second (like the bottom part of the diagram)
+- 1 Hz = 1 cycle per second (like the top part of the diagram)
+- 5 Hz = 5 cycles per second (like the bottom part of the diagram)
 
 ## Relationship
 
@@ -47,14 +47,14 @@ The time it takes to finish one round is the period. How fast you repeat the rou
 
 ### Examples
 
-So if the period is 1 second, then the frequency will be 1Hz.
+So if the period is 1 second, then the frequency will be 1 Hz.
 
 \\[
-1 \text{Hz} = \\frac{1 \text{ cycle}}{1 \text{ second}} = \\frac{1}{1 \text{ s}}
+1 \text{ Hz} = \\frac{1 \text{ cycle}}{1 \text{ second}} = \\frac{1}{1 \text{ s}}
 \\]
 
-For example, if the period is 20ms (0.02s), the frequency will be 50Hz.
+For example, if the period is 20 ms (0.02 s), the frequency will be 50 Hz.
 
 \\[
-\text{Frequency} = \\frac{1}{20 \text{ ms}} = \\frac{1}{0.02 \text{ s}} = 50 \text{ Hz}
+\text{Frequency} = \\frac{1}{20 \text{ ms}} = \\frac{1}{0.02 \text{ s}} = 50 \text{ Hz}
 \\]

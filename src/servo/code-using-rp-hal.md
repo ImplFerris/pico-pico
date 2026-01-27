@@ -52,19 +52,19 @@ Finally, inside the main loop, we update the duty cycle to move the servo betwee
 
 ```rust
 loop {
-    // Move servo to 0° position (2.5% duty cycle = 25/1000)
+    // Move servo to 0° position (2.5 % duty cycle = 25/1000)
     servo
         .set_duty_cycle_fraction(25, 1000)
         .expect("invalid min duty cycle");
     timer.delay_ms(1000);
 
-    // 90° position (7.5% duty cycle)
+    // 90° position (7.5 % duty cycle)
     servo
         .set_duty_cycle_fraction(75, 1000)
         .expect("invalid half duty cycle");
     timer.delay_ms(1000);
 
-    // 180° position (12% duty cycle)
+    // 180° position (12 % duty cycle)
     servo
         .set_duty_cycle_fraction(120, 1000)
         .expect("invalid max duty cycle");
