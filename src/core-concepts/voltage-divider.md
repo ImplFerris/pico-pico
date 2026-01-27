@@ -79,6 +79,10 @@ canvas {
 
 I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/circuit/) to create the diagram. It's a great tool for drawing circuits. You can download the file I created, [`voltage-divider.circuitjs.txt`](./voltage-divider.circuitjs.txt), and import it to experiment with the circuit.
 
+## Reference
+
+- [Must Calculate - Resistive voltage divider](https://mustcalculate.com/electronics/resistivevoltagedivider.php?vin=3.3&vout=&r1=10k&r2=10k) providing many more electric calculations
+
 <script>
     function updateAndCalculate() {
         updateFormula();
