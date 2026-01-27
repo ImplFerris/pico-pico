@@ -4,7 +4,7 @@ In this exercise, we will generate a beep sound using a buzzer. The idea is simi
 
 We will repeatedly switch the PWM duty cycle between 50 percent and 0 percent, with a delay in between. When the duty cycle is 50 percent, the buzzer produces sound. When it is 0 percent, the sound stops. Repeating this creates a clear beep.
 
-You can try this without changing the PWM frequency. In this example, we set the PWM frequency to 440.0 Hz, which corresponds to the `a4` musical note. You do not need to know anything about musical notes for this. The important point is that we generate a fixed-frequency tone and turn the sound on and off by changing the duty cycle.
+You can try this without changing the PWM frequency. In this example, we set the PWM frequency to 440.0 Hz, which corresponds to the `a4` musical note or the call progress tone used in North America and most of Europe. You do not need to know anything about musical notes for this. The important point is that we generate a fixed-frequency tone and turn the sound on and off by changing the duty cycle.
 
 ## Create Project from template
 

@@ -4,7 +4,7 @@ When working with buttons, switches, and other digital inputs on your Raspberry 
 
 ## The Floating Pin Problem
 
-Imagine you connect a button directly to a GPIO pin on your Pico. When the button is pressed, it connects the pin to ground (0 V). When released, you might expect the pin to read as HIGH, but it doesn't work that way. Instead, the pin is disconnected from everything.  It's floating in an undefined state, acting like an antenna that picks up electrical noise from nearby circuits, your hand, or even radio waves in the air.
+Imagine you connect a button directly to a GPIO pin on your Pico. When the button is pressed, it connects the pin to ground (0 V). When released, you might expect the pin to read as HIGH, but it doesn't work that way. Instead, the pin is disconnected from everything.  It's floating in an undefined state, acting like an antenna that picks up electrical noise from nearby circuits, your hand, or even radio waves in the air. As the input circuit of the Pi has a high impedance, even low charges like induced through radio waves are enough to have it read a value.
 
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/button-floating-ground.svg" alt="Floating Button" style="height:auto; display:block; margin:0 auto;"/>
