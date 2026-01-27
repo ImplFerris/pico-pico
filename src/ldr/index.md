@@ -29,7 +29,7 @@ We will not go into the details of the semiconductor materials used in LDRs or t
 You will need the following components:
 
 - LDR (Light Dependent Resistor)
-- Resistor (typically 10kΩ); needed to create voltage divider
+- Resistor (typically 10 kΩ); needed to create voltage divider
 - Jumper wires (as usual)
 
 ## Prerequisite

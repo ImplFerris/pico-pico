@@ -14,9 +14,9 @@ You are going to need the following components for this exercise:
 - LED
 - LDR
 - **Resistors**
-  - 330 ohm: This is used with the LED to limit the current and protect it. You may need to choose a different value depending on the LED you are using.
-  - 10 k ohm: This is used with the LDR to form the voltage divider. You may need to adjust this value depending on the characteristics of your LDR.
-- Jumper wires:    These are used to connect everything together on a breadboard or directly to the microcontroller.
+  - 330 Ω: This is used with the LED to limit the current and protect it. You may need to choose a different value depending on the LED you are using.
+  - 10 kΩ: This is used with the LDR to form the voltage divider. You may need to adjust this value depending on the characteristics of your LDR.
+- Jumper wires: These are used to connect everything together on a breadboard or directly to the microcontroller.
 
 ## Circuit to Connect LED and LDR with Pico
 
@@ -24,7 +24,7 @@ You are going to need the following components for this exercise:
 
 ### LDR (ADC) Connection
 
-We are going to connect the LDR as a voltage divider and feed the divider output into an ADC pin on the Pico. Here, the LDR acts as R1 and is connected to the 3.3 V supply, which means the ADC value decreases as the light level drops.
+We are going to connect the LDR as a voltage divider and feed the divider output into an ADC pin on the Pico. Here, the LDR acts as R1 and is connected to the 3.3 V supply, which means the ADC value decreases as the light level drops.
 
 <table>
   <thead>
@@ -36,7 +36,7 @@ We are going to connect the LDR as a voltage divider and feed the divider output
   </thead>
   <tbody>
     <tr>
-      <td>3.3&nbsp;V</td>
+      <td>3.3 V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="female-left"></div>
@@ -46,17 +46,17 @@ We are going to connect the LDR as a voltage divider and feed the divider output
       <td>One end of the LDR</td>
     </tr>
     <tr>
-      <td>GPIO&nbsp;28 (ADC2)</td>
+      <td>GPIO 28 (ADC2)</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire green" style="width: 200px; margin: 0 auto;">
           <div class="female-left"></div>
           <div class="female-right"></div>
         </div>
       </td>
-      <td>Junction between LDR and 10&nbsp;kΩ resistor</td>
+      <td>Junction between LDR and 10 kΩ resistor</td>
     </tr>
     <tr>
-      <td>10&nbsp;kΩ resistor</td>
+      <td>10 kΩ resistor</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire purple" style="width: 200px; margin: 0 auto;">
           <div class="female-left"></div>
@@ -73,7 +73,7 @@ We are going to connect the LDR as a voltage divider and feed the divider output
           <div class="female-right"></div>
         </div>
       </td>
-      <td>Other end of the 10&nbsp;kΩ resistor</td>
+      <td>Other end of the 10 kΩ resistor</td>
     </tr>
   </tbody>
 </table>
@@ -99,10 +99,10 @@ The LED will be connected to a GPIO pin 15 and will turn on automatically when t
         <div class="female-right"></div>
       </div>
     </td>
-    <td>330&nbsp;Ω resistor</td>
+    <td>330 Ω resistor</td>
   </tr>
   <tr>
-    <td>330&nbsp;Ω resistor</td>
+    <td>330 Ω resistor</td>
     <td style="text-align: center; vertical-align: middle; padding: 0;">
       <div class="wire yellow" style="width: 200px; margin: 0 auto;">
         <div class="female-left"></div>

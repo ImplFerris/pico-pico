@@ -58,7 +58,7 @@ const LCD_I2C_ADDRESS: u8 = 0x27;
 
 ## I2C Setup
 
-We'll configure the I2C interface using GPIO 16 for SDA and GPIO 17 for SCL, with a frequency of 100 kHz.
+We'll configure the I2C interface using GPIO 16 for SDA and GPIO 17 for SCL, with a frequency of 100 kHz.
 
 ```rust
 let sda = p.PIN_16;

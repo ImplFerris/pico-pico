@@ -8,7 +8,7 @@ These displays are designed to show ASCII characters, and they also support up t
 
 ## Variants
 
-HD44780-compatible LCDs come in different physical formats. The most common ones are 16x2 displays, which have 16 columns and 2 rows, and 20x4 displays, which have 20 columns and 4 rows. They also differ in backlight color, such as blue, yellow, or green.
+HD44780-compatible LCDs come in different physical formats. The most common ones are 16 × 2 displays, which have 16 columns and 2 rows, and 20 × 4 displays, which have 20 columns and 4 rows. They also differ in backlight color, such as blue, yellow, or green.
 
 ### LCD Interfaces
 
@@ -42,7 +42,7 @@ There is also additional overhead when using the parallel interface, such as set
 
 ## Hardware Requirements
 
-We will need an LCD1602 display. A 16x2 module with an I2C adapter is recommended so you can follow along without adjustments, although other sizes behave the same way.
+We will need an LCD1602 display. A 16 × 2 module with an I2C adapter is recommended so you can follow along without adjustments, although other sizes behave the same way.
 
 ### Level Shifter
 

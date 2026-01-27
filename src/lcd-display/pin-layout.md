@@ -130,7 +130,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td><span class="slanted-text red">A</span></td>
       <td>
         Backlight anode.
-        Often connected to 5V.
+        Often connected to 5 V.
         Some modules include an onboard current-limiting resistor.
       </td>
     </tr>

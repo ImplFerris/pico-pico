@@ -17,7 +17,7 @@ The speed of sound is approximately 0.0343 cm/µs (or 343 m/s) at normal air
 
 ## Example Calculation
 
-Let's say the ultrasonic sensor detects that the sound wave took 2000 µs to return after hitting an object.
+Let's say the ultrasonic sensor detects that the sound wave took 2000 µs to return after hitting an object.
 
 Step 1: Calculate the total distance traveled by the sound wave:
 

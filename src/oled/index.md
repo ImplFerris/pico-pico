@@ -16,7 +16,7 @@ In next few chapters, we'll create simple projects like displaying text and an i
 
 OLED, short for Organic Light-Emitting Diode, is a popular display module. These displays come in various sizes and can support different colors. They communicate using either the I²C or SPI protocol.
 
-For this exercise, we'll use a 0.96-inch OLED monochrome module with a resolution of 128 x 64. It operates at 3.3V. We can communicate using I2C communication protocol.
+For this exercise, we'll use a 0.96-inch OLED monochrome module with a resolution of 128 × 64. It operates at 3.3 V. We can communicate using I2C communication protocol.
 
 <img style="display: block; margin: auto;width:500px" alt="pico2" src="./images/oled-ssd1306.jpg"/>
 
