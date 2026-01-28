@@ -22,7 +22,7 @@ For each condition, measure the thermistor's resistance using the ADC value and 
 
 Using these three resistance and temperature pairs together, the Steinhart-Hart coefficients A, B, and C are calculated by solving a system of equations. The coefficients are not assigned individually to cold, room, or hot temperatures. Instead, all three calibration points collectively define a curve that fits the thermistor’s non-linear behavior across the measured range.
 
-Once the coefficients are obtained, the same A, B, and C values can be used to calculate temperature for any resistance value within that range. 
+Once the coefficients are obtained, the same A, B, and C values can be used to calculate temperature for any resistance value within that range.
 
 ### Calculating Steinhart-Hart Coefficients
 
@@ -45,6 +45,7 @@ $$
 $$
 
 Where:
+
 - \\( R_1, R_2, R_3 \\) are the resistance values at temperatures \\( T_1, T_2, T_3 \\).
 
 **Let's calculate the coefficients**
@@ -122,9 +123,10 @@ Please note that the ADC bits may need to be adjusted if you're using a differen
   </table>
 </form>
 
-
 ### Coefficients Finder
+
 Adjust the temperature by entering a value in either Fahrenheit or Celsius; the form will automatically convert it to the other format. Provide the resistance corresponding to each temperature, and then click the "Calculate Coefficients" button.
+
 <form id="steinhartForm" onsubmit="calcCoeffBtnClicked(event)">
 <table>
 <thead>
@@ -166,17 +168,16 @@ Adjust the temperature by entering a value in either Fahrenheit or Celsius; the 
 <h3>Results</h3>
 <p>
     A: <input type="text" id="resultA" readonly />
-    <span id="actualA"></span> 
+    <span id="actualA"></span>
 </p>
 <p>
     B: <input type="text" id="resultB" readonly />
-    <span id="actualB"></span> 
+    <span id="actualB"></span>
 </p>
 <p>
     C: <input type="text" id="resultC" readonly />
-    <span id="actualC"></span> 
+    <span id="actualC"></span>
 </p>
-
 
 <button type="submit" id="submitBtn" >Calculate Coefficients</button>
 </form>
@@ -193,8 +194,7 @@ Adjust the temperature by entering a value in either Fahrenheit or Celsius; the 
 <input type="text" name="tc" id="resultCelsius" readonly>
 
 <label for="tf">Result (°F): </label>
-<input type="text" name="tf" id="resultFahrenheit" readonly>
-
+<input type="text" name="tf" id="resultFahrenheit" readonly>r
 
 <!-- Error Message Section -->
 <p id="errorMessage" style="color: red; display: none;">Error: Please calculate the coefficients (A, B, C) first.</p>
@@ -205,12 +205,12 @@ window.onload = function() {
   document.getElementById("resistanceCold").value = 25000;
   document.getElementById("coldTempC").value = 5;
   calcTempFromCel('coldTempC', 'coldTempF', 'coldTempK', 'resistanceCold');
-  
+
   // Default values for Room Temperature
   document.getElementById("resistanceRoom").value = 10000;
   document.getElementById("roomTempC").value = 25;
   calcTempFromCel('roomTempC', 'roomTempF', 'roomTempK', 'resistanceRoom');
-  
+
   // Default values for Boiling Water
   document.getElementById("resistanceBoiling").value = 4000;
   document.getElementById("boilTempC").value = 45;
@@ -222,20 +222,20 @@ window.onload = function() {
 // Function to calculate resistance based on base resistance and ADC value
 function calculateResistance(baseResistance, adcCount, adcBits) {
   const maxADCValue = Math.pow(2, adcBits) - 1;  // Max ADC value for the given bits (e.g., 12 bits = 4095)
-  
+
   const resistance = baseResistance * ((maxADCValue / adcCount)-1);
-  
+
   return resistance;
 }
 
 function updateResistance() {
   const baseResistance = parseFloat(document.getElementById("baseResistance").value);
   const adcBits = parseInt(document.getElementById("adcBits").value);
-  
+
   const adcColdCount = parseFloat(document.getElementById("adcColdCount").value);
   const adcRoomCount = parseFloat(document.getElementById("adcRoomCount").value);
   const adcBoilCount = parseFloat(document.getElementById("adcBoilCount").value);
-  
+
   // Calculate resistance for each environment using the ADC counts
   if (!isNaN(baseResistance) && !isNaN(adcBits)) {
     const resistanceCold = calculateResistance(baseResistance, adcColdCount, adcBits);
@@ -275,7 +275,6 @@ function calcTempFromFarenhit(celsiusId, fahrenheitId, kelvinId, resistanceId) {
         document.getElementById(kelvinId).value = "";
     }
 }
-
 
 function validateInput() {
     const resistanceCold = document.getElementById("resistanceCold").value;
@@ -340,7 +339,7 @@ function calculateTemperatureFromResistance() {
     const C = parseFloat(document.getElementById('resultC').value);
 
     if (isNaN(A) || isNaN(B) || isNaN(C)) {
-        document.getElementById('errorMessage').style.display = 'block'; 
+        document.getElementById('errorMessage').style.display = 'block';
         document.getElementById('resultFahrenheit').value = '';
         document.getElementById('resultCelsius').value = '';
         return;
@@ -354,14 +353,14 @@ function calculateTemperatureFromResistance() {
         return;
     }
 
-    // Calculate temperature in Kelvin using Steinhart-Hart equation: 
+    // Calculate temperature in Kelvin using Steinhart-Hart equation:
     // 1/T = A + B*ln(R) + C*(ln(R))^3
     let inverseTemperature = A + B * Math.log(resistance) + C * Math.pow(Math.log(resistance), 3);
-    let temperatureKelvin = 1 / inverseTemperature; 
+    let temperatureKelvin = 1 / inverseTemperature;
 
     // Convert to Celsius and Fahrenheit
-    let temperatureCelsius = temperatureKelvin - 273.15;  
-    let temperatureFahrenheit = (temperatureCelsius * 9/5) + 32;  
+    let temperatureCelsius = temperatureKelvin - 273.15;
+    let temperatureFahrenheit = (temperatureCelsius * 9/5) + 32;
 
     document.getElementById('resultFahrenheit').value = temperatureFahrenheit.toFixed(2);
     document.getElementById('resultCelsius').value = temperatureCelsius.toFixed(2);
@@ -370,6 +369,7 @@ function calculateTemperatureFromResistance() {
 </script>
 
 ### Rust function
+
 ```rust
 fn steinhart_temp_calc(
     resistance: f64, // Resistance in Ohms
@@ -405,7 +405,6 @@ fn main() {
     let c = 6.53507631e-7;
     let resistance = 10000.0;
 
-
     match steinhart_temp_calc(resistance, a, b, c) {
         Ok((celsius, fahrenheit)) => {
             println!("Temperature in Celsius: {:.2}", celsius);
@@ -418,7 +417,7 @@ fn main() {
 
 ## References
 
-- [Thermistor Calculator](https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalculator.html) 
-- [Thermistor Steinhart-Hart Coefficients for Calculating Motor Temperature](https://www.servo.jp/member/admin/document_upload/AN144-Thermistor-Steinhart-Hart-Coefficients.pdf) 
-- [Calibrate Steinhart-Hart Coefficients for Thermistors](https://www.thinksrs.com/downloads/PDFs/ApplicationNotes/LDC%20Note%204%20NTC%20Calculatorold.pdf) 
+- [Thermistor Calculator](https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalculator.html)
+- [Thermistor Steinhart-Hart Coefficients for Calculating Motor Temperature](https://www.servo.jp/member/admin/document_upload/AN144-Thermistor-Steinhart-Hart-Coefficients.pdf)
+- [Calibrate Steinhart-Hart Coefficients for Thermistors](https://www.thinksrs.com/downloads/PDFs/ApplicationNotes/LDC%20Note%204%20NTC%20Calculatorold.pdf)
 - [Cooking Thermometer With Steinhart-Hart Correction](https://www.instructables.com/ESP32-NTP-Temperature-Probe-Cooking-Thermometer-Wi/)

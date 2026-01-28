@@ -1,6 +1,6 @@
 ## Playing the Game of Thrones Melody
 
-In this section, we put everything together and work in the main.rs file.
+In this section, we put everything together and work in the `main.rs` file.
 
 By this point, we already have the note frequencies, song timing logic, and melody data. Here, we just wire them together using PWM and timers.
 
@@ -17,7 +17,7 @@ use crate::music::Song;
 
 ## Create the Song object
 
-Create a Song using the tempo defined for the Game of Thrones theme.
+Create a `Song` using the tempo defined for the Game of Thrones theme.
 
 ```rust
 let song = Song::new(got::TEMPO);
@@ -49,12 +49,12 @@ for (note, duration_type) in got::MELODY {
     Timer::after_millis(pause_duration).await; // Pause for 10%
 }
 ```
+
 For each note, the PWM frequency is updated by setting a new top value. This makes the buzzer produce the correct pitch.
 
 The note duration is calculated from the song tempo. Most of that time is spent playing the note, and a small part is left silent. That short silence helps separate notes so the melody sounds cleaner.
 
 The buzzer is played by setting the duty cycle to 50 percent and stopped by setting it to zero.
-
 
 ### Keeping the Program Running
 
@@ -76,11 +76,10 @@ cd pico2-embassy-projects/buzzer-song
 ```
 
 ## rp-hal version
- 
+
 If you want to see the same example implemented using rp-hal, you can find it here.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-rp-projects/got-buzzer
 ```
-

@@ -12,7 +12,7 @@ default-theme = "light"
 mathjax-support = true
 
 # Don't show table of contents for entire page in the navigation bar
-# Pretty confusing to look at the chapter 
+# Pretty confusing to look at the chapter
 sidebar-header-nav = false
 
 additional-css = ["theme/css/custom.css", "theme/tabs.css"]
