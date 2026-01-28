@@ -14,7 +14,7 @@ Once the circuit is loaded, adjust the brightness slider and observe how the res
 
 ### Example output for full brightness
 
-When the LDR is exposed to strong light, its resistance is low. This causes a larger portion of the supply voltage to appear at the output, resulting in a higher
+When the LDR is exposed to strong light, its resistance is low. This causes a larger portion of the supply voltage to appear at the output, resulting in a higher voltage.
 
 <img style="display: block; margin: auto;" alt="voltage-divider-ldr1" src="./images/voltage-divider-ldr1.png"/>
 
@@ -26,7 +26,7 @@ As the light level decreases, the resistance of the LDR increases. This reduces 
 
 ### Example output for full darkness
 
-In darkness, the LDR resistance becomes very high, causing the output voltage
+In darkness, the LDR resistance becomes very high, causing the output voltage to drop near to zero.
 
 <img style="display: block; margin: auto;" alt="voltage-divider-ldr3" src="./images/voltage-divider-ldr3.png"/>
 
