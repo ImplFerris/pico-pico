@@ -39,12 +39,12 @@ const SYMBOL6: [u8; 8] = [
 Each glyph is stored in a separate CGRAM slot. We use slots 0 through 5 for this example.
 
 ```rust
-lcd.custom_char(&mut timer, &SYMBOL1, 0);
-lcd.custom_char(&mut timer, &SYMBOL2, 1);
-lcd.custom_char(&mut timer, &SYMBOL3, 2);
-lcd.custom_char(&mut timer, &SYMBOL4, 3);
-lcd.custom_char(&mut timer, &SYMBOL5, 4);
-lcd.custom_char(&mut timer, &SYMBOL6, 5);
+lcd.custom_char(&mut Delay, &SYMBOL1, 0);
+lcd.custom_char(&mut Delay, &SYMBOL2, 1);
+lcd.custom_char(&mut Delay, &SYMBOL3, 2);
+lcd.custom_char(&mut Delay, &SYMBOL4, 3);
+lcd.custom_char(&mut Delay, &SYMBOL5, 4);
+lcd.custom_char(&mut Delay, &SYMBOL6, 5);
 ```
 
 ### Display
@@ -52,15 +52,15 @@ lcd.custom_char(&mut timer, &SYMBOL6, 5);
 We write the first three glyphs on the first row, followed by the remaining three glyphs on the second row, aligning them to form a single composite symbol.
 
 ```rust
-lcd.set_cursor(&mut timer, 0, 4)
-    .write(&mut timer, CustomChar(0))
-    .write(&mut timer, CustomChar(1))
-    .write(&mut timer, CustomChar(2));
+lcd.set_cursor(&mut Delay, 0, 4)
+    .write(&mut Delay, CustomChar(0))
+    .write(&mut Delay, CustomChar(1))
+    .write(&mut Delay, CustomChar(2));
 
-lcd.set_cursor(&mut timer, 1, 4)
-    .write(&mut timer, CustomChar(3))
-    .write(&mut timer, CustomChar(4))
-    .write(&mut timer, CustomChar(5));
+lcd.set_cursor(&mut Delay, 1, 4)
+    .write(&mut Delay, CustomChar(3))
+    .write(&mut Delay, CustomChar(4))
+    .write(&mut Delay, CustomChar(5));
 ```
 
 ## Clone the existing project
