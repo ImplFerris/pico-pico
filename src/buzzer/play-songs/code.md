@@ -15,6 +15,18 @@ use embassy_rp::pwm::{Config as PwmConfig, Pwm, SetDutyCycle};
 use crate::music::Song;
 ```
 
+## PWM and Buzzer
+
+Unlike the previous example, we clone PwmConfig. The Pwm constructor consumes the config object, but inside the loop we need to modify top to change the PWM frequency for each musical note.
+
+```rust
+let mut pwm_config = PwmConfig::default();
+pwm_config.top = PWM_TOP;
+pwm_config.divider = PWM_DIV_INT.into();
+
+let mut buzzer = Pwm::new_output_b(p.PWM_SLICE7, p.PIN_15, pwm_config.clone());
+```
+
 ## Create the Song object
 
 Create a Song using the tempo defined for the Game of Thrones theme.
