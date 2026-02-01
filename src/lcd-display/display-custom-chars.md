@@ -38,6 +38,8 @@ use embassy_rp::i2c::{Config as I2cConfig, I2c};
 use liquid_crystal::I2C;
 use liquid_crystal::LiquidCrystal;
 use liquid_crystal::prelude::*;
+
+use embassy_time::Delay;
 ```
 
 ## Bind I2C Interrupt
@@ -69,6 +71,8 @@ let i2c_bus = I2c::new_async(p.I2C0, scl, sda, Irqs, i2c_config);
 Once the I2C interface is set up, we initialize the LCD.
 
 ```rust
+// LCD Init
+let mut i2c_interface = I2C::new(i2c_bus, 0x27);
 let mut lcd = LiquidCrystal::new(&mut i2c_interface, Bus4Bits, LCD16X2);
 lcd.begin(&mut Delay);
 ```
@@ -80,7 +84,7 @@ const FERRIS: [u8; 8] = [
     0b01010, 0b10001, 0b10001, 0b01110, 0b01110, 0b01110, 0b11111, 0b10001,
 ];
 // Define the character
-lcd.custom_char(&mut timer, &FERRIS, 0);
+lcd.custom_char(&mut Delay, &FERRIS, 0);
 ```
 
 ## Displaying
@@ -88,8 +92,8 @@ lcd.custom_char(&mut timer, &FERRIS, 0);
 Displaying the character is straightforward. You just need to use the CustomChar enum and pass the index of the custom character. We've defined only one custom character, which is at position 0.
 
 ```rust
-lcd.write(&mut timer, CustomChar(0));
-lcd.write(&mut timer, Text(" implRust!"));
+lcd.write(&mut Delay, CustomChar(0));
+lcd.write(&mut Delay, Text(" implRust!"));
 ```
 
 ## Clone the existing project
