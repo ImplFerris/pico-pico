@@ -125,3 +125,7 @@ cargo run --release
 Once the program starts running, you should see the counter value printed once every second in the `tio` terminal.
 
 <img style="display: block; margin: auto;" src="./images/embassy-usb-logger-usb-serial-raspberry-pi-pico.png"/>
+
+### Reference
+
+- [`rp-usb-console`](https://github.com/petersallai/rp-usb-console) - a crate that does USB logging, but also supports commands e.g. to configure log levels
