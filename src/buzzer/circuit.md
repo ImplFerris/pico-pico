@@ -38,5 +38,4 @@ We will connect GPIO 15 to the buzzer's positive (signal) pin and the Pico's GND
   </tbody>
 </table>
 
-
 <img style="display: block; margin: auto;" alt="pico2" src="./images/pico-buzzer-circuit.png"/>

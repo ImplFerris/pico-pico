@@ -7,7 +7,7 @@ Let's create a dimming LED effect using PWM on the Raspberry Pi Pico with Embass
 By now you should be familiar with the steps. We use the cargo-generate command with our custom template, and when prompted, select Embassy as the HAL.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 ## Update Imports
@@ -40,7 +40,7 @@ loop {
         Timer::after_millis(8).await;
         let _ = pwm.set_duty_cycle_percent(i);
     }
-    
+
     for i in (0..=100).rev() {
         Timer::after_millis(8).await;
         let _ = pwm.set_duty_cycle_percent(i);
@@ -108,7 +108,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 // End of file
 ```
-
 
 ## Clone the existing project
 

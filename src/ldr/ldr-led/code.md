@@ -1,13 +1,13 @@
 # Embedded Rust Code to Control an LED Based on Light Level
 
-With the circuit assembled on your breadboard, let's write the code. 
+With the circuit assembled on your breadboard, let's write the code.
 
 ## Project from template
 
 As usual, we are going to start by generating a new project from the template.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 When prompted, give your project a name, like "ldr-dracula" and select `embassy` as the HAL.
 
@@ -37,7 +37,7 @@ Before we start reading values from the ADC, we need to set up this interrupt bi
 bind_interrupts!(struct Irqs {
     ADC_IRQ_FIFO => InterruptHandler;
 });
-``` 
+```
 
 ## ADC Threshold
 
@@ -59,7 +59,7 @@ Let's create the ADC instance.
 let mut adc = Adc::new(p.ADC, Irqs, AdcConfig::default());
 ```
 
-Here, we pass three things to the ADC constructor. We pass the ADC peripheral itself, the interrupt bindings we defined earlier, and a default configuration. 
+Here, we pass three things to the ADC constructor. We pass the ADC peripheral itself, the interrupt bindings we defined earlier, and a default configuration.
 
 > [!Note]
 > Interesting fact: the HAL does not actually do anything with `Irqs` at runtime when you pass it to the ADC constructor. It is only there at compile time to make sure you have declared the ADC interrupt binding. If you follow the new method, you will notice the parameter is named `_irq`, which makes it clear that it is not used.

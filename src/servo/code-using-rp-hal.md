@@ -5,11 +5,10 @@ In this exercise, we repeat the same servo control example, but this time using 
 For this, we will rely on the [calculator form](../core-concepts/pwm/frequency-to-pwm-top-divider.md) to generate the TOP value and both the integer and fractional parts of the divider.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "servo-motor" and choose "rp-hal" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
-
+When prompted, give your project a name like "servo-motor" and choose "rp-hal" as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Additional Imports
 
@@ -19,7 +18,6 @@ Along with the usual rp hal boilerplate, we need to bring in the trait that allo
 // For PWM
 use embedded_hal::pwm::SetDutyCycle;
 ```
-
 
 ## Initialize PWM Slice
 
@@ -50,30 +48,29 @@ servo.output_to(pins.gpio15);
 
 ## Main Loop
 
-Finally, inside the main loop, we update the duty cycle to move the servo between different positions. Just like in the Embassy example, we use set_duty_cycle_fraction.
+Finally, inside the main loop, we update the duty cycle to move the servo between different positions. Just like in the Embassy example, we use `set_duty_cycle_fraction`.
 
 ```rust
 loop {
-    // Move servo to 0° position (2.5% duty cycle = 25/1000)
+    // Move servo to 0° position (2.5 % duty cycle = 25/1000)
     servo
         .set_duty_cycle_fraction(25, 1000)
         .expect("invalid min duty cycle");
     timer.delay_ms(1000);
 
-    // 90° position (7.5% duty cycle)
+    // 90° position (7.5 % duty cycle)
     servo
         .set_duty_cycle_fraction(75, 1000)
         .expect("invalid half duty cycle");
     timer.delay_ms(1000);
 
-    // 180° position (12% duty cycle)
+    // 180° position (12 % duty cycle)
     servo
         .set_duty_cycle_fraction(120, 1000)
         .expect("invalid max duty cycle");
     timer.delay_ms(1000);
 }
 ```
-
 
 ## Clone the existing project
 
@@ -84,7 +81,8 @@ git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/servo-motor
 ```
 
-## The Full Code 
+## The Full Code
+
 ```rust
 #![no_std]
 #![no_main]

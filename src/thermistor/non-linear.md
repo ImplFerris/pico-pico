@@ -10,7 +10,6 @@ A thermistor does not change resistance evenly as temperature changes. The relat
 
 At lower temperatures, a small change in temperature produces a large change in resistance. At higher temperatures, the same temperature change produces a much smaller resistance change. This behavior is a fundamental property of thermistors.
 
-
 <img style="display: block; margin: auto;" alt="non-linearity" src="./images/thermistor-non-linearity.jpg"/>
 
 Because of this curve, there is no simple rule such as:
@@ -41,7 +40,7 @@ These coefficients are either provided by the manufacturer or derived from calib
 
 A lookup table stores known temperature and resistance pairs. These values are taken directly from the thermistor datasheet or from calibration measurements. When a resistance is measured, it is compared against the table to find the closest matching temperature. If the resistance lies between two entries, interpolation can be used to estimate the temperature between them.
 
-In the next chapters, we will see in detail how to use B equation and Steinhart-Hart equation to determine the temperature. 
+In the next chapters, we will see in detail how to use B equation and Steinhart-Hart equation to determine the temperature.
 
 ## References
 

@@ -4,16 +4,18 @@ In the previous chapter, we used Embassy to read joystick ADC values and print t
 
 This chapter shows the same joystick ADC example implemented using RP-HAL and USB serial. If you are not interested in the RP-HAL version, you can skip this chapter.
 
-
 ## Project from template
 
 To set up the project, run:
+
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.1.0
 ```
+
 When prompted, give your project a name, like "joystick-usb" and select `RP-HAL` as the HAL.
 
 Then, navigate into the project folder:
+
 ```sh
 cd PROJECT_NAME
 # For example, if you named your project "joystick-usb":
@@ -54,7 +56,7 @@ use heapless::String;
 ## USB Serial
 
 Make sure you've completed the USB serial section and added the boilerplate code from there into your project.
- 
+
 ```rust
     let usb_bus = UsbBusAllocator::new(hal::usb::UsbBus::new(
         pac.USB,
@@ -131,6 +133,7 @@ if vry.abs_diff(prev_vry) > 100 {
     print_vals = true;
 }
 ```
+
 Using a threshold filters out small ADC fluctuations, avoids unnecessary prints, and ensures updates only for significant changes.
 
 **Printing the Coordinates**
@@ -161,7 +164,6 @@ if btn_state && !prev_btn_state {
 }
 prev_btn_state = btn_state;
 ```
-
 
 ### The Full code
 
@@ -305,29 +307,36 @@ git clone https://github.com/ImplFerris/pico2-rp-projects
 cd pico2-projects/joystick-usb/
 ```
 
+## How to Run?
 
-## How to Run ?
 The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
 
 ### tio
+
 Make sure you have tio installed on your system. If not, you can install it using:
+
 ```sh
 apt install tio
 ```
 
 ### Connecting to the Serial Port
+
 Run the following command to connect to the Pico's serial port:
 
 ```sh
 tio /dev/ttyACM0
 ```
+
 This will open a terminal session for communicating with the Pico.
 
 ### Flashing and Running the Code
+
 Open another terminal, navigate to the project folder, and flash the code onto the Pico as usual:
+
 ```sh
 cargo run
 ```
+
 If everything is set up correctly, you should see a "Connected" message in the tio terminal. As you move the joystick, the coordinates will be printed. Pressing the knob downwards will also display a "Button pressed" message.
 
 <img style="display: block; margin: auto;" src="./images/joystick-usb-output.png"/>

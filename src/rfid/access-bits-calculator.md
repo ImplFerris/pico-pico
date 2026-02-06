@@ -51,18 +51,16 @@ Click the "Edit" button in each row of the table to select your preferred access
 > [!CAUTION]
 > Writing an incorrect value to the access condition bits can make the sector inaccessible.
 
-
 **Access Bits**
 <div style="display: flex; align-items: center;">
-  <input type="text" 
-         style="font-size:16px; height: 40px;" 
-         name="access_bits" 
-         id="access-bits" 
+  <input type="text"
+         style="font-size:16px; height: 40px;"
+         name="access_bits"
+         id="access-bits"
          value="FF0780"/>
   <div id="error-box"   style="ddisplay: none;  color: #FF2800; font-size: 18px; margin-left: 10px; font-weight:bold">
   </div>
 </div>
-
 
 **Data Block Access Conditions:**
 
@@ -120,7 +118,6 @@ Click the "Edit" button in each row of the table to select your preferred access
     </tr>
   </tbody>
 </table>
-
 
 <!-- Nested Table Template -->
 <div class="nested-table" id="nested-table">
@@ -241,7 +238,7 @@ Click the "Edit" button in each row of the table to select your preferred access
     </tr>
   </thead>
   <tbody>
-    <tr data-row="1" id="st-row0"> 
+    <tr data-row="1" id="st-row0">
         <td>0</td>
         <td>0</td>
         <td>1</td>
@@ -374,8 +371,6 @@ Click the "Edit" button in each row of the table to select your preferred access
   </table>
 </div>
 
-
-
 <script>
   function toggleNestedTable(button, tmplId, colSpan) {
     const row = button.closest('tr');
@@ -391,8 +386,8 @@ Click the "Edit" button in each row of the table to select your preferred access
       const td = document.createElement('td');
       td.colSpan = colSpan;
       nestedTable.classList.add('nested-table');
-      nestedTable.setAttribute('data-parent', rowId); 
-      td.innerHTML = document.getElementById(tmplId).innerHTML; 
+      nestedTable.setAttribute('data-parent', rowId);
+      td.innerHTML = document.getElementById(tmplId).innerHTML;
       nestedTable.appendChild(td);
        // Insert the nested table below the row
       row.insertAdjacentElement('afterend', nestedTable);
@@ -451,11 +446,11 @@ Click the "Edit" button in each row of the table to select your preferred access
         // Bits:
         mainRow.cells[0].textContent = selectedData[0].textContent;
         mainRow.cells[1].textContent = selectedData[1].textContent;
-        mainRow.cells[2].textContent = selectedData[2].textContent; 
+        mainRow.cells[2].textContent = selectedData[2].textContent;
         // permissions
-        mainRow.cells[3].textContent = selectedData[3].textContent; 
+        mainRow.cells[3].textContent = selectedData[3].textContent;
         mainRow.cells[4].textContent = selectedData[4].textContent;
-        mainRow.cells[5].textContent = selectedData[5].textContent; 
+        mainRow.cells[5].textContent = selectedData[5].textContent;
         mainRow.cells[6].textContent = selectedData[6].textContent;
         mainRow.cells[7].textContent = selectedData[7].textContent;
         mainRow.cells[8].textContent = selectedData[8].textContent;
@@ -604,8 +599,8 @@ Click the "Edit" button in each row of the table to select your preferred access
 
     function showError(message) {
         const errorBox = document.getElementById('error-box');
-        errorBox.textContent = message; 
-        errorBox.style.display = 'inline'; 
+        errorBox.textContent = message;
+        errorBox.style.display = 'inline';
     }
 
     function hideError() {
@@ -647,7 +642,7 @@ Click the "Edit" button in each row of the table to select your preferred access
             "byte7": byteToBits(byteArray[1]),
             "byte8": byteToBits(byteArray[2])
         };
-        
+
         let Cxy = {
             "C10": byteToBitsDict.byte7[3],
             "C20": byteToBitsDict.byte8[7],
@@ -684,9 +679,9 @@ Click the "Edit" button in each row of the table to select your preferred access
             "IC23": byteToBitsDict.byte6[0],
             "IC33": byteToBitsDict.byte7[4],
         };
-        
+
         for (let key in Cxy) {
-            let invertedKey = "I" + key; 
+            let invertedKey = "I" + key;
             let invertedBit = Cxy[key] ^ 1;
             if (invertedBit !== ICxy[invertedKey]) {
                 // console.log(key, invertedKey, Cxy[key], ICxy[invertedKey]);
@@ -787,34 +782,34 @@ Click the "Edit" button in each row of the table to select your preferred access
             "IC33": Cxy.C33 ^ 1,
         };
 
-        byte6 = 
-            ((ICxy.IC23 & 0x1) << 7) | 
-            ((ICxy.IC22 & 0x1) << 6) | 
-            ((ICxy.IC21 & 0x1) << 5) | 
+        byte6 =
+            ((ICxy.IC23 & 0x1) << 7) |
+            ((ICxy.IC22 & 0x1) << 6) |
+            ((ICxy.IC21 & 0x1) << 5) |
             ((ICxy.IC20 & 0x1) << 4) |
-            ((ICxy.IC13 & 0x1) << 3) | 
-            ((ICxy.IC12 & 0x1) << 2) | 
-            ((ICxy.IC11 & 0x1) << 1) | 
+            ((ICxy.IC13 & 0x1) << 3) |
+            ((ICxy.IC12 & 0x1) << 2) |
+            ((ICxy.IC11 & 0x1) << 1) |
             ((ICxy.IC10 & 0x1) << 0);
 
-        byte7 = 
-            ((Cxy.C13 & 0x1) << 7) | 
-            ((Cxy.C12 & 0x1) << 6) | 
-            ((Cxy.C11 & 0x1) << 5) | 
+        byte7 =
+            ((Cxy.C13 & 0x1) << 7) |
+            ((Cxy.C12 & 0x1) << 6) |
+            ((Cxy.C11 & 0x1) << 5) |
             ((Cxy.C10 & 0x1) << 4) |
-            ((ICxy.IC33 & 0x1) << 3) | 
-            ((ICxy.IC32 & 0x1) << 2) | 
-            ((ICxy.IC31 & 0x1) << 1) | 
+            ((ICxy.IC33 & 0x1) << 3) |
+            ((ICxy.IC32 & 0x1) << 2) |
+            ((ICxy.IC31 & 0x1) << 1) |
             ((ICxy.IC30 & 0x1) << 0);
 
-        byte8 = 
-            ((Cxy.C33 & 0x1) << 7) | 
-            ((Cxy.C32 & 0x1) << 6) | 
-            ((Cxy.C31 & 0x1) << 5) | 
+        byte8 =
+            ((Cxy.C33 & 0x1) << 7) |
+            ((Cxy.C32 & 0x1) << 6) |
+            ((Cxy.C31 & 0x1) << 5) |
             ((Cxy.C30 & 0x1) << 4) |
-            ((Cxy.C23 & 0x1) << 3) | 
-            ((Cxy.C22 & 0x1) << 2) | 
-            ((Cxy.C21 & 0x1) << 1) | 
+            ((Cxy.C23 & 0x1) << 3) |
+            ((Cxy.C22 & 0x1) << 2) |
+            ((Cxy.C21 & 0x1) << 1) |
             ((Cxy.C20 & 0x1) << 0);
 
         let finalAccessBits = byte6.toString(16).toUpperCase().padStart(2, '0') +
@@ -826,5 +821,6 @@ Click the "Edit" button in each row of the table to select your preferred access
 </script>
 
 ## References
+
 - This UI is inspired from this calculator: [Mifarecalc](https://gitlab.com/limentas/mifare-calc)
 - [MIFARE-Classic-1K-Access-Bits-Calculator ](https://github.com/akafugu/MIFARE-Classic-1K-Access-Bits-Calculator)

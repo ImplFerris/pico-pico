@@ -92,7 +92,6 @@ if spi_bus.write(&[0]).is_ok() {
 };
 ```
 
-
 ## Example Driver Usage
 
 Usually, you will not talk to SPI directly. Instead, you pass an SPI device to a driver. This usually means creating an SPI bus first, then wrapping it using `ExclusiveDevice` provided by the `embedded-hal-bus` crate.

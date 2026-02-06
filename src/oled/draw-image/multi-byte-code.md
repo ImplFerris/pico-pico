@@ -4,7 +4,7 @@ Now let's write the code to display a wider image on our OLED screen. The main c
 
 ## Project base
 
-We will copy the byte-oled project and work on top of that. 
+We will copy the byte-oled project and work on top of that.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects
