@@ -1,5 +1,5 @@
 # Read SD Card with Raspberry Pi Pico
- 
+
 In this chapter, we are going to read a file from a microSD card and print its contents. Before continuing, you will need an SD card that is already formatted as FAT32, and it must contain a file named RUST.TXT. For this example, you can put the text Ferris inside.
 
 ## Select Your Output Method
@@ -12,7 +12,7 @@ If you are using a debug probe, we print messages using defmt over RTT. If you a
 
 The USB serial setup is the same as what we used in the earlier USB Serial chapter. You may need to follow the same steps to set up the USB logger. I will not be repeating those steps here.
 
-From a code point of view, the difference mostly comes down to this: 
+From a code point of view, the difference mostly comes down to this:
 
 - Since we use defmt with a debug probe, logging is done using defmt::info!
 - On the other hand, when using USB serial, we use the log crate, so logging is done with log::info!.
@@ -51,6 +51,7 @@ Update your Cargo.toml to add these additional crate along with the existing dep
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```toml
 # To convert Spi bus to SpiDevice
 embedded-hal-bus = "0.3.0"
@@ -58,8 +59,10 @@ embedded-hal-bus = "0.3.0"
 # sd card driver
 embedded-sdmmc = "0.9.0"
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```toml
 # To convert Spi bus to SpiDevice
 embedded-hal-bus = "0.3.0"
@@ -70,9 +73,9 @@ embedded-sdmmc = "0.9.0"
 embassy-usb-logger = "0.5.1"
 log = "0.4"
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 The embedded-sdmmc crate is a driver for reading and writing files on FAT-formatted SD cards.
 
@@ -91,7 +94,6 @@ use embassy_rp::gpio::{Level, Output};
 // For SdCard
 use embedded_sdmmc::{SdCard, TimeSource, Timestamp, VolumeIdx, VolumeManager};
 ```
-
 
 ## Dummy TimeSource 
 
@@ -160,21 +162,24 @@ Before opening any files, we read the total size of the card to confirm that ini
 
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 defmt::info!("Init SD card controller and retrieve card size...");
 let sd_size = sdcard.num_bytes().expect("failed to get sdcard size");
 defmt::info!("card size is {} bytes", sd_size);
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 log::info!("Init SD card controller and retrieve card size...");
 let sd_size = sdcard.num_bytes().expect("failed to get sdcard size");
 log::info!("card size is {} bytes", sd_size);
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## Opening the volume and root directory
 
@@ -203,9 +208,9 @@ let my_file = root_dir
 
 Finally, we read the file in small chunks and print its contents.
 
-
 {{#tabs global="log-method" }}
 {{#tab name="Debug Probe" }}
+
 ```rust
 while !my_file.is_eof() {
     let mut buffer = [0u8; 32];
@@ -219,8 +224,10 @@ while !my_file.is_eof() {
     }
 }
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 ```rust
 while !my_file.is_eof() {
     let mut buffer = [0u8; 32];
@@ -234,9 +241,9 @@ while !my_file.is_eof() {
     }
 }
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 ## Clone the existing project
 
@@ -248,16 +255,18 @@ You can clone (or refer) project I created and navigate to the `read-sdcard` fol
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/sdcard/read-sdcard/
 ```
+
 {{#endtab }}
 {{#tab name="USB Serial" }}
+
 You can clone (or refer) project I created and navigate to the `print-over-usb` folder.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/sdcard/print-over-usb/
 ```
+
 {{#endtab }}
 {{#endtabs }}
-
 
 Once the program is running, the output will show the contents of RUST.TXT file.

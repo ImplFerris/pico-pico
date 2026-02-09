@@ -123,7 +123,6 @@ loop {
 }
 ```
 
-
 ## Clone the existing project
 
 You can clone (or refer) project I created and navigate to the `change-key` folder.
@@ -136,7 +135,7 @@ cd pico2-embassy-projects/change-key/
 ## Output
 
 When the program runs, the sector contents are printed before and after the write. After the key is changed, bringing the tag back to the reader will result in an authentication failure when using the old key. This confirms that the new key 52 75 73 74 65 64 (Rusted) is now active.
- 
+
 > [!NOTE]
 > After the key update, if you bring the tag close to the reader again, authentication will fail because the program will be still using the old hardcoded current_key.
 

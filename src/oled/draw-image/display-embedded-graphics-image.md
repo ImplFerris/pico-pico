@@ -1,10 +1,10 @@
 # Ferris on OLED
 
 In this task, we will display the `ferris.bmp`([Download](../images/ferris.bmp) and put it in the project folder) file on the OLED screen.
- 
+
 <img style="display: block; margin: auto;" alt="pico2" src="../images/ferris.bmp"/>
 
-Follow the same instructions as in the "Hello Rust" program, with just a few modifications.  
+Follow the same instructions as in the "Hello Rust" program, with just a few modifications.
 
 ## New Dependency
 

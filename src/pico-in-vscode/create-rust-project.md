@@ -28,7 +28,6 @@ Let's create the Rust project with the Pico extension in VS Code. Open the Activ
 
 Since this is the first time setting up, the extension will download and install the necessary tools, including the Pico SDK, picotool, OpenOCD, and the ARM and RISC-V toolchains for debugging.
 
-
 ## Project Structure
 
 If the project was created successfully, you should see folders and files like this:

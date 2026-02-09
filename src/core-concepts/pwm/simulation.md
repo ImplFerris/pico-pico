@@ -1,7 +1,7 @@
 # Simulation
 
 <style>
-  
+
   .slider-container {
     margin: 20px 0;
   }
@@ -67,7 +67,7 @@
   }
   #pwmCanvas {
     background-color: #fefefe;
-  } 
+  }
 </style>
 
 Here is the interactive simulation. Use the sliders to adjust the duty cycle and frequency, and watch how the pulse width and LED brightness change. The upper part of the square wave represents when the signal is high (on). The lower part represents when the signal is low (off). The width of the high portion changes with the duty cycle.
@@ -92,11 +92,10 @@ Here is the interactive simulation. Use the sliders to adjust the duty cycle and
 
 If you change the duty cycle from "low to high" and "high to low" in the simulation, you should notice the LED kind of giving a dimming effect.
 
-
 <script>
   const pwmCanvas = document.getElementById('pwmCanvas');
   const pwmCtx = pwmCanvas.getContext('2d');
-  
+
   const dutyCycleSlider = document.getElementById('dutyCycle');
   const dutyCycleValue = document.getElementById('dutyCycleValue');
   const frequencySlider = document.getElementById('frequency');
@@ -148,7 +147,7 @@ If you change the duty cycle from "low to high" and "high to low" in the simulat
 
   function updateLED() {
     const brightness = dutyCycle / 100;
-    
+
     ledBody.style.background = `radial-gradient(circle at center, rgba(255, 85, 85, ${brightness}), #cc0000)`;
   }
 

@@ -34,7 +34,7 @@ The table below shows how the microSD card pins map to SPI signals.
       </tr>
       <tr>
         <td>4</td>
-        <td>VDD - Power supply (3.3V)</td>
+        <td>VDD - Power supply (3.3 V)</td>
       </tr>
       <tr>
         <td>5</td>
@@ -58,24 +58,24 @@ The table below shows how the microSD card pins map to SPI signals.
 
 ## Connecting the Raspberry Pi Pico to the SD Card Reader
 
-The Raspberry Pi Pico's GPIO pins are 3.3V tolerant and can be permanently damaged by 5V signals. Micro SD cards also operate at 3.3V and can be damaged if higher voltages are applied.
+The Raspberry Pi Pico's GPIO pins are 3.3 V tolerant and can be permanently damaged by 5 V signals. Micro SD cards also operate at 3.3 V and can be damaged if higher voltages are applied.
 
 SD card reader modules come in different configurations:
 
-**3.3V-only modules:** These modules are simple microSD breakout boards designed to run directly at 3.3V. Because both the Raspberry Pi Pico and the SD card use the same voltage, the module can be connected without any extra circuitry. Power it from the Pico's 3V3(OUT) pin and connect the SPI data lines directly to the Pico's GPIO pins. This is the simplest and safest option when working with the Raspberry Pi Pico.
+**3.3 V-only modules:** These modules are simple microSD breakout boards designed to run directly at 3.3 V. Because both the Raspberry Pi Pico and the SD card use the same voltage, the module can be connected without any extra circuitry. Power it from the Pico's `3V3(OUT)` pin and connect the SPI data lines directly to the Pico's GPIO pins. This is the simplest and safest option when working with the Raspberry Pi Pico.
 
-**5V modules with voltage regulation:** Some SD card modules are designed to be powered from 5V. These modules include extra components so the SD card itself still runs at 3.3V. Some higher-quality modules also make sure that all signal lines stay at safe 3.3V levels.
+**5 V modules with voltage regulation:** Some SD card modules are designed to be powered from 5 V. These modules include extra components so the SD card itself still runs at 3.3 V. Some higher-quality modules also make sure that all signal lines stay at safe 3.3 V levels.
 
-If a 5V module is designed correctly, it can be used with the Raspberry Pi Pico. However, not all 5V modules handle the signal levels properly. Because of this, you should always check the module description or documentation before connecting it to the Pico.
+If a 5 V module is designed correctly, it can be used with the Raspberry Pi Pico. However, not all 5 V modules handle the signal levels properly. Because of this, you should always check the module description or documentation before connecting it to the Pico.
 
 ### The Module Used in This Guide
 
-The SD card module used in this guide is designed to be powered from 5V and outputs 3.3V signals, making it safe to use with the Raspberry Pi Pico.
+The SD card module used in this guide is designed to be powered from 5 V and outputs 3.3 V signals, making it safe to use with the Raspberry Pi Pico.
 
-Power the module from the Pico's VBUS pin, which provides 5V when the Pico is powered through USB. Do not power this type of module from the Pico's 3.3V pin, as it may not work reliably.
+Power the module from the Pico's VBUS pin, which provides 5 V when the Pico is powered through USB. Do not power this type of module from the Pico's 3.3 V pin, as it may not work reliably.
 
 > [!Caution]
-> Always verify your SD card module outputs 3.3V signals before connecting it to the Pico. If uncertain, use a 3.3V-only module to avoid damaging your Pico.
+> Always verify your SD card module outputs 3.3 V signals before connecting it to the Pico. If uncertain, use a 3.3 V-only module to avoid damaging your Pico.
 
 ### Wiring Diagram
 

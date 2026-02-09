@@ -1,32 +1,31 @@
 # Hello OLED
 
-We are going to keep things simple. We will just display "Hello, Rust!" on the OLED display. We will first use Embassy, then we will do the same using rp-hal.
+We are going to keep things simple. We will just display "Hello, Rust!" on the OLED display. We will first use Embassy, then we will do the same using `rp-hal`.
 
 ## Create Project
 
-As usual, generate the project from the template with cargo-generate:
+As usual, generate the project from the template with `cargo-generate`:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "hello-oled" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
+When prompted, give your project a name like "hello-oled" and choose "embassy" as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Update Dependencies
 
-Add the following lines to your Cargo.toml under dependencies:
+Add the following lines to your `Cargo.toml` under dependencies:
 
 ```toml
 embedded-graphics = "0.8.1"
 ssd1306 = { version = "0.10.0", features = ["async"] }
 ```
 
-We will enable the `async` feature so the ssd1306 driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
-
+We will enable the `async` feature so the `ssd1306` driver can be used with Embassy async I2C. You can also use it without this feature and use Embassy I2C in blocking mode.
 
 ## Additional imports
 
-Add these imports at the top of your main.rs:
+Add these imports at the top of your `main.rs`:
 
 ```rust
 // Interrupt Binding
@@ -51,7 +50,7 @@ use embedded_graphics::{
 
 ## Bind I2C Interrupt
 
-We discussed this in detail in the interrupts section, so you should already be familiar with what it does.  This binds the `I2C0_IRQ` interrupt to the Embassy I2C interrupt handler for `I2C0`.
+We discussed this in detail in the interrupts section, so you should already be familiar with what it does. This binds the `I2C0_IRQ` interrupt to the Embassy I2C interrupt handler for `I2C0`.
 
 ```rust
 bind_interrupts!(struct Irqs {
@@ -75,7 +74,7 @@ let i2c_bus = I2c::new_async(p.I2C0, scl, sda, Irqs, i2c_config);
 
 We have connected the OLED's SDA line to Pin 16 and the SCL line to Pin 17. Throughout this chapter we will keep using these same pins. If you have connected your display to a different valid I2C pair, adjust the code to match your wiring.
 
-We are using the new_async method to create an I2C instance in async mode. This allows I2C transfers to await instead of blocking the CPU. We use a 400 kHz bus speed, which is commonly supported by SSD1306 displays.
+We are using the new_async method to create an I2C instance in async mode. This allows I2C transfers to await instead of blocking the CPU. We use a 400 kHz bus speed, which is commonly supported by SSD1306 displays.
 
 ## Initialize Display
 
@@ -100,7 +99,6 @@ display
 ```
 Finally, display.init() sends initialization commands to the display hardware. This wakes up the display and configures it properly.
 
-
 ## Writing Text
 
 Before we can draw text, we need to define how the text should look:
@@ -123,7 +121,7 @@ Text::with_baseline("Hello, Rust!", Point::new(0, 16), text_style, Baseline::Top
     .expect("failed to draw text to display");
 ```
 
-We're rendering "Hello, Rust!" at position (0, 16), which is 16 pixels down from the top of the screen. We use the text style we defined earlier and align the text using its top edge with Baseline::Top. 
+We're rendering "Hello, Rust!" at position (0, 16), which is 16 pixels down from the top of the screen. We use the text style we defined earlier and align the text using its top edge with Baseline::Top.
 
 The .draw(&mut display) call renders the text into the display's internal buffer.  At this point, the text exists in RAM but is not yet visible on the physical screen.
 

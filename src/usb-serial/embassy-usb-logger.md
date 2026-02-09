@@ -1,6 +1,6 @@
 # USB Serial Logging with Embassy on Raspberry Pi Pico
 
-In this chapter, we will look at a simple way to log messages from the Raspberry Pi Pico to the system console using USB serial. We will use the USB interface along with the embassy-usb-logger crate to send log output to the host.
+In this chapter, we will look at a simple way to log messages from the Raspberry Pi Pico to the system console using USB serial. We will use the USB interface along with the `embassy-usb-logger` crate to send log output to the host.
 
 We will keep the example intentionally small. The Pico maintains a counter that increments once every second. Each time the value changes, we print it to the system console over USB. When the counter reaches its limit, it wraps back to zero and continues. The goal here is not the counter itself, but to show how logging works when USB serial is used as the output.
 
@@ -14,23 +14,22 @@ We will start by generating a new project using the template.
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name, for example "cdc-logger", and select embassy as the HAL. You do not need to enable defmt for this setup.
-
+When prompted, give your project a name, for example "cdc-logger", and select embassy as the HAL. You do not need to enable `defmt` for this setup.
 
 ## Additional crates required
 
-Update your Cargo.toml to include the USB logger crate.
+Update your `Cargo.toml` to include the USB logger crate.
 
 ```toml
 embassy-usb-logger = "0.5.1"
 log = "0.4"
 ```
 
-The embassy-usb-logger crate provides a ready to use logger implementation that sends log messages over USB. The log crate provides the logging macros used throughout the program.
+The `embassy-usb-logger` crate provides a ready to use logger implementation that sends log messages over USB. The log crate provides the logging macros used throughout the program.
 
 ## Additional imports
 
-Add the following imports to your main.rs file.
+Add the following imports to your `main.rs` file.
 
 ```rust
 // For USB
@@ -62,8 +61,7 @@ async fn logger_task(usb: embassy_rp::Peri<'static, embassy_rp::peripherals::USB
 
 The logger task runs continuously and handles all USB communication in the background.
 
-
-## Main function 
+## Main function
 
 In the main function, we spawn the USB logger task.
 
@@ -85,7 +83,6 @@ loop {
 }
 ```
 
-
 ## Clone the existing project
 
 You can clone (or refer) project I created and navigate to the `cdc-logger` folder.
@@ -95,13 +92,13 @@ git clone https://github.com/ImplFerris/pico2-embassy-projects
 cd pico2-embassy-projects/usb-serial/cdc-logger/
 ```
 
-## How to Run ?
+## How to Run?
 
-The method to flash (run the code) on the Pico is the same as usual. However, we need to set up tio to interact with the Pico through the serial port (/dev/ttyACM0). This allows us to read data from the Pico or send data to it.
+The method to flash (run the code) on the Pico is the same as usual. However, we need to set up `tio` to interact with the Pico through the serial port (`/dev/ttyACM0`). This allows us to read data from the Pico or send data to it.
 
 ### tio
 
-Make sure you have tio installed on your system. If not, you can install it using:
+Make sure you have `tio` installed on your system. If not, you can install it using:
 
 ```sh
 apt install tio
@@ -124,6 +121,11 @@ Open another terminal, navigate to the project folder, and flash the code onto t
 ```sh
 cargo run --release
 ```
-Once the program starts running, you should see the counter value printed once every second in the tio terminal.
+
+Once the program starts running, you should see the counter value printed once every second in the `tio` terminal.
 
 <img style="display: block; margin: auto;" src="./images/embassy-usb-logger-usb-serial-raspberry-pi-pico.png"/>
+
+### Reference
+
+- [`rp-usb-console`](https://github.com/petersallai/rp-usb-console) - a crate that does USB logging, but also supports commands e.g. to configure log levels

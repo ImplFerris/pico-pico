@@ -13,7 +13,7 @@ We will use the [mfrc522](https://crates.io/crates/mfrc522) crate to communicate
 
 ## Project from template
 
-We will start by creating a new project using the template. 
+We will start by creating a new project using the template.
 
 ```sh
 cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
@@ -106,7 +106,6 @@ loop {
 
 The reqa method sends a Request command to detect cards in proximity. When a card responds with its ATQA (Answer To Request), we call select to perform the anti-collision protocol and retrieve the UID. The UID bytes are formatted as hexadecimal and sent through defmt to the RTT console.
 
-
 ## Clone the existing project
 
 You can clone (or refer) project I created and navigate to the `print-uid` folder.
@@ -121,5 +120,5 @@ cd pico2-embassy-projects/rfid/print-uid/
 Don't forget to use the `cargo embed --release` command to flash instead of `cargo flash --release` when you are using a debug probe. I already configured in the template to open up the RTT when flashed, you should see the defmt output.
 
 Now, bring the RFID tag near the reader. You should see the UID bytes displayed in hex format in the RTT console.
- 
+
 <img style="display: block; margin: auto;" src="./images/print-rfid-uid-with-defmt.png"/>

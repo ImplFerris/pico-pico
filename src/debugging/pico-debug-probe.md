@@ -30,16 +30,13 @@ Before you can connect the Debug Probe to the Pico 2, you need to make the [SWD 
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">SWD Debugging Pins</div>
 </div>
 
-
 Once the SWD pins are soldered, your Pico is ready to connect to the Debug Probe.
 
 ## Preparing Debug Probe
 
 Your Debug Probe may not ship with the latest firmware, especially the version that adds support for the Pico 2 (RP2350 chip). Updating the firmware is recommended before you start.
 
-
-The official Raspberry Pi documentation provides clear instructions for updating the Debug Probe. Follow the steps provided [here](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#updating-the-firmware-on-the-debug-probe).
-
+The official Raspberry Pi documentation provides clear instructions for updating the Debug Probe. Follow [the steps provided](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#updating-the-firmware-on-the-debug-probe).
 
 ## Connecting Pico with Debug Probe
 
@@ -47,7 +44,6 @@ The Debug Probe has two ports on its side:
 
 - **D port** - For the SWD (debug) connection
 - **U port** - For the UART (serial) connection
-
 
 ### SWD Connection (Required)
 
@@ -63,7 +59,6 @@ Connect the wires from the Debug Probe's D port to the Pico 2 pins as follows:
 
 Make sure the Pico 2 SWD pins are properly soldered before you attempt the connection.
 
-
 ### UART Connection (Optional)
 
 The UART connection is useful if you want to see serial output (like `println!` logs from Rust) in your computer's terminal. This is separate from the SWD connection.
@@ -76,25 +71,22 @@ Connect the wires from the Debug Probe's U port to the Pico 2 pins:
 | Orange     | GP1 (RX on Pico) | **Pin 2**           |
 | Black      | GND              | **Pin 3**           |
 
-
 You can use any GPIO pins configured for UART, but GP0 and GP1 are the Pico's default UART0 pins.
-
 
 ### Powering the Pico
 
 The Debug Probe does not supply power to the Pico 2, it only provides the SWD and UART signals. To power the Pico 2, connect the Debug Probe to your PC through its USB port, then power the Pico 2 separately through its own USB connection. Both devices must be powered for debugging to work properly.
 
-
 ### Final Setup
 
 Once connected:
+
 1. Plug the Debug Probe into your computer via USB
 2. Ensure your Pico 2 is powered
 3. The Debug Probe's red LED should light up, indicating it has power
 4. Your setup is ready - no BOOTSEL button pressing needed from now on
 
 You can now flash and debug your Pico 2 directly through your development environment without any manual intervention.
-
 
 ## Test it
 
@@ -105,9 +97,9 @@ git clone https://github.com/ImplFerris/pico2-quick
 cd pico2-quick
 ```
 
-You cannot just use `cargo run` like we did before, unless you modified the config.toml.  Because the quick start project is set up to use picotool as its runner. You can comment out the picotool runner and enable the probe-rs runner. Then you can use the `cargo run` command.
+You cannot just use `cargo run` like we did before, unless you modified the `config.toml`.  Because the quick start project is set up to use picotool as its runner. You can comment out the picotool runner and enable the probe-rs runner. Then you can use the `cargo run` command.
 
-Or more simply (i recommend this), you can just use the following commands provided by probe-rs. This will flash your program using the Debug Probe:
+Or more simply (I recommend this), you can just use the following commands provided by `probe-rs`. This will flash your program using the Debug Probe:
 
 ```sh
 cargo flash
@@ -117,11 +109,11 @@ cargo flash --release
 
 ## cargo embed
 
-You can use cargo embed to flash your program and watch the log output in your terminal. The quick start project is already set up to send its log messages over RTT, so you do not need to configure anything before trying it out.
+You can use `cargo embed` to flash your program and watch the log output in your terminal. The quick start project is already set up to send its log messages over RTT, so you do not need to configure anything before trying it out.
 
 ```sh
 cargo embed
-# or 
+# or
 cargo embed --release
 ```
 
@@ -129,12 +121,12 @@ If RTT is new to you, we will explain it later, but for now you can simply run t
 
 If everything works, you should see the "Hello, World!" message in the system terminal.
 
-
 <div class="image-with-caption" style="text-align:center; ">
     <img src="./images/Rust cargo embed command with Raspberry Pi Pico.png" alt="cargo embed with defmt" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">cargo embed showing defmt logs</div>
 </div>
 
+Use standard [Ctl]-[C] to exit this terminal.
 
 ## Reference
 

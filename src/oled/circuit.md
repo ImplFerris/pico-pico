@@ -32,7 +32,7 @@ The OLED display requires four connections to the Raspberry Pi Pico. This exampl
       <td>SCL</td>
     </tr>
     <tr>
-      <td>3.3V</td>
+      <td>3.3 V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>

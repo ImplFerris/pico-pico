@@ -1,6 +1,6 @@
 # Simulation - LED Dimming with PWM
 
-Here is a simulation to show the dimming effect on an LED based on the duty cycle and the High and Low parts of the square wave. I set the default speed very slow so it is clear and not annoying to watch. To start it, click the “Start animation” button. You can increase the speed by reducing the delay time and watching the changes.
+Here is a simulation to show the dimming effect on an LED based on the duty cycle and the high and low parts of the square wave. I set the default speed very slow so it is clear and not annoying to watch. To start it, click the “Start animation” button. You can increase the speed by reducing the delay time and watching the changes.
 
 <style>
 .pwm-container {
@@ -241,7 +241,7 @@ Here is a simulation to show the dimming effect on an LED based on the duty cycl
     const speedValue = document.getElementById('pwm-speedValue');
     const canvas = document.getElementById('pwm-waveform');
     const ctx = canvas.getContext('2d');
-    
+
     let animationRunning = false;
     let currentDutyCycle = 0;
     let waveformOffset = 0;
@@ -275,10 +275,10 @@ Here is a simulation to show the dimming effect on an LED based on the duty cycl
         const period = 160;
         const highVoltage = 30;
         const lowVoltage = height - 30;
-        
+
         ctx.fillStyle = '#0a0a15';
         ctx.fillRect(0, 0, width, height);
-        
+
         // Draw subtle grid
         ctx.strokeStyle = '#1a1a2a';
         ctx.lineWidth = 1;
@@ -294,27 +294,27 @@ Here is a simulation to show the dimming effect on an LED based on the duty cycl
             ctx.lineTo(width, y);
             ctx.stroke();
         }
-        
+
         // Draw voltage labels
         ctx.fillStyle = '#555';
         ctx.font = '11px monospace';
         ctx.fillText('HIGH', 8, highVoltage + 15);
         ctx.fillText('LOW', 8, lowVoltage + 5);
-        
+
         // Draw duty cycle percentage on waveform
         ctx.fillStyle = '#ff5555';
         ctx.font = 'bold 14px sans-serif';
         ctx.fillText(`${currentDutyCycle}%`, width - 60, 25);
-        
+
         // Draw PWM waveform
         ctx.strokeStyle = '#ff5555';
         ctx.lineWidth = 2.5;
         ctx.beginPath();
-        
+
         const onTime = (currentDutyCycle / 100) * period;
         let x = -waveformOffset;
         let isHigh = true;
-        
+
         while (x < width) {
             if (isHigh) {
                 ctx.lineTo(x, lowVoltage);
@@ -330,9 +330,9 @@ Here is a simulation to show the dimming effect on an LED based on the duty cycl
                 isHigh = true;
             }
         }
-        
+
         ctx.stroke();
-        
+
         waveformOffset = (waveformOffset + 1) % period;
     }
 
@@ -354,17 +354,17 @@ Here is a simulation to show the dimming effect on an LED based on the duty cycl
                 setDutyCycle(i);
                 await sleep(animationSpeed);
             }
-            
+
             if (!animationRunning) break;
-            
+
             phaseDisplay.textContent = 'Fading Out...';
             for (let i = 100; i >= 0 && animationRunning; i--) {
                 setDutyCycle(i);
                 await sleep(animationSpeed);
             }
-            
+
             if (!animationRunning) break;
-            
+
             phaseDisplay.textContent = 'Paused (1500ms)';
             await sleep(1500);
         }

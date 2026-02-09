@@ -1,16 +1,16 @@
 # Rust Tutorial: Using the HC-SR04 Sensor with the Pico 2
 
-We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using rp-hal. As usual, generate the project from the template with cargo-generate:
+We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using `rp-hal`. As usual, generate the project from the template with `cargo-generate`:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "bat-beacon" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
+When prompted, give your project a name like `bat-beacon` and choose `embassy` as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Additional Imports
 
-In addition to the usual boilerplate imports, you'll need to add these specific imports to your project.  Your code editor should provide auto-import suggestions for most of these, with the exception of the SetDutyCycle trait which you'll need to add manually.
+In addition to the usual boilerplate imports, you'll need to add these specific imports to your project.  Your code editor should provide auto-import suggestions for most of these, with the exception of the `SetDutyCycle` trait which you'll need to add manually.
 
 ```rust
 // For GPIO
@@ -23,8 +23,7 @@ use embassy_rp::pwm::{Pwm, SetDutyCycle};
 use embassy_time::Instant;
 ```
 
-We need GPIO types to control our trigger and echo pins, PWM to control the LED brightness, and timing utilities to measure the ultrasonic pulse duration.
-
+We need GPIO types to control our trigger and echo pins, PWM to control the LED brightness, and timing utilities to measure the ultrasonic pulse duration.r
 
 ## Mapping GPIO Pins
 
@@ -37,6 +36,7 @@ By now, you should be familiar with PWM from the Dimming LED section. We will cr
 // For external LED connected on GPIO 3
 let mut led = Pwm::new_output_b(p.PWM_SLICE1, p.PIN_3, Default::default());
 ```
+
 You can use either the onboard LED or an external LED. I prefer using the external LED. You can see the gradual brightness changes much better.
 
 Next, let's initialize the LED to be off and get its maximum duty cycle value:
@@ -49,11 +49,10 @@ let max_duty = led.max_duty_cycle();
 // defmt::info!("Max duty cycle {}", max_duty);
 ```
 
-The duty cycle determines LED brightness; 0 is completely off, and max_duty is fully on.
-
+The duty cycle determines LED brightness; 0 is completely off, and `max_duty` is fully on.
 
 ## Configuring Trigger and Echo Pins
- 
+
 As you know, we have to send a signal to the trigger pin from the Pico, so we'll configure GPIO pin 17 (connected to the trigger pin) as an Output with an initial Low state. The sensor indicates distance through pulses on the echo pin, meaning it sends signals to the Pico (input to the Pico). So we'll configure GPIO pin 16 (connected to the echo pin) as an Input.
 
 ```rust
@@ -79,7 +78,7 @@ fn calculate_duty_cycle(distance: f64, max_duty: u16) -> u16 {
 }
 ```
 
-This function takes the measured distance and the maximum duty cycle value. If the distance is between 2cm (the sensor's minimum range) and 30cm, we normalize it to a 0-1 range and multiply by the maximum duty cycle. Objects closer than 2cm or farther than 30cm result in the LED turning off (duty cycle of 0).
+This function takes the measured distance and the maximum duty cycle value. If the distance is between 2 cm (the sensor's minimum range) and 30 cm, we normalize it to a 0-1 range and multiply by the maximum duty cycle. Objects closer than 2 cm or farther than 30 cm result in the LED turning off (duty cycle of 0).
 
 ## Measuring Distance with the Sensor
 

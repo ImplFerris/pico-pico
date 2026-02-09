@@ -18,7 +18,7 @@ Without this chip, you would need many GPIO pins because each row and column of 
 > [!Tip]
 > In this book, we will not look at the internal working of the MAX7219. We will use an existing driver and focus on controlling the display. If you want to learn how to build a MAX7219 driver from scratch, including implementing the embedded-graphics trait, you can find that in the [RED (Rust Embedded Drivers)](https://red.implrust.com/max7219/index.html) book.
 
-### Daisy Chaining 
+### Daisy Chaining
 
 One useful feature of the MAX7219 is that modules can be daisy chained. This means you can connect multiple identical modules together to form a larger display. For example, you can connect 4 or 8 modules side by side to create a wider dot matrix.
 
@@ -43,5 +43,3 @@ The same MAX7219 chip is also commonly used with 7-segment LED displays. The int
 The MAX7219 uses a serial interface that is similar to SPI. It needs three control signals. DIN is the data line used to send information to the chip. CLK is the clock signal that tells the chip when to read each bit. CS, sometimes labeled LOAD, is used to latch the data into the chip.
 
 On the microcontroller side, we use the SPI peripheral in a write only manner to send data to the MAX7219. The chip does not send any data back. It only receives commands and updates the display based on what we send.
-
-

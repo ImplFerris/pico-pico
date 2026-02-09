@@ -18,9 +18,9 @@ use embassy_rp::gpio::{Level, Output};
 
 ## Blinking Logic
 
-Now we'll create a simple loop to make the LED blink. First, we turn on the LED by calling the `set_high()` function on our GPIO instance. Then we add a short delay using Timer. Next, we turn off the LED with `set_low()`. Then we add another delay. This creates the blinking effect.
+Now we'll create a simple loop to make the LED blink. First, we turn on the LED by calling the `set_high()` function on our GPIO instance. Then we add a short delay using `Timer`. Next, we turn off the LED with `set_low()`. Then we add another delay. This creates the blinking effect.
 
-Let's import Timer into our project:
+Let's import `Timer` into our project:
 
 ```rust
 use embassy_time::Timer;

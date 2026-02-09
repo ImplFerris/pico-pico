@@ -22,7 +22,7 @@ The I2C adapter simplifies the connection by converting I2C commands into parall
     <tr>
       <td>1</td>
       <td><span class="slanted-text red">VCC</span></td>
-      <td>Power supply (typically 5V)</td>
+      <td>Power supply (typically 5 V)</td>
     </tr>
     <tr>
       <td>2</td>
@@ -41,7 +41,6 @@ The I2C adapter simplifies the connection by converting I2C commands into parall
     </tr>
   </tbody>
 </table>
-
 
 ## Parallel Interface Pin Layout
 
@@ -71,7 +70,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td>2</td>
       <td><span class="slanted-text red">VDD</span></td>
       <td>
-        Power supply for the LCD logic, typically 5V.
+        Power supply for the LCD logic, typically 5 V.
       </td>
     </tr>
     <tr>
@@ -80,7 +79,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td>
         Contrast control pin.<br>
         - This pin expects an analog voltage between GND and VDD.<br>
-        - Recommended: Use a 10k potentiometer as a voltage divider, with the wiper connected to V<sub>o</sub> and the other two pins to VDD and GND.<br>
+        - Recommended: Use a 10 k potentiometer as a voltage divider, with the wiper connected to V<sub>o</sub> and the other two pins to VDD and GND.<br>
         - Alternative: Use fixed resistors as a voltage divider between VDD and GND, with the midpoint connected to V<sub>o</sub>.
       </td>
     </tr>
@@ -131,7 +130,7 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
       <td><span class="slanted-text red">A</span></td>
       <td>
         Backlight anode.
-        Often connected to 5V.
+        Often connected to 5 V.
         Some modules include an onboard current-limiting resistor.
       </td>
     </tr>
@@ -145,25 +144,21 @@ In the parallel interface, the microcontroller talks directly to the HD44780 con
   </tbody>
 </table>
 
-
-
 ## Contrast Adjustment
 
-The Vo pin controls the contrast of the LCD by setting the voltage difference between VDD and Vo.  
+The Vo pin controls the contrast of the LCD by setting the voltage difference between VDD and Vo.
 Lower Vo values increase contrast, while higher values reduce it.
 
 The recommended approach is to use a potentiometer connected between VDD and GND, with the wiper connected to Vo. This allows easy adjustment while the LCD is powered.
 
 If a potentiometer is not available, fixed resistors can be used as a voltage divider between VDD and GND, with the midpoint connected to Vo.
 
-
 ## Register Select Pin (RS)
 
 The RS pin selects whether the LCD interprets incoming values as commands or as character data.
 
-- RS = LOW: command mode  
-- RS = HIGH: data mode  
-
+- RS = LOW: command mode
+- RS = HIGH: data mode
 
 ## Enable Pin (E)
 
@@ -171,7 +166,4 @@ The Enable pin controls when data is latched into the LCD.
 
 To send data or a command, place the value on the data pins, set RS appropriately, then pulse E HIGH and bring it back LOW. The LCD reads the data on the HIGH to LOW transition.
 
-
-
-
-
+It is used to control when data is transferred to the LCD display. The enable pin is typically kept low (E=0) but is set high (E=1) for a specific period of time to initiate a data transfer, and then returned to low.. The data is latched into the LCD on the transition from high to low.

@@ -4,7 +4,6 @@ A voltage divider is a simple circuit that reduces a higher input voltage to a l
 
 The resistor connected to the input voltage is called \\( R_{1} \\), and the resistor connected to ground is called \\( R_{2} \\). The output voltage \\( V_{out} \\) is measured at the point between \\( R_{1} \\) and \\( R_{2} \\), and it will be a fraction of the input voltage \\( V_{in} \\).
 
-
 ## Circuit
 
 <img style="display: block; margin: auto;" alt="Voltage Divider" src="./images/voltage-divider.png"/>
@@ -18,24 +17,22 @@ V_{out} = V_{in} \times \frac{R_2}{R_1 + R_2}
 ### Example Calculation for \\( V_{out} \\)
 
 Given:
-- \\( V_{in} = 3.3V \\)
-- \\( R_1 = 10 k\Omega \\)
-- \\( R_2 = 10 k\Omega \\)
+- \\( V_{in} = 3.3 V \\)
+- \\( R_1 = 10 k\Omega \\)
+- \\( R_2 = 10 k\Omega \\)
 
 Substitute the values:
 
 \\[
-V_{out} = 3.3V \times \frac{10 k\Omega}{10 k\Omega + 10 k\Omega} = 3.3V \times \frac{10}{20} = 3.3V \times 0.5 = 1.65V
+V_{out} = 3.3 V \times \frac{10 k\Omega}{10 k\Omega + 10 k\Omega} = 3.3 V \times \frac{10}{20} = 3.3 V \times 0.5 = 1.65 V
 \\]
 
-
-The output voltage \\( V_{out} \\) is 1.65V.
-
+The output voltage \\( V_{out} \\) is 1.65 V.
 
 ```rust,editable
 fn main() {
     // You can edit the code
-    // You can modify values and run the code 
+    // You can modify values and run the code
     let vin: f64 = 3.3;
     let r1: f64 = 10000.0;
     let r2: f64 = 10000.0;
@@ -51,6 +48,7 @@ fn main() {
 Voltage dividers are used in applications like potentiometers, where the resistance changes as the knob is rotated, adjusting the output voltage. They are also used to measure resistive sensors such as light sensors and thermistors, where a known voltage is applied, and the microcontroller reads the voltage at the center node to determine sensor values like temperature.
 
 ## Voltage Divider Simulation
+
 <style>
 canvas {
     border: 1px solid #ccc;
@@ -73,15 +71,17 @@ canvas {
 <p class="formula" id="filledFormula">
     Filled Formula: V<sub>out</sub> = 3.3 × (10000 / (10000 + 10000))
 </p>
-<p id="result">Output Voltage (Vout): 1.65 V</p>
+<p id="result">Output Voltage (Vout): 1.65 V</p>
 
 <canvas id="circuitCanvas" width="600" height="400"></canvas>
-
 
 ## Simulator in Falstad website
 
 I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/circuit/) to create the diagram. It's a great tool for drawing circuits. You can download the file I created, [`voltage-divider.circuitjs.txt`](./voltage-divider.circuitjs.txt), and import it to experiment with the circuit.
 
+## Reference
+
+- [Must Calculate - Resistive voltage divider](https://mustcalculate.com/electronics/resistivevoltagedivider.php?vin=3.3&vout=&r1=10k&r2=10k) providing many more electric calculations
 
 <script>
     function updateAndCalculate() {
@@ -95,7 +95,7 @@ I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/ci
         const r1 = parseFloat(document.getElementById('r1').value) || 0;
         const r2 = parseFloat(document.getElementById('r2').value) || 0;
 
-        document.getElementById('filledFormula').textContent = 
+        document.getElementById('filledFormula').textContent =
             `Filled Formula: Vout = ${vin} × (${r2} / (${r1} + ${r2}))`;
     }
 
@@ -105,13 +105,13 @@ I used the website [https://www.falstad.com/circuit/](https://www.falstad.com/ci
         const r2 = parseFloat(document.getElementById('r2').value);
 
         if (isNaN(vin) || isNaN(r1) || isNaN(r2) || r1 <= 0 || r2 <= 0) {
-            document.getElementById('result').textContent = 
+            document.getElementById('result').textContent =
                 "Please enter valid positive numbers for all fields.";
             return;
         }
 
         const vout = vin * (r2 / (r1 + r2));
-        document.getElementById('result').textContent = 
+        document.getElementById('result').textContent =
             `Output Voltage (Vout): ${vout.toFixed(2)} V`;
     }
 

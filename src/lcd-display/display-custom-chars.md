@@ -10,7 +10,7 @@ We will use the custom glyph generator from the previous page to design Ferris. 
 
 ## liquid_crystal crate
 
-The hd44780-driver crate that we used earlier does not support defining custom glyphs. To work with custom glyphs stored in CGRAM, we will use the liquid_crystal crate.
+The hd44780-driver crate that we used earlier does not support defining custom glyphs. To work with custom glyphs stored in CGRAM, we will use the `liquid_crystal` crate.
 
 This crate supports custom glyphs and also provides an async API, which we will use in this chapter.
 
@@ -44,7 +44,7 @@ use embassy_time::Delay;
 
 ## Bind I2C Interrupt
 
-Bind the I2C0_IRQ interrupt to the Embassy I2C interrupt handler for I2C0:
+Bind the `I2C0_IRQ` interrupt to the Embassy I2C interrupt handler for `I2C0`:
 
 ```rust
 bind_interrupts!(struct Irqs {

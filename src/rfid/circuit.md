@@ -17,11 +17,11 @@ The RC522 RFID module exposes 8 pins. Some pins have different functions dependi
     <th style="border: 1px solid black;">Description</th>
   </tr>
   <tr style="border: 1px solid black;">
-    <td style="background-color: #ff0000; color: white; border: 1px solid black;">3.3V</td>
+    <td style="background-color: #ff0000; color: white; border: 1px solid black;">3.3 V</td>
     <td style="border: 1px solid black;">Power</td>
     <td style="border: 1px solid black;">Power</td>
     <td style="border: 1px solid black;">Power</td>
-    <td style="border: 1px solid black;">Power supply (3.3V).</td>
+    <td style="border: 1px solid black;">Power supply (3.3 V).</td>
   </tr>
   <tr style="border: 1px solid black;">
     <td style="background-color: #000; color: white; border: 1px solid black;">GND</td>
@@ -90,14 +90,14 @@ The table below shows how to connect the RC522 module to the Pico using SPI.
   </thead>
   <tbody>
     <tr>
-      <td>3.3V</td>
+      <td>3.3 V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
           <div class="male-right"></div>
         </div>
       </td>
-      <td>3.3V</td>
+      <td>3.3 V</td>
     </tr>
     <tr>
       <td>GND</td>

@@ -4,9 +4,9 @@ If you face any bugs, errors, or other issues while working on the exercises, he
 
 ## 1. Compare with Working Code
 
-Check the complete code examples or clone the reference project for comparison. Carefully review your code and `Cargo.toml` dependency versions. Look out for any syntax or logic errors. If a required feature is not enabled or there is a feature mismatch, make sure to enable the correct features as shown in the exercise. 
+Check the complete code examples or clone the reference project for comparison. Carefully review your code and `Cargo.toml` dependency versions. Look out for any syntax or logic errors. If a required feature is not enabled or there is a feature mismatch, make sure to enable the correct features as shown in the exercise.
 
-If you find a version mismatch, either adjust your code(research and find a solution; it's a great way for you to learn and understand things better) to work with the newer version or update the dependencies to match the versions used in the tutorial.
+If you find a version mismatch, either adjust your code (research and find a solution; it's a great way for you to learn and understand things better) to work with the newer version or update the dependencies to match the versions used in the tutorial.
 
 ## 2. Search or Report GitHub Issues
 
@@ -21,20 +21,20 @@ The Rust Embedded community is active in the Matrix Chat. The Matrix chat is an 
 
 Here are some useful Matrix channels related to topics covered in this book:
 
-- **Embedded Devices Working Group**  
-  [`#rust-embedded:matrix.org`](https://matrix.to/#/#rust-embedded:matrix.org)  
+- **Embedded Devices Working Group**
+  [`#rust-embedded:matrix.org`](https://matrix.to/#/#rust-embedded:matrix.org)
   General discussions around using Rust for embedded development.
 
-- **RP Series Development**  
-  [`#rp-rs:matrix.org`](https://matrix.to/#/#rp-rs:matrix.org)  
+- **RP Series Development**
+  [`#rp-rs:matrix.org`](https://matrix.to/#/#rp-rs:matrix.org)
   For Rust development and discussions around the Raspberry Pi RP series chips.
 
-- **Debugging with Probe-rs**  
-  [`#probe-rs:matrix.org`](https://matrix.to/#/#probe-rs:matrix.org)  
+- **Debugging with Probe-rs**
+  [`#probe-rs:matrix.org`](https://matrix.to/#/#probe-rs:matrix.org)
   For support and discussion around the [probe-rs](https://probe.rs) debugging toolkit.
 
-- **Embedded Graphics**  
-  [`#rust-embedded-graphics:matrix.org`](https://matrix.to/#/#rust-embedded-graphics:matrix.org)  
+- **Embedded Graphics**
+  [`#rust-embedded-graphics:matrix.org`](https://matrix.to/#/#rust-embedded-graphics:matrix.org)
   For working with [`embedded-graphics`](https://docs.rs/embedded-graphics), a drawing library for embedded systems.
 
 You can create a Matrix account and join these channels to get help from experienced developers.

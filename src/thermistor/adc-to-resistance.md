@@ -19,7 +19,6 @@ This is the standard voltage divider formula we have already seen. Since the the
 V_{in} = \\frac{R_2}{R_{thermistor} + R_2} \\times V_{ref}
 \\]
 
-
 ### Step 2: ADC conversion equation
 
 The ADC converts the input voltage into a digital value based on the ratio of the input voltage to the reference voltage.
@@ -27,7 +26,6 @@ The ADC converts the input voltage into a digital value based on the ratio of th
 \\[
 ADC = \\frac{V_{in}}{V_{ref}} \\times 2^{bits}
 \\]
-
 
 ### Step 3: Substitute the divider equation into the ADC equation
 
@@ -81,4 +79,3 @@ fn main() {
     println!("Calculated Resistance (R2): {} Ω", r2);
 }
 ```
-

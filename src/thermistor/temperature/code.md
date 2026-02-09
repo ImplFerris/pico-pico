@@ -7,10 +7,10 @@ In this section, we move to the coding part.  We write the code that reads the t
 As usual, we are going to start by generating a new project from the template.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
-When prompted, give your project a name, like "temperature-oled" and select `embassy` as the HAL.
 
+When prompted, give your project a name, like "temperature-oled" and select `embassy` as the HAL.
 
 ## Additional Crates required
 
@@ -22,19 +22,19 @@ heapless = "0.9.2"
 libm = "0.2.15"
 embedded-graphics = "0.8"
 ```
+
 - **[`ssd1306`](https://docs.rs/ssd1306/latest/ssd1306/)**: Driver crate for controlling SSD1306-based OLED displays.
 
 - **[`heapless`](https://docs.rs/heapless/latest/heapless/)**: In a no_std environment, Rust's standard String type is not available because it requires heap allocation. This crate provides stack-allocated, fixed-size data structures. We use it to store formatted text such as ADC values, resistance, and temperature before sending them to the OLED.
 
 - **[`libm`](https://crates.io/crates/libm)**: Provides mathematical functions for no_std environments. This is required to compute the natural logarithm when using the B equation.
 
-- **[`embedded-graphics`](https://docs.rs/embedded-graphics/latest/embedded_graphics/)**:  
+- **[`embedded-graphics`](https://docs.rs/embedded-graphics/latest/embedded_graphics/)**:
   The SSD1306 driver supports different ways of writing content to the display.
 
   When you use `into_buffered_graphics_mode`, the display is treated like a pixel buffer. Text and shapes are first drawn into an in-memory framebuffer using the embedded-graphics API, and then the whole buffer is sent to the OLED. This mode requires the embedded-graphics crate.
 
   When you use `into_terminal_mode`, the driver provides a simple text-based interface. You write characters directly to the display without drawing pixels or shapes yourself. In this case, embedded-graphics is not required.
-
 
 ## Additional imports
 
@@ -88,15 +88,15 @@ We define a few constants that describe the thermistor and ADC behavior.
 const ADC_LEVELS: f64 = 4096.0;
 
 const B_VALUE: f64 = 3950.0;
-const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10kΩ)
-const REF_TEMP: f64 = 25.0; // Reference temperature 25°C
+const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10 kΩ)
+const REF_TEMP: f64 = 25.0; // Reference temperature 25 °C
 ```
 
-The thermistor we used has a resistance of 10 kΩ at 25°C and a B value of 3950. The pico has a 12-bit ADC resolution, so 4096 possible ADC levels.
+The thermistor we used has a resistance of 10 kΩ at 25 °C and a B value of 3950. The pico has a 12-bit ADC resolution, so 4096 possible ADC levels.
 
 ## Helper functions
 
-We will define few helper functions. 
+We will define few helper functions.
 
 This function that converts ADC values into resistance uses the voltage divider equation. We have already covered this formula earlier, so here we simply reuse it.
 
@@ -119,7 +119,7 @@ fn calculate_temperature(current_res: f64, ref_res: f64, ref_temp: f64, b_val: f
 }
 ```
 
-We also define small helper functions to convert between Kelvin and Celsius. 
+We also define small helper functions to convert between Kelvin and Celsius.
 
 ```rust
 fn kelvin_to_celsius(kelvin: f64) -> f64 {
@@ -133,9 +133,9 @@ fn celsius_to_kelvin(celsius: f64) -> f64 {
 
 ## Display Setup
 
-We configure the OLED to use I2C with SDA on GPIO 16 and SCL on GPIO 17. We set the I2C frequency to 400 kHz.
+We configure the OLED to use I2C with SDA on GPIO 16 and SCL on GPIO 17. We set the I2C frequency to 400 kHz.
 
-We initialize the SSD1306 display in buffered graphics mode. In this mode, all drawing operations happen in memory first. The content is sent to the OLED only when we flush the buffer. We also define the text style, you can adjust the font size. 
+We initialize the SSD1306 display in buffered graphics mode. In this mode, all drawing operations happen in memory first. The content is sent to the OLED only when we flush the buffer. We also define the text style, you can adjust the font size.
 
 ```rust
 // Display Setup
@@ -160,7 +160,6 @@ display
 let text_style = MonoTextStyle::new(&FONT_7X13_BOLD, BinaryColor::On);
 ```
 
-
 ## ADC Setup
 
 We configure the ADC channel connected to the thermistor pin. We then initialize the ADC peripheral using the interrupt bindings defined earlier.
@@ -181,7 +180,7 @@ let mut buff: String<64> = String::new();
 
 ### Convert the Reference Temperature to Kelvin
 
-We define the reference temperature for the thermistor as 25°C. Since the B equation requires temperature in Kelvin, we convert this value once during initialization. This avoids repeating the conversion inside the loop.
+We define the reference temperature for the thermistor as 25 °C. Since the B equation requires temperature in Kelvin, we convert this value once during initialization. This avoids repeating the conversion inside the loop.
 
 ```rust
 let ref_temp = celsius_to_kelvin(REF_TEMP);
@@ -249,6 +248,7 @@ display.flush().await.expect("failed to send to display");
 Timer::after_secs(2).await;
 
 ```
+
 ## Flash
 
 Once you flash the firmware, you should see the temperature along with the resistance and ADC values. You can move the setup to a different room, observe how the readings change between day and night, or take it outdoors using an external power supply to see how the temperature responds in different conditions.
@@ -309,8 +309,8 @@ bind_interrupts!(struct Irqs {
 const ADC_LEVELS: f64 = 4096.0;
 
 const B_VALUE: f64 = 3950.0;
-const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10kΩ)
-const REF_TEMP: f64 = 25.0; // Reference temperature 25°C
+const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10 kΩ)
+const REF_TEMP: f64 = 25.0; // Reference temperature 25 °C
 
 // We have already covered about this formula in ADC chpater
 fn adc_to_resistance(adc_value: u16, r2_res: f64) -> f64 {
@@ -411,7 +411,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 // End of file
 ```
-
 
 ## Clone the existing project
 

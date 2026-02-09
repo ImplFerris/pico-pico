@@ -2,18 +2,15 @@
 
 The RP2350 has a PWM peripheral with 12 PWM generators called slices. Each slice contains two output channels (A and B), giving you a total of 24 PWM output channels. For detailed specifications, see page 1077 of the [RP2350 Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf#page=1078).
 
-
 Let's have a quick look at some of the key concepts.
 
 ## PWM Generator (Slice)
 
 A slice is the hardware block that generates PWM signals. Each of the 12 slices (PWM0-PWM11) is an independent timing unit with its own 16-bit counter, compare registers, control settings, and clock divider. This independence means you can configure each slice with different frequencies and resolutions.
 
-
 ## Channel
 
 Each slice contains two output channels: **Channel A** and **Channel B**. Both channels share the same counter, so they run at the same frequency and are synchronized. However, each channel has its own compare register, allowing independent duty cycle control. This lets you generate two related but distinct PWM signals from a single slice.
-
 
 ## Mapping of PWM channels to GPIO Pins
 
@@ -44,8 +41,8 @@ I have created a small form that helps you figure out which GPIO pin maps to whi
     </select>
     <div id="result-container" style="display: none;">
         <div class="pwm-info">
-            <strong>GPIO:</strong> <span id="gpio-value"></span> | 
-            <strong>PWM Slice:</strong> <span id="slice-value"></span> | 
+            <strong>GPIO:</strong> <span id="gpio-value"></span> |
+            <strong>PWM Slice:</strong> <span id="slice-value"></span> |
             <strong>Channel:</strong> <span id="channel-value"></span>
         </div>
         <div class="code-header">Embassy</div>
@@ -62,15 +59,26 @@ I have created a small form that helps you figure out which GPIO pin maps to whi
 
 In standard PWM (fast PWM), the counter counts up from 0 to TOP, then immediately resets to 0. This creates asymmetric edges where the output changes at different points in the cycle.
 
-Phase-correct PWM counts up to TOP, then counts back down to 0, creating a triangular waveform. The output switches symmetrically - once going up and once coming down. This produces centered pulses with edges that mirror each other, reducing electromagnetic interference and creating smoother transitions. The trade-off is that phase-correct mode runs at half the frequency of standard PWM for the same TOP value.
+Phase-correct PWM counts up to TOP, then counts back down to 0, creating a triangular waveform. The output switches symmetrically - once going up and once coming down. This produces centered pulses with edges that mirror each other, reducing electromagnetic interference and creating smoother transitions. The trade-off is that phase-correct mode runs at half the frequency of standard PWM for the same TOP value. See [Phase Correct Mode](top-divider-rp2350.html#phase-correct-mode) later on for more details on it.
 
 Configure PWM4 to operate in phase-correct mode for smoother output transitions.
+
+### Embassy
+
+```rust
+let mut pwm_config: Config = Default::default();
+pwm_config.phase_correct = true;
+let mut pwm_pin = Pwm::new_output_b(p.PWM_SLICE4, p.PIN_25, pwm_config);
+```
+
+### rp-hal
 
 ```rust
 pwm.set_ph_correct();
 ```
 
 Get a mutable reference to channel B of PWM4 and direct its output to GPIO pin 25.
+
 ```rust
 let channel = &mut pwm.channel_b;
 channel.output_to(pins.gpio25);
@@ -141,7 +149,6 @@ channel.output_to(pins.gpio25);
     border: 2px dashed #ddd;
 }
 </style>
-
 
 <script>
 const pwmMapping = {

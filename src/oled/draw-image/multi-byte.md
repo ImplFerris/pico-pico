@@ -57,7 +57,7 @@ fn main(){
     const BITS_PER_PIXEL: usize = 1;
     let width = 31;
     let data = IMG_DATA;
-    
+
     println!("Bytes Per Row:{}", bytes_per_row(width,BITS_PER_PIXEL));
     let height = data.len() / bytes_per_row(width, BITS_PER_PIXEL);
     println!("Height: {}", height);
@@ -65,6 +65,3 @@ fn main(){
 ```
 
 You dont need to manually create these byte array, you can use an online tool like [imag2bytes](https://implferris.github.io/image2bytes/) to generate the byte array for you.
-
-
-

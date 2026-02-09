@@ -10,7 +10,7 @@ The got module uses note constants and helper types defined in the music module.
 use crate::music::*;
 ```
 
-This allows the melody to use note constants like NOTE_E4 and NOTE_A4 directly, without writing the module name each time.
+This allows the melody to use note constants like `NOTE_E4` and `NOTE_A4` directly, without writing the module name each time.
 
 ## Tempo
 

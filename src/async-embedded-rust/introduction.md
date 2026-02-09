@@ -1,6 +1,6 @@
 # Async In Embedded Rust
 
-When I first started this book, I wrote most of the examples using rp-hal only. In this revision, I have rewritten the book to focus mainly on async programming with Embassy. The official [Embassy book](https://embassy.dev/book/) already has good documentation, but I want to give a short introduction here. Let's have a brief look at async and understand why it's so valuable in embedded systems.
+When I first started this book, I wrote most of the examples using `rp-hal` only. In this revision, I have rewritten the book to focus mainly on `async` programming with Embassy. The official [Embassy book](https://embassy.dev/book/) already has good documentation, but I want to give a short introduction here. Let's have a brief look at async and understand why it's so valuable in embedded systems.
 
 ## Imagine You're Cooking Dinner
 
@@ -20,13 +20,14 @@ That's async programming. You're the executor, constantly deciding what needs at
 In embedded systems, your microcontroller spends a lot of time waiting. It waits for a button press, for a timer to expire, or for an LED to finish blinking for a set duration. Without async, you have two main approaches.
 
 ### Blocking
+
 The first approach is blocking code. Your program literally stops and waits. If you're waiting for a button press, your code sits in a loop checking if the button state has changed. During this time, your microcontroller can't do anything else. It can't blink an LED, it can't check other buttons, it can't respond to timers. All of your processor's power is wasted in a tight loop asking "is it ready yet?" over and over again.
 
 ### Interrupt
 
-The second approach is using interrupts directly. When hardware events happen, like a button being pressed or a timer expiring, the interrupt handler runs. This is better because your main code can keep running, but interrupt-based code quickly becomes complex and error-prone. You need to carefully manage shared state between your main code and interrupt handlers. 
+The second approach is using interrupts directly. When hardware events happen, like a button being pressed or a timer expiring, the interrupt handler runs. This is better because your main code can keep running, but interrupt-based code quickly becomes complex and error-prone. You need to carefully manage shared state between your main code and interrupt handlers.
 
-Do not worry about interrupts for now. We will go into them in more depth in later chapters. 
+Do not worry about interrupts for now. We will go into them in more depth in later chapters.
 
 ### Async
 
@@ -47,17 +48,17 @@ async fn blink_led(mut led: Output<'static>) {
 }
 ```
 
-The important part is the .await. When you write `Timer::after_millis(500).await`, you're telling the runtime "I need to wait 500 milliseconds, but I don't need the CPU during that time." The runtime can then go run other tasks. When the 500 milliseconds are up, your task resumes right where it left off.
+The important part is the `.await`. When you write `Timer::after_millis(500).await`, you're telling the runtime "I need to wait 500 milliseconds, but I don't need the CPU during that time." The runtime can then go run other tasks. When the 500 milliseconds are up, your task resumes right where it left off.
 
 Think back to our cooking analogy. When you put something on the stove and walk away, you're essentially "awaiting" it to be ready. You do other things, and when it's done, you return to that task. Just like you act as the executor in the kitchen, keeping track of what needs attention and when, the async runtime plays the same role for your program.
 
-
 ## Embassy
 
-Embassy is one of the popular async runtime that makes all of this work in embedded Rust. It provides the executor that manages your tasks, handles hardware interrupts. 
+Embassy is one of the popular async runtime that makes all of this work in embedded Rust. It provides the executor that manages your tasks, handles hardware interrupts.
 
 ### Executor
-When you use #[embassy_executor::main], Embassy automatically sets everything up - it runs your tasks, puts the CPU to sleep when everything is waiting, and wakes it up when hardware events occur.  The Executor is the coordinator that decides which task to poll when. The executor maintains a queue of tasks that are ready to run. When a task hits await and yields, the executor moves to the next ready task. When there are no tasks ready to run, the executor puts the CPU to sleep. Interrupts wake the executor back up, which then polls any tasks that became ready.
+
+When you use `#[embassy_executor::main]`, Embassy automatically sets everything up - it runs your tasks, puts the CPU to sleep when everything is waiting, and wakes it up when hardware events occur.  The Executor is the coordinator that decides which task to poll when. The executor maintains a queue of tasks that are ready to run. When a task hits await and yields, the executor moves to the next ready task. When there are no tasks ready to run, the executor puts the CPU to sleep. Interrupts wake the executor back up, which then polls any tasks that became ready.
 
 ## RTIC
 

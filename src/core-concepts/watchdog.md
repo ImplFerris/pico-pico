@@ -1,6 +1,6 @@
 # Watchdog
 
-This book was originally written using rp-hal. Later, I revised it to primarily use Embassy. When working with rp-hal, there is a step where we explicitly configure the watchdog. To explain why that line exists and what it actually does, this chapter introduces the concept of a watchdog.
+This book was originally written using `rp-hal`. Later, I revised it to primarily use Embassy. When working with `rp-hal`, there is a step where we explicitly configure the watchdog. To explain why that line exists and what it actually does, this chapter introduces the concept of a watchdog.
 
 In January 1994, the Clementine spacecraft successfully mapped the Moon. While it was traveling toward the asteroid Geographos, a floating point exception occurred on May 7, 1994, in the Honeywell 1750 processor. This processor handled telemetry and several other critical spacecraft functions.
 
@@ -26,7 +26,7 @@ This action is commonly called "feeding the watchdog". You may also see it refer
 
 If the software fails to reset the timer in time, for example due to an infinite loop, a deadlock, or a system hang, the watchdog assumes the system is no longer healthy and triggers a processor reset. After the reset, the system can start again in a known good state.
 
-**Feeding the dog:** 
+**Feeding the dog:**
 
 You can think of the watchdog timer like a dog that needs to be fed at regular intervals. As time passes, the dog gets hungrier. If it is not fed in time, it reacts. In embedded systems, that reaction is a hardware reset.
 

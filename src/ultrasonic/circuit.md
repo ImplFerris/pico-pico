@@ -1,6 +1,6 @@
 # Circuit for HC-SR04+
 
-Skip this step if you are using the 5V-only variant of the HC-SR04.
+Skip this step if you are using the 5 V-only variant of the HC-SR04.
 
 Connection for the Pico and Ultrasonic:
 
@@ -14,7 +14,7 @@ Connection for the Pico and Ultrasonic:
   </thead>
   <tbody>
     <tr>
-      <td>3.3V</td>
+      <td>3.3 V</td>
       <td style="text-align: center; vertical-align: middle; padding: 0;">
         <div class="wire red" style="height: 4px; width: 200px; margin: 0 auto;">
           <div class="male-left"></div>
@@ -56,12 +56,11 @@ Connection for the Pico and Ultrasonic:
   </tbody>
 </table>
 
-- **VCC**: Connect the VCC pin on the HC-SR04+ to the 3.3V pin on the Pico. 
+- **VCC**: Connect the VCC pin on the HC-SR04+ to the 3.3 V pin on the Pico.
 - **Trig**: Connect to GPIO 17 on the Pico to start the ultrasonic sound pulses.
 - **Echo**: Connect to GPIO 16 on the Pico; this pin sends a pulse when it detects the reflected signal, and the pulse length shows how long the signal took to return.
 - **GND**: Connect to the ground pin on the Pico.
 - **LED**: Connect the anode (long leg) of the LED to GPIO 3.
-
 
 Connection for the Pico and LED:
 
@@ -106,6 +105,5 @@ Connection for the Pico and LED:
     </tr>
   </tbody>
 </table>
-
 
 <a href="./images/pico-ultrasonic-led.jpg"><img style="display: block; margin: auto;" alt="pico2" src="./images/pico-ultrasonic-led.jpg"/></a>
