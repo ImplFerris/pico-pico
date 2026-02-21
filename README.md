@@ -8,6 +8,11 @@ We will be using the Raspberry Pi Pico 2 (RP2350 chip). It features the new RP23
 
 <img style="display: block; margin: auto;" alt="pico2" src="./src/images/pico2.png"/>
 
+> There is an older Raspberry Pi Pico that uses the RP2040 chip. In this book, we will be using the newer **Pico 2** with the **RP2350** chip. When buying hardware, make sure to get the correct one!
+>
+> If you are looking for the RP2040 version of this book, you can find it here: [impl Rust for Pico](http://rp2040.implrust.com/)
+
+
 ## How to read
 
 You can access the MD book here: https://pico.implrust.com/
