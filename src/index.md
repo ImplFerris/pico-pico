@@ -16,6 +16,8 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
 
 > [!NOTE]
 > There is an older Raspberry Pi Pico that uses the RP2040 chip. In this book, we will be using the newer **Pico 2** with the **RP2350** chip. When buying hardware, make sure to get the correct one!
+>
+> If you are looking for the RP2040 version of this book, you can find it here: [impl Rust for Pico](http://rp2040.implrust.com/)
 
 There is also a variant called the Pico 2 W, which includes Wi‑Fi and Bluetooth capabilities and is powered by the RP2350 chip. However, it is not fully compatible with the examples we've provided. If you want to follow along without adjustments, we recommend using the standard Pico 2 (non‑wireless) version. If you choose to buy the Pico 2 W or already have one, you still can follow along. Expect small differences, such as the onboard LED being used by Wi-Fi by default, but the core concepts remain the same.
 
