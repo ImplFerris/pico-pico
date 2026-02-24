@@ -40,6 +40,7 @@ Your Debug Probe may not ship with the latest firmware, especially the version t
 
 The official Raspberry Pi documentation provides clear instructions for updating the Debug Probe. Follow the steps provided [here](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html#updating-the-firmware-on-the-debug-probe).
 
+There currently is an [issue](https://github.com/probe-rs/probe-rs/issues/3858) with version 2.3 of the debug probe firmware, use version 2.2.3 if you encounter these issues.
 
 ## Connecting Pico with Debug Probe
 
@@ -134,8 +135,5 @@ If everything works, you should see the "Hello, World!" message in the system te
     <img src="./images/Rust cargo embed command with Raspberry Pi Pico.png" alt="cargo embed with defmt" style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">cargo embed showing defmt logs</div>
 </div>
-
-
-## Reference
 
 - [Raspberry Pi Debug Probe - Official Documentation](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html)
