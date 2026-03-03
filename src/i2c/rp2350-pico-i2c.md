@@ -11,7 +11,7 @@ Both I2C controllers support multiple pin options for SDA and SCL. You only choo
 | I2C0 - SDA     | GP0, GP4, GP8, GP12, GP16, GP20 |
 | I2C0 - SCL     | GP1, GP5, GP9, GP13, GP17, GP21 |
 | I2C1 - SDA     | GP2, GP6, GP10, GP14, GP18, GP26|
-| I2C1 - SCL     | GP3, GP7, GP11, GP15, GP19, GP27| 
+| I2C1 - SCL     | GP3, GP7, GP11, GP15, GP19, GP27|
 
 <br/>
 
@@ -23,11 +23,11 @@ On the Pico 2 board layout, pins that support I2C functionality are labeled with
 
 The RP2350's I2C controllers support three different speed modes, allowing you to match the capabilities of whatever devices you're connecting:
 
-- Standard mode: Up to 100 kb/s (kilobits per second) - the slowest but most universally compatible
-- Fast mode: Up to 400 kb/s - a good balance for most sensors and displays
-- Fast mode plus: Up to 1000 kb/s - for when you need quicker data transfer
+- Standard mode: Up to 100 kb/s (kilobits per second) - the slowest but most universally compatible
+- Fast mode: Up to 400 kb/s - a good balance for most sensors and displays
+- Fast mode plus: Up to 1000 kb/s - for when you need quicker data transfer
 
-It's worth noting that the RP2350 doesn't support the ultra-high-speed modes (High-speed at 3.4 Mb/s or Ultra-Fast at 5 Mb/s) that some specialized devices use. However, most common sensors, displays, and peripherals work perfectly fine within the supported speed ranges.
+It's worth noting that the RP2350 doesn't support the ultra-high-speed modes (High-speed at 3.4 Mb/s or Ultra-Fast at 5 Mb/s) that some specialized devices use. However, most common sensors, displays, and peripherals work perfectly fine within the supported speed ranges.
 
 ## Controller or Target mode
 

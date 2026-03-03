@@ -2,14 +2,13 @@
 
 In this section, we will create a simple program that moves the servo horn from 0 to 90 to 180 and then back to 0. This basic movement is enough to understand how PWM controls a servo. Once you are comfortable with the idea, you can experiment further and build more interesting applications.
 
-We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using rp-hal. As usual, generate the project from the template with cargo-generate:
+We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using `rp-hal`. As usual, generate the project from the template with `cargo-generate`:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
-When prompted, give your project a name like "servo-motor" and choose "embassy" as the HAL. Enable defmt logging, if you have a debug probe so you can view logs also.
-
+When prompted, give your project a name like "servo-motor" and choose "embassy" as the HAL. Enable `defmt` logging, if you have a debug probe so you can view logs also.
 
 ## Additional Imports
 
@@ -24,9 +23,9 @@ use embassy_rp::pwm::{Config as PwmConfig, Pwm, SetDutyCycle};
 
 In the LED dimming chapter, we left the PWM configuration at its default values. That was sufficient there, because only the duty cycle mattered.
 
-This time, we cannot do that. For servo control, we have to configure the TOP value and the divider ourselves so that the PWM frequency comes out to 50 Hz, based on the values we calculated earlier.
+This time, we cannot do that. For servo control, we have to configure the TOP value and the divider ourselves so that the PWM frequency comes out to 50 Hz, based on the values we calculated earlier.
 
-Here, I am using the manually calculated TOP and divider values directly in the code instead of using the calculator form. The divider I am using is a whole number, so I can simply convert it using the into() method. If the divider had a fractional part, I would need to use the fixed crate, which we already looked at earlier. To keep things simple, I am sticking to the integer version for now.
+Here, I am using the manually calculated TOP and divider values directly in the code instead of using the calculator form. The divider I am using is a whole number, so I can simply convert it using the `into()` method. If the divider had a fractional part, I would need to use the `fixed` crate, which we already looked at earlier. To keep things simple, I am sticking to the integer version for now.
 
 ```rust
 const PWM_DIV_INT: u8 = 64;
@@ -60,31 +59,30 @@ Now we move on to the main loop. Here, we simply change the duty cycle value, wa
 
 ```rust
 loop {
-    // Move servo to 0° position (2.5% duty cycle = 25/1000)
+    // Move servo to 0° position (2.5 % duty cycle = 25/1000)
     servo
         .set_duty_cycle_fraction(25, 1000)
         .expect("invalid min duty cycle");
 
     Timer::after_millis(1000).await;
 
-    // 90° position (7.5% duty cycle)
+    // 90° position (7.5 % duty cycle)
     servo
         .set_duty_cycle_fraction(75, 1000)
         .expect("invalid half duty cycle");
 
     Timer::after_millis(1000).await;
 
-    // 180° position (12% duty cycle)
+    // 180° position (12 % duty cycle)
     servo
         .set_duty_cycle_fraction(120, 1000)
         .expect("invalid max duty cycle");
-        
+
     Timer::after_millis(1000).await;
 }
 ```
 
 If everything works, you should see the servo horn move to the first position, pause briefly, move to the next position, and then move to the final position before returning back again.
-
 
 ## Clone the existing project
 
@@ -99,7 +97,7 @@ cd pico2-embassy-projects/servo-motor
 
 If your servo is not moving, start by checking the wiring. Make sure the signal wire is connected to the correct GPIO pin, the servo has a proper power source, and the ground is shared with the Pico.
 
-Next, double check that the code was flashed correctly and that the program is actually running on the board. If you are using a debug probe with defmt enabled, the log output can help confirm this.
+Next, double check that the code was flashed correctly and that the program is actually running on the board. If you are using a debug probe with `defmt` enabled, the log output can help confirm this.
 
 If everything looks correct and the servo still does not move as expected, the most likely reason is that your servo uses slightly different pulse widths for each position. In that case, refer to the datasheet for your specific servo model, or check the manufacturer or vendor website if they provide timing information. You may need to adjust the duty cycle values to match your servo.
 
@@ -149,19 +147,19 @@ async fn main(_spawner: Spawner) {
     let mut servo = Pwm::new_output_b(p.PWM_SLICE7, p.PIN_15, servo_config);
 
     loop {
-        // Move servo to 0° position (2.5% duty cycle = 25/1000)
+        // Move servo to 0° position (2.5 % duty cycle = 25/1000)
         servo
             .set_duty_cycle_fraction(25, 1000)
             .expect("invalid min duty cycle");
         Timer::after_millis(1000).await;
 
-        // 90° position (7.5% duty cycle)
+        // 90° position (7.5 % duty cycle)
         servo
             .set_duty_cycle_fraction(75, 1000)
             .expect("invalid half duty cycle");
         Timer::after_millis(1000).await;
 
-        // 180° position (12% duty cycle)
+        // 180° position (12 % duty cycle)
         servo
             .set_duty_cycle_fraction(120, 1000)
             .expect("invalid max duty cycle");

@@ -4,8 +4,8 @@ Earlier, we looked only at the GPIO_OUT register. That register holds the full 3
 
 These atomic registers are write-only registers within the SIO block that don't hold values themselves. When you write to them, the bits you set are used to modify the underlying GPIO_OUT register:
 
-- GPIO_OUT_SET changes specified bits to 1. This register is at address 0xd0000018, as per the datasheet.
-- GPIO_OUT_CLR changes specified bits to 0.  This register is at address 0xd0000020, as per the datasheet.
+- GPIO_OUT_SET changes specified bits to 1. This register is at address `0xd0000018`, as per the datasheet.
+- GPIO_OUT_CLR changes specified bits to 0. This register is at address `0xd0000020`, as per the datasheet.
 - GPIO_OUT_XOR toggles specified bits
 
 Only the bits that we write as 1 are changed. All other bits stay untouched. This makes it safer and prevents accidental changes to other pins.
@@ -13,16 +13,16 @@ Only the bits that we write as 1 are changed. All other bits stay untouched. Thi
 For example, if we want to control GPIO25:
 
 - To set GPIO25 high, we write a 1 to bit 25 of GPIO_OUT_SET. So the GPIO_OUT_SET value will be
-0b00000010_00000000_00000000_00000000 (or in hex 0x02000000).
+`0b00000010_00000000_00000000_00000000` (or in hex `0x02000000`).
 
 - To set GPIO25 low, we write a 1 to bit 25 of GPIO_OUT_CLR. So the GPIO_OUT_CLR value will be
-0b00000010_00000000_00000000_00000000 (or in hex 0x02000000).
+`0b00000010_00000000_00000000_00000000` (or in hex `0x02000000`).
 
 These operations modify only bit 25 in GPIO_OUT, leaving all other bits intact.
 
 ## Inside rp-hal: Setting a Pin High or Low
 
-If we follow what set_high() and set_low() do inside rp-hal, we can see that they never write to GPIO_OUT directly. Instead, they write to the atomic registers GPIO_OUT_SET and GPIO_OUT_CLR.
+If we follow what `set_high()` and `set_low()` do inside `rp-hal`, we can see that they never write to GPIO_OUT directly. Instead, they write to the atomic registers GPIO_OUT_SET and GPIO_OUT_CLR.
 
 The [code inside rp-hal](https://github.com/rp-rs/rp-hal/blob/28fdf0c3b3bfe67d1ceae92050ccbb469bff3a29/rp235x-hal/src/gpio/mod.rs#L672) looks like this:
 
@@ -40,15 +40,15 @@ pub(crate) fn _set_high(&mut self) {
 }
 ```
 
-When these write() functions run, they eventually call core::ptr::write_volatile(). write_volatile does some pre-checks, and then the compiler's intrinsic intrinsics::volatile_store performs the final store to the MMIO address. That volatile store is the moment the actual hardware register changes.
+When these `write()` functions run, they eventually call `core::ptr::write_volatile()`. `write_volatile` does some pre-checks, and then the compiler's intrinsic `intrinsics::volatile_store` performs the final store to the MMIO address. That volatile store is the moment the actual hardware register changes.
 
 Now let's check how this looks when we step through it in GDB.
 
 ## Breakpoint at write_volatile
 
-There are many ways to reach write_volatile. One way is to step through set_low() or set_high() using stepi and nexti in GDB. But we will take a shorter path. We will set a breakpoint directly on core::ptr::write_volatile.
+There are many ways to reach `write_volatile`. One way is to step through `set_low()` or `set_high()` using `stepi` and `nexti` in GDB. But we will take a shorter path. We will set a breakpoint directly on `core::ptr::write_volatile`.
 
-There is one thing to keep in mind. If you set this breakpoint right after reset (for example, right after `monitor reset halt`), GDB will stop many times. This is because write_volatile is used in a lot of places during startup. So we will not set it at the beginning.
+There is one thing to keep in mind. If you set this breakpoint right after reset (for example, right after `monitor reset halt`), GDB will stop many times. This is because `write_volatile` is used in a lot of places during startup. So we will not set it at the beginning.
 
 Instead, follow the steps from the previous chapter. When the program stops at the first breakpoint in your code, like this:
 
@@ -62,7 +62,7 @@ Thread 1 hit Breakpoint 1, 0x100002f8 in pico_debug::__cortex_m_rt_main () at sr
 > [!TIP]
 > You can check your breakpoints with `info break`. You can delete the breakpoint with `delete <number>`.
 
-Now that we're past the startup code, let's set our breakpoint on write_volatile:
+Now that we're past the startup code, let's set our breakpoint on `write_volatile`:
 
 ```sh
 (gdb) break core::ptr::write_volatile
@@ -88,7 +88,7 @@ Continue again:
 (gdb) continue
 ```
 
-Now we've stopped inside the write_volatile function:
+Now we've stopped inside the `write_volatile` function:
 
 ```sh
 Thread 1 hit Breakpoint 3, core::ptr::write_volatile<u32> (dst=0xd0000018, src=33554432)
@@ -96,7 +96,7 @@ Thread 1 hit Breakpoint 3, core::ptr::write_volatile<u32> (dst=0xd0000018, src=3
 76                  if ::core::ub_checks::$kind() {
 ```
 
-Did you notice the function arguments here? The destination dst is 0xd0000018, which is the address of the GPIO_OUT_SET register. The source value src is 33554432. If we convert that to hexadecimal, we get 0x02000000. In binary, that's 0b00000010_00000000_00000000_00000000. This is the exact bit mask for GPIO25.
+Did you notice the function arguments here? The destination dst is `0xd0000018`, which is the address of the GPIO_OUT_SET register. The source value src is `33554432`. If we convert that to hexadecimal, we get `0x02000000`. In binary, that's `0b00000010_00000000_00000000_00000000`. This is the exact bit mask for GPIO25.
 
 Let's disassemble the function to see what's happening at the assembly level:
 
@@ -125,7 +125,7 @@ Dump of assembler code for function _ZN4core3ptr14write_volatile17hc4948e781ca03
 End of assembler dump.
 ```
 
-The key instruction is at address 0x100080a6. This is the line that actually writes to the hardware register. At this point, r1 will contain the GPIO_OUT_SET address and r0 will contain the value that is going to be written.
+The key instruction is at address `0x100080a6`. This is the line that actually writes to the hardware register. At this point, `r1` will contain the GPIO_OUT_SET address and `r0` will contain the value that is going to be written.
 
 Let's take a closer look. We set another breakpoint right on that instruction:
 
@@ -140,6 +140,7 @@ Then continue:
 ```
 
 If you get interrupted, continue again
+
 ```sh
 Thread 1 received signal SIGINT, Interrupt.
 core::ptr::write_volatile<u32> (dst=0xd0000018, src=33554432)
@@ -148,6 +149,7 @@ core::ptr::write_volatile<u32> (dst=0xd0000018, src=33554432)
 ```
 
 Continue again:
+
 ```sh
 (gdb) c
 Continuing.
@@ -185,7 +187,6 @@ Let's also examine the current value in the GPIO_OUT register:
 
 Right now it shows all zeros. At this stage, the LED is still off because we haven't executed the store instruction yet.
 
-
 Now let's step forward by one instruction:
 
 ```sh
@@ -203,12 +204,12 @@ After executing this command, you should see the LED turn on. Now let's examine 
 0xd0000010:     0x02000000
 ```
 
-The register now shows 0x02000000, which is exactly the bit mask for GPIO25. This confirms that our write operation successfully set the LED pin high.
+The register now shows `0x02000000`, which is exactly the bit mask for GPIO25. This confirms that our write operation successfully set the LED pin high.
 
 ## Your Turn: Try It Yourself
 
-Now it's time to practice what you've learned. Let the program continue running until it hits the set_low breakpoint. Then continue execution again until you reach the write_volatile function.
+Now it's time to practice what you've learned. Let the program continue running until it hits the `set_low` breakpoint. Then continue execution again until you reach the `write_volatile` function.
 
-This time, things will be a bit different. The destination address will be 0xd0000020, which is the GPIO_OUT_CLR register. As the name suggests, this register is used to clear GPIO pins rather than set them.
+This time, things will be a bit different. The destination address will be `0xd0000020`, which is the GPIO_OUT_CLR register. As the name suggests, this register is used to clear GPIO pins rather than set them.
 
 Step through the code just like before. When you execute the str instruction, the LED will turn off. If you examine the GPIO_OUT register afterwards, you'll see it contains all zeros again. This confirms that the bit for GPIO25 has been cleared, turning off the LED.

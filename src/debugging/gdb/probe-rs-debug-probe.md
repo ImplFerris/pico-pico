@@ -1,6 +1,6 @@
 # Debugging Embedded Rust on Raspberry Pi Pico 2 with GDB
 
-In this chapter, we will look at how to debug Embedded Rust programs on the Raspberry Pi Pico 2 (RP2350) using GDB. You will need a Debug Probe hardware and you must connect it to your Raspberry Pi Pico 2. Make sure you have read [this chapter](../pico-debug-probe.md) before continuing.
+In this chapter, we will look at how to debug Embedded Rust programs on the Raspberry Pi Pico 2 (RP2350) using GDB. You will need a Debug Probe hardware and you must connect it to your Raspberry Pi Pico 2. Make sure you have read [chapter "Debug Probe for Raspberry Pi Pico 2"](../pico-debug-probe.md) before continuing.
 
 ## What a Debug Probe Gives You
 
@@ -20,7 +20,7 @@ sudo apt install gdb-multiarch
 
 Earlier, we used probe-rs through the cargo embed command. The same tool can also start a GDB server, which lets you connect GDB to the Pico 2 through the Debug Probe.
 
-For this, we need to edit the Embed.toml file in the root of your project. This file is the configuration file used by the cargo embed command. You should add the following section to enable the GDB server:
+For this, we need to edit the `Embed.toml` file in the root of your project. This file is the configuration file used by the cargo embed command. You should add the following section to enable the GDB server:
 
 ```toml
 [default.gdb]
@@ -30,15 +30,14 @@ enabled = true
 
 ## Example Project
 
-For this exercise, I have created a simple LED blink program using rp-hal. It does not use Embassy to keep things simple. The Embed.toml file is already set up, so you can clone the project and start working right away:
+For this exercise, I have created a simple LED blink program using rp-hal. It does not use Embassy to keep things simple. The `Embed.toml` file is already set up, so you can clone the project and start working right away:
 
-```
+```sh
 git clone https://github.com/ImplFerris/pico-debug
 cd pico-debug
 ```
 
-If you run the cargo embed command now, the GDB server will start automatically and listen on port 1337 (the default port used by probe-rs).
-
+If you run the `cargo embed` command now, the GDB server will start automatically and listen on port 1337 (the default port used by `probe-rs`).
 
 ## Connecting GDB to the Remote Server
 

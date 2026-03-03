@@ -43,13 +43,13 @@ Don't worry too much about the details right now. Mode 0 is the most common and 
 
 ## Why SPI?
 
-SPI is a great choice when you want fast and reliable communication between your microcontroller and a peripheral. It's much faster than I²C or UART, simple to use, and allows data to be sent and received at the same time (full-duplex). This makes it ideal for high-speed devices like displays or SD cards. 
+SPI is a great choice when you want fast and reliable communication between your microcontroller and a peripheral. It's much faster than I²C or UART, simple to use, and allows data to be sent and received at the same time (full-duplex). This makes it ideal for high-speed devices like displays or SD cards.
 
 As long as you have enough GPIO pins and don't need to connect a large number of devices, SPI is usually the best tool for the job.
-
 
 ## Resources
 
 For more in-depth technical details, refer these
-- [Serial Peripheral Interface (SPI) by Sparkfun](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/all) 
+
+- [Serial Peripheral Interface (SPI) by Sparkfun](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/all)
 - [Basics of the SPI Communication Protocol](https://www.circuitbasics.com/basics-of-the-spi-communication-protocol/)

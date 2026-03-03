@@ -31,7 +31,6 @@ Here are some of the most common types of peripherals found in embedded systems:
 | **Timer** | Used for generating delays, measuring time intervals, counting events, or triggering actions at specific times. |
 | **RTC** (Real-Time Clock) | Keeps track of current time and date even when the system is powered off, typically backed by a battery. |
 
-
 ## Peripherals in Rust
 
 In embedded Rust, peripherals are accessed using a singleton model. One of Rust's core goals is safety, and that extends to how it manages hardware access. To ensure that no two parts of a program can accidentally control the same peripheral at the same time, Rust enforces exclusive ownership through this singleton approach.
@@ -40,4 +39,4 @@ In embedded Rust, peripherals are accessed using a singleton model. One of Rust'
 
 The singleton pattern ensures that only one instance of each peripheral exists in the entire program. This avoids common bugs caused by multiple pieces of code trying to modify the same hardware resource simultaneously.
 
-In embassy, peripherals are also exposed using this singleton model. But we won't be calling `Peripherals::take()` directly. Instead, we will use the `embassy_rp::init(Default::default())` function. This function takes care of basic system setup and internally calls Peripherals::take() for us. So we get access to all peripherals in a safe and ready-to-use form.
+In embassy, peripherals are also exposed using this singleton model. But we won't be calling `Peripherals::take()` directly. Instead, we will use the `embassy_rp::init(Default::default())` function. This function takes care of basic system setup and internally calls `Peripherals::take()` for us. So we get access to all peripherals in a safe and ready-to-use form.
