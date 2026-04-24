@@ -1,5 +1,5 @@
 [book]
-title = "Raspberry Pi Pico 2 (RP2350) Rust Tutorial - Embedded Programming Guide"
+title = "Guide to Embedded Rust Programming on Raspberry Pi Pico 2 (RP2350)"
 authors = ["ImplFerris"]
 language = "en"
 src = "src"
