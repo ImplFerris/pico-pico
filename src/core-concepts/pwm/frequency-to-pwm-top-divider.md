@@ -216,7 +216,7 @@ pwm.set_div_int(45);
 pwm.set_div_frac(13);
 ```
 
-If you are using `embassy-rp`, both parts are combined into a single divider field inside the `Config` struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post [Working with Fixed-Point Numbers in Rust Using the fixed Crate](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/) explaining them in detail.
+If you are using `embassy-rp`, both parts are combined into a single divider field inside the `Config` struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post explaining them in detail, which you can read [here](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/).
 
 If you only need an integer divider, you can simply convert a `u8` value:
 
