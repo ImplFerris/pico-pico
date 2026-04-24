@@ -2,7 +2,7 @@
 
 In MicroPython, you can set the PWM frequency directly without manually calculating the TOP and divider values. Internally, MicroPython computes these values from the target frequency and the system clock.
 
-I wanted to see if there was something similar available in Rust. While discussing this in the rp-rs Matrix chat, 9names ported the [relevant C code](https://github.com/micropython/micropython/blob/634125820744efa33679fb95a6e441dadaa4f6a7/ports/rp2/machine_pwm.c#L212C13-L212C36) from MicroPython that calculates TOP and divider values into Rust. This code takes the target frequency and source clock frequency as input and gives us the corresponding TOP and divider values. You can find that implementation [in 9names Rust playground](https://github.com/9names/rp2040_rust_playground/tree/main/rp2040-pwm-freq).
+I wanted to see if there was something similar available in Rust. While discussing this in the rp-rs Matrix chat, 9names ported the [relevant C code](https://github.com/micropython/micropython/blob/634125820744efa33679fb95a6e441dadaa4f6a7/ports/rp2/machine_pwm.c#L212C13-L212C36) from MicroPython that calculates TOP and divider values into Rust. This code takes the target frequency and source clock frequency as input and gives us the corresponding TOP and divider values. You can find that implementation [here](https://github.com/9names/rp2040_rust_playground/tree/main/rp2040-pwm-freq).
 
 You can use that Rust code directly in your own project. I compiled the same code to WASM and built a small form around it so that you can try it out here.
 
