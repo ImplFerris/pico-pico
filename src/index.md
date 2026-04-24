@@ -1,4 +1,4 @@
-# Pico Pico - Intro
+# impl Rust for RP2350 - Intro
 
 In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with an ultrasonic sensor, displaying the Ferris (🦀) image on an OLED display, using an RFID reader, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.
 
@@ -15,6 +15,8 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
 
 > [!NOTE]
 > There is an older Raspberry Pi Pico that uses the RP2040 chip. In this book, we will be using the newer **Pico 2** with the **RP2350** chip. When buying hardware, make sure to get the correct one!
+>
+> If you are looking for the RP2040 version of this book, you can find it here: [impl Rust for Pico](http://rp2040.implrust.com/)
 
 There is also a variant called the Pico 2 W, which includes Wi‑Fi and Bluetooth capabilities and is powered by the RP2350 chip. However, it is not fully compatible with the examples we've provided. If you want to follow along without adjustments, we recommend using the standard Pico 2 (non‑wireless) version. If you choose to buy the Pico 2 W or already have one, you still can follow along. Expect small differences, such as the onboard LED being used by Wi-Fi by default, but the core concepts remain the same.
 
@@ -29,7 +31,7 @@ For detailed technical information, specifications, and guidelines, refer to the
 
 ## License
 
-The Pico Pico book (this project) is distributed under the following licenses:
+The "impl Rust for RP2350" book(this project) is distributed under the following licenses:
 
 * The code samples and free-standing Cargo projects contained within this book are licensed under the terms of both the [MIT License] and the [Apache License v2.0].
 * The written prose contained within this book is licensed under the terms of the Creative Commons [CC-BY-SA v4.0] license.
