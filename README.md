@@ -1,4 +1,4 @@
-# Pico Pico - Intro
+# impl Rust for RP2350 - Intro
 
 In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with a sonic sensor, displaying the Ferris (🦀) image on an OLED display, using RFID reader, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.
 
@@ -29,7 +29,7 @@ You can support this book by starring this project on [GitHub](https://github.co
 
 ## License
 
-The Pico Pico book(this project) is distributed under the following licenses:
+The "impl Rust for RP2350" book(this project) is distributed under the following licenses:
 
 * The code samples and free-standing Cargo projects contained within this book are licensed under the terms of both the [MIT License] and the [Apache License v2.0].
 * The written prose contained within this book is licensed under the terms of the Creative Commons [CC-BY-SA v4.0] license.
