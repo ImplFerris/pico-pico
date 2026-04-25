@@ -44,14 +44,6 @@ embassy-executor = { version = "0.9", features = [
 ] }
 ```
 
-Or easier, let `cargo` do its job, which updates your `Cargo.toml` automatically:
-
-```sh
-cargo add cortex-m
-cargo add cortex-m-rt
-cargo add embassy-executor --features=arch-cortex-m,executor-thread
-```
-
 Then, in your `main.rs`, set up the entry point like this:
 
 ```rust
