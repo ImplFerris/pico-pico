@@ -4,19 +4,16 @@ We already introduced the concept of HAL in the introduction chapter. For the Pi
 
 The HAL supports blocking and async peripheral APIs. Using async APIs is better because the HAL automatically handles waiting for peripherals to complete operations in low power mode and manages interrupts, so you can focus on the primary functionality.
 
-Let's add the embassy-rp crate to our project. Call `cargo`:
-
-```sh
-cargo add embassy-rp --features=rp235xa
-```
-
-Which will add this to our `Cargo.toml`:
+Let's add the `embassy-rp` crate to our project by updating `Cargo.toml`:
 
 ```toml
 embassy-rp = { version = "0.9.0", features = [
   "rp235xa",
 ] }
 ```
+
+> [!IMPORTANT]
+> We are specifying the dependency manually with an exact version to ensure that everyone following this book uses the same version. This avoids unexpected issues that can happen if newer versions introduce changes.
 
 We've enabled the `rp235xa` feature because our chip is the RP2350. If we were using the older Pico, we would instead enable the `rp2040` feature.
 
