@@ -13,7 +13,6 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
     <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Raspberry Pi Pico 2</div>
 </div>
 
-
 > [!NOTE]
 > There is an older Raspberry Pi Pico that uses the RP2040 chip. In this book, we will be using the newer **Pico 2** with the **RP2350** chip. When buying hardware, make sure to get the correct one!
 >
@@ -21,13 +20,14 @@ You find more details from the [official website](https://www.raspberrypi.com/pr
 
 There is also a variant called the Pico 2 W, which includes Wi‑Fi and Bluetooth capabilities and is powered by the RP2350 chip. However, it is not fully compatible with the examples we've provided. If you want to follow along without adjustments, we recommend using the standard Pico 2 (non‑wireless) version. If you choose to buy the Pico 2 W or already have one, you still can follow along. Expect small differences, such as the onboard LED being used by Wi-Fi by default, but the core concepts remain the same.
 
+The **H** variants of both include a pinheader, which makes development a bit easier.
+
 ## Datasheets
 
 For detailed technical information, specifications, and guidelines, refer to the official datasheets:
 
 - [Pico 2 Datasheet](https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf)
 - [RP2350 chip Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf)
-
 
 ## License
 
@@ -40,7 +40,6 @@ The "impl Rust for RP2350" book(this project) is distributed under the following
 [MIT License]: https://opensource.org/licenses/MIT
 [Apache License v2.0]: http://www.apache.org/licenses/LICENSE-2.0
 [CC-BY-SA v4.0]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
-
 
 ## Support this project
 

@@ -6,7 +6,7 @@ I wanted to see if there was something similar available in Rust. While discussi
 
 You can use that Rust code directly in your own project. I compiled the same code to WASM and built a small form around it so that you can try it out here.
 
-By default, the source clock frequency is set to the RP2350 system clock frequency of 150 MHz, and the target frequency is set to 50 Hz. You can change both values if needed.
+By default, the source clock frequency is set to the RP2350 system clock frequency of 150 MHz, and the target frequency is set to 50 Hz. You can change both values if needed.
 
 <style>
   .pwm-card {
@@ -197,17 +197,16 @@ By default, the source clock frequency is set to the RP2350 system clock frequen
 
 > [!Note]
 > The divider is shown as an integer part and a fractional part.
->  
+>
 > The fractional value is **not** a decimal fraction. It represents a [4-bit fixed-point fraction](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/).
->  
+>
 > The effective divider is:
->  
+>
 > `DIV = DIV_INT + (DIV_FRAC / 16)`
->  
+>
 > For example, `DIV_INT = 45` and `DIV_FRAC = 13` means the divider is `45 + 0.8125`, not `45.13`.
 
-
-## Code 
+## Code
 
 If you are using rp-hal, you set the integer and fractional parts separately, like this:
 
@@ -217,9 +216,9 @@ pwm.set_div_int(45);
 pwm.set_div_frac(13);
 ```
 
-If you are using embassy-rp, both parts are combined into a single divider field inside the Config struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post explaining them in detail, which you can read [here](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/):
+If you are using `embassy-rp`, both parts are combined into a single divider field inside the `Config` struct. Nope, this is not a floating-point value. Internally, it uses a fixed-point number to represent the integer and fractional parts together. If you are not familiar with fixed-point numbers, I have a separate blog post explaining them in detail, which you can read [here](https://blog.implrust.com/posts/2025/12/fixed-point-crate-in-rust/).
 
-If you only need an integer divider, you can simply convert a u8 value:
+If you only need an integer divider, you can simply convert a `u8` value:
 
 ```rust
 let mut servo_config: PwmConfig = Default::default();
@@ -227,7 +226,7 @@ servo_config.top = 46_874;
 servo_config.divider = 64.into();
 ```
 
-If you also want a fractional part, you need to add the "fixed" crate as a dependency and construct the divider using a fixed-point type:
+If you also want a fractional part, you need to add the `fixed` crate as a dependency and construct the divider using a fixed-point type:
 
 ```rust
 let mut servo_config: PwmConfig = Default::default();
@@ -236,7 +235,6 @@ servo_config.divider = FixedU16::<U4>::from_num(45.8125);
 // or
 // servo_config.divider = fixed::types::U12F4::from_num(45.8125);
 ```
-
 
 <script type="module">
   import init, { calculate_pwm } from "./assets/pwm_freq_top.js";

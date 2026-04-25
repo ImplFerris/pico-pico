@@ -49,7 +49,7 @@ To Flash your application onto the Pico 2, press and hold the BOOTSEL button. Wh
 cargo run
 ```
 
-This will flash (write) our program into the Pico 2's memory and run it automatically. If successful, you should see the onboard LED blinking at regular intervals. If you encounter any errors, verify that you have set up your development environment correctly and connected the Pico properly. If you're still unable to resolve the issue, please raise a GitHub issue with details so i can update and improve this guide
+This will flash (write) our program into the Pico 2's memory and run it automatically. If successful, you should see the onboard LED blinking at regular intervals. If you encounter any errors, verify that you have set up your development environment correctly and connected the Pico properly. If you're still unable to resolve the issue, please raise a GitHub issue with details so I can update and improve this guide.
 
 ### With Debug Probe
 

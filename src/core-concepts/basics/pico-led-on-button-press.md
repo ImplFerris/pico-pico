@@ -12,7 +12,7 @@ We will start by creating a new project with cargo generate and our template.
 In your terminal, type:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 ## Button as Input
@@ -24,7 +24,6 @@ let button = Input::new(p.PIN_15, Pull::Up);
 ```
 
 We've connected one side of the button to GPIO 15. The other side is connected to Ground. This means when we press the button, the pin gets pulled to the LOW state. As we discussed earlier, without a pull resistor, the input would be left in a floating state and read unreliable values. So we enable the internal pull-up resistor to keep the pin HIGH by default.
-
 
 ## Led as Output
 
@@ -57,7 +56,7 @@ loop {
 > [!NOTE]
 > **Debounce:** If you reduce the delay, you might notice that sometimes a single button press triggers multiple detections. This is called "button bounce". When you press a physical button, the metal contacts inside briefly bounce against each other, creating multiple electrical signals in just a few milliseconds. In this example, the 3-second LED delay effectively masks any bounce issues, but in applications where you need to count individual button presses accurately, you'll need debouncing logic.
 
-We also log "Button pressed" using defmt. If you're using a debug probe, use the `cargo embed --release` command to see these logs in your terminal.
+We also log "Button pressed" using `defmt`. If you're using a debug probe, use the `cargo embed --release` command to see these logs in your terminal.
 
 ## The Full code
 
@@ -120,7 +119,7 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 ## Clone the existing project
 
-You can clone (or refer) project I created and navigate to the `button` folder.
+You can clone (or refer) the project I created and navigate to the `button` folder.
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-embassy-projects

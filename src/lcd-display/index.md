@@ -6,10 +6,9 @@ These displays are designed to show ASCII characters, and they also support up t
 
 <img style="display: block; margin: auto;width:500px;" alt="lcd1602" src="./images/lcd1602.jpg"/>
 
-
 ## Variants
 
-HD44780-compatible LCDs come in different physical formats. The most common ones are 16x2 displays, which have 16 columns and 2 rows, and 20x4 displays, which have 20 columns and 4 rows. They also differ in backlight color, such as blue, yellow, or green.
+HD44780-compatible LCDs come in different physical formats. The most common ones are 16 × 2 displays, which have 16 columns and 2 rows, and 20 × 4 displays, which have 20 columns and 4 rows. They also differ in backlight color, such as blue, yellow, or green.
 
 ### LCD Interfaces
 
@@ -23,7 +22,7 @@ To simplify wiring, some modules include an I2C adapter board. This adapter sits
 
 When we use the parallel interface, we connect multiple GPIO pins from the microcontroller directly to the LCD. These pins carry control signals and data lines, along with power and contrast control.
 
-This approach requires more wiring and uses many GPIO pins, but it closely reflects how the HD44780 controller operates internally. It is useful for understanding the timing, commands, and low-level behavior of the display. 
+This approach requires more wiring and uses many GPIO pins, but it closely reflects how the HD44780 controller operates internally. It is useful for understanding the timing, commands, and low-level behavior of the display.
 
 ### I2C Interface
 
@@ -43,19 +42,20 @@ There is also additional overhead when using the parallel interface, such as set
 
 ## Hardware Requirements
 
-We will need an LCD1602 display. A 16x2 module with an I2C adapter is recommended so you can follow along without adjustments, although other sizes behave the same way.
+We will need an LCD1602 display. A 16 × 2 module with an I2C adapter is recommended so you can follow along without adjustments, although other sizes behave the same way.
 
 ### Level Shifter
 
 <img style="display: block; margin: auto;width:400px;" alt="lcd1602 I2C" src="./images/4 Channel (I2C or SPI) 3.3V-5V Bi-Directional Logic Level Converter.jpg"/>
 
-Pico GPIO pins are 3.3 V tolerant, which means they are not safe to use with 5 V signals. Applying a higher voltage, such as 5 V, to these pins can damage the board. Many LCD1602 displays with an I2C adapter are designed to operate at 5 V, which creates a voltage mismatch when connecting them directly to the Pico.
+Pico GPIO pins are 3.3 V tolerant, which means they are not safe to use with 5 V signals. Applying a higher voltage, such as 5 V, to these pins can damage the board. Many LCD1602 displays with an I2C adapter are designed to operate at 5 V, which creates a voltage mismatch when connecting them directly to the Pico.
 
-To connect the Pico and the LCD safely, we need to handle this voltage difference. This is where a level shifter is used. A bidirectional I2C logic level shifter allows 3.3 V and 5 V devices to communicate safely and protects the Pico GPIO pins. These modules are inexpensive and are commonly sold as "4 Channel (I2C) 3.3V-5V Bi-Directional Logic Level Converter".
+To connect the Pico and the LCD safely, we need to handle this voltage difference. This is where a level shifter is used. A bidirectional I2C logic level shifter allows 3.3 V and 5 V devices to communicate safely and protects the Pico GPIO pins. These modules are inexpensive and are commonly sold as "4 Channel (I2C) 3.3 V-5 V Bi-Directional Logic Level Converter".
 
-Alternatively, you can power the LCD with 3.3 V. This avoids the voltage issue, but the display backlight and contrast will be noticeably dimmer.
+Alternatively, you can power the LCD with 3.3 V. This avoids the voltage issue, but the display backlight and contrast will be noticeably dimmer.
 
 ## Datasheet
+
 - You can access the datasheet for the HD44780 from [Sparkfun](https://www.sparkfun.com/datasheets/LCD/HD44780.pdf) or [MIT site](https://academy.cba.mit.edu/classes/output_devices/44780.pdf)
 - [LCD Driver Data Book](https://www.crystalfontz.com/controllers/datasheet-viewer.php?id=433)
 - [LCD Module 1602A Datasheet](https://www.openhacks.com/uploadsproductos/eone-1602a1.pdf)

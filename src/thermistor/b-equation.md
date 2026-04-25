@@ -11,7 +11,7 @@ The B equation, also called the Beta parameter method, is the simplest way to co
 
 In this equation, T is the temperature in Kelvin that we want to find. R is the measured resistance at the unknown temperature T.
 
-\\( T_0 \\) is the reference temperature, usually 298.15K (25°C), where the thermistor's resistance is known.  \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10kΩ for common thermistors. 
+\\( T_0 \\) is the reference temperature, usually 298.15 K (25 °C), where the thermistor's resistance is known.  \\( R_0 \\) is the resistance at the reference temperature \\( T_0 \\), often 10 kΩ for common thermistors.
 
 B is the B-value of the thermistor, a material constant. And, the ln represents the natural logarithm function.
 
@@ -19,13 +19,13 @@ B is the B-value of the thermistor, a material constant. And, the ln represents 
 
 **R₀ (Reference resistance)**:
 
-This is the thermistor's resistance at a known temperature, usually 25°C. For example, a "10kΩ thermistor" has R₀ = 10,000 ohms at 25°C. This value should be specified in the datasheet.
+This is the thermistor's resistance at a known temperature, usually 25 °C. For example, a "10 kΩ thermistor" has R₀ = 10,000 ohms at 25 °C. This value should be specified in the datasheet.
 
 **B (Beta value)**:
 
-The B value is a constant usually provided by the manufacturers. The value describes how quickly resistance changes with temperature. Common values range from 3000 to 4000 K.
+The B value is a constant usually provided by the manufacturers. The value describes how quickly resistance changes with temperature. Common values range from 3000 to 4000 K.
 
-The datasheet often specifies B over a temperature range, such as B₂₅/₈₅ = 3950, meaning the Beta value is 3950 between 25°C and 85°C.
+The datasheet often specifies B over a temperature range, such as B₂₅/₈₅ = 3950, meaning the Beta value is 3950 between 25 °C and 85 °C.
 
 **Temperature in Kelvin**:
 
@@ -33,7 +33,7 @@ The temperature in the B equation must be in Kelvin (Kelvin = Celsius + 273.15),
 
 ## Example Calculation
 
-Let us say the measured resistance of the thermistor is 10,475 Ω, which corresponds to R in the equation. To calculate the temperature, we substitute this value along with the reference temperature \\( T_0 = 298.15K \\) (25°C), the reference resistance \\( R_0 = 10k\Omega \\), and the thermistor B-value of 3950 into the B equation.
+Let us say the measured resistance of the thermistor is 10,475 Ω, which corresponds to R in the equation. To calculate the temperature, we substitute this value along with the reference temperature \\( T_0 = 298.15 K \\) (25 °C), the reference resistance \\( R_0 = 10 k\Omega \\), and the thermistor B-value of 3950 into the B equation.
 
 **Step 1**: Calculate the resistance ratio
 \\[
@@ -56,16 +56,15 @@ Let us say the measured resistance of the thermistor is 10,475 Ω, which corresp
 
 **Step 4**: Calculate T by taking the reciprocal
 \\[
-T = \frac{1}{0.003366} = 297.1K
+T = \frac{1}{0.003366} = 297.1 K
 \\]
 
 **Step 5**: Convert to Celsius
 \\[
-T = 297.1 - 273.15 = 23.95°C
+T = 297.1 - 273.15 = 23.95 °C
 \\]
 
-The measured resistance of 10,475Ω corresponds to a temperature of approximately 24°C.
-
+The measured resistance of 10,475 Ω corresponds to a temperature of approximately 24 °C.
 
 ### Rust function
 
@@ -87,13 +86,13 @@ fn celsius_to_kelvin(celsius: f64) -> f64 {
 
 const B_VALUE: f64 = 3950.0;
 const V_IN: f64 = 3.3; // Input voltage
-const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10kΩ)
-const REF_TEMP: f64 = 25.0;  // Reference temperature 25°C
+const REF_RES: f64 = 10_000.0; // Reference resistance in ohms (10 kΩ)
+const REF_TEMP: f64 = 25.0;  // Reference temperature 25 °C
 
 fn main() {
     let t0 = celsius_to_kelvin(REF_TEMP);
     let r = 10475.0; // Measured resistance in ohms
-    
+
     let temperature_kelvin = calculate_temperature(r, REF_RES, t0, B_VALUE);
     let temperature_celsius = kelvin_to_celsius(temperature_kelvin);
     println!("Temperature: {:.2} °C", temperature_celsius);

@@ -2,7 +2,6 @@
 
 We will create a simple program that prints "Hello, Rust!" on the LCD screen. This helps us quickly check that the wiring, I2C setup, and LCD configuration are correct before moving on to the next exercise.
 
-
 ## HD44780 Drivers
 
 You can find driver crates by searching for the hardware controller name HD44780. Sometimes searching by the display module name, such as lcd1602, also works.
@@ -10,26 +9,25 @@ You can find driver crates by searching for the hardware controller name HD44780
 While looking around, I came across several Rust crates that can control this LCD. Some of them even support async. You could also write your own driver by referring to the datasheet, but that is beyond the scope of this chapter.
 
 > [!TIP]
-> If you want to learn how to write your own embedded Rust drivers, you can refer to the Rust Embedded Drivers (RED) book here: [https://red.implrust.com/]
+> If you want to learn how to write your own embedded Rust drivers, you can refer to the [Rust Embedded Drivers (RED) book](https://red.implrust.com/)
 
 For now, we will use one of the existing crates. You are free to try other crates later. Just read the crate documentation and adapt the code if needed.
 
-In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver) 
-(https://red.implrust.com/)
-
+In this exercise, we will use this crate: [hd44780-driver](https://crates.io/crates/hd44780-driver)
 
 ### Project from template
 
-We will start by creating a new project using the template. 
+We will start by creating a new project using the template.
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
+
 When prompted, give your project a name, like "hello-lcd" and select `embassy` as the HAL.
 
 ### Additional Crates required
 
-Add the following dependency to Cargo.toml along with the existing ones:
+Add the following dependency to `Cargo.toml` along with the existing ones:
 
 ```rust
 hd44780-driver = "0.4.0"
@@ -60,7 +58,7 @@ const LCD_I2C_ADDRESS: u8 = 0x27;
 
 ## I2C Setup
 
-We'll configure the I2C interface using GPIO 16 for SDA and GPIO 17 for SCL, with a frequency of 100 kHz.
+We'll configure the I2C interface using GPIO 16 for SDA and GPIO 17 for SCL, with a frequency of 100 kHz.
 
 ```rust
 let sda = p.PIN_16;
@@ -102,7 +100,6 @@ Finally, let's write our message to the LCD:
 lcd.write_str("Hello, Rust!", &mut Delay)
     .expect("failed to write text to LCD");
 ```
-
 
 ## Clone the existing project
 

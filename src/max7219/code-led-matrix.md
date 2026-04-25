@@ -8,7 +8,7 @@ Let us move on to the coding part. In this program, we will draw a square on the
 As usual, create a new project using the provided template.
 
 ```rust
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When prompted, give your project a name, like "hello-max7219" and select embassy as the HAL.
@@ -37,7 +37,8 @@ The embedded-hal-bus crate bridges this gap. It provides adapters that wrap an S
 
 ## Additional Imports
 
-We now add the imports needed for SPI, the MAX7219 display driver, and drawing with embedded-graphics. 
+We now add the imports needed for SPI, the MAX7219 display driver, and drawing with embedded-graphics.
+
 ```rust
 // For MAX7219
 use embedded_hal_bus::spi::ExclusiveDevice;
@@ -105,7 +106,6 @@ After creating the display instance, we set the brightness level. The MAX7219 su
         .set_intensity(0, 1)
         .expect("failed to set intensity");
 ```
-
 
 ## Drawing a rectangle
 
@@ -231,7 +231,6 @@ pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
 
 // End of file
 ```
-
 
 ## Clone the existing project
 

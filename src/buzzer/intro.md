@@ -12,26 +12,25 @@ Buzzers are commonly found in alarms, timers, notification systems, computers, a
 
 There are two types you will commonly encounter in embedded projects:
 
-### Active Buzzer:
+### Active Buzzer
 
 This type has a built-in oscillator. You only need to supply power, and it will start making sound immediately. Active buzzers are very easy to use but offer limited control over pitch.
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/active-buzzer.png"/>
 
-**How to identify**: 
+#### How to identify
 
 An active buzzer usually has a white covering on top and a smooth black casing at the bottom. The simplest way to identify it is to connect it directly to a battery. If it produces sound without any additional circuitry, it is an active buzzer.
 
-### Passive Buzzer:
+### Passive Buzzer
 
 A passive buzzer does not generate sound on its own. You must drive it using a PWM or square wave signal. This allows you to control the frequency, making it possible to generate different tones or even simple melodies.
 
 <img style="display: block; margin: auto;" alt="pico2" src="./images/passive-buzzer.png"/>
 
-**How to identify**: 
+#### How to identify
 
 A passive buzzer typically has no white covering on top and often looks like a small PCB with a blue or green base. When connected directly to a battery, it will not produce any sound.
-
 
 ## Which One to Choose?
 
@@ -39,8 +38,7 @@ Choose an active buzzer if you only need a simple, fixed tone or beep. It works 
 
 Choose a passive buzzer if you want more control over sound. Since it must be driven by a PWM or square-wave signal, you can generate different tones, melodies, or sound patterns.
 
-For our exercises, a passive buzzer is recommended because it lets us control the output frequency directly(play better tone). However, if you only have an active buzzer, you can still follow along. In fact, I personally used an active buzzer at first for this.
-
+For our exercises, a passive buzzer is recommended because it lets us control the output frequency directly (play better tone). However, if you only have an active buzzer, you can still follow along. In fact, I personally used an active buzzer at first for this.
 
 ## Hardware requirements
 
@@ -50,6 +48,7 @@ For our exercises, a passive buzzer is recommended because it lets us control th
 A buzzer typically has two pins: a positive pin used for the signal and a ground pin. The positive side is often marked with a "+" symbol and is usually the longer pin, while the negative side is shorter, similar to an LED.
 
 That said, some passive buzzers are non-polarized. In those cases, either pin can be connected to the signal or ground. Always check the markings or the datasheet if you are unsure.
- 
+
 ## Reference
+
 - [Pico official guide on buzzer](https://projects.raspberrypi.org/en/projects/introduction-to-the-pico/9)

@@ -6,7 +6,7 @@ In Embassy, you normally do not write interrupt handlers yourself. Async drivers
 
 For some peripherals, Embassy needs a small amount of setup so it knows which hardware interrupt belongs to which driver. This is where `bind_interrupts!` comes in.
 
-## Why `bind_interrupts!` Is Needed
+## Why `bind_interrupts!` is Needed
 
 Async peripherals like I2C, SPI do not finish their work in one step. While an operation is in progress, the task goes to sleep and the hardware generates interrupts as things move forward.
 
@@ -27,8 +27,7 @@ bind_interrupts!(struct Irqs {
 });
 ```
 
-This tells Embassy that the I2C0_IRQ interrupt should be handled by the I2C driver for I2C0. Once this is in place, async I2C operations can sleep and wake correctly.
-
+This tells Embassy that the `I2C0_IRQ` interrupt should be handled by the I2C driver for `I2C0`. Once this is in place, async I2C operations can sleep and wake correctly.
 
 ## Using Async I2C
 

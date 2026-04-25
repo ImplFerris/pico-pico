@@ -4,7 +4,7 @@ In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore v
 
 ## Meet the hardware - Pico 2
 
-We will be using the Raspberry Pi Pico 2 (RP2350 chip). It features the new RP2350 chip with dual-core flexibility;offering Arm Cortex-M33 cores and optional RISC-V Hazard3 cores. You can operate it as the standard ARM core or switch to the RISC-V architecture. You find more details from the [official website](https://www.raspberrypi.com/products/raspberry-pi-pico-2/).
+We will be using the Raspberry Pi Pico 2 (RP2350 chip). It features the new RP2350 chip with dual-core flexibility; offering Arm Cortex-M33 cores and optional RISC-V Hazard3 cores. You can operate it as the standard ARM core or switch to the RISC-V architecture. You find more details from the [official website](https://www.raspberrypi.com/products/raspberry-pi-pico-2/).
 
 <img style="display: block; margin: auto;" alt="pico2" src="./src/images/pico2.png"/>
 
@@ -41,7 +41,6 @@ The "impl Rust for RP2350" book(this project) is distributed under the following
 [Apache License v2.0 Hosted]: http://www.apache.org/licenses/LICENSE-2.0
 [CC-BY-SA v4.0 Hosted]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
-
-### Disclaimer:
+### Disclaimer
 
 The experiments and projects shared in this book have worked for me, but results may vary. I'm not responsible for any issues or damage that may occur while you're experimenting. Please proceed with caution and take necessary safety precautions.

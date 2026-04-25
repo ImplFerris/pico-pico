@@ -1,31 +1,31 @@
 # Blinky Example using rp-hal
 
-In the previous section, we used Embassy. We keep the same circuit and wiring. For this example, we switch to rp-hal to show how both approaches look. You can choose Embassy if you want async support, or rp-hal if you prefer the blocking style. In this book, we will mainly use Embassy.
+In the previous section, we used Embassy. We keep the same circuit and wiring. For this example, we switch to `rp-hal` to show how both approaches look. You can choose Embassy if you want `async` support, or `rp-hal` if you prefer the blocking style. In this book, we will mainly use Embassy.
 
-We will create a new project again with cargo-generate and the same template.
+We will create a new project again with `cargo-generate` and the same template.
 
 In your terminal, type:
 
 ```sh
-cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.1
+cargo generate --git https://github.com/ImplFerris/pico2-template.git --tag v0.3.2
 ```
 
 When it asks you to select HAL, choose "rp-hal" this time.
 
 ## Imports
 
-The template already includes most imports. For this example, we need to add the OutputPin trait from embedded-hal:
+The template already includes most imports. For this example, we need to add the `OutputPin` trait from embedded-hal:
 
 ```rust
 // Embedded HAL trait for the Output Pin
 use embedded_hal::digital::OutputPin;
 ```
 
-This trait provides the set_high() and set_low() methods we'll use to control the LED.
+This trait provides the `set_high()` and `set_low()` methods we'll use to control the LED.
 
 ## Main Logic
 
-If you compare this with the Embassy version, there's not much difference in how the LED is toggled. The main difference is in how the delay works. Embassy uses async and await, which lets the program pause without blocking and allows other tasks to run in the background. rp-hal uses a blocking delay, which stops the program until the time has passed.
+If you compare this with the Embassy version, there's not much difference in how the LED is toggled. The main difference is in how the delay works. Embassy uses `async` and `await`, which lets the program pause without blocking and allows other tasks to run in the background. rp-hal uses a blocking `delay`, which stops the program until the time has passed.
 
 ```rust
 let mut led_pin = pins.gpio13.into_push_pull_output();
