@@ -1,3 +1,5 @@
+{{#title How to Build and Run Embedded Rust on Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Running the program
 
 Before we explore further examples, let's cover the general steps to build and run any program on the Raspberry Pi Pico 2. The Pico 2 contains both ARM Cortex-M33 and Hazard3 RISC-V processors, and we'll provide instructions for both architectures.

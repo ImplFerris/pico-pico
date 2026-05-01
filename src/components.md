@@ -1,3 +1,5 @@
+{{#title Components Used in Raspberry Pi Pico 2 Projects | impl Rust for RP2350}}
+
 # Components
 
 In this book, we will use various external components together with the Pico to build examples and experiments. These components are used to interact with the outside world, such as reading inputs, controlling outputs, and displaying information.

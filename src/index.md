@@ -1,3 +1,5 @@
+{{#title Getting Started with Rust on Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # impl Rust for RP2350 - Intro
 
 In this book, we use the Raspberry Pi Pico 2 and program it in Rust to explore various exciting projects. You'll work on exercises like dimming an LED, controlling a servo motor, measuring distance with an ultrasonic sensor, displaying the Ferris (🦀) image on an OLED display, using an RFID reader, playing songs on a buzzer, turning on an LED when the room light is off, measuring temperature, and much more.

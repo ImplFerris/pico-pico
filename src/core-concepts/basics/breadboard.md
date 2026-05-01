@@ -1,3 +1,5 @@
+{{#title Breadboard Basics and Internal Connections | impl Rust for RP2350}}
+
 # Breadboard
 
 A breadboard is a small board that helps you build circuits without soldering. It has many holes where you can plug in wires and electronic parts. Inside the board, metal strips connect some of these holes. This makes it easy to join parts together and complete a circuit.

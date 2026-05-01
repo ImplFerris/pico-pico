@@ -1,3 +1,5 @@
+{{#title Create a Raspberry Pi Pico 2 Rust Project Using cargo-generate Template | impl Rust for RP2350}}
+
 # Project Template with `cargo-generate`
 
 "cargo-generate is a developer tool to help you get up and running quickly with a new Rust project by leveraging a pre-existing git repository as a template."

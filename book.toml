@@ -1,5 +1,6 @@
 [book]
-title = "Guide to Embedded Rust Programming on Raspberry Pi Pico 2 (RP2350)"
+title = "impl Rust for RP2350"
+description = "Learn embedded Rust programming on Raspberry Pi Pico 2 (RP2350) with hands-on examples like GPIO, PWM, and peripherals."
 authors = ["ImplFerris"]
 language = "en"
 src = "src"

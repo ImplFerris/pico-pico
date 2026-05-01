@@ -1,3 +1,5 @@
+{{#title Setting Up Rust Embedded Development for Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Setup
 
 ## Picotool

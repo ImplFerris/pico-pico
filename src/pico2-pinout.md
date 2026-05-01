@@ -1,3 +1,5 @@
+{{#title Raspberry Pi Pico 2 Pinout Diagram and Pin Reference | impl Rust for RP2350}}
+
 # Raspberry Pi Pico 2 Pinout Diagram
 
 > [!TIP]

@@ -1,3 +1,5 @@
+{{#title Help and Troubleshooting for Embedded Rust on Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Help & Troubleshooting
 
 If you face any bugs, errors, or other issues while working on the exercises, here are a few ways to troubleshoot and resolve them.

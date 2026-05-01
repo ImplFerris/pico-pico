@@ -1,3 +1,5 @@
+{{#title Additional Hardware for Raspberry Pi Pico 2 Projects | impl Rust for RP2350}}
+
 # Additional Hardware
 
 In this section we will look at some of the extra hardware you might use along with the Raspberry Pi Pico.
