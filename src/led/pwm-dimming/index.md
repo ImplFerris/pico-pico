@@ -1,3 +1,5 @@
+{{#title Dimming an LED with PWM in Embedded Rust on Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Dimming LED
 
 In this section, we will learn how to create a dimming effect (i.e. reducing and increasing the brightness gradually) for an LED using the Raspberry Pi Pico 2. First, we will dim the onboard LED, which is connected to GPIO pin 25 (based on the datasheet).

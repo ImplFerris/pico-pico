@@ -1,3 +1,5 @@
+{{#title Servo Motor Control with PWM Using Embassy on Raspberry Pi Pico 2}}
+
 # Servo Motor Control on Raspberry Pi Pico Using Embassy and Rust
 
 In this section, we will create a simple program that moves the servo horn from 0 to 90 to 180 and then back to 0. This basic movement is enough to understand how PWM controls a servo. Once you are comfortable with the idea, you can experiment further and build more interesting applications.

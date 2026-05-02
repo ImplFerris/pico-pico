@@ -1,3 +1,5 @@
+{{#title Voltage Divider Circuit Explained for Embedded Rust Projects}}
+
 # Voltage Divider
 
 A voltage divider is a simple circuit that reduces a higher input voltage to a lower output voltage using two resistors connected in series. You might need a voltage divider from time to time when working with sensors or modules that output higher voltages than your microcontroller can safely handle.

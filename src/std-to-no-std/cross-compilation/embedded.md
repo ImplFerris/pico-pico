@@ -1,3 +1,5 @@
+{{#title Compiling Embedded Rust for Raspberry Pi Pico 2 ARM and RISC-V Targets}}
+
 # Compiling for Microcontroller
 
 Now let's talk about embedded systems. When it comes to compiling Rust code for a microcontroller, things work a little differently from normal desktop systems. Microcontrollers don’t usually run a full operating system like Linux or Windows. Instead, they run in a minimal environment, often with no OS at all. This is called a bare-metal environment.

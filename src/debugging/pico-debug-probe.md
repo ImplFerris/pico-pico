@@ -1,3 +1,5 @@
+{{#title Using Raspberry Pi Debug Probe with Pico 2 for Embedded Rust}}
+
 # Debug Probe for Raspberry Pi Pico 2
 
 Pressing the BOOTSEL button every time you want to flash a new program is annoying. On devboards like the ESP32 DevKit this step is mostly automatic because the devboard can reset the chip into bootloader mode when needed. The Pico 2 does not have this feature, but you can get the same convenience and even more capability by using a debug probe.

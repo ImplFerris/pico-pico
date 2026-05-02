@@ -1,3 +1,5 @@
+{{#title LED Dimming with PWM on Raspberry Pi Pico 2 Using rp-hal (Embedded Rust)}}
+
 # Dimming LED Program with RP HAL
 
 rp-hal is an Embedded-HAL for RP series microcontrollers, and can be used as an alternative to the Embassy framework for pico.

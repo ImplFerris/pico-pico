@@ -1,3 +1,5 @@
+{{#title Buzzer Basics for Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Buzzinga
 
 In this section, we will explore some fun activities using a buzzer.  I chose the title Buzzinga just for fun (just playful reference to Sheldon's "Bazinga" from The Big Bang Theory). It is not a technical term.

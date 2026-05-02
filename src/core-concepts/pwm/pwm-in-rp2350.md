@@ -1,3 +1,5 @@
+{{#title PWM Peripheral and GPIO Channel Mapping in Embedded Rust for Raspberry Pi Pico 2}}
+
 # PWM Peripheral in RP2350
 
 The RP2350 has a PWM peripheral with 12 PWM generators called slices. Each slice contains two output channels (A and B), giving you a total of 24 PWM output channels. For detailed specifications, see page 1077 of the [RP2350 Datasheet](https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf#page=1078).

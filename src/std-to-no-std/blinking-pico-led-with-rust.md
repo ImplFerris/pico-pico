@@ -1,3 +1,5 @@
+{{#title Blink Onboard LED on Raspberry Pi Pico 2 Using Embassy (Embedded Rust)}}
+
 # Blinking onboard LED on Raspberry Pi Pico 2
 
 When you start with embedded programming, GPIO is the first peripheral you'll work with. "General-Purpose Input/Output" means exactly what it sounds like: we can use it for both input and output. As an output, the Pico can send signals to control components like LEDs. As an input, components like buttons can send signals to the Pico.

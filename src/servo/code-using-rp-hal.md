@@ -1,3 +1,5 @@
+{{#title Servo Motor Control on Raspberry Pi Pico 2 Using PWM in Embedded Rust}}
+
 # Servo Motor Control on Raspberry Pi Pico Using rp-hal
 
 In this exercise, we repeat the same servo control example, but this time using rp hal instead of Embassy. The overall idea stays exactly the same. The main difference here is that we will use a fractional divider instead of a whole number divider.

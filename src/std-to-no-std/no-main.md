@@ -1,3 +1,5 @@
+{{#title Understanding no_main and Entry Point in Embedded Rust for Raspberry Pi Pico 2}}
+
 # no_main
 
 When you try to build at this stage, you'll get an error saying the main function requires the standard library. What?! (I controlled my temptation to insert a Mr. Bean meme here since not everyone will like meme.) So what now? Where does the program even start?

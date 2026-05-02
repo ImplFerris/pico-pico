@@ -1,3 +1,5 @@
+{{#title HC-SR04 Ultrasonic Sensor with Embassy on Raspberry Pi Pico 2 | Tutorial}}
+
 # Rust Tutorial: Using the HC-SR04 Sensor with the Pico 2
 
 We will start by creating a new project using the Embassy framework. After that, we wll build the same project again using `rp-hal`. As usual, generate the project from the template with `cargo-generate`:

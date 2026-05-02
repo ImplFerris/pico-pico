@@ -1,3 +1,5 @@
+{{#title Pull-up and Pull-down Resistors for Button Input on Raspberry Pi Pico 2}}
+
 # Pull-up and Pull-down Resistors
 
 When working with buttons, switches, and other digital inputs on your Raspberry Pi Pico, you'll quickly encounter a curious problem: what happens when nothing is connected to an input pin? The answer might surprise you; the pin becomes "floating", picking up electrical noise and giving you random, unpredictable readings. This is where pull-up and pull-down resistors come to the rescue.

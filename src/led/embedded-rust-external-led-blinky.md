@@ -1,3 +1,4 @@
+{{#title External LED Blink Code Example Using Embassy on Raspberry Pi Pico 2}}
 
 # Blink an External LED on the Raspberry Pi Pico with Embedded Rust
 

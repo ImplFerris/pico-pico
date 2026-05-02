@@ -1,3 +1,5 @@
+{{#title Blink an External LED Using rp-hal on Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Blinky Example using rp-hal
 
 In the previous section, we used Embassy. We keep the same circuit and wiring. For this example, we switch to `rp-hal` to show how both approaches look. You can choose Embassy if you want `async` support, or `rp-hal` if you prefer the blocking style. In this book, we will mainly use Embassy.

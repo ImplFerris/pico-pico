@@ -1,3 +1,5 @@
+{{#title PWM Simulation: Duty Cycle and Frequency Explained in Embedded Rust}}
+
 # Simulation
 
 <style>

@@ -1,3 +1,5 @@
+{{#title Flash Rust Firmware to Raspberry Pi Pico 2 Using Picotool | impl Rust for RP2350}}
+
 # Flashing the Rust Firmware into Raspberry Pi Pico 2
 
 After building our program, we'll have an ELF binary file ready to flash.

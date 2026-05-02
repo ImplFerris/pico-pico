@@ -1,3 +1,5 @@
+{{#title Understanding Microcontroller Peripherals in Embedded Rust for Raspberry Pi Pico 2}}
+
 # Peripherals
 
 Before we move on to the next part, let's quickly look at what peripherals are.

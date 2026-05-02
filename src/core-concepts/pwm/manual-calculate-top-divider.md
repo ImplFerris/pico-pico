@@ -1,3 +1,5 @@
+{{#title How to Calculate PWM TOP Value for a Target Frequency on Raspberry Pi Pico 2}}
+
 # Manually Calculate Top
 
 In this section, we will manually derive the TOP value for a given PWM frequency. This method requires trying different divider values and checking whether the resulting TOP value falls within the valid range.

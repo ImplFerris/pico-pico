@@ -1,3 +1,5 @@
+{{#title Understanding no_std in Embedded Rust for Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # no_std
 
 Rust has two main foundational crates: std and core.

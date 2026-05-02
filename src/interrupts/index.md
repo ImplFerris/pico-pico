@@ -1,3 +1,5 @@
+{{#title Understanding Interrupts in Embedded Rust on Raspberry Pi Pico 2}}
+
 # Interrupts
 
 <style>

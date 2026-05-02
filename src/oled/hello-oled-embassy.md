@@ -1,3 +1,5 @@
+{{#title Display Text on OLED with Embassy and SSD1306 on Raspberry Pi Pico 2}}
+
 # Hello OLED
 
 We are going to keep things simple. We will just display "Hello, Rust!" on the OLED display. We will first use Embassy, then we will do the same using `rp-hal`.

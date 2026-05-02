@@ -1,3 +1,5 @@
+{{#title LED Control with Button Press on Raspberry Pi Pico 2 | Embedded Rust}}
+
 # LED on Button Press
 
 Let's build a simple project that turns on an LED whenever the button is pressed. You can use an external LED or the built in LED. Just change the LED pin number in the code to match the one you are using.
@@ -50,6 +52,7 @@ loop {
     }
 
     Timer::after_millis(5).await;
+    
 }
 ```
 

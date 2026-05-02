@@ -1,4 +1,6 @@
-## Beeping with an Active Buzzer
+{{#title Beeping with an Active Buzzer on Raspberry Pi Pico 2 Using Embedded Rust}}
+
+# Beeping with an Active Buzzer
 
 Since you already know how an active buzzer works, we can make it beep by simply turning a GPIO pin on and off.  In this exercise, we use a GPIO pin to power the buzzer, wait for a short time, turn it off, and repeat. This creates a clear beeping sound.
 

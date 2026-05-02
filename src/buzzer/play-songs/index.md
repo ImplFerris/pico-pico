@@ -1,3 +1,5 @@
+{{#title Play Music on Raspberry Pi Pico 2 with Passive Buzzer in Embedded Rust}}
+
 # Playing Songs on a Passive Buzzer Using Rust and Raspberry Pi Pico
 
 In this section, we will play songs on a buzzer using the Raspberry Pi Pico.

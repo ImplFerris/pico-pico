@@ -1,3 +1,4 @@
+{{#title Pulse Width Modulation (PWM) Explained for Embedded Rust on Raspberry Pi Pico 2}}
 
 # Pulse Width Modulation (PWM)
 

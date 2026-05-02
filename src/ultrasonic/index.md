@@ -1,3 +1,5 @@
+{{#title Ultrasonic Distance Sensor Project with Raspberry Pi Pico 2 in Embedded Rust}}
+
 # Bat Beacon: Distance Sensor Project 🦇
 
 If you've seen the Batman Begins movie, you'll remember the scene where Batman uses a device that emits ultrasonic signals to summon a swarm of bats. It's one of the coolest gadgets in his arsenal! While we won't be building a bat-summoning beacon today, we will be working with the similar ultrasonic technology.

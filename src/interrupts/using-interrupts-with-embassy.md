@@ -1,3 +1,5 @@
+{{#title Using Interrupts with Embassy in Embedded Rust on Raspberry Pi Pico 2}}
+
 # Using Interrupts with Embassy
 
 In the previous chapter, we looked at what interrupts are and how the NVIC fits into the picture. Now lets see how interrupts are actually used in Embassy.

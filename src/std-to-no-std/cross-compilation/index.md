@@ -1,3 +1,5 @@
+{{#title Cross Compilation for Embedded Rust and Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Cross Compilation
 
 You probably know about cross compilation already. In this section, we'll explore how this works and what it means to deal with things like target triples. In simple terms, cross compilation is building programs for different machine than the one you're using.

@@ -1,3 +1,5 @@
+{{#title Linker Script and memory.x Setup for Embedded Rust on Raspberry Pi Pico 2}}
+
 # Linker Script
 
 The program now compiles successfully. However, when you attempt to flash it onto the Pico, you may encounter an error like the following:

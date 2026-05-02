@@ -1,3 +1,5 @@
+{{#title Async Programming in Embedded Rust with Embassy on Raspberry Pi Pico 2}}
+
 # Async In Embedded Rust
 
 When I first started this book, I wrote most of the examples using `rp-hal` only. In this revision, I have rewritten the book to focus mainly on `async` programming with Embassy. The official [Embassy book](https://embassy.dev/book/) already has good documentation, but I want to give a short introduction here. Let's have a brief look at async and understand why it's so valuable in embedded systems.

@@ -1,3 +1,5 @@
+{{#title Embassy HAL Setup for Raspberry Pi Pico 2 (RP2350) in Rust | impl Rust for RP2350}}
+
 # Embassy for Raspberry Pi Pico
 
 We already introduced the concept of HAL in the introduction chapter. For the Pico, we will use the Embassy RP HAL. The Embassy RP HAL targets the Raspberry Pi RP2040, as well as RP235x microcontrollers.

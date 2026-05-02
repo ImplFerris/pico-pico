@@ -1,3 +1,5 @@
+{{#title RP2350 Interrupts Overview for Raspberry Pi Pico 2 | impl Rust for RP2350}}
+
 # Interrupts in the RP2350
 
 In the previous chapter, we looked at what interrupts are and the role of the NVIC. Now, lets look at which interrupts are actually available on the RP2350.

@@ -1,3 +1,5 @@
+{{#title Using I2C with Embassy on Raspberry Pi Pico 2 in Embedded Rust}}
+
 # I2C in Embassy RP
 
 Let's see how to initialize and use I2C with Embassy on the Raspberry Pi Pico 2.

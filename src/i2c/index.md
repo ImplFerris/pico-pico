@@ -1,3 +1,5 @@
+{{#title I2C Communication Protocol for Embedded Rust on Raspberry Pi Pico 2}}
+
 # Inter-Integrated Circuit (I2C)
 
 So far, we've been toggling output pins between High and Low states to control an LED and reading the same two levels from a button, but working with interesting devices like display modules, RFID readers, and SD card readers requires something more. Simple pin toggling won't work here. We need a proper communication mechanism, and that's where communication protocols come in. The most common ones are I2C, SPI, and UART. Each one has its own advantages and disadvantages.

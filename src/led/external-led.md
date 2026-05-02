@@ -1,3 +1,5 @@
+{{#title Blink an External LED with Raspberry Pi Pico 2 Using Embedded Rust}}
+
 # Blinking an External LED
 
 From now on, we'll use more external parts with the Pico. Before we get there, it helps to get comfortable with simple circuits and how to connect components to the Pico's pins. In this chapter, we'll start with something basic: blinking an LED that's connected outside the board.

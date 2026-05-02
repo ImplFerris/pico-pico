@@ -1,3 +1,5 @@
+{{#title Create an Embedded Rust Project for Raspberry Pi Pico 2 in VS Code}}
+
 # Creating a Rust Project for Raspberry Pi Pico in VS Code (with extension)
 
 We've already created the Rust project for the Pico manually and through the template. Now we are going to try another approach: using the Raspberry Pi Pico extension for VS Code.

@@ -1,4 +1,4 @@
-## Drawing a Single Byte Image in Embedded Rust using embedded-graphics
+# Drawing a Single Byte Image in Embedded Rust using embedded-graphics
 
 By now, i hope you understand how the image is represented in the byte array. Now, let's move on to the coding part.
 

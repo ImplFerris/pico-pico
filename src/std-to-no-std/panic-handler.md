@@ -1,3 +1,5 @@
+{{#title Panic Handler in no_std Embedded Rust for Raspberry Pi Pico 2}}
+
 # Panic Handler
 
 At this point, when you try to build the project, you’ll get this error:

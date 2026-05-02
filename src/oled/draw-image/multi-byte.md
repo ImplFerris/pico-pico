@@ -1,4 +1,6 @@
-## Using Multiple Bytes to Represent Wider Pixel Widths
+{{#title Multi-Byte Pixel Rows in embedded-graphics for OLED on Raspberry Pi Pico 2}}
+
+# Using Multiple Bytes to Represent Wider Pixel Widths
 
 In the previous example, we kept it simple by using an 8-pixel wide image. This made things easy because each row fit perfectly into a single byte. However, real images often need more pixels. So how do we represent them when one byte isn't enough? The answer is simple: we use multiple bytes. But this creates a problem. If we're using multiple bytes, how does the system know where one row ends and the next one begins?
 
