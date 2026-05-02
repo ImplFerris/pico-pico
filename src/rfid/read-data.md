@@ -1,3 +1,5 @@
+{{#title Reading RFID Tag Data on Raspberry Pi Pico with Embedded Rust}}
+
 # Reading RFID Tag Data on Raspberry Pi Pico with Embedded Rust
 
 In this chapter, we move beyond just reading the UID and start reading actual data stored on the RFID tag. We will read all the blocks from the first sector, which is sector 0.

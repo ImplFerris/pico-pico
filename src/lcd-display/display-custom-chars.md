@@ -1,4 +1,6 @@
-## Ferris on LCD Display
+{{#title Custom Characters on LCD Display with Embassy on Raspberry Pi Pico 2}}
+
+# Ferris on LCD Display
 
 In this section, we will draw Ferris on a character LCD. This is my attempt at making it look like a crab. If you come up with a better design, feel free to send a pull request.
 

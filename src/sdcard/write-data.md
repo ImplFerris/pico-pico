@@ -1,3 +1,5 @@
+{{#title Write Data to an SD Card Using Embedded Rust on Raspberry Pi Pico}}
+
 # Write Data to an SD Card Using Embedded Rust on Raspberry Pi Pico
 
 In this chapter, we create a file on a microSD card and write data into it. The SD card wiring, SPI configuration, logging setup, and card initialization remain unchanged. We only change how the file is opened and how data is written to it.

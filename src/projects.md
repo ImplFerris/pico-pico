@@ -1,3 +1,5 @@
+{{#title Curated List of Projects Written in Rust for Raspberry Pi Pico 2}}
+
 # Curated List of Projects Written in Rust for Raspberry Pi Pico 2
 
 Here is a curated list of projects I found online that are interesting and related to Pico 2 and Rust.  If you have some interesting projects to showcase, please send a PR :)

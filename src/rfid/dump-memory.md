@@ -1,4 +1,6 @@
-## Dump Entire Memory
+{{#title Dump MFRC522 Card Memory on Raspberry Pi Pico 2 in Embedded Rust}}
+
+# Dump Entire Memory
 
 So far, you have learned how to authenticate a sector and read the blocks inside it. In the previous chapter, we limited ourselves to sector 0. In this chapter, we extend that approach to dump the entire memory of the tag.
 

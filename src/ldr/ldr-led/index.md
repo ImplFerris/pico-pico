@@ -1,3 +1,5 @@
+{{#title Automatic LED with LDR Light Sensor on Raspberry Pi Pico 2 in Embedded Rust}}
+
 # Turn on LED in low Light with Raspberry Pi Pico
 
 In this exercise, we will build a small but practical project using an LDR. The Pico will automatically turn on an LED when the ambient light level drops below a certain point, meaning the LED turns on as it gets darker. You can extend this idea to control a real lamp, but that is outside the scope of this exercise and requires proper safety precautions.

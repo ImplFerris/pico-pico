@@ -1,3 +1,5 @@
+{{#title GPIO Atomic Registers in Embedded Rust on Raspberry Pi Pico 2}}
+
 # Atomic GPIO Register
 
 Earlier, we looked only at the GPIO_OUT register. That register holds the full 32-bit output value for all GPIO pins. But in practice, the rp-hal library does not write to GPIO_OUT directly. Instead, it uses the atomic helper registers: GPIO_OUT_SET, GPIO_OUT_CLR, and GPIO_OUT_XOR.

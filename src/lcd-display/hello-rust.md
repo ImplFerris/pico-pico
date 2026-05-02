@@ -1,3 +1,5 @@
+{{#title Display Text on LCD1602 with I2C Using Embassy on Raspberry Pi Pico 2}}
+
 # "Hello, Rust!" in LCD Display
 
 We will create a simple program that prints "Hello, Rust!" on the LCD screen. This helps us quickly check that the wiring, I2C setup, and LCD configuration are correct before moving on to the next exercise.

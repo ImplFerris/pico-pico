@@ -1,3 +1,5 @@
+{{#title Using GDB Breakpoints to Debug GPIO on Raspberry Pi Pico 2}}
+
 # Breakpoints
 
 Now that we've traced the execution path from reset to our main function, let's set breakpoints in the LED loop and observe how the GPIO registers change when we toggle the LED.

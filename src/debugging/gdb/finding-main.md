@@ -1,3 +1,5 @@
+{{#title Tracing the Reset Handler to main on Raspberry Pi Pico 2 with GDB}}
+
 # Finding the Reset Handler and Tracing the Call to main
 
 When the Pico 2 resets, the CPU starts executing from the Reset Handler. To understand how our program starts, we will locate the Reset Handler, disassemble it, and follow the call chain until we reach our actual Rust main.

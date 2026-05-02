@@ -1,3 +1,5 @@
+{{#title Embedded Rust Code to Control MAX7219 LED Matrix on Raspberry Pi Pico 2}}
+
 # Embedded Rust Code to Control MAX7219 LED Matrix on Raspberry Pi Pico 2
 
 Let us move on to the coding part. In this program, we will draw a square on the 8x8 LED matrix using embedded-graphics.

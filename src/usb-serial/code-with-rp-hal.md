@@ -1,3 +1,5 @@
+{{#title USB Serial Communication with rp-hal on Raspberry Pi Pico 2}}
+
 # USB Serial Example Using rp-hal
 
 We are going to use an [example](https://github.com/rp-rs/rp-hal/blob/main/rp235x-hal-examples/src/bin/usb.rs) provided in the RP HAL repository and make a few small changes to it so we can clearly see two way communication working.

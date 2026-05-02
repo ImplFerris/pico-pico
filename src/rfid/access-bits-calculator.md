@@ -1,3 +1,5 @@
+{{#title MIFARE Classic 1K Access Bits Calculator | impl Rust for RP2350}}
+
 # MIFARE Classic 1K Access Bits Calculator
 
 <style>

@@ -1,3 +1,5 @@
+{{#title Read Joystick Positions on Raspberry Pi Pico 2 in Embedded Rust}} 
+
 # Sending Joystick ADC Values to USB Serial (RP-HAL)
 
 In the previous chapter, we used Embassy to read joystick ADC values and print them using logging. In the first version of this book, I was using RP-HAL while exploring and learning the ecosystem. I do not want to throw away that material, as it may still be useful for understanding older code or different approaches.

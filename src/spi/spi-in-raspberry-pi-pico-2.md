@@ -1,3 +1,5 @@
+{{#title SPI Peripheral Setup on Raspberry Pi Pico 2 with Embassy and rp-hal}}
+
 # RP2350 SPI Peripherals
 
 The RP2350 includes two SPI controllers, named SPI0 and SPI1. Both are general purpose peripherals and are available for application use. These controllers provide flexible serial communication capabilities for connecting external devices like sensors, displays, SD cards, and other SPI peripherals.

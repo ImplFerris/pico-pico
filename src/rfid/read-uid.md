@@ -1,3 +1,5 @@
+{{#title How to Read an RFID Card UID with Raspberry Pi Pico in Embedded Rust}}
+
 # How to Read an RFID Card UID with Raspberry Pi Pico in Embedded Rust
 
 Now that the wiring is complete, we will move on to the coding part. Let us keep things simple. We will first detect an RFID card and read its UID. We will not deal with authentication or data access yet.

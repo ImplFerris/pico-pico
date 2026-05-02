@@ -1,3 +1,5 @@
+{{#title RFID Access Control Bits Explained for MIFARE Classic Tags}}
+
 # Access Control
 
 The tag includes access bits that enable access control for the data stored in the tag. This chapter will explore how these access bits function. This section might feel a bit overwhelming, so I'll try to make it as simple and easy to understand as possible.

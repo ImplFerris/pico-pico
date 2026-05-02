@@ -1,3 +1,5 @@
+{{#title HD44780 LCD Display with I2C on Raspberry Pi Pico 2 in Embedded Rust}}
+
 # LCD Display
 
 In this section, we will work with Hitachi HD44780 compatible LCD (Liquid Crystal Display) modules. These character LCDs are extremely common and have been used for decades in everyday devices such as printers, digital clocks, microwaves, washing machines, air conditioners, and other home appliances. You will also find them in office equipment like copiers, fax machines, and network routers.

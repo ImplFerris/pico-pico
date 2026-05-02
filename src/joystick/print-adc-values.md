@@ -1,3 +1,5 @@
+{{#title Read Joystick ADC Values on Raspberry Pi Pico 2 with Embassy}}
+
 # Understanding Joystick Positions Using ADC Values on Raspberry Pi Pico
 
 In this chapter, we are going to print the ADC values from the joystick whenever they change. We will read two analog signals, vrx and vry, which are connected to the joystick axes, and we will also print the values when the joystick button is pressed.

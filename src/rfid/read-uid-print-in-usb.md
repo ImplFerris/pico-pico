@@ -1,3 +1,5 @@
+{{#title Read RFID UID over USB Serial on Raspberry Pi Pico 2 Using Embedded Rust}} 
+
 # Read RFID Card UID Using USB Serial
 
 Before we begin, make sure to check out the [USB serial](../usb-serial/index.md) tutorial for setting up USB serial on the Pico. We will not go over the USB setup again here to keep things simple.
