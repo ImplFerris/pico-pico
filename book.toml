@@ -43,7 +43,7 @@ editable = true
 "/buzzer/buzzer.html" = "/buzzer/intro.html"
 "/buzzer/got-buzzer.html" = "/buzzer/play-songs/index.html"
 "/buzzer/got-module.html" = "/buzzer/play-songs/index.html"
-"/buzzer/music-module.html" = "/play-songs/song-module.html"
+"/buzzer/music-module.html" = "/buzzer/play-songs/song-module.html"
 "/buzzer/music-theory.html" = "/buzzer/play-songs/music-theory.html"
 "/buzzer/play.html" = "/buzzer/play-songs/code.html"
 
