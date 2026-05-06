@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0a0a0a"/>
+
+  <!-- Pins (metallic copper) -->
+  <g fill="#fb923c">
+    <!-- Top -->
+    <rect x="140" y="28" width="24" height="90" rx="8"/>
+    <rect x="196" y="28" width="24" height="90" rx="8"/>
+    <rect x="252" y="28" width="24" height="90" rx="8"/>
+    <rect x="308" y="28" width="24" height="90" rx="8"/>
+    <rect x="364" y="28" width="24" height="90" rx="8"/>
+
+    <!-- Bottom -->
+    <rect x="140" y="394" width="24" height="90" rx="8"/>
+    <rect x="196" y="394" width="24" height="90" rx="8"/>
+    <rect x="252" y="394" width="24" height="90" rx="8"/>
+    <rect x="308" y="394" width="24" height="90" rx="8"/>
+    <rect x="364" y="394" width="24" height="90" rx="8"/>
+
+    <!-- Left -->
+    <rect x="28" y="140" width="90" height="24" rx="8"/>
+    <rect x="28" y="196" width="90" height="24" rx="8"/>
+    <rect x="28" y="252" width="90" height="24" rx="8"/>
+    <rect x="28" y="308" width="90" height="24" rx="8"/>
+    <rect x="28" y="364" width="90" height="24" rx="8"/>
+
+    <!-- Right -->
+    <rect x="394" y="140" width="90" height="24" rx="8"/>
+    <rect x="394" y="196" width="90" height="24" rx="8"/>
+    <rect x="394" y="252" width="90" height="24" rx="8"/>
+    <rect x="394" y="308" width="90" height="24" rx="8"/>
+    <rect x="394" y="364" width="90" height="24" rx="8"/>
+  </g>
+
+  <!-- Chip body (epoxy) -->
+  <rect x="96" y="96" width="320" height="320" rx="36" fill="#1f2937"/>
+
+  <!-- Subtle bevel -->
+  <rect x="96" y="96" width="320" height="320" rx="36"
+        fill="none" stroke="#374151" stroke-width="6"/>
+
+  <!-- Inner die area -->
+  <rect x="176" y="176" width="160" height="160" rx="20" fill="#111827"/>
+
+  <!-- Die glow (orange hint) -->
+  <rect x="190" y="190" width="132" height="132" rx="16"
+        fill="#f97316" opacity="0.08"/>
+
+  <!-- Pin 1 marker -->
+  <circle cx="140" cy="140" r="8" fill="#f97316"/>
+
+</svg>
