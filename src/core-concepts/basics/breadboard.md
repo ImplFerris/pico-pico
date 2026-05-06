@@ -6,7 +6,7 @@ A breadboard is a small board that helps you build circuits without soldering. I
 
 <div class="image-with-caption" style="text-align:center; ">
     <img src="../images/Breadboard.png" alt="Breadboard" style="max-width:70%; height:auto; display:block; margin:0 auto;"/>
-    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Image credit: <a href="https://commons.wikimedia.org/wiki/File:Breadboard.png">Wikimedia Commons</a>, License: CC BY-SA 3.0</a></div>
+    <div class="caption" style="font-size:0.9em; color:#555; margin-top:6px;">Image credit: <a href="https://commons.wikimedia.org/wiki/File:Breadboard.png">Wikimedia Commons</a>, License: CC BY-SA 3.0</div>
 </div>
 
 The picture shows how the holes are connected inside the breadboard.

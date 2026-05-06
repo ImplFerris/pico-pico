@@ -26,11 +26,47 @@ level = 1     # the depth to start folding
 
 [output.html.playground]
 editable = true
-
 [output.html.redirect]
-# some backlinks points to old url
+
+# LED / PWM
 "/led/pwm-rp2350.html" = "/core-concepts/pwm/pwm-in-rp2350.html"
+"/core-concepts/pwm/pwm-in-depth.html" = "/core-concepts/pwm/index.html"
+"/led/rp-hal.html" = "/led/external-led-with-rp-hal.html"
+"/led/index.html" = "/led/embedded-rust-external-led-blinky.html"
+
+# Servo
 "/servo/pwm.html" = "/servo/how-servo-works.html"
 "/servo/servo.html" = "/servo/index.html"
+"/servo/action.html" = "/servo/code-using-embassy-rp.html"
+
+# Buzzer
+"/buzzer/buzzer.html" = "/buzzer/intro.html"
+"/buzzer/got-buzzer.html" = "/buzzer/play-songs/index.html"
+"/buzzer/got-module.html" = "/buzzer/play-songs/index.html"
+"/buzzer/music-module.html" = "/play-songs/song-module.html"
+"/buzzer/music-theory.html" = "/buzzer/play-songs/music-theory.html"
+"/buzzer/play.html" = "/buzzer/play-songs/code.html"
+
+# Thermistor
+"/thermistor/adc-maths.html" = "/thermistor/adc-to-resistance.html"
+"/thermistor/adc.html" = "/thermistor/adc-to-resistance.html"
+"/thermistor/temperature/action.html" = "/thermistor/temperature/index.html"
+
+# OLED
+"/oled/hello-oled-blocking-embassy.html" = "/oled/hello-oled-embassy.html"
+"/oled/hello-oled.html" = "/oled/hello-oled-with-rp-hal.html"
+"/oled/ferris.html" = "/oled/draw-image/bitmap.html"
+
+# Core Concepts
+"/core-concepts/no-std-main.html" = "/std-to-no-std/index.html"
+"/core-concepts/adc.html" = "/adc/index.html"
+"/core-concepts/i2c.html" = "/i2c/index.html"
+
+# LDR
+"/ldr/ldr.html" = "/ldr/index.html"
+"/ldr/ldr-led/action.html" = "/ldr/ldr-led/code.html"
+
+# USB Serial
+"/usb-serial/action.html" = "/usb-serial/embassy-usb-logger.html"
 
 [preprocessor.tabs]
