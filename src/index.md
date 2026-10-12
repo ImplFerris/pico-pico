@@ -24,6 +24,8 @@ There is also a variant called the Pico 2 W, which includes Wi‑Fi and Bluetoot
 
 The **H** variants of both include a pinheader, which makes development a bit easier.
 
+> A Russian translation of this book is also available [here](https://r007.github.io/EmbeddedRust-Rus/pico-pico/).
+
 ## Datasheets
 
 For detailed technical information, specifications, and guidelines, refer to the official datasheets:

@@ -26,6 +26,8 @@ cargo install mdbook mdbook-tabs
 mdbook serve --open
 ```
 
+> A Russian translation of this book is also available [here](https://r007.github.io/EmbeddedRust-Rus/pico-pico/).
+
 ## Support this project
 
 You can support this book by starring this project on [GitHub](https://github.com/ImplFerris/pico-pico) or sharing this book with others 😊
