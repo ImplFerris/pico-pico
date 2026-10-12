@@ -56,7 +56,7 @@ use ssd1306::{I2CDisplayInterface, Ssd1306, prelude::*};
 
 ## Pin Configuration
 
-We start by configuring the GPIO pins for the I2C communication. In this case, GPIO18 is set as the SDA pin, and GPIO19 is set as the SCL pin. We then configure the I2C peripheral to work in controller mode.
+We start by configuring the GPIO pins for the I2C communication. In this case, GPIO16 is set as the SDA pin, and GPIO17 is set as the SCL pin. We then configure the I2C peripheral to work in controller mode.
 
 ```rust
 // Configure two pins as being I²C, not GPIO
@@ -74,6 +74,7 @@ let i2c = hal::I2C::i2c0(
     &mut pac.RESETS,
     &clocks.system_clock,
 );
+
 ```
 
 ### Prepare Display
@@ -192,14 +193,14 @@ fn main() -> ! {
     let mut timer = hal::Timer::new_timer0(pac.TIMER0, &mut pac.RESETS, &clocks);
 
     // Configure two pins as being I²C, not GPIO
-    let sda_pin: Pin<_, FunctionI2C, _> = pins.gpio18.reconfigure();
-    let scl_pin: Pin<_, FunctionI2C, _> = pins.gpio19.reconfigure();
+    let sda_pin: Pin<_, FunctionI2C, _> = pins.gpio16.reconfigure();
+    let scl_pin: Pin<_, FunctionI2C, _> = pins.gpio17.reconfigure();
 
     // Create the I²C drive, using the two pre-configured pins. This will fail
     // at compile time if the pins are in the wrong mode, or if this I²C
     // peripheral isn't available on these pins!
-    let i2c = hal::I2C::i2c1(
-        pac.I2C1,
+    let i2c = hal::I2C::i2c0(
+        pac.I2C0,
         sda_pin,
         scl_pin,
         400.kHz(),
@@ -257,5 +258,5 @@ You can clone (or refer) project I created and navigate to the `hello-oled` fold
 
 ```sh
 git clone https://github.com/ImplFerris/pico2-rp-projects
-cd pico2-projects/hello-oled
+cd pico2-rp-projects/oled/hello-oled
 ```
