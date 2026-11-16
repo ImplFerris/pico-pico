@@ -13,26 +13,53 @@ picotool is a tool for working with RP2040/RP2350 binaries, and interacting with
 
 Here's a quick summary of the steps I followed:
 
+First, install the required dependencies.
+
+For Ubuntu(the one i was using):
+
 ```sh
 # Install dependencies
 sudo apt install build-essential pkg-config libusb-1.0-0-dev cmake
+```
 
+For Fedora:
+
+```sh
+sudo dnf install make gcc gcc-c++
+sudo dnf install pkg-config 
+sudo dnf install libusb-devel
+sudo dnf install cmake
+```
+
+Create a working directory:
+
+```sh
 mkdir embedded && cd embedded
+```
 
-# Clone the Pico SDK
+Clone the Pico SDK:
+
+```sh
 git clone https://github.com/raspberrypi/pico-sdk
 cd pico-sdk
 git submodule update --init lib/mbedtls
 cd ../
+```
 
-# Set the environment variable for the Pico SDK
+Set PICO_SDK_PATH to the location of your Pico SDK directory:
+
+```sh
 PICO_SDK_PATH=/MY_PATH/embedded/pico-sdk
+```
 
-# Clone the Picotool repository
+Replace` /MY_PATH/` with the actual path to your working directory.
+
+Clone the Picotool repository:
+```sh
 git clone https://github.com/raspberrypi/picotool
 ```
 
-Build and install Picotool
+Build and install Picotool:
 
 ```sh
 cd picotool
